@@ -40,13 +40,13 @@ export default defineNuxtConfig({
       },
     ],
   },
-  ssr: true,
-  nitro: {
-    preset: "static",
-    prerender: {
-      routes: ["/"], // Include your main routes here if needed
-    },
-  },
+  // ssr: true,
+  // nitro: {
+  //   preset: "static",
+  //   prerender: {
+  //     routes: ["/"], // Include your main routes here if needed
+  //   },
+  // },
   experimental: {
     payloadExtraction: false,
   },
