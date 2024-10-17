@@ -63,7 +63,7 @@
         </div>
 
         <div>
-          <img
+          <NuxtImg
             class="w-full"
             :src="heroImage"
             :alt="title"
@@ -71,6 +71,7 @@
             preload
             width="640"
             height="554"
+            provider="contentful"
           />
         </div>
       </div>

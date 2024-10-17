@@ -59,7 +59,17 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   image: {
-    provider: "ipx",
     format: ["webp"],
+    providers: {
+      contentful: {
+        accessToken: process.env.NUXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
+        spaceId: process.env.NUXT_PUBLIC_CONTENTFUL_SPACE_ID,
+        dangerouslyAllowSVG: true,
+        generate: {
+          fallback: true,
+        },
+      },
+      ipx: {}
+    },
   },
 });

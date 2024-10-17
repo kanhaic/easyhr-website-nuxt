@@ -21,10 +21,10 @@
           <div class="inline-block items-start justify-start">
             <div class="relative flex items-center justify-center mx-auto mb-4">
               <svg
-                :class="feature.bgColor"
-                :width="feature.svgWidth"
-                :height="feature.svgHeight"
-                :viewBox="feature.svgViewBox"
+                :class="feature?.bgColor"
+                :width="feature?.svgWidth"
+                :height="feature?.svgHeight"
+                :viewBox="feature?.svgViewBox"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -48,10 +48,10 @@
             </div>
           </div>
           <h3 class="text-lg font-semibold text-black">
-            {{ feature.title }}
+            {{ feature?.title }}
           </h3>
           <p class="mt-4 text-base text-gray-600">
-            {{ feature.description }}
+            {{ feature?.description }}
           </p>
         </div>
       </div>

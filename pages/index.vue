@@ -18,9 +18,9 @@
       :image="featureSection.image"
     />
     <FeatureList
-      :title="featureListTitle"
-      :description="featureListDescription"
-      :features="featureListItems"
+      :title="featureList.title"
+      :description="featureList.description"
+      :features="featureList.featureListItems"
     />
     <Testimonial1
       :subtitle="testimonialSubtitle"
@@ -56,6 +56,8 @@ const { data, error } = await useAsyncData("main-landing", () =>
 
 const landingPage = data.value || { items: [], includes: { Asset: [] } };
 
+// console.log(JSON.stringify(landingPage.items[0], null, 2));
+
 const heroSection = {
   topTag: landingPage.items[0].fields.topTag,
   title: landingPage.items[0].fields.title,
@@ -66,10 +68,6 @@ const heroSection = {
   cta2Link: landingPage.items[0].fields.cta2Link,
   heroImage: landingPage.items[0].fields.heroImage,
 }
-
-
-console.log(JSON.stringify(landingPage, null, 2));
-
 
 const blogTitle = 'Check out our latest articles';
 const recentPosts = [
@@ -139,48 +137,36 @@ const logos = landingPage.items[0].fields.logos.map((logo) => ({
 }));
 
 const featureSection = {
-  topTag: "Powerful HR Features",
-  headerFeature: "Simplify Your HR Management",
-  items: [
-    {
-      iconColor: "text-blue-500",
-      iconPath:
-        "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
-      title: "Employee Management",
-      description:
-        "Easily manage employee data, profiles, and documents in one centralized system.",
-    },
-    {
-      iconColor: "text-green-500",
-      iconPath:
-        "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
-      title: "Time & Attendance",
-      description:
-        "Track employee attendance, manage leave requests, and generate reports effortlessly.",
-    },
-    {
-      iconColor: "text-purple-500",
-      iconPath:
-        "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-      title: "Performance Management",
-      description:
-        "Set goals, conduct reviews, and track employee performance with ease.",
-    },
-    {
-      iconColor: "text-yellow-500",
-      iconPath:
-        "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z",
-      title: "Payroll Processing",
-      description:
-        "Automate payroll calculations, tax deductions, and generate pay slips efficiently.",
-    },
-  ],
-  image: {
-    src: "/images/emp-list.webp",
-    alt: "Employee Management Dashboard",
+  topTag: landingPage.items[0].fields.featureTopTag,
+  headerFeature: landingPage.items[0].fields.featureTitle,
+  items: landingPage.items[0].fields.mainFeatures.map((feature) => ({
+    iconColor: feature.fields.color,
+    iconPath: feature.fields.icon,
+    title: feature.fields.title,
+    description: feature.fields.description,
+  })),
+  image:  {
+    src: landingPage.items[0].fields.featureImage.fields.file.url,
+    alt: landingPage.items[0].fields.featureImage.fields.title,
   },
 };
 
+const featureList = {
+  title: landingPage.items[0].fields.featureListTitle,
+  description: landingPage.items[0].fields.featureListSubtitle,
+  featureListItems: landingPage.items[0].fields.featureList?.map((item) => ({
+    bgColor: item.fields.bgColor,
+    svgWidth: item.fields.svgWidth,
+    svgHeight: item.fields.svgHeight,
+    svgViewBox: item.fields.svgViewBox,
+    bgPath: item.fields.bgPath,
+    iconColor: item.fields.color,
+    iconPath: item.fields.icon,
+    title: item.fields.title,
+    description: item.fields.description,
+  })) || [],
+}
+  
 const featureListTitle = "Our Amazing Features";
 const featureListDescription =
   "Discover the powerful features that make our product stand out.";

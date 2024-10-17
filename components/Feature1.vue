@@ -55,6 +55,7 @@
               loading="lazy"
               width="600"
               height="400"
+              provider="contentful"
             />
           </div>
         </div>
@@ -95,3 +96,4 @@ defineProps({
   }
 });
 </script>
+
