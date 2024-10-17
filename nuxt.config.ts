@@ -1,6 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
+  runtimeConfig: {
+    public: {
+      contentful: {
+        spaceId: "",
+        accessToken: "",
+      },
+    },
+  },
   devtools: { enabled: true },
   app: {
     head: {

@@ -1,5 +1,5 @@
 <template>
-  <section v-once class="pt-20 sm:pt-24 lg:pt-28">
+  <section v-once class="pt-6">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
       <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
         <div>
@@ -63,10 +63,8 @@
         </div>
 
         <div>
-          <NuxtImg
+          <img
             class="w-full"
-            sizes="sm:220px md:398px lg:584px"
-            densities="x1 x2"
             :src="heroImage"
             :alt="title"
             format="webp"

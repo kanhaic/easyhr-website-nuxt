@@ -1,14 +1,14 @@
 <template>
   <div>
     <Hero1
-      topTag="Streamline Your HR Processes"
-      title="Premium HR Solution For SME's and Enterprises"
-      subtitle="Successfully move your employee information from spreadsheets to an easy to use HR software and do more with your time."
-      cta1Title="Get Started"
-      cta1Link="#"
-      cta2Title="Free Trial"
-      cta2Link="#"
-      heroImage="/images/hero.png"
+      :topTag="heroSection.topTag"
+      :title="heroSection.title"
+      :subtitle="heroSection.subtitle"
+      :cta1Title="heroSection.cta1Title"
+      :cta1Link="heroSection.cta1Link"
+      :cta2Title="heroSection.cta2Title"
+      :cta2Link="heroSection.cta2Link"
+      :heroImage="heroSection.heroImage.fields.file.url"
     />
     <LogoSection :logos="logos" />
     <Feature1
@@ -38,6 +38,39 @@
 </template>
 
 <script setup>
+import * as contentful from "contentful";
+
+const config = useRuntimeConfig();
+
+const client = contentful.createClient({
+  space: config.public.contentful.spaceId,
+  accessToken: config.public.contentful.accessToken,
+});
+
+const { data, error } = await useAsyncData("main-landing", () =>
+  client.getEntries({
+    content_type: "landingPage",
+    "fields.type": "main",
+  })
+);
+
+const landingPage = data.value || { items: [], includes: { Asset: [] } };
+
+const heroSection = {
+  topTag: landingPage.items[0].fields.topTag,
+  title: landingPage.items[0].fields.title,
+  subtitle: landingPage.items[0].fields.subtitle,
+  cta1Title: landingPage.items[0].fields.cta1Title,
+  cta1Link: landingPage.items[0].fields.cta1Link,
+  cta2Title: landingPage.items[0].fields.cta2Title,
+  cta2Link: landingPage.items[0].fields.cta2Link,
+  heroImage: landingPage.items[0].fields.heroImage,
+}
+
+
+console.log(JSON.stringify(landingPage, null, 2));
+
+
 const blogTitle = 'Check out our latest articles';
 const recentPosts = [
   {
@@ -100,32 +133,10 @@ const testimonialItems = [
     position: "CEO, StartUp Inc.",
   },
 ];
-const logos = [
-  {
-    src: "/images/logos/1.webp",
-    alt: "Logo 1",
-  },
-  {
-    src: "/images/logos/2.webp",
-    alt: "Logo 2",
-  },
-  {
-    src: "/images/logos/3.webp",
-    alt: "Logo 3",
-  },
-  {
-    src: "/images/logos/4.webp",
-    alt: "Logo 4",
-  },
-  {
-    src: "/images/logos/5.webp",
-    alt: "Logo 5",
-  },
-  {
-    src: "/images/logos/6.webp",
-    alt: "Logo 6",
-  },
-];
+const logos = landingPage.items[0].fields.logos.map((logo) => ({
+  src: logo.fields.file.url,
+  alt: logo.fields.title,
+}));
 
 const featureSection = {
   topTag: "Powerful HR Features",

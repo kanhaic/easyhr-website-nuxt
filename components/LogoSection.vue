@@ -6,15 +6,10 @@
         class="grid items-center grid-cols-2 gap-10 sm:gap-y-16 sm:grid-cols-3 xl:grid-cols-6"
       >
         <div v-for="(logo, index) in logos" :key="index">
-          <NuxtImg
+          <img
             loading="lazy"
-            sizes="sm:169px md:300px"
-            densities="x1 x2"
             :src="logo.src"
             :alt="logo.alt"
-            format="webp"
-            width="300"
-            height="200"
           />
         </div>
       </div>
