@@ -51,6 +51,7 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   image: {
+    provider: "netlify",
     format: ["webp"],
   },
 });
