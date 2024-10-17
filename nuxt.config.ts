@@ -41,17 +41,16 @@ export default defineNuxtConfig({
     ],
   },
   // ssr: true,
-  // nitro: {
-  //   preset: "static",
-  //   prerender: {
-  //     routes: ["/"], // Include your main routes here if needed
-  //   },
-  // },
+  nitro: {
+    preset: "static",
+    prerender: {
+      routes: ["/"], // Include your main routes here if needed
+    },
+  },
   experimental: {
     payloadExtraction: false,
   },
   image: {
-    provider: "netlify",
     format: ["webp"],
   },
 });
