@@ -23,6 +23,8 @@
             loading="lazy"
             width="200"
             height="200"
+            format="webp"
+            provider="contentful"
           />
           <div class="mt-8 sm:mt-0 sm:ml-10">
             <div class="flex items-center justify-center sm:justify-start">

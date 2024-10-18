@@ -23,9 +23,9 @@
       :features="featureList.featureListItems"
     />
     <Testimonial1
-      :subtitle="testimonialSubtitle"
-      :title="testimonialTitle"
-      :testimonials="testimonialItems"
+      :subtitle="testimonials.topTag"
+      :title="testimonials.title"
+      :testimonials="testimonials.items"
     />
     <Stats1
       :title="statsTitle"
@@ -113,24 +113,17 @@ const recentPosts = [
   }
 ];
 
-const testimonialSubtitle = "3940+ Happy EasyHR Users";
-const testimonialTitle = "What our customers say";
-const testimonialItems = [
-  {
-    image: "https://landingfoliocom.imgix.net/store/collection/saasui/images/testimonial/4/woman.png",
-    quote:
-      "We love EasyHR! Our HR team was using it for their projects, so we already knew what kind of efficiency they want.",
-    name: "Jane Doe",
-    position: "HR Manager, Tech Co.",
-  },
-  {
-    image: "https://landingfoliocom.imgix.net/store/collection/saasui/images/testimonial/4/man.png",
-    quote:
-      "EasyHR has streamlined our HR processes and saved us countless hours. It's a game-changer!",
-    name: "John Smith",
-    position: "CEO, StartUp Inc.",
-  },
-];
+const testimonials = {
+  topTag: landingPage.items[0].fields.testimonialTagTop,
+  title: landingPage.items[0].fields.testimonialTitle,
+  items: landingPage.items[0].fields.testimonials.map((testimonial) => ({
+    image: testimonial.fields.profilePicture.fields.file.url,
+    quote: testimonial.fields.testimonial,
+    name: testimonial.fields.name,
+    position: testimonial.fields.designation,
+  }))
+}
+
 const logos = landingPage.items[0].fields.logos.map((logo) => ({
   src: logo.fields.file.url,
   alt: logo.fields.title,
@@ -156,147 +149,12 @@ const featureList = {
   description: landingPage.items[0].fields.featureListSubtitle,
   featureListItems: landingPage.items[0].fields.featureList?.map((item) => ({
     bgColor: item.fields.bgColor,
-    svgWidth: item.fields.svgWidth,
-    svgHeight: item.fields.svgHeight,
-    svgViewBox: item.fields.svgViewBox,
-    bgPath: item.fields.bgPath,
     iconColor: item.fields.color,
     iconPath: item.fields.icon,
     title: item.fields.title,
     description: item.fields.description,
   })) || [],
 }
-  
-const featureListTitle = "Our Amazing Features";
-const featureListDescription =
-  "Discover the powerful features that make our product stand out.";
-const featureListItems = [
-  {
-    bgColor: "text-blue-100",
-    svgWidth: "66",
-    svgHeight: "68",
-    svgViewBox: "0 0 66 68",
-    bgPath:
-      "M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z",
-    iconColor: "text-blue-600",
-    iconPath:
-      "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-    title: "Analytics",
-    description:
-      "Get a better understanding of your workforce with our advanced analytics tools.",
-  },
-  {
-    bgColor: "text-green-100",
-    svgWidth: "66",
-    svgHeight: "68",
-    svgViewBox: "0 0 66 68",
-    bgPath:
-      "M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z",
-    iconColor: "text-green-600",
-    iconPath: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
-    title: "Time Tracking",
-    description:
-      "Accurately track employee hours and manage overtime with ease.",
-  },
-  {
-    bgColor: "text-purple-100",
-    svgWidth: "66",
-    svgHeight: "68",
-    svgViewBox: "0 0 66 68",
-    bgPath:
-      "M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z",
-    iconColor: "text-purple-600",
-    iconPath:
-      "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-1m-6-6v6m-2-6V9a2 2 0 012-2h2a2 2 0 012 2v2m-6 12h6",
-    title: "Performance Reviews",
-    description:
-      "Streamline the performance review process with customizable templates and automated workflows.",
-  },
-  {
-    bgColor: "text-yellow-100",
-    svgWidth: "66",
-    svgHeight: "68",
-    svgViewBox: "0 0 66 68",
-    bgPath:
-      "M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z",
-    iconColor: "text-yellow-600",
-    iconPath:
-      "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z",
-    title: "Payroll Management",
-    description:
-      "Automate payroll calculations, tax deductions, and generate pay slips efficiently.",
-  },
-  {
-    bgColor: "text-red-100",
-    svgWidth: "66",
-    svgHeight: "68",
-    svgViewBox: "0 0 66 68",
-    bgPath:
-      "M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z",
-    iconColor: "text-red-600",
-    iconPath:
-      "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
-    title: "Leave Management",
-    description:
-      "Simplify leave requests, approvals, and tracking for both employees and managers.",
-  },
-  {
-    bgColor: "text-indigo-100",
-    svgWidth: "66",
-    svgHeight: "68",
-    svgViewBox: "0 0 66 68",
-    bgPath:
-      "M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z",
-    iconColor: "text-indigo-600",
-    iconPath:
-      "M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z",
-    title: "Recruitment",
-    description:
-      "Streamline your hiring process with applicant tracking and interview scheduling tools.",
-  },
-  {
-    bgColor: "text-pink-100",
-    svgWidth: "66",
-    svgHeight: "68",
-    svgViewBox: "0 0 66 68",
-    bgPath:
-      "M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z",
-    iconColor: "text-pink-600",
-    iconPath:
-      "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-    title: "Compliance",
-    description:
-      "Stay compliant with labor laws and regulations with our built-in compliance tools.",
-  },
-  {
-    bgColor: "text-teal-100",
-    svgWidth: "66",
-    svgHeight: "68",
-    svgViewBox: "0 0 66 68",
-    bgPath:
-      "M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z",
-    iconColor: "text-teal-600",
-    iconPath:
-      "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
-    title: "Training & Development",
-    description:
-      "Manage employee training programs and track skill development across your organization.",
-  },
-  {
-    bgColor: "text-orange-100",
-    svgWidth: "66",
-    svgHeight: "68",
-    svgViewBox: "0 0 66 68",
-    bgPath:
-      "M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z",
-    iconColor: "text-orange-600",
-    iconPath:
-      "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-    title: "Employee Self-Service",
-    description:
-      "Empower employees with self-service portals for accessing information and making requests.",
-  },
-];
 
 const statsTitle =
   "The only platform that creates unique & rare UI Kits with TailwindCSS";
