@@ -17,11 +17,18 @@
           :key="post.id"
           class="flex flex-col p-6 transition-all duration-200 bg-white border border-gray-200 sm:flex-row sm:items-stretch group rounded-2xl hover:shadow-lg"
         >
-          <a :href="post.href" title="" class="flex overflow-hidden rounded-xl shrink-0">
-            <img
-              class="object-cover w-full transition-all duration-200 transform h-44 group-hover:scale-110 group-hover:rotate-3"
+          <a
+            :href="post.href"
+            title=""
+            class="flex overflow-hidden rounded-xl shrink-0"
+          >
+            <NuxtImg
+              class="object-cover transition-all duration-200 transform h-44 group-hover:scale-110 group-hover:rotate-3"
               :src="post.image"
               :alt="post.title"
+              width="200"
+              height="100"
+              provider="contentful"
             />
           </a>
 
@@ -45,17 +52,18 @@
               <a
                 :href="post.authorHref"
                 title=""
-                class="flex items-center text-base font-medium text-gray-600 hover:text-gray-900"
+                class="flex items-center text-base font-medium text-gray-600 hover:text-gray-900 truncate"
               >
                 <NuxtImg
                   class="object-cover mr-2.5 rounded-full w-7 h-7 shrink-0"
                   :src="post.authorImage"
-                  :alt="post.author"
+                  :alt="post.author.fields.name"
                   loading="lazy"
                   width="28"
                   height="28"
+                  provider="contentful"
                 />
-                {{ post.author }}
+                {{ post.author.fields.name }}
               </a>
             </div>
           </div>
@@ -69,23 +77,24 @@
 defineProps({
   title: {
     type: String,
-    default: 'Latest from our blog'
+    default: "Latest from our blog",
   },
   posts: {
     type: Array,
     required: true,
     validator: (value) => {
-      return value.every(post => 
-        post.id && 
-        post.href && 
-        post.image && 
-        post.title && 
-        post.date && 
-        post.author && 
-        post.authorHref && 
-        post.authorImage
+      return value.every(
+        (post) =>
+          post.id &&
+          post.href &&
+          post.image &&
+          post.title &&
+          post.date &&
+          post.author &&
+          post.authorHref &&
+          post.authorImage
       );
-    }
-  }
+    },
+  },
 });
 </script>

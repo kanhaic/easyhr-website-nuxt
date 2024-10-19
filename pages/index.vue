@@ -29,10 +29,9 @@
     />
     <Stats1
       :title="stats.title"
-      :gradientBackground="statsGradient"
       :stats="stats.stats"
     />
-    <RecentBlog :title="blogTitle" :posts="recentPosts" />
+    <RecentBlog :title="recentBlog.title" :posts="recentBlog.posts" />
     <ContactForm />
   </div>
 </template>
@@ -54,6 +53,16 @@ const { data, error } = await useAsyncData("main-landing", () =>
   })
 );
 
+const { data: blogData, error: blogError } = await useAsyncData("blog", () =>
+  client.getEntries({
+    content_type: "blog",
+    order: "-sys.createdAt",
+    limit: 4,
+  })
+);
+
+const blogPosts = blogData.value?.items || [];
+
 const landingPage = data.value || { items: [], includes: { Asset: [] } };
 
 // console.log(JSON.stringify(landingPage.items[0], null, 2));
@@ -67,7 +76,7 @@ const heroSection = {
   cta2Title: landingPage.items[0].fields.cta2Title,
   cta2Link: landingPage.items[0].fields.cta2Link,
   heroImage: landingPage.items[0].fields.heroImage,
-}
+};
 
 const stats = {
   title: landingPage.items[0].fields.statsTitle,
@@ -75,52 +84,25 @@ const stats = {
     value: stat.fields.value,
     label: stat.fields.label,
   })),
-}
+};
 
-const blogTitle = 'Check out our latest articles';
-const recentPosts = [
-  {
-    id: 1,
-    href: '#',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    title: 'Top HR Trends to Watch in 2023',
-    date: '15 July 2023',
-    author: 'Leslie Alexander',
-    authorHref: '#',
-    authorImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
-  },
-  {
-    id: 2,
-    href: '#',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    title: '5 Effective Employee Engagement Strategies',
-    date: '22 July 2023',
-    author: 'Michael Johnson',
-    authorHref: '#',
-    authorImage: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
-  },
-  {
-    id: 3,
-    href: '#',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    title: 'Best Practices for Managing Remote Teams',
-    date: '29 July 2023',
-    author: 'Sarah Lee',
-    authorHref: '#',
-    authorImage: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
-  },
-  {
-    id: 4,
-    href: '#',
-    image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    title: 'The Impact of AI on Human Resources',
-    date: '5 August 2023',
-    author: 'David Chen',
-    authorHref: '#',
-    authorImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
-  }
-];
-
+const recentBlog = {
+  title: landingPage.items[0].fields.recentBlogTitle,
+  posts: blogPosts.map((post) => ({
+    id: post.sys.id,
+    href: `/blog/${post.fields.slug}`,
+    image: post.fields.featuredImage.fields.file.url,
+    title: post.fields.title,
+    date: new Date(post.sys.updatedAt).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    author: post.fields.author,
+    authorHref: "#",
+    authorImage: post.fields.author.fields.profilePicture.fields.file.url,
+  })),
+};
 const testimonials = {
   topTag: landingPage.items[0].fields.testimonialTagTop,
   title: landingPage.items[0].fields.testimonialTitle,
@@ -129,8 +111,8 @@ const testimonials = {
     quote: testimonial.fields.testimonial,
     name: testimonial.fields.name,
     position: testimonial.fields.designation,
-  }))
-}
+  })),
+};
 
 const logos = landingPage.items[0].fields.logos.map((logo) => ({
   src: logo.fields.file.url,
@@ -146,7 +128,7 @@ const featureSection = {
     title: feature.fields.title,
     description: feature.fields.description,
   })),
-  image:  {
+  image: {
     src: landingPage.items[0].fields.featureImage.fields.file.url,
     alt: landingPage.items[0].fields.featureImage.fields.title,
   },
@@ -155,29 +137,13 @@ const featureSection = {
 const featureList = {
   title: landingPage.items[0].fields.featureListTitle,
   description: landingPage.items[0].fields.featureListSubtitle,
-  featureListItems: landingPage.items[0].fields.featureList?.map((item) => ({
-    bgColor: item.fields.bgColor,
-    iconColor: item.fields.color,
-    iconPath: item.fields.icon,
-    title: item.fields.title,
-    description: item.fields.description,
-  })) || [],
-}
-
-const statsTitle =
-  "The only platform that creates unique & rare UI Kits with TailwindCSS";
-const statsGradient = `linear-gradient(
-  90deg,
-  #44ff9a -0.55%,
-  #44b0ff 22.86%,
-  #8b44ff 48.36%,
-  #ff6644 73.33%,
-  #ebff70 99.34%
-)`;
-const statsItems = [
-  { value: "110+", label: "Blocks" },
-  { value: "29", label: "Templates" },
-  { value: "3400+", label: "Customers" },
-  { value: "2844", label: "Support Tickets" },
-];
+  featureListItems:
+    landingPage.items[0].fields.featureList?.map((item) => ({
+      bgColor: item.fields.bgColor,
+      iconColor: item.fields.color,
+      iconPath: item.fields.icon,
+      title: item.fields.title,
+      description: item.fields.description,
+    })) || [],
+};
 </script>
