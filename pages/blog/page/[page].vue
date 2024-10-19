@@ -106,6 +106,7 @@
             </a>
           </div>
         </nav>
+        <ContactForm />
       </div>
     </div>
   </div>
@@ -113,6 +114,10 @@
 
 <script setup>
 import * as contentful from "contentful";
+import {
+  ArrowLongRightIcon,
+  ArrowLongLeftIcon,
+} from "@heroicons/vue/24/outline";
 const route = useRoute();
 const page = route.params.page;
 const config = useRuntimeConfig();

@@ -22,6 +22,7 @@
         ></div>
       </article>
     </div>
+    <ContactForm />
   </main>
 </template>
 <script setup>

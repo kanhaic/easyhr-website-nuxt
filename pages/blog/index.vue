@@ -106,12 +106,15 @@
             </a>
           </div>
         </nav>
+        <ContactForm />
       </div>
+
     </div>
   </div>
 </template>
 
 <script setup>
+import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/vue/24/outline";
 import * as contentful from "contentful";
 
 const config = useRuntimeConfig();
@@ -132,7 +135,7 @@ const { data, error } = await useAsyncData("posts", () =>
 const currentPage = ref(1);
 const pageSize = 6;
 
-console.log(data.value);
+// console.log(data.value);
 
 const posts = computed(() => {
   if (!data.value || !data.value.items) return [];
