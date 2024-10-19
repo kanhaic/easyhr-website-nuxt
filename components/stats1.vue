@@ -1,37 +1,29 @@
 <template>
-  <section class="py-12 bg-gray-50 sm:py-16 lg:py-20">
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center xl:max-w-4xl">
+  <section class="py-10 bg-gray-100 sm:py-16 lg:py-24">
+    <div class="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
         <h2
-          class="text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl font-pj"
+          class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl"
         >
           {{ title }}
         </h2>
       </div>
 
-      <div class="relative mt-12 lg:mt-20 lg:max-w-5xl lg:mx-auto">
-        <div class="absolute -inset-2">
-          <div
-            class="w-full h-full mx-auto blur-lg filter"
-            :style="{ background: gradientBackground }"
-          ></div>
-        </div>
-
-        <div
-          class="relative grid grid-cols-1 px-16 py-12 overflow-hidden text-center bg-white sm:grid-cols-2 gap-y-12 lg:grid-cols-4 rounded-2xl gap-x-20"
-        >
-          <div v-for="(stat, index) in stats" :key="index" class="flex flex-col items-center">
-            <p
-              class="text-5xl font-bold text-gray-900 lg:mt-3 lg:order-2 font-pj"
+      <div
+        class="grid grid-cols-1 gap-8 mt-10 text-center lg:mt-24 sm:gap-x-12 "
+        :class="stats.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'"
+      >
+        <div v-for="stat in stats" :key="stat.label">
+          <h3 class="font-bold text-7xl">
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-blue-600"
             >
               {{ stat.value }}
-            </p>
-            <h3
-              class="mt-5 text-sm font-bold tracking-widest text-gray-600 uppercase lg:mt-0 lg:order-1 font-pj"
-            >
-              {{ stat.label }}
-            </h3>
-          </div>
+            </span>
+          </h3>
+          <p class="mt-4 text-xl font-medium text-gray-900">
+            {{ stat.label }}
+          </p>
         </div>
       </div>
     </div>
@@ -42,7 +34,7 @@
 defineProps({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   gradientBackground: {
     type: String,
@@ -53,14 +45,14 @@ defineProps({
       #8b44ff 48.36%,
       #ff6644 73.33%,
       #ebff70 99.34%
-    )`
+    )`,
   },
   stats: {
     type: Array,
     required: true,
     validator: (value) => {
-      return value.every(stat => 'value' in stat && 'label' in stat);
-    }
-  }
+      return value.every((stat) => "value" in stat && "label" in stat);
+    },
+  },
 });
 </script>

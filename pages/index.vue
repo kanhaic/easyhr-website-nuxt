@@ -28,9 +28,9 @@
       :testimonials="testimonials.items"
     />
     <Stats1
-      :title="statsTitle"
+      :title="stats.title"
       :gradientBackground="statsGradient"
-      :stats="statsItems"
+      :stats="stats.stats"
     />
     <RecentBlog :title="blogTitle" :posts="recentPosts" />
     <ContactForm />
@@ -67,6 +67,14 @@ const heroSection = {
   cta2Title: landingPage.items[0].fields.cta2Title,
   cta2Link: landingPage.items[0].fields.cta2Link,
   heroImage: landingPage.items[0].fields.heroImage,
+}
+
+const stats = {
+  title: landingPage.items[0].fields.statsTitle,
+  stats: landingPage.items[0].fields.stats.map((stat) => ({
+    value: stat.fields.value,
+    label: stat.fields.label,
+  })),
 }
 
 const blogTitle = 'Check out our latest articles';
