@@ -79,21 +79,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="bg-gray-50 px-8 py-6">
-                    <div class="flex items-center gap-x-3">
-                      <h3 class="text-sm font-semibold leading-6 text-gray-900">
-                        Enterprise
-                      </h3>
-                      <p
-                        class="rounded-full bg-indigo-600/10 px-2.5 py-1.5 text-xs font-semibold text-indigo-600"
-                      >
-                        New
-                      </p>
-                    </div>
-                    <p class="mt-2 text-sm leading-6 text-gray-600">
-                      Empower your entire team with even more advanced tools.
-                    </p>
-                  </div> -->
                 </div>
               </PopoverPanel>
             </transition>
@@ -144,7 +129,7 @@
           <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
             >Pricing</a
           >
-          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+          <a href="/blog" class="text-sm font-semibold leading-6 text-gray-900"
             >Blog</a
           >
 
@@ -223,42 +208,118 @@
             <div class="mt-6 flow-root">
               <div class="-my-6 divide-y divide-gray-500/10">
                 <div class="space-y-2 py-6">
-                  <a
-                    v-for="item in solutions"
-                    :key="item.name"
-                    :href="item.href"
-                    class="group -mx-3 flex items-center gap-x-6 rounded-lg p-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    <div
-                      class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white"
+                  <Popover class="relative">
+                    <PopoverButton
+                      class="flex w-full items-center justify-between rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
-                      <component
-                        :is="item.icon"
-                        class="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                      Products
+                      <ChevronDownIcon
+                        class="h-5 w-5 flex-none"
                         aria-hidden="true"
                       />
-                    </div>
-                    {{ item.name }}
-                  </a>
-                </div>
-                <div class="space-y-2 py-6">
-                  <a
-                    href="#"
-                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >Features</a
-                  >
-                  <a
-                    href="#"
-                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >Marketplace</a
-                  >
+                    </PopoverButton>
+
+                    <transition
+                      enter-active-class="transition ease-out duration-200"
+                      enter-from-class="opacity-0 translate-y-1"
+                      enter-to-class="opacity-100 translate-y-0"
+                      leave-active-class="transition ease-in duration-150"
+                      leave-from-class="opacity-100 translate-y-0"
+                      leave-to-class="opacity-0 translate-y-1"
+                    >
+                      <PopoverPanel class="mt-2 space-y-2">
+                        <a
+                          v-for="item in solutions"
+                          :key="item.name"
+                          :href="item.href"
+                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {{ item.name }}
+                        </a>
+                      </PopoverPanel>
+                    </transition>
+                  </Popover>
+
+                  <Popover class="relative">
+                    <PopoverButton
+                      class="flex w-full items-center justify-between rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Resources
+                      <ChevronDownIcon
+                        class="h-5 w-5 flex-none"
+                        aria-hidden="true"
+                      />
+                    </PopoverButton>
+
+                    <transition
+                      enter-active-class="transition ease-out duration-200"
+                      enter-from-class="opacity-0 translate-y-1"
+                      enter-to-class="opacity-100 translate-y-0"
+                      leave-active-class="transition ease-in duration-150"
+                      leave-from-class="opacity-100 translate-y-0"
+                      leave-to-class="opacity-0 translate-y-1"
+                    >
+                      <PopoverPanel class="mt-2 space-y-2">
+                        <a
+                          v-for="item in resources"
+                          :key="item.name"
+                          :href="item.href"
+                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {{ item.name }}
+                        </a>
+                      </PopoverPanel>
+                    </transition>
+                  </Popover>
 
                   <a
-                    v-for="item in company"
-                    :key="item.name"
-                    :href="item.href"
-                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >{{ item.name }}</a
+                    href="#"
+                    class="block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >Pricing</a
+                  >
+                  <a
+                    href="/blog"
+                    class="block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >Blog</a
+                  >
+
+                  <Popover class="relative">
+                    <PopoverButton
+                      class="flex w-full items-center justify-between rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Company
+                      <ChevronDownIcon
+                        class="h-5 w-5 flex-none"
+                        aria-hidden="true"
+                      />
+                    </PopoverButton>
+
+                    <transition
+                      enter-active-class="transition ease-out duration-200"
+                      enter-from-class="opacity-0 translate-y-1"
+                      enter-to-class="opacity-100 translate-y-0"
+                      leave-active-class="transition ease-in duration-150"
+                      leave-from-class="opacity-100 translate-y-0"
+                      leave-to-class="opacity-0 translate-y-1"
+                    >
+                      <PopoverPanel class="mt-2 space-y-2">
+                        <a
+                          v-for="item in company"
+                          :key="item.name"
+                          :href="item.href"
+                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {{ item.name }}
+                        </a>
+                      </PopoverPanel>
+                    </transition>
+                  </Popover>
+                </div>
+                <div class="py-6">
+                  <a
+                    href="#"
+                    class="block rounded-lg py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >Free Trial</a
                   >
                 </div>
               </div>

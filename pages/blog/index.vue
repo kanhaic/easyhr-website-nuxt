@@ -8,7 +8,7 @@
           alt="Blog background"
           class="w-full h-full object-cover object-center"
         />
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
@@ -150,9 +150,10 @@ const posts = computed(() => {
       datetime: item.sys.updatedAt,
       category: {
         title: item.fields.category.split(",")[0],
-        href: `/blog/category/${
-          item.fields.category.toLowerCase().split(",")[0]
-        }`,
+        // href: `/blog/category/${
+        //   item.fields.category.toLowerCase().split(",")[0]
+        // }`,
+        href: "#",
       },
       href: `/blog/${item.fields.slug}`,
       author: {
@@ -161,26 +162,28 @@ const posts = computed(() => {
         href: `#`,
         imageUrl: item.fields.author.fields.profilePicture.fields.file.url,
       },
-      description: item.fields.content.content[0].content[0].value || "",
+      description:
+        item.fields.content?.content[0]?.content[0]?.value ||
+        item.fields.title,
     };
   });
 });
 
-const totalPosts = computed(() => data.value?.total || 0);
+const totalPosts = computed(() => data.value?.total || 1);
 const totalPages = computed(() => Math.ceil(totalPosts.value / pageSize));
 
 const isFirstPage = computed(() => currentPage.value === 1);
 const isLastPage = computed(() => currentPage.value === totalPages.value);
 
 const previousPageUrl = computed(() => {
-  if (isFirstPage.value) return null;
+  if (isFirstPage.value) return "#";
   return currentPage.value === 2
     ? "/blog"
     : `/blog/page/${currentPage.value - 1}`;
 });
 
 const nextPageUrl = computed(() =>
-  isLastPage.value ? null : `/blog/page/${currentPage.value + 1}`
+  isLastPage.value ? "#" : `/blog/page/${currentPage.value + 1}`
 );
 
 const formatDate = (dateString) => {
@@ -191,4 +194,7 @@ const formatDate = (dateString) => {
     day: "numeric",
   });
 };
+useSeoMeta({
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
 </script>

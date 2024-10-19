@@ -146,4 +146,18 @@ const featureList = {
       description: item.fields.description,
     })) || [],
 };
+
+useHead({
+  title: landingPage.items[0].fields.seoTitle,
+  meta: [
+    { name: "description", content: landingPage.items[0].fields.seoDescription },
+    { name: "keywords", content: landingPage.items[0].fields.seoKeywords },
+  ],
+});
+
+useSeoMeta({
+  // will be inferred as the lastmod value in the sitemap
+  // date in YYYY-MM-DD format
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
 </script>

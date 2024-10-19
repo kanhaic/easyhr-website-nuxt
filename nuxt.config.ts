@@ -9,6 +9,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  site: {
+    url: "https://www.easyhrworld.com",
+  },
   devtools: { enabled: true },
   app: {
     head: {
@@ -38,7 +41,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/main.css"],
-  modules: ["@nuxt/image", "@nuxt/fonts"],
+  modules: ["@nuxt/image", "@nuxt/fonts", "@nuxtjs/sitemap"],
   fonts: {
     preload: true,
     google: [

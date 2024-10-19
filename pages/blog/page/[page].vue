@@ -64,7 +64,7 @@
                   </a>
                 </h3>
                 <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-                  {{ post.description }}
+                  {{ post?.description }}
                 </p>
               </div>
             </div>
@@ -152,9 +152,10 @@ const posts = computed(() => {
       datetime: item.sys.updatedAt,
       category: {
         title: item.fields.category.split(",")[0],
-        href: `/blog/category/${
-          item.fields.category.toLowerCase().split(",")[0]
-        }`,
+        href: "#",
+        // href: `/blog/category/${
+        //   item.fields.category.toLowerCase().split(",")[0]
+        // }`,
       },
       href: `/blog/${item.fields.slug}`,
       author: {
@@ -163,7 +164,9 @@ const posts = computed(() => {
         href: `#`,
         imageUrl: item.fields.author.fields.profilePicture.fields.file.url,
       },
-      description: item.fields.content.content[0].content[0].value || "",
+      description:
+        item.fields.content?.content[0]?.content[0]?.value ||
+        item.fields.title,
     };
   });
 });
@@ -175,15 +178,16 @@ const isFirstPage = computed(() => currentPage.value === 1);
 const isLastPage = computed(() => currentPage.value === totalPages.value);
 
 const previousPageUrl = computed(() => {
-  if (isFirstPage.value) return null;
+  if (isFirstPage.value) return "#";
   return currentPage.value === 2
     ? "/blog"
     : `/blog/page/${currentPage.value - 1}`;
 });
 
-const nextPageUrl = computed(() =>
-  isLastPage.value ? null : `/blog/page/${currentPage.value + 1}`
-);
+const nextPageUrl = computed(() => {
+  if (isLastPage.value) return "#";
+  return `/blog/page/${currentPage.value + 1}`;
+});
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -193,4 +197,8 @@ const formatDate = (dateString) => {
     day: "numeric",
   });
 };
+
+useSeoMeta({
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
 </script>

@@ -10,7 +10,7 @@
       </div>
 
       <div
-        class="grid grid-cols-2 gap-5 mx-auto mt-12 sm:gap-6 xl:grid-cols-2 sm:mt-16 lg:mt-20 xl:max-w-none"
+        class="grid grid-cols-1 gap-5 mx-auto mt-12 sm:gap-6 lg:grid-cols-2 lg:mt-16 xl:mt-20 xl:max-w-none"
       >
         <div
           v-for="post in posts"
@@ -23,7 +23,7 @@
             class="flex overflow-hidden rounded-xl shrink-0"
           >
             <NuxtImg
-              class="object-cover transition-all duration-200 transform h-44 group-hover:scale-110 group-hover:rotate-3"
+              class="object-cover w-full sm:w-56 transition-all duration-200 transform h-44 group-hover:scale-110 group-hover:rotate-3"
               :src="post.image"
               :alt="post.title"
               width="200"
