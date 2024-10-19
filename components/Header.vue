@@ -413,12 +413,12 @@ const solutions = [
 const resources = [
   {
     name: "Blog",
-    href: "#",
+    href: "/blog",
     description: "Read about the latest updates to our product",
   },
   {
     name: "Support",
-    href: "#",
+    href: "/support",
     description:
       "Get all of your questions answered in our forums or contact support",
   },
@@ -447,26 +447,22 @@ const resources = [
   },
 ];
 
-const callsToAction = [
-  { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "#", icon: PhoneIcon },
-];
 const company = [
   {
     name: "About us",
-    href: "#",
+    href: "/company/about",
     description:
       "Learn more about our company values and mission to empower others",
   },
   {
     name: "Careers",
-    href: "#",
+    href: "/careers",
     description:
       "Looking for you next career opportunity? See all of our open positions",
   },
   {
-    name: "Support",
-    href: "#",
+    name: "Contact us",
+    href: "/company/contact",
     description:
       "Get in touch with our dedicated support team or reach out on our community forums",
   },
