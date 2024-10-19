@@ -113,7 +113,8 @@
 
 <script setup>
 import * as contentful from "contentful";
-
+const route = useRoute();
+const page = route.params.page;
 const config = useRuntimeConfig();
 
 const client = contentful.createClient({
@@ -121,18 +122,17 @@ const client = contentful.createClient({
   accessToken: config.public.contentful.accessToken,
 });
 
+const currentPage = ref(parseInt(page) || 1);
+const pageSize = 6;
+
 const { data, error } = await useAsyncData("posts", () =>
   client.getEntries({
     content_type: "blog",
     limit: pageSize,
     order: "-sys.updatedAt",
-    skip: 0,
+    skip: (currentPage.value - 1) * pageSize,
   })
 );
-const currentPage = ref(1);
-const pageSize = 6;
-
-console.log(data.value);
 
 const posts = computed(() => {
   if (!data.value || !data.value.items) return [];
