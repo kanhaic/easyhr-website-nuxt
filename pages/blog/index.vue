@@ -3,10 +3,11 @@
     <!-- Hero section with background image -->
     <div class="relative bg-gray-900 py-24 sm:py-32">
       <div class="absolute inset-0 overflow-hidden">
-        <img
+        <NuxtImg
           src="/images/blog-bg.jpg"
           alt="Blog background"
           class="w-full h-full object-cover object-center"
+          provider="ipx"
         />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>

@@ -22,15 +22,20 @@
       :description="featureList.description"
       :features="featureList.featureListItems"
     />
+    <div class="py-12 sm:py-16 lg:py-20 xl:py-24" v-if="content">
+      <div class="mx-auto max-w-4xl">
+        <div
+          v-html="renderedBody"
+          class="mt-2 prose lg:prose-xl prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-h6:text-sm prose-p:text-base prose-a:text-blue-500 prose-a:underline prose-a:font-medium"
+        ></div>
+      </div>
+    </div>
     <Testimonial1
       :subtitle="testimonials.topTag"
       :title="testimonials.title"
       :testimonials="testimonials.items"
     />
-    <Stats1
-      :title="stats.title"
-      :stats="stats.stats"
-    />
+    <Stats1 :title="stats.title" :stats="stats.stats" />
     <RecentBlog :title="recentBlog.title" :posts="recentBlog.posts" />
     <ContactForm />
   </div>
@@ -38,6 +43,8 @@
 
 <script setup>
 import * as contentful from "contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { BLOCKS } from "@contentful/rich-text-types";
 const route = useRoute();
 const config = useRuntimeConfig();
 const slug = route.params.slug;
@@ -150,10 +157,28 @@ const featureList = {
     })) || [],
 };
 
+const content = landingPage.items[0].fields.content;
+
+const customRenderer = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      const { url, description } = node.data.target.fields.file;
+      return `<NuxtImg format="webp" src="${url}" alt="${
+        description || ""
+      }" class="w-full h-auto my-4" provider="contentful" />`;
+    },
+  },
+};
+
+const renderedBody = documentToHtmlString(content, customRenderer);
+
 useHead({
   title: landingPage.items[0].fields.seoTitle,
   meta: [
-    { name: "description", content: landingPage.items[0].fields.seoDescription },
+    {
+      name: "description",
+      content: landingPage.items[0].fields.seoDescription,
+    },
     { name: "keywords", content: landingPage.items[0].fields.seoKeywords },
   ],
 });

@@ -1,6 +1,8 @@
 <template>
   <div class="bg-white">
-    <header class="fixed inset-x-0 top-0 z-50 bg-white shadow-sm lg:static lg:shadow-none">
+    <header
+      class="fixed inset-x-0 top-0 z-50 bg-white shadow-sm lg:static lg:shadow-none"
+    >
       <nav
         class="mx-auto flex max-w-7xl items-center justify-between p-4 lg:p-6"
         aria-label="Global"
@@ -8,11 +10,18 @@
         <div class="flex lg:flex-1">
           <a href="/" class="-m-1.5 p-1.5">
             <span class="sr-only">EasyHR</span>
-            <NuxtImg src="/images/logo.webp" alt="EasyHR Logo" sizes="sm:158px 79px" />
+            <NuxtImg
+              src="/images/logo.webp"
+              alt="EasyHR Logo"
+              sizes="sm:158px 79px"
+            />
           </a>
         </div>
         <div class="flex items-center gap-4 lg:hidden">
-          <a href="#" class="text-sm font-semibold leading-6 px-3 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200">
+          <a
+            href="#"
+            class="text-sm font-semibold leading-6 px-3 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200"
+          >
             Free Trial
           </a>
           <button
@@ -59,13 +68,25 @@
                       class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
                     >
                       <div
-                        class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white"
+                        class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
+                        :class="item.iconBgColor ?? 'bg-gray-50'"
                       >
-                        <component
-                          :is="item.icon"
-                          class="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                          aria-hidden="true"
-                        />
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          stroke-linejoin="round"
+                          class="w-6 h-6"
+                          :class="item.iconColor ?? 'text-gray-600'"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            :d="item.menuIcon"
+                          />
+                        </svg>
                       </div>
                       <div>
                         <a
@@ -176,7 +197,10 @@
           </Popover>
         </PopoverGroup>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" class="text-sm font-semibold leading-6 px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200">
+          <a
+            href="#"
+            class="text-sm font-semibold leading-6 px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200"
+          >
             Free Trial
           </a>
         </div>
@@ -194,7 +218,11 @@
             <div class="flex items-center justify-between">
               <a href="#" class="-m-1.5 p-1.5">
                 <span class="sr-only">Your Company</span>
-                <NuxtImg src="/images/logo.webp" alt="EasyHR Logo" sizes="158px 79px" />
+                <NuxtImg
+                  src="/images/logo.webp"
+                  alt="EasyHR Logo"
+                  sizes="158px 79px"
+                />
               </a>
               <button
                 type="button"
@@ -273,7 +301,7 @@
                   </Popover>
 
                   <a
-                    href="#"
+                    href="/pricing"
                     class="block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >Pricing</a
                   >
@@ -332,7 +360,6 @@
 </template>
 
 <script setup>
-
 import * as contentful from "contentful";
 const config = useRuntimeConfig();
 
@@ -349,16 +376,16 @@ const { data, error } = await useAsyncData(`product-menus`, () =>
   })
 );
 
-
 const productMenus = data.value?.items || [];
 
 const solutions = productMenus.map((menu) => ({
   name: menu.fields.menuTitle,
   description: menu.fields.menuDescription,
   href: `/${menu.fields.slug}`,
-  icon: UsersIcon,
+  menuIcon: menu.fields.menuIcon,
+  iconColor: menu.fields.iconColor,
+  iconBgColor: menu.fields.iconBgColor,
 }));
-
 
 import {
   Dialog,
