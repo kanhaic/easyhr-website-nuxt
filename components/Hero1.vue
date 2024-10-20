@@ -64,7 +64,7 @@
 
         <div>
           <NuxtImg
-            class="w-full"
+            class="w-full rounded-lg"
             :src="heroImage"
             :alt="title"
             format="webp"

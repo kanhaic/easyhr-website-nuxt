@@ -331,8 +331,35 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from "vue";
+<script setup>
+
+import * as contentful from "contentful";
+const config = useRuntimeConfig();
+
+const client = contentful.createClient({
+  space: config.public.contentful.spaceId,
+  accessToken: config.public.contentful.accessToken,
+});
+
+const { data, error } = await useAsyncData(`product-menus`, () =>
+  client.getEntries({
+    content_type: "landingPage",
+    "fields.type": "product",
+    limit: 10,
+  })
+);
+
+
+const productMenus = data.value?.items || [];
+
+const solutions = productMenus.map((menu) => ({
+  name: menu.fields.menuTitle,
+  description: menu.fields.menuDescription,
+  href: `/${menu.fields.slug}`,
+  icon: UsersIcon,
+}));
+
+
 import {
   Dialog,
   DialogPanel,
@@ -359,7 +386,7 @@ import {
   PlayCircleIcon,
 } from "@heroicons/vue/20/solid";
 
-const solutions = [
+const solutions1 = [
   {
     name: "HR Software",
     description: "HR software that helps you manage your workforce",

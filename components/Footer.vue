@@ -63,53 +63,13 @@
             </h6>
 
             <ul class="mt-8 space-y-5">
-              <li>
+              <li v-for="menu in productMenus" :key="menu.sys.id">
                 <a
-                  href="#"
-                  title=""
+                  :href="`/${menu.fields.slug}`"
+                  :title="menu.fields.menuTitle"
                   class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
                 >
-                  HR Software
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  title=""
-                  class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
-                >
-                  Payroll Software
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  title=""
-                  class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
-                >
-                  Time & Attendance
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  title=""
-                  class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
-                >
-                  Performance Management
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  title=""
-                  class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
-                >
-                  Hiring & Onboarding
+                  {{ menu.fields.menuTitle }}
                 </a>
               </li>
             </ul>
@@ -300,3 +260,26 @@
     </div>
   </footer>
 </template>
+
+<script setup>
+import * as contentful from "contentful";
+const config = useRuntimeConfig();
+
+const client = contentful.createClient({
+  space: config.public.contentful.spaceId,
+  accessToken: config.public.contentful.accessToken,
+});
+
+const { data, error } = await useAsyncData(`product-menus`, () =>
+  client.getEntries({
+    content_type: "landingPage",
+    "fields.type": "product",
+    limit: 10,
+  })
+);
+
+const productMenus = data.value?.items || [];
+
+</script>
+
+
