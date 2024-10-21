@@ -31,14 +31,9 @@
               Cities
             </h6>
             <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-400">
-              <li><a href="#" class="hover:text-white">Mumbai</a></li>
-              <li><a href="#" class="hover:text-white">Delhi</a></li>
-              <li><a href="#" class="hover:text-white">Bangalore</a></li>
-              <li><a href="#" class="hover:text-white">Hyderabad</a></li>
-              <li><a href="#" class="hover:text-white">Chennai</a></li>
-              <li><a href="#" class="hover:text-white">Kolkata</a></li>
-              <li><a href="#" class="hover:text-white">Pune</a></li>
-              <li><a href="#" class="hover:text-white">Ahmedabad</a></li>
+              <li v-for="city in cities" :key="city">
+                <a :href="`/${city.fields.slug}`" class="hover:text-white">{{ city.fields.menuTitle }}</a>
+              </li>
             </ul>
           </div>
           <div class="flex flex-col items-start mt-6">
@@ -48,8 +43,9 @@
               Countries
             </h6>
             <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-400">
-              <li><a href="#" class="hover:text-white">India</a></li>
-              <li><a href="#" class="hover:text-white">UAE</a></li>
+              <li v-for="country in countries" :key="country">
+                <a :href="`/${country.fields.slug}`" class="hover:text-white">{{ country.fields.menuTitle }}</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -84,53 +80,13 @@
           </h6>
 
           <ul class="mt-8 space-y-5">
-            <li>
+            <li v-for="industry in industries" :key="industry">
               <a
-                href="#"
+                :href="`/${industry.fields.slug}`"
                 title=""
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
               >
-                Banking & Finance
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
-              >
-                Pharma & Healthcare
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
-              >
-                Technology & Services
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
-              >
-                Manufacturing
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
-              >
-                Retail & Other Industries
+                {{ industry.fields.menuTitle }}
               </a>
             </li>
           </ul>
@@ -273,13 +229,15 @@ const client = contentful.createClient({
 const { data, error } = await useAsyncData(`product-menus`, () =>
   client.getEntries({
     content_type: "landingPage",
-    "fields.type": "product",
-    limit: 10,
   })
 );
 
-const productMenus = data.value?.items || [];
+const productMenus = (data.value?.items.filter(item => item.fields.type === 'product') || []).slice(0, 10)
+const cities = (data.value?.items.filter(item => item.fields.type === 'city') || []).slice(0, 10)
+const countries = (data.value?.items.filter(item => item.fields.type === 'country') || []).slice(0, 10)
+const industries = (data.value?.items.filter(item => item.fields.type === 'industry') || []).slice(0, 10)
 
+// console.log(cities);
 </script>
 
 

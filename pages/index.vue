@@ -22,11 +22,14 @@
       :description="featureList.description"
       :features="featureList.featureListItems"
     />
-    <div
-      v-if="content"
-      v-html="renderedBody"
-      class="mt-2 prose lg:prose-xl prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-h6:text-sm prose-p:text-base prose-a:text-blue-500 prose-a:underline prose-a:font-medium"
-    ></div>
+    <div class="py-12 sm:py-16 lg:py-20 xl:py-24" v-if="content">
+      <div class="mx-auto max-w-4xl">
+        <div
+          v-html="renderedBody"
+          class="mt-2 prose lg:prose-xl prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-h6:text-sm prose-p:text-base prose-a:text-blue-500 prose-a:underline prose-a:font-medium"
+        ></div>
+      </div>
+    </div>
     <Testimonial1
       :subtitle="testimonials.topTag"
       :title="testimonials.title"

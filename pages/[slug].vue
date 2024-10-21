@@ -1,5 +1,52 @@
 <template>
-  <div>
+
+  <div v-if="pageType === 'city' || pageType === 'country'">
+    <Hero1
+      :topTag="heroSection.topTag"
+      :title="heroSection.title"
+      :subtitle="heroSection.subtitle"
+      :cta1Title="heroSection.cta1Title"
+      :cta1Link="heroSection.cta1Link"
+      :cta2Title="heroSection.cta2Title"
+      :cta2Link="heroSection.cta2Link"
+      :heroImage="heroSection.heroImage.fields.file.url"
+    />
+
+    <LogoSection :logos="logos" />
+
+    <div class="py-12 sm:py-16 lg:py-20 xl:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="lg:flex lg:gap-x-8">
+          <!-- Main content area (2/3 width) -->
+          <div class="lg:w-2/3">
+            <div v-if="content">
+              <div
+                v-html="renderedBody"
+                class="mt-2 prose lg:prose-xl prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-h6:text-sm prose-p:text-base prose-a:text-blue-500 prose-a:underline prose-a:font-medium"
+              ></div>
+            </div>
+          </div>
+          <!-- Sidebar with demo request form (1/3 width) -->
+          <div class="lg:w-1/3 mt-8 lg:mt-0">
+            <div class="bg-gray-100 rounded-lg p-6">
+              <h3 class="text-xl font-semibold mb-4">Request a Demo</h3>
+              <DemoRequest />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <Testimonial1
+      :subtitle="testimonials.topTag"
+      :title="testimonials.title"
+      :testimonials="testimonials.items"
+    />
+
+
+  </div>
+
+  <div v-else>
     <Hero1
       :topTag="heroSection.topTag"
       :title="heroSection.title"
@@ -57,7 +104,6 @@ const client = contentful.createClient({
 const { data, error } = await useAsyncData(`landing-${slug}`, () =>
   client.getEntries({
     content_type: "landingPage",
-    "fields.type": "product",
     "fields.slug": slug,
     limit: 1,
   })
@@ -71,9 +117,17 @@ const { data: blogData, error: blogError } = await useAsyncData("blog", () =>
   })
 );
 
-const blogPosts = blogData.value?.items || [];
+if (!data.value || data.value.items.length === 0) {
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });
+}
+
 
 const landingPage = data.value || { items: [], includes: { Asset: [] } };
+
+const blogPosts = blogData.value?.items || [];
+
+const pageType = landingPage.items[0].fields.type;
+
 
 // console.log(JSON.stringify(landingPage.items[0], null, 2));
 
@@ -188,4 +242,8 @@ useSeoMeta({
   // date in YYYY-MM-DD format
   articleModifiedTime: new Date().toISOString().split("T")[0],
 });
+
+const cityName = computed(() => {
+  return landingPage.items[0].fields.title || ''
+})
 </script>

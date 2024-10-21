@@ -109,6 +109,77 @@
             <PopoverButton
               class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
             >
+              Industries
+              <ChevronDownIcon
+                class="h-5 w-5 flex-none text-gray-400"
+                aria-hidden="true"
+              />
+            </PopoverButton>
+
+            <transition
+              enter-active-class="transition ease-out duration-200"
+              enter-from-class="opacity-0 translate-y-1"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition ease-in duration-150"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 translate-y-1"
+            >
+              <PopoverPanel
+                class="absolute left-1/4 z-10 mt-5 flex w-screen max-w-max -translate-x-1/4 px-4"
+              >
+                <div
+                  class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
+                >
+                  <div
+                    class="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2"
+                  >
+                    <div
+                      v-for="item in industries"
+                      :key="item.name"
+                      class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+                    >
+                      <div
+                        class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
+                        :class="item.iconBgColor ?? 'bg-gray-50'"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          stroke-linejoin="round"
+                          class="w-6 h-6"
+                          :class="item.iconColor ?? 'text-gray-600'"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            :d="item.menuIcon"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <a
+                          :href="item.href"
+                          class="font-semibold text-gray-900"
+                        >
+                          {{ item.name }}
+                          <span class="absolute inset-0" />
+                        </a>
+                        <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </PopoverPanel>
+            </transition>
+          </Popover>
+
+          <Popover class="relative">
+            <PopoverButton
+              class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+            >
               Resources
               <ChevronDownIcon
                 class="h-5 w-5 flex-none text-gray-400"
@@ -147,13 +218,9 @@
             </transition>
           </Popover>
 
-          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+          <a href="/pricing" class="text-sm font-semibold leading-6 text-gray-900"
             >Pricing</a
           >
-          <a href="/blog" class="text-sm font-semibold leading-6 text-gray-900"
-            >Blog</a
-          >
-
           <Popover class="relative">
             <PopoverButton
               class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
@@ -272,7 +339,7 @@
                     <PopoverButton
                       class="flex w-full items-center justify-between rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
-                      Resources
+                      Industries
                       <ChevronDownIcon
                         class="h-5 w-5 flex-none"
                         aria-hidden="true"
@@ -289,7 +356,7 @@
                     >
                       <PopoverPanel class="mt-2 space-y-2">
                         <a
-                          v-for="item in resources"
+                          v-for="item in industries"
                           :key="item.name"
                           :href="item.href"
                           class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
@@ -305,12 +372,6 @@
                     class="block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >Pricing</a
                   >
-                  <a
-                    href="/blog"
-                    class="block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >Blog</a
-                  >
-
                   <Popover class="relative">
                     <PopoverButton
                       class="flex w-full items-center justify-between rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
@@ -371,12 +432,22 @@ const client = contentful.createClient({
 const { data, error } = await useAsyncData(`product-menus`, () =>
   client.getEntries({
     content_type: "landingPage",
-    "fields.type": "product",
-    limit: 10,
   })
 );
 
-const productMenus = data.value?.items || [];
+const productMenus = (data.value?.items.filter(item => item.fields.type === 'product') || []).slice(0, 10)
+
+const industryMenus = (data.value?.items.filter(item => item.fields.type === 'industry') || []).slice(0, 10)
+
+const industries = industryMenus.map((menu) => ({
+  name: menu.fields.menuTitle,
+  description: menu.fields.menuDescription,
+  href: `/${menu.fields.slug}`,
+  menuIcon: menu.fields.menuIcon,
+  iconColor: menu.fields.iconColor,
+  iconBgColor: menu.fields.iconBgColor,
+}));
+
 
 const solutions = productMenus.map((menu) => ({
   name: menu.fields.menuTitle,
@@ -522,6 +593,7 @@ const company = [
   },
 ];
 
+
 const mobileMenuOpen = ref(false);
 </script>
 
@@ -533,3 +605,4 @@ const mobileMenuOpen = ref(false);
   }
 }
 </style>
+

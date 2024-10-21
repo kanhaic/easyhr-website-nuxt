@@ -11,7 +11,7 @@
         />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
-      <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="relative mx-auto max-w-7xl px-6 lg:px-8 ">
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Our Blog
