@@ -196,23 +196,27 @@
               leave-to-class="opacity-0 translate-y-1"
             >
               <PopoverPanel
-                class="absolute -left-8 top-full z-10 mt-3 w-96 rounded-3xl bg-white p-4 shadow-lg ring-1 ring-gray-900/5"
+                class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4"
               >
                 <div
-                  v-for="item in resources"
-                  :key="item.name"
-                  class="relative rounded-lg p-4 hover:bg-gray-50"
+                  class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
                 >
-                  <a
-                    :href="item.href"
-                    class="block text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    {{ item.name }}
-                    <span class="absolute inset-0" />
-                  </a>
-                  <p class="mt-1 text-sm leading-6 text-gray-600">
-                    {{ item.description }}
-                  </p>
+                  <div class="p-4">
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-1">
+                      <div v-for="(item, index) in resources" :key="index" class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                        <div>
+                          <a
+                            :href="item.href"
+                            class="font-semibold text-gray-900"
+                          >
+                            {{ item.name }}
+                            <span class="absolute inset-0" />
+                          </a>
+                          <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </PopoverPanel>
             </transition>
@@ -542,33 +546,39 @@ const resources = [
     description: "Read about the latest updates to our product",
   },
   {
-    name: "Support",
-    href: "/support",
-    description:
-      "Get all of your questions answered in our forums or contact support",
+    name: "Case Studies",
+    href: "/case-studies",
+    description: "Learn how our customers are using our products to achieve their goals",
   },
   {
-    name: "Help center",
-    href: "#",
-    description:
-      "Get all of your questions answered in our forums or contact support",
+    name: "HR Glossary",
+    href: "/hr-glossary",
+    description: "Learn about the latest HR terms and definitions",
   },
   {
-    name: "Guides",
-    href: "#",
-    description: "Learn how to maximize our platform to get the most out of it",
+    name: "OKRs",
+    href: "/okrs",
+    description: "Learn about Objectives and Key Results methodology",
   },
   {
-    name: "Events",
-    href: "#",
-    description:
-      "See what meet-ups and other events we might be planning near you",
+    name: "Policy Templates",
+    href: "/policy-templates",
+    description: "Access ready-to-use HR policy templates",
   },
   {
-    name: "Security",
-    href: "#",
-    description:
-      "Understand how we take your privacy seriously and keep your data secure",
+    name: "Statutory Compliance",
+    href: "/statutory-compliance",
+    description: "Stay up-to-date with HR compliance requirements",
+  },
+  {
+    name: "HR Letters",
+    href: "/hr-letters",
+    description: "Access templates for common HR letters and documents",
+  },
+  {
+    name: "Job Description",
+    href: "/job-description",
+    description: "Find templates and guidelines for creating job descriptions",
   },
 ];
 

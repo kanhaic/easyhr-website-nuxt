@@ -44,7 +44,7 @@
             </h6>
             <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-400">
               <li v-for="country in countries" :key="country">
-                <a :href="`/${country.fields.slug}`" class="hover:text-white">{{ country.fields.menuTitle }}</a>
+                <a :href="`/${country.fields.slug}`" class="hover:text-white" >{{ country.fields.menuTitle }}</a>
               </li>
             </ul>
           </div>
@@ -102,7 +102,7 @@
           <ul class="mt-8 space-y-5">
             <li>
               <a
-                href="#"
+                href="/company/about"
                 title=""
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
               >
@@ -112,7 +112,7 @@
 
             <li>
               <a
-                href="#"
+                href="/pricing"
                 title=""
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
               >
@@ -122,7 +122,7 @@
 
             <li>
               <a
-                href="#"
+                href="/features"
                 title=""
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
               >
@@ -132,7 +132,7 @@
 
             <li>
               <a
-                href="#"
+                href="/industries"
                 title=""
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
               >
@@ -142,11 +142,21 @@
 
             <li>
               <a
-                href="#"
+                href="/blog"
                 title=""
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
               >
                 Blog
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="/support"
+                title=""
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+              >
+                Support
               </a>
             </li>
           </ul>

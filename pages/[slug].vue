@@ -242,8 +242,4 @@ useSeoMeta({
   // date in YYYY-MM-DD format
   articleModifiedTime: new Date().toISOString().split("T")[0],
 });
-
-const cityName = computed(() => {
-  return landingPage.items[0].fields.title || ''
-})
 </script>
