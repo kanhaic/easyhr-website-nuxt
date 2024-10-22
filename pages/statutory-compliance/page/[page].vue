@@ -105,7 +105,7 @@
         </nav>
       </div>
     </section>
-    <div>
+    <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
       <ContactForm />
     </div>
   </div>
@@ -119,13 +119,14 @@ import {
 import * as contentful from "contentful";
 
 const config = useRuntimeConfig();
+const route = useRoute();
 
 const client = contentful.createClient({
   space: config.public.contentful.spaceId,
   accessToken: config.public.contentful.accessToken,
 });
 
-const currentPage = ref(1);
+const currentPage = ref(parseInt(route.params.page) || 1);
 const pageSize = 9;
 
 const { data, error } = await useAsyncData("okrs", () =>
@@ -134,7 +135,7 @@ const { data, error } = await useAsyncData("okrs", () =>
     "fields.type": "statutory-compliance",
     limit: pageSize,
     order: "-sys.createdAt",
-    skip: 0
+    skip: (currentPage.value - 1) * pageSize,
   })
 );
 

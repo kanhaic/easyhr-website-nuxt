@@ -6,12 +6,10 @@
       <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div class="max-w-2xl mx-auto text-center">
           <h2 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
-            Statutory Compliance
+            HR Emails
           </h2>
           <p class="mx-auto mt-5 text-base font-normal leading-7 text-gray-600">
-            Statutory Compliance is a crucial part of any organization's
-            documentation. It is to report and comply with different goverment
-            regulations.
+            HR Emails is a collection of emails related to human resources.
           </p>
         </div>
 
@@ -37,7 +35,7 @@
               </p>
               <div class="mt-6 lg:mt-8">
                 <a
-                  :href="`/statutory-compliance/${resource.fields.slug}`"
+                  :href="`/hr-emails/${resource.fields.slug}`"
                   class="inline-flex items-center text-xs font-bold tracking-widest text-indigo-600 uppercase group"
                 >
                   Continue Reading
@@ -128,10 +126,10 @@ const client = contentful.createClient({
 const currentPage = ref(1);
 const pageSize = 9;
 
-const { data, error } = await useAsyncData("okrs", () =>
+const { data, error } = await useAsyncData("hr-emails", () =>
   client.getEntries({
     content_type: "resources",
-    "fields.type": "statutory-compliance",
+    "fields.type": "hr-email",
     limit: pageSize,
     order: "-sys.createdAt",
     skip: 0
@@ -149,12 +147,12 @@ const isLastPage = computed(() => currentPage.value === totalPages.value);
 const previousPageUrl = computed(() => {
   if (isFirstPage.value) return "#";
   return currentPage.value === 2
-    ? "/statutory-compliance"
-    : `/statutory-compliance/page/${currentPage.value - 1}`;
+    ? "/hr-emails"
+    : `/hr-emails/page/${currentPage.value - 1}`;
 });
 
 const nextPageUrl = computed(() =>
-  isLastPage.value ? "#" : `/statutory-compliance/page/${currentPage.value + 1}`
+  isLastPage.value ? "#" : `/hr-emails/page/${currentPage.value + 1}`
 );
 
 const cardColors = [

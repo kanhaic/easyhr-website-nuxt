@@ -203,7 +203,11 @@
                 >
                   <div class="p-4">
                     <div class="grid grid-cols-2 gap-x-6 gap-y-1">
-                      <div v-for="(item, index) in resources" :key="index" class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                      <div
+                        v-for="(item, index) in resources"
+                        :key="index"
+                        class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+                      >
                         <div>
                           <a
                             :href="item.href"
@@ -212,7 +216,9 @@
                             {{ item.name }}
                             <span class="absolute inset-0" />
                           </a>
-                          <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                          <p class="mt-1 text-gray-600">
+                            {{ item.description }}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -222,7 +228,9 @@
             </transition>
           </Popover>
 
-          <a href="/pricing" class="text-sm font-semibold leading-6 text-gray-900"
+          <a
+            href="/pricing"
+            class="text-sm font-semibold leading-6 text-gray-900"
             >Pricing</a
           >
           <Popover class="relative">
@@ -436,12 +444,21 @@ const client = contentful.createClient({
 const { data, error } = await useAsyncData(`product-menus`, () =>
   client.getEntries({
     content_type: "landingPage",
+    order: "sys.createdAt",
   })
 );
 
-const productMenus = (data.value?.items.filter(item => item.fields.type === 'product') || []).slice(0, 10)
+const productMenus = (
+  data.value?.items.filter((item) => item.fields.type === "product") || []
+)
+  .slice(0, 10)
+  .sort((a, b) => (a.fields.seq || 99) - (b.fields.seq || 99));
 
-const industryMenus = (data.value?.items.filter(item => item.fields.type === 'industry') || []).slice(0, 10)
+const industryMenus = (
+  data.value?.items.filter((item) => item.fields.type === "industry") || []
+  )
+  .slice(0, 10)
+  .sort((a, b) => (a.fields.seq || 99) - (b.fields.seq || 99));
 
 const industries = industryMenus.map((menu) => ({
   name: menu.fields.menuTitle,
@@ -451,7 +468,6 @@ const industries = industryMenus.map((menu) => ({
   iconColor: menu.fields.iconColor,
   iconBgColor: menu.fields.iconBgColor,
 }));
-
 
 const solutions = productMenus.map((menu) => ({
   name: menu.fields.menuTitle,
@@ -543,17 +559,31 @@ const resources = [
   {
     name: "Blog",
     href: "/blog",
-    description: "Read about the latest updates to our product",
+    description:
+      "Read about the latest updates to our product. Be updated with the latest HR news.",
+  },
+  {
+    name: "HR Emails",
+    href: "/hr-emails",
+    description:
+      "Use HR Emails to communicate important information to your employees.",
+  },
+  {
+    name: "HR Checklist",
+    href: "/hr-checklist",
+    description: "Access HR Checklist to manage your HR tasks efficiently.",
   },
   {
     name: "Case Studies",
     href: "/case-studies",
-    description: "Learn how our customers are using our products to achieve their goals",
+    description:
+      "Learn how our customers are using our products to achieve their goals",
   },
   {
     name: "HR Glossary",
     href: "/hr-glossary",
-    description: "Learn about the latest HR terms and definitions",
+    description:
+      "Learn and stay updated with the latest HR terms and definitions.",
   },
   {
     name: "OKRs",
@@ -563,7 +593,8 @@ const resources = [
   {
     name: "Policy Templates",
     href: "/policy-templates",
-    description: "Access ready-to-use HR policy templates",
+    description:
+      "Learn about HR policy templates. Access ready-to-use HR policy templates.",
   },
   {
     name: "Statutory Compliance",
@@ -603,7 +634,6 @@ const company = [
   },
 ];
 
-
 const mobileMenuOpen = ref(false);
 </script>
 
@@ -615,4 +645,3 @@ const mobileMenuOpen = ref(false);
   }
 }
 </style>
-

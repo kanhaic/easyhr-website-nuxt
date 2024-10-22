@@ -52,7 +52,6 @@ import * as contentful from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 const { params } = useRoute();
-
 const config = useRuntimeConfig();
 
 const client = contentful.createClient({
@@ -60,10 +59,10 @@ const client = contentful.createClient({
   accessToken: config.public.contentful.accessToken,
 });
 
-const { data, error } = await useAsyncData("hr-glossary", () =>
+const { data, error } = await useAsyncData("hr-checklist", () =>
   client.getEntries({
     content_type: "resources",
-    "fields.type": "hr-glossary",
+    "fields.type": "hr-email",
     "fields.slug": params.slug,
     limit: 1,
   })

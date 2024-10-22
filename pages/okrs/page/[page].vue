@@ -6,12 +6,12 @@
       <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div class="max-w-2xl mx-auto text-center">
           <h2 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
-            Statutory Compliance
+            OKRs
           </h2>
           <p class="mx-auto mt-5 text-base font-normal leading-7 text-gray-600">
-            Statutory Compliance is a crucial part of any organization's
-            documentation. It is to report and comply with different goverment
-            regulations.
+            OKRs are a crucial part of any organization's documentation. They
+            are used to communicate important information to employees, such as
+            goals, objectives, and key results.
           </p>
         </div>
 
@@ -37,7 +37,7 @@
               </p>
               <div class="mt-6 lg:mt-8">
                 <a
-                  :href="`/statutory-compliance/${resource.fields.slug}`"
+                  :href="`/okrs/${resource.fields.slug}`"
                   class="inline-flex items-center text-xs font-bold tracking-widest text-indigo-600 uppercase group"
                 >
                   Continue Reading
@@ -105,7 +105,7 @@
         </nav>
       </div>
     </section>
-    <div>
+    <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
       <ContactForm />
     </div>
   </div>
@@ -119,22 +119,23 @@ import {
 import * as contentful from "contentful";
 
 const config = useRuntimeConfig();
+const route = useRoute();
 
 const client = contentful.createClient({
   space: config.public.contentful.spaceId,
   accessToken: config.public.contentful.accessToken,
 });
 
-const currentPage = ref(1);
+const currentPage = ref(parseInt(route.params.page) || 1);
 const pageSize = 9;
 
 const { data, error } = await useAsyncData("okrs", () =>
   client.getEntries({
     content_type: "resources",
-    "fields.type": "statutory-compliance",
+    "fields.type": "okrs",
     limit: pageSize,
     order: "-sys.createdAt",
-    skip: 0
+    skip: (currentPage.value - 1) * pageSize,
   })
 );
 
@@ -149,12 +150,12 @@ const isLastPage = computed(() => currentPage.value === totalPages.value);
 const previousPageUrl = computed(() => {
   if (isFirstPage.value) return "#";
   return currentPage.value === 2
-    ? "/statutory-compliance"
-    : `/statutory-compliance/page/${currentPage.value - 1}`;
+    ? "/okrs"
+    : `/okrs/page/${currentPage.value - 1}`;
 });
 
 const nextPageUrl = computed(() =>
-  isLastPage.value ? "#" : `/statutory-compliance/page/${currentPage.value + 1}`
+  isLastPage.value ? "#" : `/okrs/page/${currentPage.value + 1}`
 );
 
 const cardColors = [
