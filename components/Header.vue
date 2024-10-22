@@ -379,6 +379,38 @@
                     </transition>
                   </Popover>
 
+                  <Popover class="relative">
+                    <PopoverButton
+                      class="flex w-full items-center justify-between rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Resources
+                      <ChevronDownIcon
+                        class="h-5 w-5 flex-none"
+                        aria-hidden="true"
+                      />
+                    </PopoverButton>
+
+                    <transition
+                      enter-active-class="transition ease-out duration-200"
+                      enter-from-class="opacity-0 translate-y-1"
+                      enter-to-class="opacity-100 translate-y-0"
+                      leave-active-class="transition ease-in duration-150"
+                      leave-from-class="opacity-100 translate-y-0"
+                      leave-to-class="opacity-0 translate-y-1"
+                    >
+                      <PopoverPanel class="mt-2 space-y-2">
+                        <a
+                          v-for="item in resources"
+                          :key="item.name"
+                          :href="item.href"
+                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {{ item.name }}
+                        </a>
+                      </PopoverPanel>
+                    </transition>
+                  </Popover>
+
                   <a
                     href="/pricing"
                     class="block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
@@ -415,13 +447,6 @@
                       </PopoverPanel>
                     </transition>
                   </Popover>
-                </div>
-                <div class="py-6">
-                  <a
-                    href="#"
-                    class="block rounded-lg py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >Free Trial</a
-                  >
                 </div>
               </div>
             </div>
@@ -487,73 +512,13 @@ import {
   PopoverPanel,
 } from "@headlessui/vue";
 import {
-  PresentationChartBarIcon,
   Bars3Icon,
-  UsersIcon,
-  ClockIcon,
-  UserPlusIcon,
-  BanknotesIcon,
-  PaperAirplaneIcon,
-  ChatBubbleLeftEllipsisIcon,
-  DocumentChartBarIcon,
   XMarkIcon,
 } from "@heroicons/vue/24/outline";
 import {
   ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
 } from "@heroicons/vue/20/solid";
 
-const solutions1 = [
-  {
-    name: "HR Software",
-    description: "HR software that helps you manage your workforce",
-    href: "#",
-    icon: UsersIcon,
-  },
-  {
-    name: "Payroll Software",
-    description: "Automate your payroll and focus on your business",
-    href: "#",
-    icon: BanknotesIcon,
-  },
-  {
-    name: "Time & Attendance",
-    description: "Track your employees' time and attendance easily",
-    href: "#",
-    icon: ClockIcon,
-  },
-  {
-    name: "Performance Management",
-    description: "Manage your employees' performance with ease",
-    href: "#",
-    icon: PresentationChartBarIcon,
-  },
-  {
-    name: "Hiring & Onboarding",
-    description: "Delight your new hires with a seamless onboarding experience",
-    href: "#",
-    icon: UserPlusIcon,
-  },
-  {
-    name: "Travel & Expense",
-    description: "Manage your employees' travel and expenses easily",
-    href: "#",
-    icon: PaperAirplaneIcon,
-  },
-  {
-    name: "Helpdesk",
-    description: "Resolve your employees' issues quickly and efficiently",
-    href: "#",
-    icon: ChatBubbleLeftEllipsisIcon,
-  },
-  {
-    name: "Reports",
-    description: "Edit, manage and create newly informed decisions",
-    href: "#",
-    icon: DocumentChartBarIcon,
-  },
-];
 
 const resources = [
   {
