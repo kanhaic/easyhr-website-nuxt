@@ -142,7 +142,7 @@ const { data, error } = await useAsyncData("job-description", () =>
 
 const resources = computed(() => data.value?.items || []);
 
-const totalItems = computed(() => data.value?.total || 0);
+const totalItems = computed(() => data.value?.total || 1);
 const totalPages = computed(() => Math.ceil(totalItems.value / pageSize));
 
 const isFirstPage = computed(() => currentPage.value === 1);
