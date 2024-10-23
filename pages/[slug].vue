@@ -1,5 +1,4 @@
 <template>
-
   <div v-if="pageType === 'city' || pageType === 'country'">
     <Hero1
       :topTag="heroSection.topTag"
@@ -42,8 +41,42 @@
       :title="testimonials.title"
       :testimonials="testimonials.items"
     />
+  </div>
 
-
+  <div v-else-if="pageType === 'industry'">
+    <Hero1
+      :topTag="heroSection.topTag"
+      :title="heroSection.title"
+      :subtitle="heroSection.subtitle"
+      :cta1Title="heroSection.cta1Title"
+      :cta1Link="heroSection.cta1Link"
+      :cta2Title="heroSection.cta2Title"
+      :cta2Link="heroSection.cta2Link"
+      :heroImage="heroSection.heroImage.fields.file.url"
+    />
+    <LogoSection :logos="logos" />
+    <Feature1
+      :topTag="featureSection.topTag"
+      :headerFeature="featureSection.headerFeature"
+      :items="featureSection.items"
+      :image="featureSection.image"
+    />
+    <div class="py-12 sm:py-16 lg:py-20 xl:py-24" v-if="content">
+      <div class="mx-auto max-w-4xl">
+        <div
+          v-html="renderedBody"
+          class="mt-2 prose lg:prose-xl prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-h6:text-sm prose-p:text-base prose-a:text-blue-500 prose-a:underline prose-a:font-medium"
+        ></div>
+      </div>
+    </div>
+    <Testimonial1
+      :subtitle="testimonials.topTag"
+      :title="testimonials.title"
+      :testimonials="testimonials.items"
+    />
+    <Stats1 :title="stats.title" :stats="stats.stats" />
+    <RecentBlog :title="recentBlog.title" :posts="recentBlog.posts" />
+    <ContactForm />
   </div>
 
   <div v-else>
@@ -118,16 +151,14 @@ const { data: blogData, error: blogError } = await useAsyncData("blog", () =>
 );
 
 if (!data.value || data.value.items.length === 0) {
-  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });
+  throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
 }
-
 
 const landingPage = data.value || { items: [], includes: { Asset: [] } };
 
 const blogPosts = blogData.value?.items || [];
 
 const pageType = landingPage.items[0].fields.type;
-
 
 // console.log(JSON.stringify(landingPage.items[0], null, 2));
 
