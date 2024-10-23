@@ -49,9 +49,11 @@
               </svg>
             </div>
           </div>
-          <h3 class="text-lg font-semibold text-black">
-            {{ feature?.title }}
-          </h3>
+          <a :href="`/features/${feature?.slug}`">
+            <h3 class="text-lg font-semibold text-black">
+              {{ feature?.title }}
+            </h3>
+          </a>
           <p class="mt-4 text-base text-gray-600">
             {{ feature?.description }}
           </p>
@@ -68,6 +70,7 @@ interface Feature {
   iconPath: string;
   title: string;
   description: string;
+  slug?: string;
 }
 
 defineProps({

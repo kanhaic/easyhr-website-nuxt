@@ -37,12 +37,14 @@
                 />
               </svg>
               <div class="ml-5">
-                <h3 class="text-xl font-semibold text-black">
-                  {{ item.title }}
+                <a :href="`/features/${item?.slug}`">
+                  <h3 class="text-xl font-semibold text-black">
+                    {{ item.title }}
                 </h3>
                 <p class="mt-3 text-base text-gray-600">
                   {{ item.description }}
-                </p>
+                  </p>
+                </a>
               </div>
             </div>
           </div>
@@ -70,6 +72,7 @@ interface FeatureItem {
   iconPath: string;
   title: string;
   description: string;
+  slug?: string;
 }
 
 interface Image {

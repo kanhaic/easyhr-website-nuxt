@@ -191,6 +191,7 @@ const featureSection = {
     iconPath: feature.fields.icon,
     title: feature.fields.title,
     description: feature.fields.description,
+    slug: feature.fields.slug,
   })),
   image: {
     src: landingPage.items[0].fields.featureImage.fields.file.url,
@@ -208,6 +209,7 @@ const featureList = {
       iconPath: item.fields.icon,
       title: item.fields.title,
       description: item.fields.description,
+      slug: item.fields.slug,
     })) || [],
 };
 
