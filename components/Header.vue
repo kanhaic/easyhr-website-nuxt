@@ -59,45 +59,73 @@
                 <div
                   class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
                 >
-                  <div
-                    class="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2"
-                  >
-                    <div
-                      v-for="item in solutions"
-                      :key="item.name"
-                      class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
-                    >
+                  <div class="p-4">
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-1">
                       <div
-                        class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
-                        :class="item.iconBgColor ?? 'bg-gray-50'"
+                        v-for="item in solutions"
+                        :key="item.name"
+                        class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          stroke-linejoin="round"
-                          class="w-6 h-6"
-                          :class="item.iconColor ?? 'text-gray-600'"
+                        <div
+                          class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
+                          :class="item.iconBgColor ?? 'bg-gray-50'"
                         >
-                          <path
-                            stroke-linecap="round"
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
                             stroke-linejoin="round"
-                            :d="item.menuIcon"
-                          />
-                        </svg>
+                            class="w-6 h-6"
+                            :class="item.iconColor ?? 'text-gray-600'"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              :d="item.menuIcon"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <a
+                            :href="item.href"
+                            class="font-semibold text-gray-900"
+                          >
+                            {{ item.name }}
+                            <span class="absolute inset-0" />
+                          </a>
+                          <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                        </div>
                       </div>
-                      <div>
-                        <a
-                          :href="item.href"
-                          class="font-semibold text-gray-900"
-                        >
-                          {{ item.name }}
-                          <span class="absolute inset-0" />
-                        </a>
-                        <p class="mt-1 text-gray-600">{{ item.description }}</p>
-                      </div>
+                    </div>
+                  </div>
+                  <div class="px-4 py-4 flex justify-center border-t border-gray-100">
+                    <div class="flex-1 flex justify-center">
+                      <a
+                        :href="callsToAction[0].href"
+                        class="flex items-center text-sm font-semibold text-gray-900"
+                      >
+                        <component
+                          :is="callsToAction[0].icon"
+                          class="h-5 w-5 flex-none text-gray-400 mr-2"
+                          aria-hidden="true"
+                        />
+                        {{ callsToAction[0].name }}
+                      </a>
+                    </div>
+                    <div class="flex-1 flex justify-center">
+                      <a
+                        :href="callsToAction[1].href"
+                        class="flex items-center text-sm font-semibold text-gray-900"
+                      >
+                        <component
+                          :is="callsToAction[1].icon"
+                          class="h-5 w-5 flex-none text-gray-400 mr-2"
+                          aria-hidden="true"
+                        />
+                        {{ callsToAction[1].name }}
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -335,14 +363,16 @@
                       leave-to-class="opacity-0 translate-y-1"
                     >
                       <PopoverPanel class="mt-2 space-y-2">
-                        <a
-                          v-for="item in solutions"
-                          :key="item.name"
-                          :href="item.href"
-                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                        >
-                          {{ item.name }}
-                        </a>
+                        <div>
+                          <a
+                            v-for="item in solutions"
+                            :key="item.name"
+                            :href="item.href"
+                            class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          >
+                            {{ item.name }}
+                          </a>
+                        </div>
                       </PopoverPanel>
                     </transition>
                   </Popover>
@@ -458,6 +488,20 @@
 </template>
 
 <script setup>
+import {
+  Dialog,
+  DialogPanel,
+  Popover,
+  PopoverButton,
+  PopoverGroup,
+  PopoverPanel,
+} from "@headlessui/vue";
+import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+import {
+  ChevronDownIcon,
+  Squares2X2Icon,
+  PhoneIcon,
+} from "@heroicons/vue/20/solid";
 import * as contentful from "contentful";
 const config = useRuntimeConfig();
 
@@ -473,6 +517,11 @@ const { data, error } = await useAsyncData(`product-menus`, () =>
   })
 );
 
+const callsToAction = [
+  { name: "Features", href: "#", icon: Squares2X2Icon },
+  { name: "Contact sales", href: "#", icon: PhoneIcon },
+];
+
 const productMenus = (
   data.value?.items.filter((item) => item.fields.type === "product") || []
 )
@@ -481,7 +530,7 @@ const productMenus = (
 
 const industryMenus = (
   data.value?.items.filter((item) => item.fields.type === "industry") || []
-  )
+)
   .slice(0, 10)
   .sort((a, b) => (a.fields.seq || 99) - (b.fields.seq || 99));
 
@@ -502,23 +551,6 @@ const solutions = productMenus.map((menu) => ({
   iconColor: menu.fields.iconColor,
   iconBgColor: menu.fields.iconBgColor,
 }));
-
-import {
-  Dialog,
-  DialogPanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-} from "@headlessui/vue";
-import {
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/vue/24/outline";
-import {
-  ChevronDownIcon,
-} from "@heroicons/vue/20/solid";
-
 
 const resources = [
   {
@@ -610,3 +642,4 @@ const mobileMenuOpen = ref(false);
   }
 }
 </style>
+
