@@ -260,13 +260,13 @@ const customRenderer = {
 const renderedBody = documentToHtmlString(content, customRenderer);
 
 useHead({
-  title: landingPage.items[0].fields.seoTitle,
+  title: landingPage.items[0].fields?.seoTitle,
   meta: [
     {
       name: "description",
-      content: landingPage.items[0].fields.seoDescription,
+      content: landingPage.items[0].fields?.seoDescription,
     },
-    { name: "keywords", content: landingPage.items[0].fields.seoKeywords },
+    { name: "keywords", content: landingPage.items[0].fields?.seoKeywords },
   ],
 });
 

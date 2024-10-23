@@ -11,6 +11,11 @@ export default defineNuxtConfig({
   },
   site: {
     url: "https://www.easyhrworld.com",
+    name: "EasyHR",
+    description: `EasyHR is a user-friendly and intuitive HR software designed for
+              SMEs and enterprises. It streamlines the management of HRIS
+              records, leave and attendance, payroll, expenses, and travel,
+              making HR operations effortless.`,
   },
   devtools: { enabled: true },
   app: {
@@ -72,7 +77,7 @@ export default defineNuxtConfig({
           fallback: true,
         },
       },
-      ipx: {}
+      ipx: {},
     },
   },
 });

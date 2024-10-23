@@ -108,4 +108,17 @@ const formatDate = (dateString) => {
 useSeoMeta({
   articleModifiedTime: new Date().toISOString().split("T")[0],
 });
+useHead({
+  title: resource.fields?.seoTitle,
+  meta: [
+    {
+      name: "description",
+      content: resource.fields?.seoDescription,
+    },
+    {
+      name: "keywords",
+      content: resource.fields?.seoKeywords,
+    },
+  ],
+});
 </script>

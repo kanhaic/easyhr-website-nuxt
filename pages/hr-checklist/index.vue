@@ -133,7 +133,7 @@ const { data, error } = await useAsyncData("hr-checklist", () =>
     "fields.type": "hr-checklist",
     limit: pageSize,
     order: "-sys.createdAt",
-    skip: 0
+    skip: 0,
   })
 );
 
@@ -164,4 +164,26 @@ const cardColors = [
   "bg-purple-50 hover:bg-purple-100",
   "bg-indigo-50 hover:bg-indigo-100",
 ];
+
+useSeoMeta({
+  // will be inferred as the lastmod value in the sitemap
+  // date in YYYY-MM-DD format
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
+
+useHead({
+  title: "HR Checklist | EasyHR",
+  meta: [
+    {
+      name: "description",
+      content:
+        "HR Checklist is a collection of tasks and procedures related to human resources.",
+    },
+    {
+      name: "keywords",
+      content:
+        "EasyHR, HR checklist, HR software, HRIS, payroll, attendance, leave",
+    },
+  ],
+});
 </script>

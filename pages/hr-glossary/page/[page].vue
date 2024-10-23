@@ -166,4 +166,10 @@ const cardColors = [
   "bg-purple-50 hover:bg-purple-100",
   "bg-indigo-50 hover:bg-indigo-100",
 ];
+
+useSeoMeta({
+  // will be inferred as the lastmod value in the sitemap
+  // date in YYYY-MM-DD format
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
 </script>

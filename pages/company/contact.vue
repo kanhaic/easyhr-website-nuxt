@@ -78,3 +78,11 @@
   background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 }
 </style>
+
+<script setup>
+useSeoMeta({
+  // will be inferred as the lastmod value in the sitemap
+  // date in YYYY-MM-DD format
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
+</script>

@@ -153,4 +153,24 @@ const logos = [
     provider: "ipx",
   },
 ];
+
+useHead({
+  title: "Features | EasyHR",
+  meta: [
+    {
+      name: "description",
+      content: "Feature List for EasyHR",
+    },
+    {
+      name: "keywords",
+      content: "EasyHR, features, HR software, HRIS, payroll, attendance, leave",
+    },
+  ],
+});
+
+useSeoMeta({
+  // will be inferred as the lastmod value in the sitemap
+  // date in YYYY-MM-DD format
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
 </script>
