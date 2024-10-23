@@ -9,7 +9,7 @@
             {{ topTag }}
           </p>
           <h1
-            class="mt-4 text-4xl font-semibold text-black lg:mt-8 sm:text-6xl xl:text-7xl"
+            class="mt-4 text-4xl font-semibold text-black lg:mt-8 sm:text-5xl xl:text-6xl"
           >
             {{ title }}
           </h1>
