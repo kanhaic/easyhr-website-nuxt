@@ -100,8 +100,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="px-4 py-4 flex justify-center border-t border-gray-100">
-                    <div class="flex-1 flex justify-center">
+                  <div class="px-4 py-4 flex justify-center border-t border-gray-100 bg-gray-100">
+                    <div class="flex-1 flex justify-center ">
                       <a
                         :href="callsToAction[0].href"
                         class="flex items-center text-sm font-semibold text-gray-900"
@@ -114,7 +114,7 @@
                         {{ callsToAction[0].name }}
                       </a>
                     </div>
-                    <div class="flex-1 flex justify-center">
+                    <div class="flex-1 flex justify-center bg-gray-100">
                       <a
                         :href="callsToAction[1].href"
                         class="flex items-center text-sm font-semibold text-gray-900"
@@ -518,7 +518,7 @@ const { data, error } = await useAsyncData(`product-menus`, () =>
 );
 
 const callsToAction = [
-  { name: "Features", href: "#", icon: Squares2X2Icon },
+  { name: "Features", href: "/features", icon: Squares2X2Icon },
   { name: "Contact sales", href: "#", icon: PhoneIcon },
 ];
 

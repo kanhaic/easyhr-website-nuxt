@@ -12,7 +12,7 @@
             loading="lazy"
             :src="logo.src"
             :alt="logo.alt"
-            provider="contentful"
+            :provider="logo?.provider || 'ipx'"
           />
         </div>
       </div>
@@ -24,6 +24,7 @@
 interface Logo {
   src: string;
   alt: string;
+  provider: string;
 }
 
 defineProps({
