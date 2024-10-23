@@ -12,7 +12,7 @@
             loading="lazy"
             :src="logo.src"
             :alt="logo.alt"
-            :provider="logo?.provider || 'ipx'"
+            :provider="logo?.provider || 'contentful'"
           />
         </div>
       </div>
