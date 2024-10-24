@@ -147,12 +147,12 @@ const featureList = {
   description: landingPage.items[0].fields.featureListSubtitle,
   featureListItems:
     landingPage.items[0].fields.featureList?.map((item) => ({
-      bgColor: item.fields.bgColor,
-      iconColor: item.fields.color,
-      iconPath: item.fields.icon,
-      title: item.fields.title,
-      description: item.fields.description,
-      slug: item.fields.slug,
+      bgColor: item.fields?.bgColor,
+      iconColor: item.fields?.color,
+      iconPath: item.fields?.icon,
+      title: item.fields?.title,
+      description: item.fields?.description,
+      slug: item.fields?.slug,
     })) || [],
 };
 

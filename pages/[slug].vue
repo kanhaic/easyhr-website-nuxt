@@ -220,11 +220,11 @@ const featureSection = {
   topTag: landingPage.items[0].fields.featureTopTag,
   headerFeature: landingPage.items[0].fields.featureTitle,
   items: landingPage.items[0].fields.mainFeatures.map((feature) => ({
-    iconColor: feature.fields.color,
-    iconPath: feature.fields.icon,
-    title: feature.fields.title,
-    description: feature.fields.description,
-    slug: feature.fields.slug,
+    iconColor: feature.fields?.color,
+    iconPath: feature.fields?.icon,
+    title: feature.fields?.title,
+    description: feature.fields?.description,
+    slug: feature.fields?.slug,
   })),
   image: {
     src: landingPage.items[0].fields.featureImage.fields.file.url,
@@ -237,12 +237,12 @@ const featureList = {
   description: landingPage.items[0].fields.featureListSubtitle,
   featureListItems:
     landingPage.items[0].fields.featureList?.map((item) => ({
-      bgColor: item.fields.bgColor,
-      iconColor: item.fields.color,
-      iconPath: item.fields.icon,
-      title: item.fields.title,
-      description: item.fields.description,
-      slug: item.fields.slug,
+      bgColor: item.fields?.bgColor,
+      iconColor: item.fields?.color,
+      iconPath: item.fields?.icon,
+      title: item.fields?.title,
+      description: item.fields?.description,
+      slug: item.fields?.slug,
     })) || [],
 };
 
