@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mx-auto px-4 py-8 max-w-7xl text-center">
+    <div class="container mx-auto px-4 py-8 max-w-7xl text-center prose">
       <h1 class="text-3xl font-bold mb-4">{{ feature.fields?.title }}</h1>
       <p class="text-lg text-gray-700 sm:mt-8">
         {{ feature.fields?.description }}
@@ -61,7 +61,7 @@
               class="grid grid-cols-1 md:items-center gap-y-8 md:grid-cols-2 md:gap-x-16"
             >
               <div
-                class="text-center md:text-left"
+                class="text-center md:text-left prose"
                 :class="{ 'md:order-2': index % 2 !== 0 }"
               >
                 <h2
@@ -69,7 +69,7 @@
                 >
                   {{ featureSet.title }}
                 </h2>
-                <p class="mt-4 text-gray-700 sm:mt-8">
+                <p class="mt-4 text-gray-700 sm:mt-8 ">
                   {{ featureSet.description }}
                 </p>
               </div>
