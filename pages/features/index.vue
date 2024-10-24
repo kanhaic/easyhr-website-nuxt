@@ -14,7 +14,7 @@
     <LogoSection :logos="logos" />
 
     <!-- Features section -->
-    <section class="py-12 bg-gray-50 sm:py-16 lg:py-20">
+    <section class="py-12sm:py-16 lg:py-20">
       <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="max-w-md mx-auto text-center">
           <h2 class="text-3xl font-bold text-gray-900">
@@ -64,6 +64,7 @@
                 />
               </svg>
             </div>
+            
             <div class="p-4 flex-grow">
               <p class="text-base font-bold text-gray-900">
                 <a
