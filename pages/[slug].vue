@@ -27,9 +27,11 @@
           </div>
           <!-- Sidebar with demo request form (1/3 width) -->
           <div class="lg:w-1/3 mt-8 lg:mt-0">
-            <div class="bg-gray-100 rounded-lg p-6">
-              <h3 class="text-xl font-semibold mb-4">Request a Demo</h3>
-              <DemoRequest />
+            <div class="sticky top-8">
+              <div class="bg-gray-100 rounded-lg p-6">
+                <h3 class="text-xl font-semibold mb-4">Request a Demo</h3>
+                <DemoRequest />
+              </div>
             </div>
           </div>
         </div>
