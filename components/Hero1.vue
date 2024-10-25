@@ -99,7 +99,7 @@ const props = defineProps({
   },
   cta1Link: {
     type: String,
-    default: "/signup",
+    default: "/signup?utm_source=hero&utm_medium=getting-started",
   },
   cta2Title: {
     type: String,
@@ -107,7 +107,7 @@ const props = defineProps({
   },
   cta2Link: {
     type: String,
-    default: "/signup",
+    default: "/signup?utm_source=hero&utm_medium=free-trial",
   },
   heroImage: {
     type: String,
