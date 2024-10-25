@@ -6,7 +6,7 @@
       title="Simplify Your HR Management"
       subtitle="Join thousands of companies using EasyHR to streamline their HR processes."
       cta1Title="Learn More"
-      cta1Link="/getting-started"
+      cta1Link="/signup"
       cta2Title="Contact Sales"
       cta2Link="/contact-sales"
     />

@@ -13,6 +13,7 @@
             :src="logo.src"
             :alt="logo.alt"
             :provider="logo?.provider || 'contentful'"
+            class="w-full h-auto"
           />
         </div>
       </div>

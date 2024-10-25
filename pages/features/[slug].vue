@@ -137,7 +137,7 @@ const feature = data.value?.items.find(
 // Compute feature sets
 const featureSets = computed(() => {
   const sets = [];
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 10; i++) {
     const title = feature.fields?.[`title${i}`];
     const description =
       feature.fields?.[`content${i}`]?.content[0].content[0].value;

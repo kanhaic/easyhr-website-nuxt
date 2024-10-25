@@ -19,7 +19,7 @@
         </div>
         <div class="flex items-center gap-4 lg:hidden">
           <a
-            href="/free-trial"
+            href="/signup"
             class="text-sm font-semibold leading-6 px-3 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200"
           >
             Free Trial
@@ -305,7 +305,7 @@
         </PopoverGroup>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
-            href="/free-trial"
+            href="/signup"
             class="text-sm font-semibold leading-6 px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200"
           >
             Free Trial
@@ -519,7 +519,7 @@ const { data, error } = await useAsyncData(`product-menus`, () =>
 
 const callsToAction = [
   { name: "Features", href: "/features", icon: Squares2X2Icon },
-  { name: "Contact sales", href: "/contact-sales", icon: PhoneIcon },
+  { name: "Contact sales", href: "/signup", icon: PhoneIcon },
 ];
 
 const productMenus = (
