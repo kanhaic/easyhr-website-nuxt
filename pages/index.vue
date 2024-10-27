@@ -57,6 +57,8 @@ const { data, error } = await useAsyncData("main-landing", () =>
   client.getEntries({
     content_type: "landingPage",
     "fields.type": "main",
+    "fields.slug": "/",
+    limit: 1,
   })
 );
 

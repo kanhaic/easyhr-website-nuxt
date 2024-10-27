@@ -152,6 +152,16 @@
 
             <li>
               <a
+                href="/faqs"
+                title="Faqs"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+              >
+                FAQs
+              </a>
+            </li>
+
+            <li>
+              <a
                 href="/support"
                 title=""
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
