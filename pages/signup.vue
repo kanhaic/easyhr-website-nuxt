@@ -130,15 +130,15 @@
                 </div>
                 <div>
                   <label
-                    for="employees"
+                    for="empcount"
                     class="block text-sm font-medium text-gray-700"
-                    >Number of Employees</label
+                    >Number of empcount</label
                   >
                   <select
-                    id="employees"
-                    v-model="form.employees"
+                    id="empcount"
+                    v-model="form.empcount"
                     required
-                    :class="{ 'border-red-500': errors.employees }"
+                    :class="{ 'border-red-500': errors.empcount }"
                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                   >
                     <option value="" disabled selected>
@@ -150,8 +150,8 @@
                     <option value="201-500">201 to 500</option>
                     <option value="500+">500+</option>
                   </select>
-                  <p v-if="errors.employees" class="mt-1 text-sm text-red-600">
-                    {{ errors.employees }}
+                  <p v-if="errors.empcount" class="mt-1 text-sm text-red-600">
+                    {{ errors.empcount }}
                   </p>
                 </div>
                 <div>
@@ -196,14 +196,28 @@
               What our customers say
             </h3>
             <div class="space-y-8">
-              <div v-for="testimonial in testimonials" :key="testimonial.fields.name" class="flex space-x-4">
+              <div
+                v-for="testimonial in testimonials"
+                :key="testimonial.fields.name"
+                class="flex space-x-4"
+              >
                 <div class="flex-shrink-0">
-                  <img :src="testimonial.fields.profilePicture.fields.file.url" :alt="testimonial.fields.name" class="h-12 w-12 rounded-full">
+                  <img
+                    :src="testimonial.fields.profilePicture.fields.file.url"
+                    :alt="testimonial.fields.name"
+                    class="h-12 w-12 rounded-full"
+                  />
                 </div>
                 <div>
-                  <p class="text-sm text-gray-600 mb-2">{{ testimonial.fields.testimonial }}</p>
-                  <div class="text-sm font-medium text-gray-900">{{ testimonial.fields.name }}</div>
-                  <div class="text-sm text-gray-500">{{ testimonial.fields.designation }}</div>
+                  <p class="text-sm text-gray-600 mb-2">
+                    {{ testimonial.fields.testimonial }}
+                  </p>
+                  <div class="text-sm font-medium text-gray-900">
+                    {{ testimonial.fields.name }}
+                  </div>
+                  <div class="text-sm text-gray-500">
+                    {{ testimonial.fields.designation }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -215,9 +229,13 @@
               Trusted by leading companies
             </h3>
             <div class="grid grid-cols-3">
-              <div v-for="logo in logos" :key="logo.alt" class="border border-gray-200 p-4 flex items-center justify-center">
-                <NuxtImg 
-                  :src="logo.src" 
+              <div
+                v-for="logo in logos"
+                :key="logo.alt"
+                class="border border-gray-200 p-4 flex items-center justify-center"
+              >
+                <NuxtImg
+                  :src="logo.src"
                   :alt="logo.alt"
                   provider="ipx"
                   class="max-h-16 w-auto"
@@ -270,91 +288,106 @@ useSeoMeta({
   articleModifiedTime: new Date().toISOString().split("T")[0],
 });
 
-const form = reactive({
+const form = ref({
   firstName: "",
   lastName: "",
   email: "",
   phone: "",
   company: "",
-  employees: "",
+  empcount: "",
 });
 
-const errors = reactive({
+const errors = ref({
   firstName: "",
   lastName: "",
   email: "",
   phone: "",
   company: "",
-  employees: "",
+  empcount: "",
 });
 
 const validateForm = () => {
-  
   let isValid = true;
 
   // Reset errors
   Object.keys(errors).forEach((key) => (errors[key] = ""));
 
-  if (!form.firstName.trim()) {
-    errors.firstName = "First name is required";
+  if (!form.value.firstName.trim()) {
+    errors.value.firstName = "First name is required";
     isValid = false;
   }
 
-  if (!form.lastName.trim()) {
-    errors.lastName = "Last name is required";
+  if (!form.value.lastName.trim()) {
+    errors.value.lastName = "Last name is required";
     isValid = false;
   }
 
-  if (!form.email.trim()) {
-    errors.email = "Email is required";
+  if (!form.value.email.trim()) {
+    errors.value.email = "Email is required";
     isValid = false;
-  } else if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+  } else if (!/^\S+@\S+\.\S+$/.test(form.value.email)) {
     errors.email = "Invalid email format";
     isValid = false;
   }
 
-  if (!form.phone.trim()) {
-    errors.phone = "Phone number is required";
+  if (!form.value.phone.trim()) {
+    errors.value.phone = "Phone number is required";
     isValid = false;
-  } else if (!/^\+\d{1,4}\s?\d{6,14}$/.test(form.phone)) {
-    errors.phone =
+  } else if (!/^\+\d{1,4}\s?\d{6,14}$/.test(form.value.phone)) {
+    errors.value.phone =
       "Invalid phone number format. Please use +[country code] [number]";
     isValid = false;
   }
 
-  if (!form.company.trim()) {
-    errors.company = "Company name is required";
+  if (!form.value.company.trim()) {
+    errors.value.company = "Company name is required";
     isValid = false;
   }
 
-  if (!form.employees) {
-    errors.employees = "Please select number of employees";
+  if (!form.value.empcount) {
+    errors.value.empcount = "Please select number of empcount";
     isValid = false;
   }
 
   return isValid;
 };
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   if (validateForm()) {
     // Form is valid, proceed with submission
-    console.log("Form submitted:", form);
-    // Add your form submission logic here
-  } else {
-    console.log("Form has errors");
+
+    form.value.name = `${form.value.firstName} ${form.value.lastName}`;
+
+    // Here you would typically send the form data to your backend
+    await $fetch(
+      "https://n8n.craftinghr.com/webhook/0ffe9532-7100-47b1-bdfd-3368c8899efb",
+      {
+        method: "POST",
+        body: form.value,
+      }
+    );
+    // Reset the form after submission
+    form.value = {
+      firstName: "",
+      lastName: "",
+      company: "",
+      email: "",
+      phone: "",
+      empcount: "",
+    };
   }
 };
 
 const logos = [
-  { src: '/images/logos/1.webp', alt: 'Company 1' },
-  { src: '/images/logos/2.webp', alt: 'Company 2' },
-  { src: '/images/logos/3.webp', alt: 'Company 3' },
-  { src: '/images/logos/4.webp', alt: 'Company 4' },
-  { src: '/images/logos/5.webp', alt: 'Company 5' },
-  { src: '/images/logos/6.webp', alt: 'Company 6' },
-  { src: '/images/logos/7.webp', alt: 'Company 7' },
-  { src: '/images/logos/8.webp', alt: 'Company 8' },
-  { src: '/images/logos/9.webp', alt: 'Company 9' },
+  { src: "/images/logos/1.webp", alt: "Company 1" },
+  { src: "/images/logos/2.webp", alt: "Company 2" },
+  { src: "/images/logos/3.webp", alt: "Company 3" },
+  { src: "/images/logos/4.webp", alt: "Company 4" },
+  { src: "/images/logos/5.webp", alt: "Company 5" },
+  { src: "/images/logos/6.webp", alt: "Company 6" },
+  { src: "/images/logos/7.webp", alt: "Company 7" },
+  { src: "/images/logos/8.webp", alt: "Company 8" },
+  { src: "/images/logos/9.webp", alt: "Company 9" },
   // Add more logos as needed
 ];
 </script>
