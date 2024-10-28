@@ -114,7 +114,7 @@
                         class="h-5 w-5 text-indigo-600"
                         aria-hidden="true"
                       />
-                      <MinusIcon
+                      <XMarkIcon
                         v-else
                         class="h-5 w-5 text-gray-400"
                         aria-hidden="true"
@@ -282,7 +282,7 @@
                         class="mx-auto h-5 w-5 text-indigo-600"
                         aria-hidden="true"
                       />
-                      <MinusIcon
+                      <XMarkIcon
                         v-else
                         class="mx-auto h-5 w-5 text-gray-400"
                         aria-hidden="true"
@@ -330,7 +330,7 @@
 </template>
 
 <script setup>
-import { CheckIcon, MinusIcon, ChevronDownIcon } from "@heroicons/vue/20/solid";
+import { CheckIcon, XMarkIcon, ChevronDownIcon } from "@heroicons/vue/20/solid";
 import * as contentful from "contentful";
 
 const config = useRuntimeConfig();
@@ -729,4 +729,5 @@ useSeoMeta({
   articleModifiedTime: new Date().toISOString().split("T")[0],
 });
 </script>
+
 
