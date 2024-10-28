@@ -1,8 +1,18 @@
 <template>
   <div>
     <!-- Hero section with background image -->
-    <div class="relative bg-gray-900 py-24 sm:py-32 bg-[url('/images/blog-bg.jpg')] bg-cover bg-center">
+    <div class="relative bg-gray-900 py-24 sm:py-32">
       <div class="absolute inset-0 overflow-hidden">
+        <NuxtImg
+          src="/images/blog-bg.jpg"
+          alt="Blog background"
+          class="w-full h-full object-cover object-center"
+          width="1920"
+          height="1080"
+          sizes="100vw"
+          preload
+          provider="ipx"
+        />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-8 ">
