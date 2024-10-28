@@ -372,25 +372,25 @@ const tiers = [
     href: "/signup?plan=starter&utm_source=pricing",
     priceMonthly: "₹ 2499",
     description: "Upto 25 users.",
-    additionalUsersPrice: "₹ 100 per user/month",
+    additionalUsersPrice: "Additional User @ ₹90 per user/month",
     mostPopular: false,
   },
   {
     name: "Growth",
     id: "tier-growth",
     href: "/signup?plan=growth&utm_source=pricing",
-    priceMonthly: "₹ 3999",
+    priceMonthly: "₹ 3125",
     description: "Upto 25 users.",
-    additionalUsersPrice: "₹ 125 per user/month",
-    mostPopular: false,
+    additionalUsersPrice: "Additional User @ ₹115 per user/month",
+    mostPopular: true,
   },
   {
     name: "Enterprise",
     id: "tier-enterprise",
     href: "/signup?plan=enterprise&utm_source=pricing",
-    priceMonthly: "₹ 4999",
+    priceMonthly: "₹ 3750",
     description: "Upto 25 users.",
-    additionalUsersPrice: "₹ 150 per user/month",
+    additionalUsersPrice: "Additional User @ ₹135 per user/month",
     mostPopular: false,
   },
 ];
@@ -561,6 +561,31 @@ const sections = [
     ],
   },
   {
+    name: "Recruitment Management System",
+    features: [
+      {
+        name: "Resume Bank",
+        tiers: { Starter: false, Growth: false, Enterprise: true },
+        description: "Store and manage resumes in one place.",
+      },
+      {
+        name: "AI-Powered Candidate Matching",
+        tiers: { Starter: false, Growth: false, Enterprise: true },
+        description: "Automate your recruitment process with AI-powered tools.",
+      },
+      {
+        name: "Automated Interview Scheduling",
+        tiers: { Starter: false, Growth: false, Enterprise: true },
+        description: "Automate your interview scheduling process.",
+      },
+      {
+        name: "Automated Interview Feedback",
+        tiers: { Starter: false, Growth: false, Enterprise: true },
+        description: "Automate your interview feedback process.",
+      },
+    ],
+  },
+  {
     name: "Employee Self Service",
     features: [
       {
@@ -570,7 +595,7 @@ const sections = [
       },
       {
         name: "Email & Empcode Login",
-        tiers: { Starter: false, Growth: true, Enterprise: true },
+        tiers: { Starter: true, Growth: true, Enterprise: true },
         description: "Make login simpler and secure with OTPs.",
       },
       {
