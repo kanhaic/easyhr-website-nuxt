@@ -229,7 +229,7 @@
                 <div
                   class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
                 >
-                  <div class="p-4">
+                  <div class="p-6">
                     <div class="grid grid-cols-2 gap-x-6 gap-y-1">
                       <div
                         v-for="(item, index) in resources"
@@ -385,14 +385,6 @@
                     </transition>
                   </Popover>
 
-                  <!-- Add Features Menu -->
-                  <a
-                    href="/features"
-                    class="block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Features
-                  </a>
-
                   <Popover class="relative">
                     <PopoverButton
                       class="flex w-full items-center justify-between rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
@@ -456,6 +448,14 @@
                       </PopoverPanel>
                     </transition>
                   </Popover>
+
+                  <!-- Add Features Menu -->
+                  <a
+                    href="/features"
+                    class="block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Features
+                  </a>
 
                   <a
                     href="/pricing"
