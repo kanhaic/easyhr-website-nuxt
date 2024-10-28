@@ -13,12 +13,14 @@
               <NuxtImg
                 format="webp"
                 :src="blogPost.fields?.featuredImage?.fields?.file?.url"
-                alt="Blog Post Image"
+                :alt="blogPost.fields?.title"
                 width="1200"
                 height="630"
-                sizes="100vw"
+                sizes="sm:100vw md:100vw lg:100vw"
                 preload
                 provider="contentful"
+                class="rounded-lg"
+                quality="90"
               />
               <h1 class="text-4xl font-bold">{{ blogPost.fields?.title }}</h1>
               <p class="text-base text-gray-500">
