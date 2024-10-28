@@ -62,28 +62,89 @@
           </p>
         </div>
 
-        <div class="bg-gray-50 p-6 rounded-lg shadow-lg max-w-md mx-auto w-full border border-gray-200">
+        <div
+          class="bg-gray-50 p-6 rounded-lg shadow-lg max-w-md mx-auto w-full border border-gray-200"
+        >
           <h2 class="text-2xl font-semibold mb-6 text-center">Request Demo</h2>
           <form @submit.prevent="submitForm" class="space-y-2">
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-500">Name</label>
-              <input type="text" id="name" v-model="form.name" required class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              <label for="name" class="block text-sm font-medium text-gray-500"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                v-model="form.name"
+                autocomplete="name"
+                placeholder="Your Name"
+                required
+                class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
             </div>
             <div>
-              <label for="company" class="block text-sm font-medium text-gray-500">Company</label>
-              <input type="text" id="company" v-model="form.company" required class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              <label
+                for="company"
+                class="block text-sm font-medium text-gray-500"
+                >Company</label
+              >
+              <input
+                type="text"
+                id="company"
+                name="company"
+                autocomplete="organization"
+                placeholder="Your Company Name"
+                v-model="form.company"
+                required
+                class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
             </div>
             <div>
-              <label for="phone" class="block text-sm font-medium text-gray-500">Phone</label>
-              <input type="tel" id="phone" v-model="form.phone" required class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              <label for="phone" class="block text-sm font-medium text-gray-500"
+                >Phone</label
+              >
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                v-model="form.phone"
+                autocomplete="tel"
+                placeholder="+919876543210"
+                pattern="^\+[0-9]{1,15}$"
+                required
+                class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
+              <p class="text-sm text-gray-500">
+                Please include the country code, e.g. +919876543210
+              </p>
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium text-gray-500">Email</label>
-              <input type="email" id="email" v-model="form.email" required class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              <label for="email" class="block text-sm font-medium text-gray-500"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                v-model="form.email"
+                autocomplete="email"
+                placeholder="example@workemail.com"
+                required
+                class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
             </div>
             <div>
-              <label for="teamSize" class="block text-sm font-medium text-gray-500">Team Size</label>
-              <select id="teamSize" v-model="form.teamSize" class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              <label
+                for="empcount"
+                class="block text-sm font-medium text-gray-500"
+                >Team Size</label
+              >
+              <select
+                id="empcount"
+                name="empcount"
+                v-model="form.empcount"
+                class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              >
                 <option value="1-10">1-10</option>
                 <option value="11-50">11-50</option>
                 <option value="51-200">51-200</option>
@@ -91,8 +152,11 @@
                 <option value="500+">500+</option>
               </select>
             </div>
-            <div class="pt-4" >
-              <button type="submit" class=" w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            <div class="pt-4">
+              <button
+                type="submit"
+                class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              >
                 Submit
               </button>
             </div>
@@ -104,7 +168,6 @@
 </template>
 
 <script setup>
-
 defineProps({
   topTag: {
     type: String,
@@ -137,16 +200,25 @@ defineProps({
 });
 
 const form = ref({
-  name: '',
-  company: '',
-  phone: '',
-  email: '',
-  teamSize: '1-10'
+  name: "",
+  company: "",
+  phone: "",
+  email: "",
+  empcount: "1-10",
 });
 
-const submitForm = () => {
+const submitForm = async () => {
   // Handle form submission here
-  console.log('Form submitted:', form.value);
-  // You can add your form submission logic here, such as sending the data to an API
+  await $fetch(
+    "https://n8n.craftinghr.com/webhook/0ffe9532-7100-47b1-bdfd-3368c8899efb",
+    {
+      method: "POST",
+      body: form.value,
+    }
+  );
+
+  form.value = { name: "", company: "", email: "", phone: "", empcount: "" };
+
+  await navigateTo("/thank-you");
 };
 </script>

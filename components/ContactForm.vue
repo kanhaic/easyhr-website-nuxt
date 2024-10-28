@@ -150,5 +150,7 @@ const submitForm = async () => {
   });
   // Reset the form after submission
   form.value = { name: "", company: "", email: "", phone: "", empcount: "" };
+
+  await navigateTo("/thank-you");
 };
 </script>
