@@ -44,6 +44,9 @@
         </div>
       </div>
     </section>
+    <div class="flex justify-center">
+      <ContactForm />
+    </div>
   </div>
 </template>
 
