@@ -11,15 +11,6 @@
           height="600"
           preload
           quality="90"
-          :modifiers="{
-            format: 'webp',
-            quality: 90,
-            sizes: [
-              { width: 640 },
-              { width: 1280 },
-              { width: 1920 }
-            ]
-          }"
           class="w-full h-full object-cover"
         />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
@@ -49,10 +40,13 @@
           >
             <div class="relative w-full">
               <NuxtImg
-                provider="contentful"
                 :src="post.imageUrl"
                 :alt="post.title"
-                class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+                class="aspect-[16/9] w-full rounded-lg object-cover"
+                sizes="sm:100vw md:100vw lg:100vw"
+                width="1200"
+                height="675"
+                provider="contentful"
               />
               <div
                 class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"
@@ -216,3 +210,4 @@ useSeoMeta({
   articleModifiedTime: new Date().toISOString().split("T")[0],
 });
 </script>
+
