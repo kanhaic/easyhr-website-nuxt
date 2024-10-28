@@ -11,16 +11,7 @@
           height="600"
           preload
           quality="90"
-          :modifiers="{
-            format: 'webp',
-            quality: 90,
-            sizes: [
-              { width: 640 },
-              { width: 1280 },
-              { width: 1920 }
-            ]
-          }"
-          class="w-full h-full object-cover"
+          class="h-full w-full object-cover"
         />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
