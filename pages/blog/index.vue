@@ -1,14 +1,8 @@
 <template>
   <div>
     <!-- Hero section with background image -->
-    <div class="relative bg-gray-900 py-24 sm:py-32">
+    <div class="relative bg-gray-900 py-24 sm:py-32 bg-[url('/images/blog-bg.jpg')] bg-cover bg-center">
       <div class="absolute inset-0 overflow-hidden">
-        <NuxtImg
-          src="/images/blog-bg.jpg"
-          alt="Blog background"
-          class="w-full h-full object-cover object-center"
-          provider="ipx"
-        />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-8 ">
@@ -16,7 +10,7 @@
           <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Our Blog
           </h2>
-          <p class="mt-4 text-xl text-gray-300">
+          <p class="mt-4 text-xl text-gray-100">
             Insights, thoughts, and stories from our team
           </p>
         </div>
