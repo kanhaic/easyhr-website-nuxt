@@ -1,122 +1,51 @@
 <template>
-  <div>
-    <section
-      class="py-12 bg-gradient-to-b from-blue-50 to-white sm:py-16 lg:py-20"
-    >
-      <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-        <div class="max-w-2xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
-            HR Glossary
-          </h2>
-          <p class="mx-auto mt-5 text-base font-normal leading-7 text-gray-600">
-            HR Glossary is a collection of terms and definitions related to
-            human resources.
-          </p>
-        </div>
+  <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header Section -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+          HR Glossary
+        </h1>
+        <p class="mt-4 text-lg text-gray-500">
+          Comprehensive glossary of HR terms and definitions
+        </p>
+      </div>
 
-        <div
-          class="grid max-w-md grid-cols-1 mx-auto mt-12 gap-y-12 sm:grid-cols-2 md:grid-cols-3 gap-x-8 sm:mt-16 md:max-w-none"
-        >
-          <div
-            v-for="(resource, index) in resources"
-            :key="resource.sys.id"
-            class="flex flex-col group"
-          >
-            <div
-              :class="[
-                'flex flex-col flex-1 p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-200',
-                cardColors[index % cardColors.length],
-              ]"
-            >
-              <p class="text-2xl font-bold text-gray-900">
-                {{ resource.fields.title }}
-              </p>
-              <p class="mt-4 text-sm leading-6 text-gray-600 line-clamp-2">
-                {{ resource.fields.subtitle }}
-              </p>
-              <div class="mt-6 lg:mt-8">
-                <a
-                  :href="`/hr-glossary/${resource.fields.slug}`"
-                  class="inline-flex items-center text-xs font-bold tracking-widest text-indigo-600 uppercase group"
-                >
-                  Continue Reading
-                  <svg
-                    class="w-4 h-4 ml-2 transition-all duration-200 transform group-hover:translate-x-1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </a>
-              </div>
+      <!-- Glossary List -->
+      <div class="space-y-8">
+        <div v-for="(terms, letter) in groupedTerms" :key="letter" 
+             :class="getCardBgColor(letter)"
+             class="rounded-lg shadow-sm p-6">
+          <!-- Letter Header -->
+          <div class="flex items-center mb-6">
+            <div :class="getLetterColor(letter)" 
+                 class="h-14 w-14 rounded-lg flex items-center justify-center">
+              <span class="text-2xl font-bold text-white">{{ letter }}</span>
             </div>
           </div>
-        </div>
 
-        <!-- Updated pagination -->
-        <nav
-          class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0 mt-16"
-        >
-          <div class="-mt-px flex w-0 flex-1">
-            <a
-              :href="previousPageUrl"
-              :class="[
-                'inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                { 'opacity-50 cursor-not-allowed': isFirstPage },
-              ]"
+          <!-- Terms List -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <NuxtLink
+              v-for="term in terms"
+              :key="term.fields.slug"
+              :to="`/hr-glossary/${term.fields.slug}`"
+              class="group"
             >
-              <ArrowLongLeftIcon
-                class="mr-3 h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-              Previous
-            </a>
+              <h3 :class="getTextColor(letter)" 
+                  class="text-lg font-medium group-hover:underline">
+                {{ term.fields.title }}
+              </h3>
+            </NuxtLink>
           </div>
-          <div class="hidden md:-mt-px md:flex">
-            <span
-              class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500"
-            >
-              Page {{ currentPage }} of {{ totalPages }}
-            </span>
-          </div>
-          <div class="-mt-px flex w-0 flex-1 justify-end">
-            <a
-              :href="nextPageUrl"
-              :class="[
-                'inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                { 'opacity-50 cursor-not-allowed': isLastPage },
-              ]"
-            >
-              Next
-              <ArrowLongRightIcon
-                class="ml-3 h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-            </a>
-          </div>
-        </nav>
+        </div>
       </div>
-    </section>
-    <div>
-      <ContactForm />
     </div>
   </div>
 </template>
 
 <script setup>
-import {
-  ArrowLongLeftIcon,
-  ArrowLongRightIcon,
-} from "@heroicons/vue/24/outline";
 import * as contentful from "contentful";
-
 const config = useRuntimeConfig();
 
 const client = contentful.createClient({
@@ -124,49 +53,153 @@ const client = contentful.createClient({
   accessToken: config.public.contentful.accessToken,
 });
 
-const currentPage = ref(1);
-const pageSize = 9;
-
-const { data, error } = await useAsyncData("hr-glossary", () =>
+const { data, error } = await useAsyncData("hr-glossary-list", () =>
   client.getEntries({
     content_type: "resources",
     "fields.type": "hr-glossary",
-    limit: pageSize,
-    order: "-sys.createdAt",
-    skip: 0
+    limit: 1000,
+    order: "fields.title",
   })
 );
 
-const resources = computed(() => data.value?.items || []);
+console.log(data.value);
 
-const totalItems = computed(() => data.value?.total || 1);
-const totalPages = computed(() => Math.ceil(totalItems.value / pageSize));
+// Group terms by first letter
+const groupedTerms = computed(() => {
+  if (!data.value?.items) return {};
 
-const isFirstPage = computed(() => currentPage.value === 1);
-const isLastPage = computed(() => currentPage.value === totalPages.value);
-
-const previousPageUrl = computed(() => {
-  if (isFirstPage.value) return "#";
-  return currentPage.value === 2
-    ? "/hr-glossary"
-    : `/hr-glossary/page/${currentPage.value - 1}`;
+  return data.value.items.reduce((acc, term) => {
+    const firstLetter = term.fields.title.charAt(0).toUpperCase();
+    if (!acc[firstLetter]) {
+      acc[firstLetter] = [];
+    }
+    acc[firstLetter].push(term);
+    return acc;
+  }, {});
 });
 
-const nextPageUrl = computed(() =>
-  isLastPage.value ? "#" : `/hr-glossary/page/${currentPage.value + 1}`
-);
+console.log(groupedTerms.value);
 
-const cardColors = [
-  "bg-blue-50 hover:bg-blue-100",
-  "bg-green-50 hover:bg-green-100",
-  "bg-yellow-50 hover:bg-yellow-100",
-  "bg-pink-50 hover:bg-pink-100",
-  "bg-purple-50 hover:bg-purple-100",
-  "bg-indigo-50 hover:bg-indigo-100",
-];
-useSeoMeta({
-  // will be inferred as the lastmod value in the sitemap
-  // date in YYYY-MM-DD format
-  articleModifiedTime: new Date().toISOString().split("T")[0],
+// Color mapping for letters
+const letterColors = {
+  backgrounds: {
+    A: 'bg-blue-500',
+    B: 'bg-pink-500',
+    C: 'bg-purple-500',
+    D: 'bg-indigo-500',
+    E: 'bg-green-500',
+    F: 'bg-yellow-500',
+    G: 'bg-red-500',
+    H: 'bg-orange-500',
+    I: 'bg-teal-500',
+    J: 'bg-cyan-500',
+    K: 'bg-lime-500',
+    L: 'bg-emerald-500',
+    M: 'bg-sky-500',
+    N: 'bg-violet-500',
+    O: 'bg-fuchsia-500',
+    P: 'bg-rose-500',
+    Q: 'bg-amber-500',
+    R: 'bg-blue-600',
+    S: 'bg-pink-600',
+    T: 'bg-purple-600',
+    U: 'bg-indigo-600',
+    V: 'bg-green-600',
+    W: 'bg-yellow-600',
+    X: 'bg-red-600',
+    Y: 'bg-orange-600',
+    Z: 'bg-teal-600'
+  },
+  cardBackgrounds: {
+    A: 'bg-blue-50',
+    B: 'bg-pink-50',
+    C: 'bg-purple-50',
+    D: 'bg-indigo-50',
+    E: 'bg-green-50',
+    F: 'bg-yellow-50',
+    G: 'bg-red-50',
+    H: 'bg-orange-50',
+    I: 'bg-teal-50',
+    J: 'bg-cyan-50',
+    K: 'bg-lime-50',
+    L: 'bg-emerald-50',
+    M: 'bg-sky-50',
+    N: 'bg-violet-50',
+    O: 'bg-fuchsia-50',
+    P: 'bg-rose-50',
+    Q: 'bg-amber-50',
+    R: 'bg-blue-50',
+    S: 'bg-pink-50',
+    T: 'bg-purple-50',
+    U: 'bg-indigo-50',
+    V: 'bg-green-50',
+    W: 'bg-yellow-50',
+    X: 'bg-red-50',
+    Y: 'bg-orange-50',
+    Z: 'bg-teal-50'
+  },
+  text: {
+    A: 'text-blue-600',
+    B: 'text-pink-600',
+    C: 'text-purple-600',
+    D: 'text-indigo-600',
+    E: 'text-green-600',
+    F: 'text-yellow-600',
+    G: 'text-red-600',
+    H: 'text-orange-600',
+    I: 'text-teal-600',
+    J: 'text-cyan-600',
+    K: 'text-lime-600',
+    L: 'text-emerald-600',
+    M: 'text-sky-600',
+    N: 'text-violet-600',
+    O: 'text-fuchsia-600',
+    P: 'text-rose-600',
+    Q: 'text-amber-600',
+    R: 'text-blue-700',
+    S: 'text-pink-700',
+    T: 'text-purple-700',
+    U: 'text-indigo-700',
+    V: 'text-green-700',
+    W: 'text-yellow-700',
+    X: 'text-red-700',
+    Y: 'text-orange-700',
+    Z: 'text-teal-700'
+  }
+};
+
+// Helper functions for color classes
+const getLetterColor = (letter) => {
+  return letterColors.backgrounds[letter] || 'bg-gray-500';
+};
+
+const getCardBgColor = (letter) => {
+  return letterColors.cardBackgrounds[letter] || 'bg-gray-50';
+};
+
+const getTextColor = (letter) => {
+  return letterColors.text[letter] || 'text-gray-600';
+};
+
+// Add meta tags for SEO
+useHead({
+  title: "HR Glossary - CraftingHR",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Comprehensive glossary of HR terms and definitions. Find explanations for common HR terminology and concepts.",
+    },
+  ],
 });
 </script>
+
+<style scoped>
+.group {
+  @apply transition-all duration-200;
+}
+
+.group:hover h3 {
+  @apply underline;
+}
+</style>

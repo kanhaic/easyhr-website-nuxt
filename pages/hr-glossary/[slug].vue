@@ -60,7 +60,7 @@ const client = contentful.createClient({
   accessToken: config.public.contentful.accessToken,
 });
 
-const { data, error } = await useAsyncData("hr-glossary", () =>
+const { data, error } = await useAsyncData(`hr-glossary-${params.slug}`, () =>
   client.getEntries({
     content_type: "resources",
     "fields.type": "hr-glossary",
