@@ -14,11 +14,15 @@
           :modifiers="{
             format: 'webp',
             quality: 90,
-            sizes: [{ width: 640 }, { width: 1280 }, { width: 1920 }],
+            sizes: [
+              { width: 640 },
+              { width: 1280 },
+              { width: 1920 }
+            ]
           }"
           class="w-full h-full object-cover"
         />
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
