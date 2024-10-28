@@ -1,14 +1,26 @@
 <template>
   <div>
     <!-- Hero section with background image -->
-    <div class="relative bg-gray-900 py-24 sm:py-32 bg-[url('/images/blog-bg.jpg')] bg-cover bg-center">
+    <div class="relative bg-gray-900 py-24 sm:py-32">
       <div class="absolute inset-0 overflow-hidden">
-        <img
+        <NuxtImg
           src="/images/blog-bg.jpg"
-          alt="Blog background"
-          width="0"
-          height="0"
+          sizes="sm:100vw md:100vw lg:100vw"
+          format="webp"
+          width="1920"
+          height="600"
           preload
+          quality="90"
+          :modifiers="{
+            format: 'webp',
+            quality: 90,
+            sizes: [
+              { width: 640 },
+              { width: 1280 },
+              { width: 1920 }
+            ]
+          }"
+          class="w-full h-full object-cover"
         />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
@@ -201,3 +213,4 @@ useSeoMeta({
   articleModifiedTime: new Date().toISOString().split("T")[0],
 });
 </script>
+
