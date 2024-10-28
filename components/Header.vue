@@ -67,8 +67,8 @@
                         class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
                       >
                         <div
-                          class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
-                          :class="item.iconBgColor ?? 'bg-gray-50'"
+                          class="mt-1 flex h-12 w-12 flex-none items-center justify-center rounded-lg"
+                          :class="item.iconBgColor ?? 'bg-blue-50'"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -236,6 +236,18 @@
                         :key="index"
                         class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
                       >
+                        <div
+                          class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
+                          :class="item.iconBgColor ?? 'bg-gray-50'"
+                        >
+                          <NuxtImg
+                            :src="item.icon"
+                            :alt="`${item.name} icon`"
+                            class="w-6 h-6 object-contain"
+                            width="24"
+                            height="24"
+                          />
+                        </div>
                         <div>
                           <a
                             :href="item.href"
@@ -244,9 +256,7 @@
                             {{ item.name }}
                             <span class="absolute inset-0" />
                           </a>
-                          <p class="mt-1 text-gray-600">
-                            {{ item.description }}
-                          </p>
+                          <p class="mt-1 text-gray-600">{{ item.description }}</p>
                         </div>
                       </div>
                     </div>
@@ -363,19 +373,25 @@
                       leave-to-class="opacity-0 translate-y-1"
                     >
                       <PopoverPanel class="mt-2 space-y-2">
-                        <div>
-                          <a
-                            v-for="item in solutions"
-                            :key="item.name"
-                            :href="item.href"
-                            class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                          >
-                            {{ item.name }}
-                          </a>
-                        </div>
+                        <a
+                          v-for="item in solutions"
+                          :key="item.name"
+                          :href="item.href"
+                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {{ item.name }}
+                        </a>
                       </PopoverPanel>
                     </transition>
                   </Popover>
+
+                  <!-- Add Features Menu -->
+                  <a
+                    href="/features"
+                    class="block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Features
+                  </a>
 
                   <Popover class="relative">
                     <PopoverButton
@@ -556,57 +572,72 @@ const resources = [
   {
     name: "Blog",
     href: "/blog",
-    description:
-      "Read about the latest updates to our product. Be updated with the latest HR news.",
+    description: "Read about the latest updates to our product. Be updated with the latest HR news.",
+    icon: "/images/blog.png",
+    iconBgColor: "bg-blue-200"
   },
   {
     name: "HR Emails",
     href: "/hr-emails",
-    description:
-      "Use HR Emails to communicate important information to your employees.",
+    description: "Use HR Emails to communicate important information to your employees.",
+    icon: "/images/hr-email.png",
+    iconBgColor: "bg-green-200"
   },
   {
     name: "HR Checklist",
     href: "/hr-checklist",
     description: "Access HR Checklist to manage your HR tasks efficiently.",
+    icon: "/images/hr-checklist.png",
+    iconBgColor: "bg-purple-200"
   },
   {
     name: "Case Studies",
     href: "/case-studies",
-    description:
-      "Learn how our customers are using our products to achieve their goals",
+    description: "Learn how our customers are using our products to achieve their goals",
+    icon: "/images/case-study.png",
+    iconBgColor: "bg-orange-200"
   },
   {
     name: "HR Glossary",
     href: "/hr-glossary",
-    description:
-      "Learn and stay updated with the latest HR terms and definitions.",
+    description: "Learn and stay updated with the latest HR terms and definitions.",
+    icon: "/images/glossary.png",
+    iconBgColor: "bg-yellow-200"
   },
   {
     name: "OKRs",
     href: "/okrs",
     description: "Learn about Objectives and Key Results methodology",
+    icon: "/images/okrs.png",
+    iconBgColor: "bg-red-200"
   },
   {
     name: "Policy Templates",
     href: "/policy-templates",
-    description:
-      "Learn about HR policy templates. Access ready-to-use HR policy templates.",
+    description: "Learn about HR policy templates. Access ready-to-use HR policy templates.",
+    icon: "/images/hr-policies.png",
+    iconBgColor: "bg-blue-200"
   },
   {
     name: "Statutory Compliance",
     href: "/statutory-compliance",
     description: "Stay up-to-date with HR compliance requirements",
+    icon: "/images/compliance.png",
+    iconBgColor: "bg-green-200"
   },
   {
     name: "HR Letters",
     href: "/hr-letters",
     description: "Access templates for common HR letters and documents",
+    icon: "/images/hr-letters.png",
+    iconBgColor: "bg-blue-200"
   },
   {
     name: "Job Description",
     href: "/job-description",
     description: "Find templates and guidelines for creating job descriptions",
+    icon: "/images/job-descriptions.png",
+    iconBgColor: "bg-purple-200"
   },
 ];
 

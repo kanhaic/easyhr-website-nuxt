@@ -28,14 +28,23 @@
             :key="resource.title"
             class="flex flex-col rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
-            <div class="flex-1 bg-white p-12 flex flex-col justify-between border border-gray-200 rounded-lg">
+            <div class="flex-1 bg-white p-12 flex space-x-6 border border-gray-200 rounded-lg">
+              <!-- Icon on the left - now self-center -->
+              <div class="flex-shrink-0 self-center">
+                <NuxtImg
+                  :src="resource.icon"
+                  :alt="`${resource.title} icon`"
+                  class="w-8 h-8 object-contain"
+                  width="32"
+                  height="32"
+                />
+              </div>
+              <!-- Title, Arrow, and Description -->
               <div class="flex-1">
-                <div class="flex items-center space-x-3">
-                  <a :href="resource.link" class="flex items-center space-x-2">
+                <a :href="resource.link" class="flex items-center space-x-2">
                   <h3 class="text-xl font-semibold text-gray-900">
                     {{ resource.title }}
                   </h3>
-                  <!-- Arrow Icon -->
                   <svg
                     class="h-5 w-5 text-indigo-500"
                     fill="none"
@@ -48,9 +57,8 @@
                       stroke-width="2"
                       d="M17 8l4 4m0 0l-4 4m4-4H3"
                     />
-                    </svg>
-                  </a>
-                </div>
+                  </svg>
+                </a>
                 <p class="mt-3 text-base text-gray-500">
                   {{ resource.description }}
                 </p>
@@ -104,60 +112,70 @@ const resourceList = [
     description:
       "Read our latest blog posts to stay updated with the latest trends and insights in the HR industry.",
     link: "/blog",
+    icon: "/images/blog.png",
   },
   {
     title: "Case Studies",
     description:
       "Learn how our products are used in real-world scenarios to solve HR challenges.",
     link: "/case-studies",
+    icon: "/images/case-study.png",
   },
   {
     title: "HR Glossary",
     description:
       "A comprehensive list of HR terms and definitions to help you understand the language of HR.",
     link: "/hr-glossary",
+    icon: "/images/glossary.png",
   },
   {
     title: "HR Email Templates",
     description:
       "Download our HR email templates to help you communicate with your team effectively.",
     link: "/hr-emails",
+    icon: "/images/hr-email.png",
   },
   {
     title: "HR OKRs",
     description:
       "Download our HR OKRs to help you align your team and achieve your goals.",
     link: "/okrs",
+    icon: "/images/okrs.png",
   },
   {
     title: "HR Checklist",
     description:
       "Download our HR checklist to help you stay on top of your HR tasks.",
     link: "/hr-checklist",
+    icon: "/images/hr-checklist.png",
   },
   {
     title: "Policy Templates",
     description:
       "Download our policy templates to help you create compliant HR policies.",
     link: "/policy-templates",
+    icon: "/images/hr-policies.png",
   },
   {
     title: "Statutory Compliance",
     description:
       "Download our statutory compliance resources to help you stay compliant with HR regulations.",
     link: "/statutory-compliance",
+    icon: "/images/compliance.png",
   },
   {
     title: "Job Description",
     description:
       "Download our job description templates to help you create effective job descriptions.",
     link: "/job-description",
+    icon: "/images/job-descriptions.png",
   },
   {
     title: "HR Letters",
     description:
       "Download our HR letters to help you communicate with your team effectively.",
     link: "/hr-letters",
+    icon: "/images/hr-letters.png",
   },
 ];
 
@@ -182,3 +200,4 @@ useSeoMeta({
   articleModifiedTime: new Date().toISOString().split("T")[0],
 });
 </script>
+
