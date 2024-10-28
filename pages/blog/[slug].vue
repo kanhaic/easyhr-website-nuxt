@@ -16,6 +16,8 @@
                 alt="Blog Post Image"
                 width="1200"
                 height="630"
+                sizes="100vw"
+                preload
                 provider="contentful"
               />
               <h1 class="text-4xl font-bold">{{ blogPost.fields?.title }}</h1>
