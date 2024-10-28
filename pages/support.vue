@@ -7,7 +7,6 @@
           <NuxtImg
             src="/images/customer-support.webp"
             alt="Support Team"
-            provider="ipx"
             class="absolute inset-0 w-full h-full object-cover rounded-lg"
           />
         </div>

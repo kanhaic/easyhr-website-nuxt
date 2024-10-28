@@ -26,7 +26,6 @@
                       src="/images/logo.webp"
                       alt="Company Logo"
                       class="w-24 h-auto mb-4"
-                      provider="ipx"
                     />
                     Request Demo
                   </h4>

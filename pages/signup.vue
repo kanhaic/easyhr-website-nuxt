@@ -5,7 +5,6 @@
       <div class="pt-6">
         <a href="/">
           <NuxtImg
-            provider="ipx"
             class="h-10 w-auto"
             src="/images/logo.webp"
             alt="EasyHR Logo"
@@ -238,7 +237,6 @@
                 <NuxtImg
                   :src="logo.src"
                   :alt="logo.alt"
-                  provider="ipx"
                   class="max-h-16 w-auto"
                 />
               </div>
@@ -380,7 +378,7 @@ const handleSubmit = async () => {
 };
 
 const logos = [
-  { src: "/images/logos/1.webp", alt: "Company 1" },
+  { src: "/images/logos/9.webp", alt: "Company 9" },
   { src: "/images/logos/2.webp", alt: "Company 2" },
   { src: "/images/logos/3.webp", alt: "Company 3" },
   { src: "/images/logos/4.webp", alt: "Company 4" },
@@ -388,7 +386,7 @@ const logos = [
   { src: "/images/logos/6.webp", alt: "Company 6" },
   { src: "/images/logos/7.webp", alt: "Company 7" },
   { src: "/images/logos/8.webp", alt: "Company 8" },
-  { src: "/images/logos/9.webp", alt: "Company 9" },
+  { src: "/images/logos/1.webp", alt: "Company 1" },
   // Add more logos as needed
 ];
 </script>

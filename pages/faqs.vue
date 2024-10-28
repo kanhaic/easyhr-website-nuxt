@@ -85,6 +85,7 @@ const faqs = faqData.value?.items.map((item) => item.fields);
 const logos = faqPage.logos.map((logo) => ({
   src: logo.fields.file.url,
   alt: logo.fields.title,
+  provider: "contentful",
 }));
 
 const testimonials = {

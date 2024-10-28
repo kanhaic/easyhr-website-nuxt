@@ -29,7 +29,6 @@
             :src="addon.icon"
             :alt="addon.name"
             class="w-24 h-24 object-contain"
-            provider="ipx"
             format="webp"
           />
         </div>

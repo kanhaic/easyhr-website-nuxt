@@ -94,6 +94,7 @@ const resourcePage = data.value?.items[0].fields;
 const logos = resourcePage.logos.map((logo) => ({
   src: logo.fields.file.url,
   alt: logo.fields.title,
+  provider: "contentful",
 }));
 
 // Your existing resourceList data

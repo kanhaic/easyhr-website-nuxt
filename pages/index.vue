@@ -126,6 +126,7 @@ const testimonials = {
 const logos = landingPage.items[0].fields.logos.map((logo) => ({
   src: logo.fields.file.url,
   alt: logo.fields.title,
+  provider: "contentful",
 }));
 
 const featureSection = {

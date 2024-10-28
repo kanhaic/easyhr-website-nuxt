@@ -363,6 +363,7 @@ const pricingPage = data.value?.items[0];
 const logos = pricingPage.fields.logos.map((logo) => ({
   src: logo.fields.file.url,
   alt: logo.fields.title,
+  provider: "contentful",
 }));
 
 const tiers = [

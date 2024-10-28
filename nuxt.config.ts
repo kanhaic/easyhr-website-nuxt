@@ -77,7 +77,6 @@ export default defineNuxtConfig({
           fallback: true,
         },
       },
-      ipx: {},
     },
   },
 });

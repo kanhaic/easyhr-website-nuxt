@@ -11,7 +11,6 @@
           height="1080"
           sizes="100vw"
           preload
-          provider="ipx"
         />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>

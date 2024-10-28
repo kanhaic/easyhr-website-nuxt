@@ -126,32 +126,26 @@ const logos = [
   {
     src: "/images/logos/1.webp",
     alt: "Logo 1",
-    provider: "ipx",
   },
   {
     src: "/images/logos/2.webp",
     alt: "Logo 2",
-    provider: "ipx",
   },
   {
     src: "/images/logos/3.webp",
     alt: "Logo 3",
-    provider: "ipx",
   },
   {
     src: "/images/logos/4.webp",
     alt: "Logo 4",
-    provider: "ipx",
   },
   {
     src: "/images/logos/5.webp",
     alt: "Logo 5",
-    provider: "ipx",
   },
   {
     src: "/images/logos/6.webp",
     alt: "Logo 6",
-    provider: "ipx",
   },
 ];
 
