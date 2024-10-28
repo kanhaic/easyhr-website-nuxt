@@ -62,7 +62,7 @@ const { data, error } = await useAsyncData("hr-glossary-list", () =>
   })
 );
 
-console.log(data.value);
+// console.log(data.value);
 
 // Group terms by first letter
 const groupedTerms = computed(() => {
@@ -78,7 +78,7 @@ const groupedTerms = computed(() => {
   }, {});
 });
 
-console.log(groupedTerms.value);
+// console.log(groupedTerms.value);
 
 // Color mapping for letters
 const letterColors = {
