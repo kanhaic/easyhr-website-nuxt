@@ -1,8 +1,23 @@
 <template>
   <div>
     <!-- Hero section with background image -->
-    <div class="relative bg-gray-900 py-24 sm:py-32 bg-[url('/images/blog-bg.jpg')] bg-cover bg-center">
+    <div class="relative bg-gray-900 py-24 sm:py-32">
       <div class="absolute inset-0 overflow-hidden">
+        <NuxtImg
+          src="/images/blog-bg.jpg"
+          sizes="sm:100vw md:100vw lg:100vw"
+          format="webp"
+          width="1920"
+          height="600"
+          preload
+          quality="90"
+          :modifiers="{
+            format: 'webp',
+            quality: 90,
+            sizes: [{ width: 640 }, { width: 1280 }, { width: 1920 }],
+          }"
+          class="w-full h-full object-cover"
+        />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
       </div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -161,8 +176,7 @@ const posts = computed(() => {
         imageUrl: item.fields.author.fields.profilePicture.fields.file.url,
       },
       description:
-        item.fields.content?.content[0]?.content[0]?.value ||
-        item.fields.title,
+        item.fields.content?.content[0]?.content[0]?.value || item.fields.title,
     };
   });
 });
