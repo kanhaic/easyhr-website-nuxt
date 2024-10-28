@@ -240,7 +240,7 @@
                           class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
                           :class="item.iconBgColor ?? 'bg-gray-50'"
                         >
-                          <NuxtImg
+                          <img
                             :src="item.icon"
                             :alt="`${item.name} icon`"
                             class="w-6 h-6 object-contain"
