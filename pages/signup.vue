@@ -202,10 +202,11 @@
                 class="flex space-x-4"
               >
                 <div class="flex-shrink-0">
-                  <img
+                  <NuxtImg
                     :src="testimonial.fields.profilePicture.fields.file.url"
                     :alt="testimonial.fields.name"
                     class="h-12 w-12 rounded-full"
+                    provider="contentful"
                   />
                 </div>
                 <div>

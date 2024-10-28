@@ -1,10 +1,14 @@
 <template>
   <div class="bg-white">
     <main class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-      <div class="grid grid-cols-1 gap-y-8 sm:gap-x-3 lg:grid-cols-7 lg:gap-x-12">
+      <div
+        class="grid grid-cols-1 gap-y-8 sm:gap-x-3 lg:grid-cols-7 lg:gap-x-12"
+      >
         <!-- Main content -->
         <div class="col-span-1 sm:col-span-5 lg:col-span-4">
-          <article class="prose lg:prose-xl prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-h6:text-sm prose-p:text-base prose-a:text-blue-500 prose-a:underline prose-a:font-medium">
+          <article
+            class="prose lg:prose-xl prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-h6:text-sm prose-p:text-base prose-a:text-blue-500 prose-a:underline prose-a:font-medium"
+          >
             <div class="mb-8">
               <NuxtImg
                 format="webp"
@@ -15,7 +19,9 @@
                 provider="contentful"
               />
               <h1 class="text-4xl font-bold">{{ blogPost.fields?.title }}</h1>
-              <p class="text-base text-gray-500">{{ blogPost.fields?.description }}</p>
+              <p class="text-base text-gray-500">
+                {{ blogPost.fields?.description }}
+              </p>
             </div>
             <div
               v-html="renderedBody"
@@ -31,9 +37,13 @@
           <p class="text-xl font-bold text-gray-900">Recent Posts</p>
 
           <div class="mt-6 space-y-5">
-            <div v-for="post in recentPosts" :key="post.sys.id" class="relative overflow-hidden transition-all duration-200 bg-white border border-gray-200 rounded-lg hover:shadow-lg hover:bg-gray-50 hover:-translate-y-1">
+            <div
+              v-for="post in recentPosts"
+              :key="post.sys.id"
+              class="relative overflow-hidden transition-all duration-200 bg-white border border-gray-200 rounded-lg hover:shadow-lg hover:bg-gray-50 hover:-translate-y-1"
+            >
               <div class="p-4">
-                <div class="flex items-start lg:items-center ">
+                <div class="flex items-start lg:items-center">
                   <NuxtImg
                     class="object-cover w-20 h-20 rounded-lg shrink-0"
                     :src="post.fields.featuredImage.fields.file.url"
@@ -43,11 +53,16 @@
                     height="100"
                   />
                   <div class="ml-5">
-                    <p class="text-sm font-medium text-gray-900">{{ formatDate(post.sys.createdAt) }}</p>
+                    <p class="text-sm font-medium text-gray-900">
+                      {{ formatDate(post.sys.createdAt) }}
+                    </p>
                     <p class="text-lg leading-7 font-bold text-gray-900 mt-2.5">
-                      <NuxtLink :to="`/blog/${post.fields.slug}`"  >
+                      <NuxtLink :to="`/blog/${post.fields.slug}`">
                         {{ post.fields.title }}
-                        <span class="absolute inset-0" aria-hidden="true"></span>
+                        <span
+                          class="absolute inset-0"
+                          aria-hidden="true"
+                        ></span>
                       </NuxtLink>
                     </p>
                   </div>
@@ -58,12 +73,26 @@
 
           <!-- About the Author -->
           <div class="mt-8 bg-gray-100 p-4 rounded-lg">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">About the Author</h3>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">
+              About the Author
+            </h3>
             <div class="flex items-center">
-              <img :src="blogPost.fields?.author?.fields?.profilePicture?.fields?.file?.url" :alt="blogPost.fields?.author?.fields?.name" class="w-16 h-16 rounded-full mr-4">
+              <NuxtImg
+                provider="contentful"
+                :src="
+                  blogPost.fields?.author?.fields?.profilePicture?.fields?.file
+                    ?.url
+                "
+                :alt="blogPost.fields?.author?.fields?.name"
+                class="w-16 h-16 rounded-full mr-4"
+              />
               <div>
-                <p class="font-medium">{{ blogPost.fields?.author?.fields?.name }}</p>
-                <p class="text-sm text-gray-600">{{ blogPost.fields?.author.fields?.title }}</p>
+                <p class="font-medium">
+                  {{ blogPost.fields?.author?.fields?.name }}
+                </p>
+                <p class="text-sm text-gray-600">
+                  {{ blogPost.fields?.author.fields?.title }}
+                </p>
               </div>
             </div>
           </div>
@@ -83,7 +112,7 @@
 import * as contentful from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
-import SocialMediaLinks from '~/components/SocialMediaLinks.vue';
+import SocialMediaLinks from "~/components/SocialMediaLinks.vue";
 
 const config = useRuntimeConfig();
 const route = useRoute();
@@ -100,7 +129,7 @@ const { data, error } = await useAsyncData("blog-slug-" + slug, () =>
     content_type: "blog",
     "fields.slug": slug,
     limit: 1,
-    include: 2 // This will include linked entries up to 2 levels deep
+    include: 2, // This will include linked entries up to 2 levels deep
   })
 );
 
@@ -152,8 +181,8 @@ useHead({
 
 // Helper function to format date
 const formatDate = (dateString) => {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(dateString).toLocaleDateString('en-US', options);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Date(dateString).toLocaleDateString("en-US", options);
 };
 useSeoMeta({
   articleModifiedTime: new Date().toISOString().split("T")[0],
