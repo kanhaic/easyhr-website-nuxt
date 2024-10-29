@@ -145,6 +145,7 @@
                 v-model="form.empcount"
                 class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               >
+                <option value="" disabled>Select Team Size</option>
                 <option value="1-10">1-10</option>
                 <option value="11-50">11-50</option>
                 <option value="51-200">51-200</option>
@@ -204,7 +205,7 @@ const form = ref({
   company: "",
   phone: "",
   email: "",
-  empcount: "1-10",
+  empcount: "",
 });
 
 const submitForm = async () => {
