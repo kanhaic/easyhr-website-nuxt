@@ -97,7 +97,7 @@
               >
                 <NuxtImg
                   v-if="contentSet.image"
-                  class="h-64 w-auto"
+                  class="w-auto"
                   :src="contentSet.image"
                   :alt="contentSet.title"
                   provider="contentful"
