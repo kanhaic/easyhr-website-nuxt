@@ -62,7 +62,6 @@ export default defineNuxtConfig({
   },
   image: {
     format: ["webp"],
-    provider: process.env.NODE_ENV === "production" ? "netlify" : "ipx",
     providers: {
       contentful: {
         accessToken: process.env.NUXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
@@ -72,16 +71,6 @@ export default defineNuxtConfig({
           fallback: true,
         },
       },
-    },
-    domains: [
-      "images.ctfassets.net",
-      "localhost",
-      "www.easyhrworld.com",
-      "nuxt.easyhrworld.com",
-      "easyhr.netlify.app",
-    ],
-    alias: {
-      netlify: "https://easyhr.netlify.app",
     },
   },
 });
