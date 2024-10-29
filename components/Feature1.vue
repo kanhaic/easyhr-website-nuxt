@@ -51,7 +51,7 @@
 
           <div class="lg:col-span-3">
             <NuxtImg
-              class="w-full rounded-lg shadow-xl"
+              class="w-full rounded-lg border border-gray-100"
               :src="image.src"
               :alt="image.alt"
               loading="lazy"
