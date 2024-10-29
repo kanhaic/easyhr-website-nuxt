@@ -162,6 +162,16 @@
 
             <li>
               <a
+                href="/partners"
+                title=""
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+              >
+                Partner with us
+              </a>
+            </li>
+
+            <li>
+              <a
                 href="/faqs"
                 title="Faqs"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
