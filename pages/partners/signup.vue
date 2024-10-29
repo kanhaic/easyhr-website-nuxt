@@ -20,14 +20,15 @@
               Partner with EasyHR
             </h1>
             <p class="mt-4 text-gray-600">
-              Join our partner network and grow your business with EasyHR's comprehensive HRMS solution.
+              Join our partner network and grow your business with EasyHR's
+              comprehensive HRMS solution.
             </p>
 
             <form @submit.prevent="handleSubmit" class="mt-8 space-y-6">
               <!-- Name Fields -->
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                  <label for="firstName" class="block text-sm font-medium text-gray-700">First Name *</label>
                   <input
                     type="text"
                     id="firstName"
@@ -37,7 +38,7 @@
                   />
                 </div>
                 <div>
-                  <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                  <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name *</label>
                   <input
                     type="text"
                     id="lastName"
@@ -48,21 +49,9 @@
                 </div>
               </div>
 
-              <!-- Company Details -->
+              <!-- Email Field -->
               <div>
-                <label for="company" class="block text-sm font-medium text-gray-700">Company Name</label>
-                <input
-                  type="text"
-                  id="company"
-                  v-model="form.company"
-                  required
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
-              </div>
-
-              <!-- Contact Information -->
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Work Email</label>
+                <label for="email" class="block text-sm font-medium text-gray-700">Work Email *</label>
                 <input
                   type="email"
                   id="email"
@@ -72,8 +61,9 @@
                 />
               </div>
 
+              <!-- Phone Field -->
               <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number *</label>
                 <input
                   type="tel"
                   id="phone"
@@ -85,7 +75,7 @@
 
               <!-- Partnership Type -->
               <div>
-                <label for="partnerType" class="block text-sm font-medium text-gray-700">Partnership Type</label>
+                <label for="partnerType" class="block text-sm font-medium text-gray-700">Partnership Type *</label>
                 <select
                   id="partnerType"
                   v-model="form.partnerType"
@@ -116,54 +106,92 @@
           <div class="space-y-12">
             <!-- Partner Benefits -->
             <div>
-              <h2 class="text-xl font-semibold text-gray-900">Why Partner with Us?</h2>
+              <h2 class="text-xl font-semibold text-gray-900">
+                Why Partner with Us?
+              </h2>
               <ul class="mt-4 space-y-4">
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <svg class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    <svg
+                      class="h-6 w-6 text-indigo-600"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   </div>
-                  <p class="ml-3 text-gray-600">Attractive commission structure with recurring revenue</p>
+                  <p class="ml-3 text-gray-600">
+                    Attractive commission structure with recurring revenue
+                  </p>
                 </li>
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <svg class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    <svg
+                      class="h-6 w-6 text-indigo-600"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   </div>
-                  <p class="ml-3 text-gray-600">Comprehensive training and support</p>
+                  <p class="ml-3 text-gray-600">
+                    Comprehensive training and support
+                  </p>
                 </li>
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <svg class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    <svg
+                      class="h-6 w-6 text-indigo-600"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   </div>
-                  <p class="ml-3 text-gray-600">Access to marketing resources and sales tools</p>
+                  <p class="ml-3 text-gray-600">
+                    Access to marketing resources and sales tools
+                  </p>
                 </li>
               </ul>
             </div>
 
             <!-- Logos Grid -->
             <div class="mt-8">
-            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
+              <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
                 Trusted by leading companies
               </h3>
               <div class="grid grid-cols-3">
                 <div
-                v-for="logo in logos"
-                :key="logo.alt"
-                class="border border-gray-200 p-4 flex items-center justify-center"
-              >
-                <NuxtImg
-                  :src="logo.src"
-                  :alt="logo.alt"
-                  class="max-h-16 w-auto"
-                />
+                  v-for="logo in logos"
+                  :key="logo.alt"
+                  class="border border-gray-200 p-4 flex items-center justify-center"
+                >
+                  <NuxtImg
+                    :src="logo.src"
+                    :alt="logo.alt"
+                    class="max-h-16 w-auto"
+                  />
+                </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
@@ -177,13 +205,37 @@ definePageMeta({
 });
 
 const form = ref({
-  firstName: '',
-  lastName: '',
-  company: '',
-  email: '',
-  phone: '',
-  partnerType: ''
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  partnerType: "",
 });
+
+const handleSubmit = async () => {
+  try {
+    await $fetch(
+      "https://n8n.craftinghr.com/webhook/78f6a43d-9711-4b06-9431-eac3c7921dcf",
+      {
+        method: "POST",
+        body: form.value,
+      }
+    );
+
+    // Reset form after successful submission
+    form.value = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      partnerType: "",
+    };
+
+    await navigateTo("/partners/thank-you");
+  } catch (error) {
+    console.error('Submission error:', error);
+  }
+};
 
 const logos = [
   { src: "/images/logos/9.webp", alt: "Company 9" },
@@ -197,37 +249,18 @@ const logos = [
   { src: "/images/logos/1.webp", alt: "Company 1" },
 ];
 
-const handleSubmit = async () => {
-  try {
-    await $fetch('https://n8n.craftinghr.com/webhook/0ffe9532-7100-47b1-bdfd-3368c8899efb', {
-      method: 'POST',
-      body: form.value
-    });
-    
-    // Reset form after successful submission
-    form.value = {
-      firstName: '',
-      lastName: '',
-      company: '',
-      email: '',
-      phone: '',
-      partnerType: ''
-    };
-    
-    // You might want to add a success message or redirect here
-  } catch (error) {
-    console.error('Error submitting form:', error);
-    // Handle error appropriately
-  }
-};
-
 useHead({
-  title: 'Partner Program - EasyHR',
+  title: "Partner Program - EasyHR",
   meta: [
     {
-      name: 'description',
-      content: 'Join EasyHR\'s partner program and grow your business with the leading HR management solution.'
-    }
-  ]
+      name: "description",
+      content:
+        "Join EasyHR's partner program and grow your business with the leading HR management solution.",
+    },
+  ],
+});
+
+useSeoMeta({
+  articleModifiedTime: new Date().toISOString().split("T")[0],
 });
 </script>

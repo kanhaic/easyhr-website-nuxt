@@ -183,17 +183,12 @@
 </template>
 
 <script setup>
-const { error } = useNuxtApp();
-try {
-  const logos = [
-    { src: "/images/logos/1.webp", alt: "Company 1" },
-    { src: "/images/logos/2.webp", alt: "Company 2" },
-    { src: "/images/logos/3.webp", alt: "Company 3" },
-    { src: "/images/logos/4.webp", alt: "Company 4" },
-    { src: "/images/logos/5.webp", alt: "Company 5" },
-    { src: "/images/logos/6.webp", alt: "Company 6" },
-  ];
-} catch (err) {
-  error(err); // This will trigger the error page
-}
+const logos = [
+  { src: "/images/logos/1.webp", alt: "Company 1" },
+  { src: "/images/logos/2.webp", alt: "Company 2" },
+  { src: "/images/logos/3.webp", alt: "Company 3" },
+  { src: "/images/logos/4.webp", alt: "Company 4" },
+  { src: "/images/logos/5.webp", alt: "Company 5" },
+  { src: "/images/logos/6.webp", alt: "Company 6" },
+];
 </script>

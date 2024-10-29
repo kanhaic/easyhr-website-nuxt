@@ -75,9 +75,13 @@
               1. Sign Up
             </h3>
             <p class="text-gray-600 p-4 text-left text-lg flex-grow">
-              Complete our <a href="/partners/signup" class="text-blue-500 font-semibold">simple registration process</a> to become an official
-              referral partner. You'll receive a unique referral code and access
-              to our partner portal with marketing materials and tracking tools.
+              Complete our
+              <a href="/partners/signup" class="text-blue-500 font-semibold"
+                >simple registration process</a
+              >
+              to become an official referral partner. You'll receive a unique
+              referral code and access to our partner portal with marketing
+              materials and tracking tools.
             </p>
           </div>
         </div>
@@ -99,10 +103,10 @@
               3. Earn Rewards
             </h3>
             <p class="text-gray-600 p-4 text-left text-lg flex-grow">
-              Earn 10% commission on the monthly subscription fee for each client
-              that signs up through your referral. Get paid monthly recurring
-              commissions for as long as your referred clients remain active on
-              the platform.
+              Earn 10% commission on the monthly subscription fee for each
+              client that signs up through your referral. Get paid monthly
+              recurring commissions for as long as your referred clients remain
+              active on the platform.
             </p>
           </div>
         </div>
@@ -111,38 +115,56 @@
 
     <!-- Benefits section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h2 class="text-3xl font-bold text-center mb-12 ">Why partner with us?</h2>
+      <h2 class="text-3xl font-bold text-center mb-12">Why partner with us?</h2>
       <div class="grid gap-8 md:grid-cols-2">
         <div
           class="text-center p-6 shadow-md border border-gray-100 rounded-lg"
         >
-          <h3 class="text-xl font-semibold mb-4 text-left">Attractive Commissions</h3>
+          <h3 class="text-xl font-semibold mb-4 text-left">
+            Attractive Commissions
+          </h3>
           <p class="text-gray-600 text-left">
-            Earn competitive 10% monthly recurring commissions on all successful referrals. The more clients you refer, the more passive income you generate through our industry-leading commission structure.
+            Earn competitive 10% monthly recurring commissions on all successful
+            referrals. The more clients you refer, the more passive income you
+            generate through our industry-leading commission structure.
           </p>
         </div>
         <div
           class="text-center p-6 shadow-md border border-gray-100 rounded-lg"
         >
-          <h3 class="text-xl font-semibold mb-4 text-left">Marketing Support</h3>
+          <h3 class="text-xl font-semibold mb-4 text-left">
+            Marketing Support
+          </h3>
           <p class="text-gray-600 text-left">
-            Access our comprehensive marketing toolkit including product brochures, presentation decks, email templates, social media content, and co-branded materials. Our marketing team is here to help you succeed.
+            Access our comprehensive marketing toolkit including product
+            brochures, presentation decks, email templates, social media
+            content, and co-branded materials. Our marketing team is here to
+            help you succeed.
           </p>
         </div>
         <div
           class="text-center p-6 shadow-md border border-gray-100 rounded-lg"
         >
-          <h3 class="text-xl font-semibold mb-4 text-left">Partner Dashboard</h3>
+          <h3 class="text-xl font-semibold mb-4 text-left">
+            Partner Dashboard
+          </h3>
           <p class="text-gray-600 text-left">
-            Monitor your performance through our intuitive partner portal. Track referral status, conversion rates, commission payouts, and access detailed analytics to optimize your referral strategy.
+            Monitor your performance through our intuitive partner portal. Track
+            referral status, conversion rates, commission payouts, and access
+            detailed analytics to optimize your referral strategy.
           </p>
         </div>
         <div
           class="text-center p-6 shadow-md border border-gray-100 rounded-lg"
         >
-          <h3 class="text-xl font-semibold mb-4 text-left">Dedicated Support</h3>
+          <h3 class="text-xl font-semibold mb-4 text-left">
+            Dedicated Support
+          </h3>
           <p class="text-gray-600 text-left">
-            Get direct access to our partner success team for sales support, technical assistance and quick issue resolution. We provide comprehensive onboarding and ongoing training to help you maximize your success.
+            Get direct access to our partner success team for sales support,
+            technical assistance and quick issue resolution. We provide
+            comprehensive onboarding and ongoing training to help you maximize
+            your success.
           </p>
         </div>
       </div>
@@ -167,19 +189,12 @@
 </template>
 
 <script setup>
-const { error } = useNuxtApp()
-
-// Wrap your setup logic in try-catch
-try {
-  const logos = [
-    { src: "/images/logos/1.webp", alt: "Company 1" },
-    { src: "/images/logos/2.webp", alt: "Company 2" },
-    { src: "/images/logos/3.webp", alt: "Company 3" },
-    { src: "/images/logos/4.webp", alt: "Company 4" },
-    { src: "/images/logos/5.webp", alt: "Company 5" },
-    { src: "/images/logos/6.webp", alt: "Company 6" },
-  ];
-} catch (err) {
-  error(err) // This will trigger the error page
-}
+const logos = [
+  { src: "/images/logos/1.webp", alt: "Company 1" },
+  { src: "/images/logos/2.webp", alt: "Company 2" },
+  { src: "/images/logos/3.webp", alt: "Company 3" },
+  { src: "/images/logos/4.webp", alt: "Company 4" },
+  { src: "/images/logos/5.webp", alt: "Company 5" },
+  { src: "/images/logos/6.webp", alt: "Company 6" },
+];
 </script>
