@@ -23,6 +23,7 @@
               :title="cta1Title"
               class="inline-flex items-center justify-center px-6 py-4 font-semibold text-black transition-all duration-200 bg-indigo-300 rounded-md hover:bg-indigo-400 focus:bg-indigo-400"
               role="button"
+              v-if="cta1Link"
             >
               {{ cta1Title }}
               <svg
@@ -42,6 +43,7 @@
             </a>
 
             <a
+              v-if="cta2Link"
               :href="cta2Link"
               :title="cta2Title"
               class="inline-flex items-center justify-center px-6 py-4 font-semibold text-indigo-600 transition-all duration-200 bg-transparent border-2 border-indigo-600 rounded-md hover:bg-indigo-600 hover:text-white focus:bg-indigo-600 focus:text-white"
@@ -51,7 +53,7 @@
             </a>
           </div>
 
-          <p class="mt-5 text-gray-600">
+          <p class="mt-5 text-gray-600" v-if="showLogin">
             Already joined us?
             <a
               href="#"
@@ -71,7 +73,7 @@
             preload
             width="640"
             height="554"
-            provider="contentful"
+            :provider="heroImageProvider" || 
           />
         </div>
       </div>
@@ -80,6 +82,9 @@
 </template>
 
 <script setup lang="ts">
+const config = useRuntimeConfig();
+
+
 const props = defineProps({
   topTag: {
     type: String,
@@ -99,7 +104,6 @@ const props = defineProps({
   },
   cta1Link: {
     type: String,
-    default: "/signup?utm_source=hero&utm_medium=getting-started",
   },
   cta2Title: {
     type: String,
@@ -107,11 +111,18 @@ const props = defineProps({
   },
   cta2Link: {
     type: String,
-    default: "/signup?utm_source=hero&utm_medium=free-trial",
   },
   heroImage: {
     type: String,
     default: "/images/hero.webp",
+  },
+  heroImageProvider: {
+    type: String,
+    default: "contentful",
+  },
+  showLogin: {
+    type: Boolean,
+    default: false,
   },
 });
 
