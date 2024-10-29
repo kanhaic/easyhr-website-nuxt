@@ -1,29 +1,41 @@
 <template>
-  <section class="py-10 bg-gray-100 sm:py-16 lg:py-24">
-    <div class="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2
-          class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl"
-        >
-          {{ title }}
-        </h2>
-      </div>
-
+  <section class="py-12 bg-gray-50 sm:py-16 lg:py-20 xl:py-24">
+    <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
       <div
-        class="grid grid-cols-1 gap-8 mt-10 text-center lg:mt-24 sm:gap-x-12 "
-        :class="stats.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'"
+        class="flex flex-col max-w-6xl gap-12 mx-auto lg:items-center lg:justify-between lg:flex-row"
       >
-        <div v-for="stat in stats" :key="stat.label">
-          <h3 class="font-bold text-7xl">
-            <span
-              class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-blue-600"
-            >
-              {{ stat.value }}
-            </span>
-          </h3>
-          <p class="mt-4 text-xl font-medium text-gray-900">
-            {{ stat.label }}
+        <div class="lg:max-w-md xl:max-w-xl">
+          <h2
+            class="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl"
+          >
+            {{ title }}
+          </h2>
+          <p
+            v-if="subtitle"
+            class="mt-4 text-base font-normal leading-7 text-gray-600 lg:text-lg lg:mt-6 lg:leading-8"
+          >
+            {{ subtitle }}
           </p>
+        </div>
+
+        <div class="grid grid-cols-2">
+          <div
+            v-for="(stat, index) in stats"
+            :key="stat.label"
+            class="pt-4 pb-8 px-8 sm:px-12 sm:pb-12"
+            :class="{
+              'border-l border-gray-200': index % 2 === 1,
+              'border-t border-gray-200': index > 1,
+              'border-l border-t border-gray-200': index === 3,
+            }"
+          >
+            <p class="text-5xl font-semibold tracking-tight text-gray-900">
+              {{ stat.value }}
+            </p>
+            <h3 class="mt-3 text-base font-semibold text-blue-600">
+              {{ stat.label }}
+            </h3>
+          </div>
         </div>
       </div>
     </div>
@@ -36,16 +48,10 @@ defineProps({
     type: String,
     required: true,
   },
-  gradientBackground: {
+  subtitle: {
     type: String,
-    default: `linear-gradient(
-      90deg,
-      #44ff9a -0.55%,
-      #44b0ff 22.86%,
-      #8b44ff 48.36%,
-      #ff6644 73.33%,
-      #ebff70 99.34%
-    )`,
+    default:
+      "Explore the Numbers That Define Our Impact – From Satisfied Customers to Streamlined HR Processes, See How We Empower Businesses Globally to Achieve More with Less.",
   },
   stats: {
     type: Array,
