@@ -66,6 +66,7 @@
 
         <div>
           <NuxtImg
+            v-if="heroImageProvider"
             class="w-full rounded-lg"
             :src="heroImage"
             :alt="title"
@@ -74,6 +75,14 @@
             width="640"
             height="554"
             :provider="heroImageProvider"
+          />
+          <img
+            v-else
+            :src="heroImage"
+            :alt="title"
+            class="w-full rounded-lg"
+            width="640"
+            height="554"
           />
         </div>
       </div>

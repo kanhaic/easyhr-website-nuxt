@@ -78,6 +78,10 @@ export default defineNuxtConfig({
       "localhost",
       "www.easyhrworld.com",
       "nuxt.easyhrworld.com",
+      "easyhr.netlify.app",
     ],
+    alias: {
+      netlify: "https://easyhr.netlify.app",
+    },
   },
 });

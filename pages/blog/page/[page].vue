@@ -3,15 +3,14 @@
     <!-- Hero section with background image -->
     <div class="relative bg-gray-900 py-24 sm:py-32">
       <div class="absolute inset-0 overflow-hidden">
-        <NuxtImg
+        <img
           src="/images/blog-bg.jpg"
-          sizes="sm:100vw md:100vw lg:100vw"
-          format="webp"
           width="1920"
           height="600"
-          preload
-          quality="90"
           class="h-full w-full object-cover"
+          alt="Blog Background"
+          loading="eager"
+          fetchpriority="high"
         />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
@@ -39,14 +38,13 @@
             class="flex flex-col items-start justify-between"
           >
             <div class="relative w-full">
-              <NuxtImg
-                :src="post.imageUrl"
+              <img
+                :src="`${post.imageUrl}?w=1200&h=675&fit=fill`"
                 :alt="post.title"
                 class="aspect-[16/9] w-full rounded-lg object-cover"
-                sizes="sm:100vw md:100vw lg:100vw"
                 width="1200"
                 height="675"
-                provider="contentful"
+                loading="lazy"
               />
               <div
                 class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"
@@ -209,5 +207,17 @@ const formatDate = (dateString) => {
 useSeoMeta({
   articleModifiedTime: new Date().toISOString().split("T")[0],
 });
+
+// Add preload meta tags
+useHead({
+  link: [
+    {
+      rel: 'preload',
+      as: 'image',
+      href: '/images/blog-bg.jpg',
+      fetchpriority: 'high'
+    }
+  ]
+})
 </script>
 
