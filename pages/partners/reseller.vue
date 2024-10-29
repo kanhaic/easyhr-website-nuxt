@@ -175,7 +175,12 @@
           :key="logo.alt"
           class="flex items-center justify-center p-4"
         >
-          <NuxtImg :src="logo.src" :alt="logo.alt" class="h-24 w-auto" />
+          <NuxtImg
+            :src="logo.src"
+            :alt="logo.alt"
+            class="h-24 w-auto"
+            provider="ipx"
+          />
         </div>
       </div>
     </div>
