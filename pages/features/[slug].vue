@@ -47,7 +47,7 @@
 
       <!-- Feature Content -->
       <div class="flex-grow px-4 lg:px-0 lg:w-2/3">
-        <div class="container mx-auto px-2 py-4 max-w-4xl">
+        <div class="container mx-auto px-2 py-4 max-w-4xl prose lg:prose-xl">
           {{ feature.fields?.content }}
         </div>
         <section
@@ -69,9 +69,7 @@
                 >
                   {{ featureSet.title }}
                 </h2>
-                <p class="mt-4 text-gray-700 sm:mt-8 ">
-                  {{ featureSet.description }}
-                </p>
+                <div v-html="featureSet.description" class="prose lg:prose-xl"></div>
               </div>
 
               <div
@@ -100,7 +98,7 @@ const route = useRoute();
 const slug = route.params.slug;
 
 import * as contentful from "contentful";
-
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 const config = useRuntimeConfig();
 
 const client = contentful.createClient({
@@ -139,8 +137,9 @@ const featureSets = computed(() => {
   const sets = [];
   for (let i = 1; i <= 10; i++) {
     const title = feature.fields?.[`title${i}`];
-    const description =
-      feature.fields?.[`content${i}`]?.content[0].content[0].value;
+    const description = documentToHtmlString(
+      feature.fields?.[`content${i}`]
+    );
     const image = feature.fields?.[`image${i}`]?.fields?.file?.url;
 
     if (title || description || image) {
@@ -149,9 +148,6 @@ const featureSets = computed(() => {
   }
   return sets;
 });
-
-// Check if there are any features to display
-const hasFeatures = computed(() => featureSets.value.length > 0);
 
 useHead({
   title: feature.fields?.seoTitle,
