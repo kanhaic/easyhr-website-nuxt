@@ -181,17 +181,15 @@ const resourceList = [
 
 // Add meta tags for SEO
 useHead({
-  title: "HR Resources - CraftingHR",
+  title: resourcePage.seoTitle,
   meta: [
     {
       name: "description",
-      content:
-        "Access comprehensive HR resources, templates, and tools to streamline your HR processes and enhance workplace management.",
+      content: resourcePage.seoDescription,
     },
     {
       name: "keywords",
-      content:
-        "HR resources, templates, HR tools, HR management, workplace management, HR processes",
+      content: resourcePage.seoKeywords,
     },
   ],
 });

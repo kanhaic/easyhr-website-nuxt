@@ -258,7 +258,7 @@ const client = contentful.createClient({
   accessToken: config.public.contentful.accessToken,
 });
 
-const { data, error } = await useAsyncData("main-landing", () =>
+const { data, error } = await useAsyncData("testimonials", () =>
   client.getEntries({
     content_type: "testimonials",
     limit: 2,

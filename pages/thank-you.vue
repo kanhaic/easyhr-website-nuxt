@@ -246,26 +246,15 @@
 <script setup>
 // Add meta tags for SEO
 useHead({
-  title: "Thank You - CraftingHR",
+  title: "Thank You - EasyHR",
   meta: [
     {
       name: "description",
       content:
-        "Thank you for your interest in CraftingHR. Our team will contact you shortly to schedule your personalized demo.",
+        "Thank you for your interest in EasyHR. Our team will contact you shortly to schedule your personalized demo.",
     },
     { name: "robots", content: "noindex" }, // Prevent indexing of thank you page
   ],
 });
 
-// Optional: Add tracking or analytics code here
-onMounted(() => {
-  // Example: Track page view or conversion
-  // if (typeof window !== 'undefined' && window.gtag) {
-  //   window.gtag('event', 'conversion', {'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'});
-  // }
-});
 </script>
-
-<style scoped>
-/* Add any custom styles here */
-</style>

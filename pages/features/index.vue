@@ -31,7 +31,7 @@
         >
           <div
             v-for="feature in features"
-            class="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-200 hover:shadow-lg hover:-translate-y-1 rounded-md shadow-lg h-full px-3 py-4"
+            class="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 hover:shadow-md hover:-translate-y-1 rounded-lg shadow-md h-full px-3 py-4"
           >
             <div
               class="relative flex items-center justify-center mx-auto mb-4 h-28"

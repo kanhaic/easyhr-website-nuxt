@@ -183,7 +183,7 @@ const getTextColor = (letter) => {
 
 // Add meta tags for SEO
 useHead({
-  title: "HR Glossary - CraftingHR",
+  title: "HR Glossary - EasyHR",
   meta: [
     {
       name: "description",
