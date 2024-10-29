@@ -26,17 +26,17 @@
 
           <!-- Terms List -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <NuxtLink
+            <a
               v-for="term in terms"
               :key="term.fields.slug"
-              :to="`/hr-glossary/${term.fields.slug}`"
+              :href="`/hr-glossary/${term.fields.slug}`"
               class="group"
             >
               <h3 :class="getTextColor(letter)" 
                   class="text-lg font-medium group-hover:underline">
                 {{ term.fields.title }}
               </h3>
-            </NuxtLink>
+            </a>
           </div>
         </div>
       </div>

@@ -61,13 +61,13 @@
                       {{ formatDate(post.sys.createdAt) }}
                     </p>
                     <p class="text-lg leading-7 font-bold text-gray-900 mt-2.5">
-                      <NuxtLink :to="`/blog/${post.fields.slug}`">
+                      <a :href="`/blog/${post.fields.slug}`">
                         {{ post.fields.title }}
                         <span
                           class="absolute inset-0"
                           aria-hidden="true"
                         ></span>
-                      </NuxtLink>
+                      </a>
                     </p>
                   </div>
                 </div>

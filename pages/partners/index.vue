@@ -51,8 +51,8 @@
               influencers, and industry professionals.
             </p>
             <div class="mt-6">
-              <NuxtLink
-                to="/partner-program/referral"
+              <a
+                href="/partners/referral"
                 class="inline-flex items-center text-cyan-600 hover:text-cyan-500"
               >
                 Learn more
@@ -67,7 +67,7 @@
                     clip-rule="evenodd"
                   />
                 </svg>
-              </NuxtLink>
+              </a>
             </div>
           </div>
         </div>
@@ -96,8 +96,8 @@
               offering our comprehensive HRMS solution to your clients.
             </p>
             <div class="mt-6">
-              <NuxtLink
-                to="/partner-program/reseller"
+              <a
+                href="/partners/reseller"
                 class="inline-flex items-center text-cyan-600 hover:text-cyan-500"
               >
                 Learn more
@@ -112,7 +112,7 @@
                     clip-rule="evenodd"
                   />
                 </svg>
-              </NuxtLink>
+              </a>
             </div>
           </div>
         </div>
@@ -243,7 +243,7 @@
         </p>
         <div class="mt-8">
           <a
-            href="/partner-program"
+            href="/partners/signup"
             class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700"
           >
             Become a Partner

@@ -73,7 +73,7 @@
             preload
             width="640"
             height="554"
-            :provider="heroImageProvider" || 
+            :provider="heroImageProvider"
           />
         </div>
       </div>
