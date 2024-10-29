@@ -6,7 +6,6 @@
       hero-image="/images/referal-icon.png"
       cta1-title="Sign Up"
       cta1-link="/partners/signup"
-      hero-image-provider="ipx"
     />
 
     <!-- Benefits Overview -->

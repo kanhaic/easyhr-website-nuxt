@@ -4,7 +4,6 @@
       title="Reseller Program"
       subtitle="Partner with EasyHR to expand your portfolio and grow your business!"
       hero-image="/images/reseller-icon.png"
-      hero-image-provider="ipx"
       cta1-title="Become a Reseller"
       cta1-link="/partners/signup"
     />
