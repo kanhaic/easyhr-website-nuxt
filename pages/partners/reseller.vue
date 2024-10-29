@@ -179,7 +179,6 @@
             :src="logo.src"
             :alt="logo.alt"
             class="h-24 w-auto"
-            provider="ipx"
           />
         </div>
       </div>

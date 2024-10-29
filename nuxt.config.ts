@@ -56,18 +56,13 @@ export default defineNuxtConfig({
       },
     ],
   },
-  // ssr: true,
-  // nitro: {
-  //   preset: "static",
-  //   prerender: {
-  //     routes: ["/"], // Include your main routes here if needed
-  //   },
-  // },
+  ssr: true,
   experimental: {
     payloadExtraction: false,
   },
   image: {
     format: ["webp"],
+    provider: process.env.NODE_ENV === 'production' ? 'netlify' : 'ipx',
     providers: {
       contentful: {
         accessToken: process.env.NUXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
@@ -77,7 +72,13 @@ export default defineNuxtConfig({
           fallback: true,
         },
       },
-      ipx: {}
+      netlify: {},
     },
+    domains: [
+      "images.ctfassets.net",
+      "localhost",
+      "www.easyhrworld.com",
+      "nuxt.easyhrworld.com",
+    ],
   },
 });
