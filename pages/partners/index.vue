@@ -8,6 +8,7 @@
       :hero-image="heroSection.heroImage"
       :cta1-title="heroSection.cta1Title"
       :cta1-link="heroSection.cta1Link"
+      heroImageProvider="contentful"
     />
 
     <!-- Choose Program Section -->

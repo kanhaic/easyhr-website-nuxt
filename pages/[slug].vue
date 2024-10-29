@@ -9,6 +9,7 @@
       :cta2Title="heroSection.cta2Title"
       :cta2Link="heroSection.cta2Link"
       :heroImage="heroSection.heroImage?.fields?.file.url"
+      heroImageProvider="contentful"
     />
 
     <LogoSection :logos="logos" />
@@ -55,6 +56,7 @@
       :cta2Title="heroSection.cta2Title"
       :cta2Link="heroSection.cta2Link"
       :heroImage="heroSection.heroImage?.fields?.file.url"
+      heroImageProvider="contentful"
     />
     <LogoSection :logos="logos" />
     <Feature1
@@ -139,6 +141,7 @@
       :cta2Title="heroSection.cta2Title"
       :cta2Link="heroSection.cta2Link"
       :heroImage="heroSection.heroImage?.fields?.file.url"
+      heroImageProvider="contentful"
     />
     <LogoSection :logos="logos" />
     <Feature1

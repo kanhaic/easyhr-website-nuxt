@@ -117,7 +117,6 @@ const props = defineProps({
   },
   heroImageProvider: {
     type: String,
-    default: "contentful",
   },
   showLogin: {
     type: Boolean,
