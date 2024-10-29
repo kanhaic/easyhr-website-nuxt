@@ -8,7 +8,7 @@
       :cta1Link="heroSection.cta1Link"
       :cta2Title="heroSection.cta2Title"
       :cta2Link="heroSection.cta2Link"
-      :heroImage="heroSection.heroImage.fields.file.url"
+      :heroImage="heroSection.heroImage?.fields?.file.url"
     />
 
     <LogoSection :logos="logos" />
@@ -54,7 +54,7 @@
       :cta1Link="heroSection.cta1Link"
       :cta2Title="heroSection.cta2Title"
       :cta2Link="heroSection.cta2Link"
-      :heroImage="heroSection.heroImage.fields.file.url"
+      :heroImage="heroSection.heroImage?.fields?.file.url"
     />
     <LogoSection :logos="logos" />
     <Feature1
@@ -138,7 +138,7 @@
       :cta1Link="heroSection.cta1Link"
       :cta2Title="heroSection.cta2Title"
       :cta2Link="heroSection.cta2Link"
-      :heroImage="heroSection.heroImage.fields.file.url"
+      :heroImage="heroSection.heroImage?.fields?.file.url"
     />
     <LogoSection :logos="logos" />
     <Feature1
@@ -206,97 +206,97 @@ const landingPage = data.value || { items: [], includes: { Asset: [] } };
 
 const blogPosts = blogData.value?.items || [];
 
-const pageType = landingPage.items[0].fields.type;
+const pageType = landingPage.items[0]?.fields.type;
 
 const heroSection = {
-  topTag: landingPage.items[0].fields.topTag,
-  title: landingPage.items[0].fields.title,
-  subtitle: landingPage.items[0].fields.subtitle,
-  cta1Title: landingPage.items[0].fields.cta1Title,
-  cta1Link: landingPage.items[0].fields.cta1Link,
-  cta2Title: landingPage.items[0].fields.cta2Title,
-  cta2Link: landingPage.items[0].fields.cta2Link,
-  heroImage: landingPage.items[0].fields.heroImage,
+  topTag: landingPage.items[0]?.fields.topTag,
+  title: landingPage.items[0]?.fields.title,
+  subtitle: landingPage.items[0]?.fields.subtitle,
+  cta1Title: landingPage.items[0]?.fields.cta1Title,
+  cta1Link: landingPage.items[0]?.fields.cta1Link,
+  cta2Title: landingPage.items[0]?.fields.cta2Title,
+  cta2Link: landingPage.items[0]?.fields.cta2Link,
+  heroImage: landingPage.items[0]?.fields.heroImage,
 };
 
 const stats = {
-  title: landingPage.items[0].fields.statsTitle,
-  stats: landingPage.items[0].fields.stats.map((stat) => ({
-    value: stat.fields.value,
-    label: stat.fields.label,
+  title: landingPage.items[0]?.fields.statsTitle,
+  stats: landingPage.items[0]?.fields.stats.map((stat) => ({
+    value: stat?.fields.value,
+    label: stat?.fields.label,
   })),
 };
 
 const recentBlog = {
-  title: landingPage.items[0].fields.recentBlogTitle,
+  title: landingPage.items[0]?.fields.recentBlogTitle,
   posts: blogPosts.map((post) => ({
     id: post.sys.id,
-    href: `/blog/${post.fields.slug}`,
-    image: post.fields.featuredImage.fields.file.url,
-    title: post.fields.title,
+    href: `/blog/${post?.fields.slug}`,
+    image: post?.fields.featuredImage?.fields?.file.url,
+    title: post?.fields.title,
     date: new Date(post.sys.updatedAt).toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
     }),
-    author: post.fields.author,
+    author: post?.fields.author,
     authorHref: "#",
-    authorImage: post.fields.author.fields.profilePicture.fields.file.url,
+    authorImage: post?.fields.author?.fields?.profilePicture?.fields?.file.url,
   })),
 };
 const testimonials = {
-  topTag: landingPage.items[0].fields.testimonialTagTop,
-  title: landingPage.items[0].fields.testimonialTitle,
-  items: landingPage.items[0].fields.testimonials.map((testimonial) => ({
-    image: testimonial.fields.profilePicture.fields.file.url,
-    quote: testimonial.fields.testimonial,
-    name: testimonial.fields.name,
-    position: testimonial.fields.designation,
+  topTag: landingPage.items[0]?.fields.testimonialTagTop,
+  title: landingPage.items[0]?.fields.testimonialTitle,
+  items: landingPage.items[0]?.fields.testimonials.map((testimonial) => ({
+    image: testimonial?.fields.profilePicture?.fields?.file.url,
+    quote: testimonial?.fields.testimonial,
+    name: testimonial?.fields.name,
+    position: testimonial?.fields.designation,
   })),
 };
 
-const logos = landingPage.items[0].fields.logos.map((logo) => ({
-  src: logo.fields.file.url,
-  alt: logo.fields.title,
+const logos = landingPage.items[0]?.fields.logos.map((logo) => ({
+  src: logo?.fields.file.url,
+  alt: logo?.fields.title,
   provider: "contentful",
 }));
 
 const featureSection = {
-  topTag: landingPage.items[0].fields.featureTopTag,
-  headerFeature: landingPage.items[0].fields.featureTitle,
-  items: landingPage.items[0].fields.mainFeatures.map((feature) => ({
-    iconColor: feature.fields?.color,
-    iconPath: feature.fields?.icon,
-    title: feature.fields?.title,
-    description: feature.fields?.description,
-    slug: feature.fields?.slug,
+  topTag: landingPage.items[0]?.fields.featureTopTag,
+  headerFeature: landingPage.items[0]?.fields.featureTitle,
+  items: landingPage.items[0]?.fields.mainFeatures.map((feature) => ({
+    iconColor: feature?.fields?.color,
+    iconPath: feature?.fields?.icon,
+    title: feature?.fields?.title,
+    description: feature?.fields?.description,
+    slug: feature?.fields?.slug,
   })),
   image: {
-    src: landingPage.items[0].fields.featureImage.fields.file.url,
-    alt: landingPage.items[0].fields.featureImage.fields.title,
+    src: landingPage.items[0]?.fields.featureImage?.fields?.file.url,
+    alt: landingPage.items[0]?.fields.featureImage?.fields?.title,
   },
 };
 
 const featureList = {
-  title: landingPage.items[0].fields.featureListTitle,
-  description: landingPage.items[0].fields.featureListSubtitle,
+  title: landingPage.items[0]?.fields.featureListTitle,
+  description: landingPage.items[0]?.fields.featureListSubtitle,
   featureListItems:
-    landingPage.items[0].fields.featureList?.map((item) => ({
-      bgColor: item.fields?.bgColor,
-      iconColor: item.fields?.color,
-      iconPath: item.fields?.icon,
-      title: item.fields?.title,
-      description: item.fields?.description,
-      slug: item.fields?.slug,
+    landingPage.items[0]?.fields.featureList?.map((item) => ({
+      bgColor: item?.fields?.bgColor,
+      iconColor: item?.fields?.color,
+      iconPath: item?.fields?.icon,
+      title: item?.fields?.title,
+      description: item?.fields?.description,
+      slug: item?.fields?.slug,
     })) || [],
 };
 
-const content = landingPage.items[0].fields.content;
+const content = landingPage.items[0]?.fields.content;
 
 const customRenderer = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const { url, description } = node.data.target.fields.file;
+      const { url, description } = node.data.target?.fields?.file;
       return `<NuxtImg format="webp" src="${url}" alt="${
         description || ""
       }" class="w-full h-auto my-4" provider="contentful" />`;
@@ -309,11 +309,11 @@ const renderedBody = documentToHtmlString(content, customRenderer);
 const contentSets = computed(() => {
   const sets = [];
   for (let i = 1; i <= 10; i++) {
-    const title = landingPage.items[0].fields?.[`title${i}`];
+    const title = landingPage.items[0]?.fields?.[`title${i}`];
     const description = documentToHtmlString(
-      landingPage.items[0].fields?.[`content${i}`]
+      landingPage.items[0]?.fields?.[`content${i}`]
     );
-    const image = landingPage.items[0].fields?.[`image${i}`]?.fields?.file?.url;
+    const image = landingPage.items[0]?.fields?.[`image${i}`]?.fields?.file?.url;
 
     if (title || description || image) {
       sets.push({ title, description, image });
@@ -323,13 +323,13 @@ const contentSets = computed(() => {
 });
 
 useHead({
-  title: landingPage.items[0].fields?.seoTitle,
+  title: landingPage.items[0]?.fields?.seoTitle,
   meta: [
     {
       name: "description",
-      content: landingPage.items[0].fields?.seoDescription,
+      content: landingPage.items[0]?.fields?.seoDescription,
     },
-    { name: "keywords", content: landingPage.items[0].fields?.seoKeywords },
+    { name: "keywords", content: landingPage.items[0]?.fields?.seoKeywords },
   ],
 });
 

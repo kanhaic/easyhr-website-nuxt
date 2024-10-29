@@ -13,7 +13,7 @@
             class="mt-12 sm:mt-16 lg:grid lg:grid-cols-12 lg:gap-x-16 xl:gap-x-24"
           >
             <aside
-              class="lg:col-span-4 lg:order-last lg:self-start lg:sticky lg:top-8"
+              class="hidden lg:block lg:col-span-4 lg:order-last lg:self-start lg:sticky lg:top-8"
             >
               <div
                 class="overflow-hidden bg-gray-50 border border-gray-200 rounded-lg"
@@ -36,9 +36,21 @@
             </aside>
 
             <article
-              class="mt-12 prose lg:mt-0 lg:prose-lg lg:col-span-8 prose-blockquote:lg:text-xl prose-blockquote:lg:leading-9 prose-blockquote:not-italic prose-blockquote:border-none prose-blockquote:text-lg prose-blockquote:leading-8 prose-blockquote:p-0 prose-blockquote:lg:p-0 prose-blockquote:font-medium prose-blockquote:text-gray-900"
+              class="mt-12 prose lg:mt-0 lg:prose-xl lg:col-span-8 prose-p:my-2"
               v-html="renderedBody"
             ></article>
+
+            <div class="mt-8 lg:hidden">
+              <div class="overflow-hidden bg-gray-50 border border-gray-200 rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                  <h4 class="font-bold tracking-widest text-gray-400 uppercase pb-4">
+                    <NuxtImg src="/images/logo.webp" alt="Company Logo" class="w-24 h-auto mb-4" />
+                    Request Demo
+                  </h4>
+                  <DemoRequest />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

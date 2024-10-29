@@ -3,10 +3,10 @@
     <Hero1
       title="Referral Program"
       subtitle="Refer EasyHR to your network and earn rewards!"
-      heroImage="/images/referal-icon.png"
-      heroImageProvider="ipx"
+      hero-image="/images/referal-icon.png"
       cta1-title="Sign Up"
       cta1-link="/partners/signup"
+      hero-image-provider="ipx"
     />
 
     <!-- Benefits Overview -->
@@ -167,12 +167,19 @@
 </template>
 
 <script setup>
-const logos = [
-  { src: "/images/logos/1.webp", alt: "Company 1" },
-  { src: "/images/logos/2.webp", alt: "Company 2" },
-  { src: "/images/logos/3.webp", alt: "Company 3" },
-  { src: "/images/logos/4.webp", alt: "Company 4" },
-  { src: "/images/logos/5.webp", alt: "Company 5" },
-  { src: "/images/logos/6.webp", alt: "Company 6" },
-];
+const { error } = useNuxtApp()
+
+// Wrap your setup logic in try-catch
+try {
+  const logos = [
+    { src: "/images/logos/1.webp", alt: "Company 1" },
+    { src: "/images/logos/2.webp", alt: "Company 2" },
+    { src: "/images/logos/3.webp", alt: "Company 3" },
+    { src: "/images/logos/4.webp", alt: "Company 4" },
+    { src: "/images/logos/5.webp", alt: "Company 5" },
+    { src: "/images/logos/6.webp", alt: "Company 6" },
+  ];
+} catch (err) {
+  error(err) // This will trigger the error page
+}
 </script>

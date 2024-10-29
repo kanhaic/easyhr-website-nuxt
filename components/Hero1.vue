@@ -81,8 +81,7 @@
   </section>
 </template>
 
-<script setup lang="ts">
-const config = useRuntimeConfig();
+<script setup>
 
 
 const props = defineProps({
