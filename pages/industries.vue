@@ -26,10 +26,10 @@
           <div
             v-for="industry in industries"
             :key="industry?.fields?.menuTitle"
-            class="flex flex-col rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            class="flex flex-col rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
           >
             <div
-              class="flex-1 bg-white p-12 flex space-x-6 border border-gray-200 rounded-lg"
+              class="flex-1 bg-white p-12 flex space-x-6 border border-gray-100 rounded-lg"
             >
               <!-- Icon on the left -->
               <div class="flex-shrink-0 self-center">
@@ -122,6 +122,7 @@ const { data: industriesData } = await useAsyncData("industries", () =>
   client.getEntries({
     content_type: "landingPage",
     "fields.type": "industry",
+    order: "fields.seq",
     limit: 100,
   })
 );
