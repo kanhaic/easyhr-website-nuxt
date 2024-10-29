@@ -63,7 +63,7 @@
                 <a
                   :href="`/${menu.fields.slug}`"
                   :title="menu.fields.menuTitle"
-                  class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                  class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
                 >
                   {{ menu.fields.menuTitle }}
                 </a>
@@ -84,7 +84,7 @@
               <a
                 :href="`/${industry.fields.slug}`"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 {{ industry.fields.menuTitle }}
               </a>
@@ -104,7 +104,7 @@
               <a
                 href="/company/about"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 About us
               </a>
@@ -114,7 +114,7 @@
               <a
                 href="/pricing"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Pricing
               </a>
@@ -124,7 +124,7 @@
               <a
                 href="/features"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Features
               </a>
@@ -134,7 +134,7 @@
               <a
                 href="/industries"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Industries
               </a>
@@ -144,7 +144,7 @@
               <a
                 href="/blog"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Blog
               </a>
@@ -154,7 +154,7 @@
               <a
                 href="/resources"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Resources
               </a>
@@ -164,7 +164,7 @@
               <a
                 href="/partners"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Partner with us
               </a>
@@ -174,7 +174,7 @@
               <a
                 href="/faqs"
                 title="Faqs"
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 FAQs
               </a>
@@ -184,7 +184,7 @@
               <a
                 href="/support"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Support
               </a>
@@ -204,7 +204,7 @@
               <a
                 href="#"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Terms of Service
               </a>
@@ -214,7 +214,7 @@
               <a
                 href="#"
                 title=""
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Privacy Policy
               </a>
@@ -231,7 +231,7 @@
             <li>
               <a
                 href="tel:+917304124665"
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 +91-73041-24665
               </a>
@@ -239,7 +239,7 @@
             <li>
               <a
                 href="tel:+919930205985"
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duruation hover:translate-x-1"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 +91-99302-05985
               </a>
