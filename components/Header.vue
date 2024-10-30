@@ -36,7 +36,7 @@
         <PopoverGroup class="hidden lg:flex lg:gap-x-12">
           <Popover class="relative">
             <PopoverButton
-              class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+              class="flex items-center gap-x-1 text-base font-semibold leading-6 text-gray-900"
             >
               Products
               <ChevronDownIcon
@@ -135,7 +135,7 @@
 
           <Popover class="relative">
             <PopoverButton
-              class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+              class="flex items-center gap-x-1 text-base font-semibold leading-6 text-gray-900"
             >
               Industries
               <ChevronDownIcon
@@ -206,7 +206,7 @@
 
           <Popover class="relative">
             <PopoverButton
-              class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+              class="flex items-center gap-x-1 text-base font-semibold leading-6 text-gray-900"
             >
               Resources
               <ChevronDownIcon
@@ -274,12 +274,12 @@
 
           <a
             href="/pricing"
-            class="text-sm font-semibold leading-6 text-gray-900"
+            class="text-base font-semibold leading-6 text-gray-900"
             >Pricing</a
           >
           <Popover class="relative">
             <PopoverButton
-              class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+              class="flex items-center gap-x-1 text-base font-semibold leading-6 text-gray-900"
             >
               Company
               <ChevronDownIcon
