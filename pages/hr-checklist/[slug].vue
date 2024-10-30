@@ -56,39 +56,53 @@
       </div>
     </section>
     <!-- Related Resources List -->
-    <div class="container mx-auto px-4 py-6  border-gray-200">
+    <div class="container mx-auto px-4 py-12 bg-gray-50">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          Related Resources
-        </h2>
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-gray-900">
+            Related Resources
+          </h2>
+          <p class="mt-2 text-lg text-gray-600">
+            Explore more HR checklists and templates to streamline your processes
+          </p>
+        </div>
         
-        <ul class="space-y-3">
-          <li 
-            v-for="resource in relatedResources" 
-            :key="resource.id"
-            class="text-indigo-600 hover:text-indigo-800 transition-colors"
-          >
-            <a 
-              :href="`/hr-checklist/${resource.slug}`"
-              class="flex items-center"
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 ">
+          <ul class="space-y-4 divide-y divide-gray-100">
+            <li 
+              v-for="resource in relatedResources" 
+              :key="resource.id"
+              class="pt-4 first:pt-0"
             >
-              <svg 
-                class="w-4 h-4 mr-2 flex-shrink-0" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
+              <a 
+                :href="`/hr-checklist/${resource.slug}`"
+                class="group flex items-center hover:bg-gray-50 p-2 -m-2 rounded-lg transition-colors"
               >
-                <path 
-                  stroke-linecap="round" 
-                  stroke-linejoin="round" 
-                  stroke-width="2" 
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-              {{ resource.title }}
-            </a>
-          </li>
-        </ul>
+                <svg 
+                  class="w-5 h-5 mr-3 text-gray-400 group-hover:text-indigo-600 transition-colors" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    stroke-width="2" 
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <div>
+                  <h3 class="text-lg font-medium text-gray-900 group-hover:text-indigo-600 transition-colors">
+                    {{ resource.title }}
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500 group-hover:text-gray-600">
+                    {{ resource.description }}
+                  </p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -185,14 +199,17 @@ const { data: relatedData } = await useAsyncData(
   })
 );
 
-// Transform related resources data (simplified)
+// Transform related resources data with descriptions
 const relatedResources = computed(() => {
   if (!relatedData.value?.items) return [];
   
   return relatedData.value.items.map(item => ({
     id: item.sys.id,
     title: item.fields.title,
-    slug: item.fields.slug
+    slug: item.fields.slug,
+    description: item.fields.description || 
+                item.fields.seoDescription || 
+                'Download this HR checklist template to improve your HR processes'
   }));
 });
 </script>
