@@ -403,14 +403,34 @@
                       leave-to-class="opacity-0 translate-y-1"
                     >
                       <PopoverPanel class="mt-2 space-y-2">
-                        <a
+                        <div
                           v-for="item in solutions"
                           :key="item.name"
                           :href="item.href"
-                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          class="flex items-center gap-x-4 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >
-                          {{ item.name }}
-                        </a>
+                          <div
+                            class="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
+                            :class="item.iconBgColor"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="w-5 h-5"
+                              :class="item.iconColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                :d="item.menuIcon"
+                              />
+                            </svg>
+                          </div>
+                          <a :href="item.href">{{ item.name }}</a>
+                        </div>
                       </PopoverPanel>
                     </transition>
                   </Popover>
@@ -435,14 +455,33 @@
                       leave-to-class="opacity-0 translate-y-1"
                     >
                       <PopoverPanel class="mt-2 space-y-2">
-                        <a
+                        <div
                           v-for="item in industries"
                           :key="item.name"
-                          :href="item.href"
-                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          class="flex items-center gap-x-4 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >
-                          {{ item.name }}
-                        </a>
+                          <div
+                            class="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
+                            :class="item.iconBgColor"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="w-5 h-5"
+                              :class="item.iconColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                :d="item.menuIcon"
+                              />
+                            </svg>
+                          </div>
+                          <a :href="item.href">{{ item.name }}</a>
+                        </div>
                       </PopoverPanel>
                     </transition>
                   </Popover>
@@ -467,14 +506,33 @@
                       leave-to-class="opacity-0 translate-y-1"
                     >
                       <PopoverPanel class="mt-2 space-y-2">
-                        <a
+                        <div
                           v-for="item in resources"
                           :key="item.name"
-                          :href="item.href"
-                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          class="flex items-center gap-x-4 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >
-                          {{ item.name }}
-                        </a>
+                          <div
+                            class="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
+                            :class="item.iconBgColor"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="w-5 h-5"
+                              :class="item.iconColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                :d="item.iconPath"
+                              />
+                            </svg>
+                          </div>
+                          <a :href="item.href">{{ item.name }}</a>
+                        </div>
                       </PopoverPanel>
                     </transition>
                   </Popover>
@@ -512,14 +570,33 @@
                       leave-to-class="opacity-0 translate-y-1"
                     >
                       <PopoverPanel class="mt-2 space-y-2">
-                        <a
+                        <div
                           v-for="item in company"
                           :key="item.name"
-                          :href="item.href"
-                          class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          class="flex items-center gap-x-4 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >
-                          {{ item.name }}
-                        </a>
+                          <div
+                            class="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
+                            :class="item.iconBgColor"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="w-5 h-5"
+                              :class="item.iconColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                :d="item.iconPath"
+                              />
+                            </svg>
+                          </div>
+                          <a :href="item.href">{{ item.name }}</a>
+                        </div>
                       </PopoverPanel>
                     </transition>
                   </Popover>
