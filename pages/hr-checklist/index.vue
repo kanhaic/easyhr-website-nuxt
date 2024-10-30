@@ -24,7 +24,7 @@
           >
             <div
               :class="[
-                'flex flex-col flex-1 p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-200',
+                'flex flex-col flex-1 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200',
                 cardColors[index % cardColors.length],
               ]"
             >

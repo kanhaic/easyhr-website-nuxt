@@ -55,6 +55,43 @@
         </div>
       </div>
     </section>
+    <!-- Related Resources List -->
+    <div class="container mx-auto px-4 py-6  border-gray-200">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          Related Resources
+        </h2>
+        
+        <ul class="space-y-3">
+          <li 
+            v-for="resource in relatedResources" 
+            :key="resource.id"
+            class="text-indigo-600 hover:text-indigo-800 transition-colors"
+          >
+            <a 
+              :href="`/hr-checklist/${resource.slug}`"
+              class="flex items-center"
+            >
+              <svg 
+                class="w-4 h-4 mr-2 flex-shrink-0" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              {{ resource.title }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <div class="flex justify-center">
       <ContactForm />
     </div>
@@ -135,4 +172,34 @@ useHead({
     },
   ],
 });
+
+// Fetch related resources
+const { data: relatedData } = await useAsyncData(
+  "related-resources",
+  () => client.getEntries({
+    content_type: "resources",
+    "fields.type": "hr-checklist",
+    "sys.id[ne]": resource.sys?.id, // Exclude current resource
+    limit: 5,
+    order: "-sys.createdAt" // Get latest resources
+  })
+);
+
+// Transform related resources data (simplified)
+const relatedResources = computed(() => {
+  if (!relatedData.value?.items) return [];
+  
+  return relatedData.value.items.map(item => ({
+    id: item.sys.id,
+    title: item.fields.title,
+    slug: item.fields.slug
+  }));
+});
 </script>
+
+<style>
+/* Optional: Add hover effect for cards */
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+</style>
