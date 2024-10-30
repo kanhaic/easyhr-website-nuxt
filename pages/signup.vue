@@ -177,7 +177,7 @@
           </div>
           <p class="mt-4 text-xs text-gray-400 text-center">
             By submitting your information, you agree to EasyHR's
-            <a href="/terms" class="text-blue-700 hover:text-blue-900"
+            <a href="/terms-of-service" class="text-blue-700 hover:text-blue-900"
               >Terms of Service</a
             >
             and
