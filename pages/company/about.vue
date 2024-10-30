@@ -48,7 +48,7 @@
           >
             <li v-for="person in teamMembers" :key="person.name">
               <NuxtImg
-                class="mx-auto h-48 w-48 rounded-full border-2 border-gray-200 shadow-lg "
+                class="mx-auto h-48 w-48 rounded-full border-2 border-gray-200 shadow-lg object-cover"
                 :src="person.fields.profilePicture?.fields.file.url"
                 :alt="`${person.fields.name} profile image`"
                 provider="contentful"
