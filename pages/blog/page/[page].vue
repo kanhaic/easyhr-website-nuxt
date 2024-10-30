@@ -3,24 +3,27 @@
     <!-- Hero section with background image -->
     <div class="relative bg-gray-900 py-24 sm:py-32">
       <div class="absolute inset-0 overflow-hidden">
-        <img
-          src="/images/blog-bg.jpg"
-          width="1920"
+        <NuxtImg
+          :src="landingPage.heroImage.fields.file.url"
+          sizes="100vw sm:100vw md:100vw lg:100vw"
+          width="1920" 
           height="600"
           class="h-full w-full object-cover"
           alt="Blog Background"
-          loading="eager"
-          fetchpriority="high"
+          format="webp"
+          preload
+          provider="contentful"
+          quality="75"
         />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Our Blog
+            {{ landingPage.title }}
           </h2>
-          <p class="mt-4 text-xl text-gray-300">
-            Insights, thoughts, and stories from our team
+          <p class="mt-4 text-xl text-gray-100">
+            {{ landingPage.description }}
           </p>
         </div>
       </div>
@@ -133,6 +136,18 @@ const client = contentful.createClient({
   space: config.public.contentful.spaceId,
   accessToken: config.public.contentful.accessToken,
 });
+
+const { data: pageData, error: pageError } = await useAsyncData(
+  "page",
+  () =>
+    client.getEntries({
+      content_type: "landingPage",
+      "fields.slug": "blog",
+      limit: 1,
+    })
+);
+
+const landingPage = pageData.value?.items[0].fields;
 
 const currentPage = ref(parseInt(page) || 1);
 const pageSize = 6;

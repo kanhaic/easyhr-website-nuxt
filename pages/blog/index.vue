@@ -4,23 +4,26 @@
     <div class="relative bg-gray-900 py-24 sm:py-32">
       <div class="absolute inset-0 overflow-hidden">
         <NuxtImg
-          src="/images/blog-bg.jpg"
-          width="1920"
+          :src="landingPage.heroImage.fields.file.url"
+          sizes="100vw sm:100vw md:100vw lg:100vw"
+          width="1920" 
           height="600"
           class="h-full w-full object-cover"
           alt="Blog Background"
           format="webp"
           preload
+          provider="contentful"
+          quality="75"
         />
         <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
       </div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Our Blog
+            {{ landingPage.title }}
           </h2>
           <p class="mt-4 text-xl text-gray-100">
-            Insights, thoughts, and stories from our team
+            {{ landingPage.description }}
           </p>
         </div>
       </div>
@@ -134,6 +137,18 @@ const client = contentful.createClient({
   accessToken: config.public.contentful.accessToken,
 });
 
+const { data: pageData, error: pageError } = await useAsyncData(
+  "page",
+  () =>
+    client.getEntries({
+      content_type: "landingPage",
+      "fields.slug": "blog",
+      limit: 1,
+    })
+);
+
+const landingPage = pageData.value?.items[0].fields;
+
 const { data, error } = await useAsyncData("posts", () =>
   client.getEntries({
     content_type: "blog",
@@ -209,25 +224,15 @@ useSeoMeta({
 
 // Add preload meta tags
 useHead({
-  link: [
-    {
-      rel: "preload",
-      as: "image",
-      href: "/images/blog-bg.jpg",
-      fetchpriority: "high",
-    },
-  ],
-  title: "EasyHR Blog | HR Software Insights & Best Practices",
+  title: landingPage.seoTitle,
   meta: [
     {
       name: "description",
-      content:
-        "Stay updated with the latest HR trends, best practices, and insights from EasyHR's team of experts. Learn about HR software, employee management, payroll solutions and more.",
+      content: landingPage.seoDescription,
     },
     {
       name: "keywords",
-      content:
-        "hr blog, hr insights, hr best practices, hr software tips, employee management, payroll solutions, hr technology, easyhr blog, hr management software, hr automation",
+      content: landingPage.seoKeywords,
     },
   ],
 });
