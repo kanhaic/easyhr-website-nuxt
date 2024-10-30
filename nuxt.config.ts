@@ -19,7 +19,7 @@ export default defineNuxtConfig({
               SMEs and enterprises. It streamlines the management of HRIS
               records, leave and attendance, payroll, expenses, and travel,
               making HR operations effortless.`,
-    indexable: false,
+    indexable: true,
   },
   devtools: { enabled: true },
   app: {
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
           content: "HR software, employee management, payroll, EasyHR",
         },
         { name: "author", content: "EasyHR" },
-        { name: "robots", content: "noindex, nofollow" },
+        { name: "robots", content: "index, follow" },
         { name: "publisher", content: "EasyHR" },
       ],
     },
@@ -52,14 +52,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/main.css"],
-  modules: [
-    "@nuxt/image",
-    "@nuxt/fonts",
-    "@nuxtjs/sitemap",
-    "nuxt-gtag",
-    "nuxt-seo-utils",
-    "@nuxtjs/robots",
-  ],
+  modules: ["@nuxt/image", "@nuxt/fonts", "@nuxtjs/sitemap", "nuxt-gtag", "nuxt-seo-utils", "@nuxtjs/robots"],
   fonts: {
     preload: true,
     google: [
