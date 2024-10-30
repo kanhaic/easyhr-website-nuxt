@@ -24,6 +24,7 @@
     "contentful": "^11.1.4",
     "nuxt": "^3.13.0",
     "nuxt-gtag": "^3.0.1",
+    "nuxt-schema-org": "^3.4.1",
     "nuxt-seo-utils": "^5.0.1",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",

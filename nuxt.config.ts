@@ -52,7 +52,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/main.css"],
-  modules: ["@nuxt/image", "@nuxt/fonts", "@nuxtjs/sitemap", "nuxt-gtag", "nuxt-seo-utils", "@nuxtjs/robots"],
+  modules: ["@nuxt/image", "@nuxt/fonts", "@nuxtjs/sitemap", "nuxt-gtag", "nuxt-seo-utils", "@nuxtjs/robots", "nuxt-schema-org"],
   fonts: {
     preload: true,
     google: [
