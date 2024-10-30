@@ -2,7 +2,7 @@
   <div
     class="min-h-screen  flex flex-col justify-center py-12 sm:px-6 lg:px-8"
   >
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="sm:mx-auto sm:w-full sm:max-w-lg">
       <!-- Success Icon -->
       <div
         class="mx-auto flex items-center justify-center h-24 w-24 rounded-full bg-green-100"

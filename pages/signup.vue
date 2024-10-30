@@ -29,8 +29,7 @@
                     <label
                       for="firstName"
                       class="block text-sm font-medium text-gray-700"
-                      >First Name</label
-                    >
+                      >First Name</label>
                     <input
                       type="text"
                       id="firstName"
@@ -51,8 +50,7 @@
                     <label
                       for="lastName"
                       class="block text-sm font-medium text-gray-700"
-                      >Last Name</label
-                    >
+                      >Last Name</label>
                     <input
                       type="text"
                       id="lastName"
@@ -71,8 +69,7 @@
                   <label
                     for="email"
                     class="block text-sm font-medium text-gray-700"
-                    >Work Email</label
-                  >
+                    >Work Email</label>
                   <input
                     type="email"
                     id="email"
@@ -90,30 +87,72 @@
                   <label
                     for="phone"
                     class="block text-sm font-medium text-gray-700"
-                    >Phone Number</label
-                  >
-                  <input
-                    type="tel"
-                    id="phone"
-                    v-model="form.phone"
-                    required
-                    placeholder="+91 98765 43210"
-                    :class="{ 'border-red-500': errors.phone }"
-                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  />
-                  <p class="mt-1 text-sm text-gray-500">
-                    Format: e.g., +91 98765 43210
-                  </p>
-                  <p v-if="errors.phone" class="mt-1 text-sm text-red-600">
-                    {{ errors.phone }}
-                  </p>
+                    >Phone Number</label>
+                  <div class="mt-1 relative flex rounded-md shadow-sm border border-gray-300 focus-within:ring-1 focus-within:ring-indigo-500 focus-within:border-indigo-500">
+                    <!-- Country Code Button -->
+                    <button 
+                      type="button"
+                      @click="showCountryDropdown = !showCountryDropdown"
+                      class="flex items-center px-3 py-2 border-r border-gray-300 bg-gray-50 rounded-l-md"
+                    >
+                      <span class="mr-2">{{ selectedCountry.flag }}</span>
+                      <span class="text-gray-900">{{ selectedCountry.code }}</span>
+                    </button>
+
+                    <!-- Phone Input -->
+                    <input
+                      type="tel"
+                      id="phone"
+                      v-model="form.phone"
+                      required
+                      placeholder="98765 43210"
+                      maxlength="11"
+                      class="flex-1 block w-full px-3 py-2 focus:outline-none bg-white text-gray-900 rounded-r-md"
+                      :class="{ 'border-red-500': errors.phone }"
+                      @input="$event.target.value = $event.target.value.replace(/[^\d\s]/g, '')"
+                    />
+                  </div>
+
+                  <!-- Country Search Dropdown -->
+                  <div v-if="showCountryDropdown" class="absolute mt-1 w-72 bg-white rounded-md shadow-lg z-50">
+                    <div class="p-2 border-b">
+                      <div class="relative">
+                        <input
+                          type="text"
+                          v-model="countrySearch"
+                          placeholder="Search"
+                          class="w-full px-3 py-2 rounded-md pl-8 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                        />
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="max-h-60 overflow-auto">
+                      <div 
+                        v-for="country in filteredCountries" 
+                        :key="country.code"
+                        @click="selectCountry(country)"
+                        class="px-3 py-2 hover:bg-gray-100 cursor-pointer flex items-center"
+                      >
+                        <span class="mr-3">{{ country.flag }}</span>
+                        <span class="flex-1">{{ country.country }}</span>
+                        <span class="text-gray-500">{{ country.code }}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="mt-1 text-sm text-gray-500">Format: e.g., 98765 43210</p>
+                  <p v-if="errors.phone" class="mt-1 text-sm text-red-600">{{ errors.phone }}</p>
                 </div>
                 <div>
                   <label
                     for="company"
                     class="block text-sm font-medium text-gray-700"
-                    >Company</label
-                  >
+                    >Company</label>
                   <input
                     type="text"
                     id="company"
@@ -131,8 +170,7 @@
                   <label
                     for="empcount"
                     class="block text-sm font-medium text-gray-700"
-                    >Number of empcount</label
-                  >
+                    >Number of empcount</label>
                   <select
                     id="empcount"
                     v-model="form.empcount"
@@ -290,26 +328,238 @@ useSeoMeta({
 const form = ref({
   firstName: "",
   lastName: "",
+  name: "",
   email: "",
   phone: "",
   company: "",
   empcount: "",
+  ipAddress: "",
+  city: "",
+  state: "",
+  country: "",
+  timezone: "",
+  isp: "",
+  userAgent: "",
+  platform: "",
+  browser: "",
+  deviceType: "",
+  referrer: ""
 });
 
-const errors = ref({
-  firstName: "",
-  lastName: "",
-  email: "",
-  phone: "",
-  company: "",
-  empcount: "",
+const errors = ref({});
+
+const countries = ref([
+  // Most Common First
+  { code: '+91', country: 'India', flag: '🇮🇳' },
+  { code: '+1', country: 'United States', flag: '🇺🇸' },
+  { code: '+44', country: 'United Kingdom', flag: '🇬🇧' },
+  { code: '+86', country: 'China', flag: '🇨🇳' },
+  { code: '+81', country: 'Japan', flag: '🇯🇵' },
+  
+  // Asia & Pacific
+  { code: '+61', country: 'Australia', flag: '🇦🇺' },
+  { code: '+65', country: 'Singapore', flag: '🇸🇬' },
+  { code: '+82', country: 'South Korea', flag: '🇰🇷' },
+  { code: '+852', country: 'Hong Kong', flag: '🇭🇰' },
+  { code: '+886', country: 'Taiwan', flag: '🇹🇼' },
+  { code: '+84', country: 'Vietnam', flag: '🇻🇳' },
+  { code: '+62', country: 'Indonesia', flag: '🇮🇩' },
+  { code: '+60', country: 'Malaysia', flag: '🇲🇾' },
+  { code: '+63', country: 'Philippines', flag: '🇵🇭' },
+  { code: '+66', country: 'Thailand', flag: '🇹🇭' },
+  { code: '+855', country: 'Cambodia', flag: '🇰🇭' },
+  { code: '+856', country: 'Laos', flag: '🇱🇦' },
+  { code: '+95', country: 'Myanmar', flag: '🇲🇲' },
+  { code: '+880', country: 'Bangladesh', flag: '🇧🇩' },
+  { code: '+977', country: 'Nepal', flag: '🇳🇵' },
+  { code: '+94', country: 'Sri Lanka', flag: '🇱🇰' },
+  { code: '+92', country: 'Pakistan', flag: '🇵🇰' },
+  { code: '+93', country: 'Afghanistan', flag: '🇦🇫' },
+  { code: '+64', country: 'New Zealand', flag: '🇳🇿' },
+  { code: '+675', country: 'Papua New Guinea', flag: '🇵🇬' },
+  { code: '+679', country: 'Fiji', flag: '🇫🇯' },
+
+  // Middle East
+  { code: '+971', country: 'UAE', flag: '🇦🇪' },
+  { code: '+973', country: 'Bahrain', flag: '🇧🇭' },
+  { code: '+98', country: 'Iran', flag: '🇮🇷' },
+  { code: '+964', country: 'Iraq', flag: '🇮🇶' },
+  { code: '+962', country: 'Jordan', flag: '🇯🇴' },
+  { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
+  { code: '+961', country: 'Lebanon', flag: '🇱🇧' },
+  { code: '+968', country: 'Oman', flag: '🇴🇲' },
+  { code: '+970', country: 'Palestine', flag: '🇵🇸' },
+  { code: '+974', country: 'Qatar', flag: '🇶🇦' },
+  { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
+  { code: '+963', country: 'Syria', flag: '🇸🇾' },
+  { code: '+967', country: 'Yemen', flag: '🇾🇪' },
+
+  // Europe
+  { code: '+49', country: 'Germany', flag: '🇩🇪' },
+  { code: '+33', country: 'France', flag: '🇫🇷' },
+  { code: '+39', country: 'Italy', flag: '🇮🇹' },
+  { code: '+34', country: 'Spain', flag: '🇪🇸' },
+  { code: '+31', country: 'Netherlands', flag: '🇳🇱' },
+  { code: '+46', country: 'Sweden', flag: '🇸🇪' },
+  { code: '+47', country: 'Norway', flag: '🇳🇴' },
+  { code: '+45', country: 'Denmark', flag: '🇩🇰' },
+  { code: '+358', country: 'Finland', flag: '🇫🇮' },
+  { code: '+48', country: 'Poland', flag: '🇵🇱' },
+  { code: '+43', country: 'Austria', flag: '🇦🇹' },
+  { code: '+41', country: 'Switzerland', flag: '🇨🇭' },
+  { code: '+32', country: 'Belgium', flag: '🇧🇪' },
+  { code: '+351', country: 'Portugal', flag: '🇵🇹' },
+  { code: '+353', country: 'Ireland', flag: '🇮🇪' },
+  { code: '+30', country: 'Greece', flag: '🇬🇷' },
+  { code: '+420', country: 'Czech Republic', flag: '🇨🇿' },
+  { code: '+36', country: 'Hungary', flag: '🇭🇺' },
+  { code: '+7', country: 'Russia', flag: '🇷🇺' },
+  { code: '+380', country: 'Ukraine', flag: '🇺🇦' },
+  { code: '+40', country: 'Romania', flag: '🇷🇴' },
+  { code: '+359', country: 'Bulgaria', flag: '🇧🇬' },
+  { code: '+385', country: 'Croatia', flag: '🇭🇷' },
+  { code: '+381', country: 'Serbia', flag: '🇷🇸' },
+  { code: '+421', country: 'Slovakia', flag: '🇸🇰' },
+  { code: '+386', country: 'Slovenia', flag: '🇸🇮' },
+  { code: '+375', country: 'Belarus', flag: '🇧🇾' },
+  { code: '+372', country: 'Estonia', flag: '🇪' },
+  { code: '+371', country: 'Latvia', flag: '🇱🇻' },
+  { code: '+370', country: 'Lithuania', flag: '🇱🇹' },
+  { code: '+352', country: 'Luxembourg', flag: '🇱🇺' },
+  { code: '+356', country: 'Malta', flag: '🇲🇹' },
+  { code: '+354', country: 'Iceland', flag: '🇮🇸' },
+
+  // Africa
+  { code: '+20', country: 'Egypt', flag: '🇪🇬' },
+  { code: '+27', country: 'South Africa', flag: '🇿🇦' },
+  { code: '+234', country: 'Nigeria', flag: '🇳🇬' },
+  { code: '+254', country: 'Kenya', flag: '🇰🇪' },
+  { code: '+255', country: 'Tanzania', flag: '🇹🇿' },
+  { code: '+256', country: 'Uganda', flag: '🇺🇬' },
+  { code: '+251', country: 'Ethiopia', flag: '🇪🇹' },
+  { code: '+212', country: 'Morocco', flag: '🇲🇦' },
+  { code: '+213', country: 'Algeria', flag: '🇩🇿' },
+  { code: '+216', country: 'Tunisia', flag: '🇹🇳' },
+  { code: '+218', country: 'Libya', flag: '🇱🇾' },
+  { code: '+220', country: 'Gambia', flag: '🇬🇲' },
+  { code: '+221', country: 'Senegal', flag: '🇸🇳' },
+  { code: '+233', country: 'Ghana', flag: '🇬🇭' },
+  { code: '+237', country: 'Cameroon', flag: '🇨🇲' },
+  { code: '+244', country: 'Angola', flag: '🇦🇴' },
+  { code: '+250', country: 'Rwanda', flag: '🇷🇼' },
+  { code: '+258', country: 'Mozambique', flag: '🇲🇿' },
+  { code: '+260', country: 'Zambia', flag: '🇿🇲' },
+  { code: '+263', country: 'Zimbabwe', flag: '🇿🇼' },
+  { code: '+264', country: 'Namibia', flag: '🇳🇦' },
+  { code: '+265', country: 'Malawi', flag: '🇲🇼' },
+  { code: '+267', country: 'Botswana', flag: '🇧🇼' },
+  { code: '+268', country: 'Eswatini', flag: '🇸🇿' },
+
+  // Americas
+  { code: '+1', country: 'Canada', flag: '🇨🇦' },
+  { code: '+52', country: 'Mexico', flag: '🇲🇽' },
+  { code: '+55', country: 'Brazil', flag: '🇧🇷' },
+  { code: '+54', country: 'Argentina', flag: '🇦🇷' },
+  { code: '+56', country: 'Chile', flag: '🇨🇱' },
+  { code: '+57', country: 'Colombia', flag: '🇨🇴' },
+  { code: '+51', country: 'Peru', flag: '🇵🇪' },
+  { code: '+58', country: 'Venezuela', flag: '🇻🇪' },
+  { code: '+591', country: 'Bolivia', flag: '🇧🇴' },
+  { code: '+593', country: 'Ecuador', flag: '🇪🇨' },
+  { code: '+595', country: 'Paraguay', flag: '🇵🇾' },
+  { code: '+598', country: 'Uruguay', flag: '🇺🇾' },
+  { code: '+502', country: 'Guatemala', flag: '🇬🇹' },
+  { code: '+503', country: 'El Salvador', flag: '🇸🇻' },
+  { code: '+504', country: 'Honduras', flag: '🇭🇳' },
+  { code: '+505', country: 'Nicaragua', flag: '🇳🇮' },
+  { code: '+506', country: 'Costa Rica', flag: '🇨🇷' },
+  { code: '+507', country: 'Panama', flag: '🇵🇦' },
+  { code: '+1', country: 'Jamaica', flag: '🇯🇲' },
+  { code: '+1', country: 'Trinidad and Tobago', flag: '🇹🇹' },
+  { code: '+1', country: 'Dominican Republic', flag: '🇩🇴' },
+  { code: '+53', country: 'Cuba', flag: '🇨🇺' }
+]);
+
+const countrySearch = ref('');
+const showCountryDropdown = ref(false);
+const selectedCountry = ref({
+  code: '+91',  // Default to India initially
+  country: 'India',
+  flag: '🇮🇳'
 });
 
+const getUserCountry = async () => {
+  try {
+    const response = await fetch('https://ipapi.co/json/');
+    const data = await response.json();
+    
+    // Get the country calling code from the API response
+    const countryCode = `+${data.country_calling_code.replace('+', '')}`;
+    
+    // Find the matching country in our list
+    const country = countries.value.find(c => c.code === countryCode);
+    if (country) {
+      selectedCountry.value = country;
+      form.value.countryCode = country.code;
+    }
+  } catch (error) {
+    console.error('Error fetching location:', error);
+    // Fallback to India if location detection fails
+    const defaultCountry = countries.value.find(c => c.code === '+91');
+    selectedCountry.value = defaultCountry;
+    form.value.countryCode = '+91';
+  }
+};
+
+onMounted(async () => {
+  // Add click outside handler
+  document.addEventListener('click', (e) => {
+    const dropdown = document.querySelector('.country-dropdown');
+    const button = e.target.closest('button');
+    if (!button && dropdown && !dropdown.contains(e.target)) {
+      showCountryDropdown.value = false;
+    }
+  });
+
+  // Get user's country
+  await getUserCountry();
+});
+
+// Phone validation utility function
+const isValidPhoneNumber = (phone) => {
+  // Remove all non-digit characters
+  const cleanPhone = phone.replace(/\D/g, '');
+  
+  // Basic validation rules
+  const isValidLength = cleanPhone.length === 10;
+  const hasValidStart = /^[6-9]/.test(cleanPhone); // Indian numbers start with 6-9
+  const isNotRepeating = !/^(\d)\1+$/.test(cleanPhone); // Prevent 1111111111
+  const isNotSequential = !/^(0123456789|1234567890|9876543210)$/.test(cleanPhone); // Prevent sequential numbers
+  
+  if (!isValidLength) return { isValid: false, error: "Phone number must be 10 digits" };
+  if (!hasValidStart) return { isValid: false, error: "Phone number must start with 6, 7, 8, or 9" };
+  if (!isNotRepeating) return { isValid: false, error: "Invalid phone number (repeating digits)" };
+  if (!isNotSequential) return { isValid: false, error: "Invalid phone number (sequential digits)" };
+  
+  return { isValid: true, error: null };
+};
+
+// Validation function
 const validateForm = () => {
   let isValid = true;
+  errors.value = {}; // Reset errors
 
-  // Reset errors
-  Object.keys(errors).forEach((key) => (errors[key] = ""));
+  // Phone validation
+  if (!form.value.phone) {
+    errors.value.phone = "Phone number is required";
+    isValid = false;
+  } else {
+    const validation = isValidPhoneNumber(form.value.phone);
+    if (!validation.isValid) {
+      errors.value.phone = validation.error;
+      isValid = false;
+    }
+  }
 
   if (!form.value.firstName.trim()) {
     errors.value.firstName = "First name is required";
@@ -329,12 +579,8 @@ const validateForm = () => {
     isValid = false;
   }
 
-  if (!form.value.phone.trim()) {
-    errors.value.phone = "Phone number is required";
-    isValid = false;
-  } else if (!/^\+\d{1,4}\s?\d{6,14}$/.test(form.value.phone)) {
-    errors.value.phone =
-      "Invalid phone number format. Please use +[country code] [number]";
+  if (!form.value.countryCode) {
+    errors.value.countryCode = "Country code is required";
     isValid = false;
   }
 
@@ -353,27 +599,41 @@ const validateForm = () => {
 
 const handleSubmit = async () => {
   if (validateForm()) {
-    // Form is valid, proceed with submission
-
-    form.value.name = `${form.value.firstName} ${form.value.lastName}`;
-
-    // Here you would typically send the form data to your backend
-    await $fetch(
-      "https://n8n.craftinghr.com/webhook/0ffe9532-7100-47b1-bdfd-3368c8899efb",
-      {
-        method: "POST",
-        body: form.value,
-      }
-    );
-    // Reset the form after submission
-    form.value = {
-      firstName: "",
-      lastName: "",
-      company: "",
-      email: "",
-      phone: "",
-      empcount: "",
+    // Combine selected country code with phone number for display/processing
+    const fullPhoneNumber = `${selectedCountry.value.code}${form.value.phone}`;
+    
+    // Create submission data with all fields
+    const submissionData = {
+      ...form.value,
+      fullPhoneNumber, // Add the combined phone number
+      submittedAt: new Date().toISOString(),
+      utmSource: getUtmParams().source,
+      utmMedium: getUtmParams().medium,
+      utmCampaign: getUtmParams().campaign
     };
+
+    try {
+      await $fetch(
+        "https://n8n.craftinghr.com/webhook/0b8e46e4-851b-4ec0-889f-071d411fd8c1",
+        {
+          method: "POST",
+          body: submissionData,
+        }
+      );
+
+      // Reset only the visible form fields
+      form.value.firstName = "";
+      form.value.lastName = "";
+      form.value.email = "";
+      form.value.phone = "";
+      form.value.company = "";
+      form.value.empcount = "";
+      
+      await navigateTo('/thank-you');
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   }
 };
 
@@ -389,4 +649,150 @@ const logos = [
   { src: "/images/logos/1.webp", alt: "Company 1" },
   // Add more logos as needed
 ];
+
+const filteredCountries = computed(() => {
+  const search = countrySearch.value.toLowerCase();
+  return countries.value.filter(country => 
+    country.country.toLowerCase().includes(search) ||
+    country.code.includes(search)
+  );
+});
+
+const selectCountry = (country) => {
+  selectedCountry.value = country;
+  form.value.countryCode = country.code;
+  showCountryDropdown.value = false;
+  countrySearch.value = '';
+};
+
+// Function to get detailed user information
+const getUserInfo = async () => {
+  try {
+    // Get IP-based information
+    const response = await fetch('https://ipapi.co/json/');
+    const data = await response.json();
+
+    // Update form with location data
+    form.value.ipAddress = data.ip;
+    form.value.city = data.city;
+    form.value.state = data.region;
+    form.value.country = data.country_name;
+    form.value.timezone = data.timezone;
+    form.value.isp = data.org;
+
+    // Get browser information
+    const userAgent = navigator.userAgent;
+    const platform = navigator.userAgentData?.platform || 'Unknown';
+    const browserInfo = getBrowserInfo(userAgent);
+
+    // Update form with browser/device data
+    form.value.userAgent = userAgent;
+    form.value.platform = platform;
+    form.value.browser = browserInfo.browser;
+    form.value.deviceType = getDeviceType();
+    form.value.referrer = document.referrer || 'Direct';
+
+  } catch (error) {
+    console.error('Error fetching user info:', error);
+  }
+};
+
+// Helper function to get browser information
+const getBrowserInfo = (userAgent) => {
+  const browsers = {
+    chrome: /chrome/i,
+    safari: /safari/i,
+    firefox: /firefox/i,
+    opera: /opera/i,
+    edge: /edge/i,
+    ie: /msie|trident/i
+  };
+
+  for (const [browser, regex] of Object.entries(browsers)) {
+    if (regex.test(userAgent)) {
+      return { browser };
+    }
+  }
+  return { browser: 'Unknown' };
+};
+
+// Helper function to get device type
+const getDeviceType = () => {
+  const ua = navigator.userAgent;
+  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+    return 'Tablet';
+  }
+  if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
+    return 'Mobile';
+  }
+  return 'Desktop';
+};
+
+// Call getUserInfo when component mounts
+onMounted(async () => {
+  await getUserInfo();
+});
+
+// Helper function to get UTM parameters
+const getUtmParams = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return {
+    source: urlParams.get('utm_source') || '',
+    medium: urlParams.get('utm_medium') || '',
+    campaign: urlParams.get('utm_campaign') || ''
+  };
+};
+
+// Watch for phone changes
+watch(() => form.value.phone, (newVal) => {
+  if (newVal) {
+    // Remove any non-digit characters
+    let cleaned = newVal.replace(/\D/g, '');
+    
+    // Limit to 10 digits
+    cleaned = cleaned.slice(0, 10);
+    
+    // Format as: 98765 43210
+    if (cleaned.length > 5) {
+      cleaned = cleaned.slice(0, 5) + ' ' + cleaned.slice(5);
+    }
+    
+    // Update the form value if it's different
+    if (cleaned !== newVal) {
+      form.value.phone = cleaned;
+    }
+  }
+});
+
+watch(
+  [() => form.value.firstName, () => form.value.lastName],
+  ([newFirstName, newLastName]) => {
+    // Trim whitespace and concatenate names
+    const first = (newFirstName || '').trim();
+    const last = (newLastName || '').trim();
+    
+    // Update the name field, adding space only if both parts exist
+    form.value.name = [first, last].filter(Boolean).join(' ');
+  }
+);
 </script>
+
+<style scoped>
+.country-dropdown {
+  scrollbar-width: thin;
+  scrollbar-color: #4f46e5 #f3f4f6;
+}
+
+.country-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.country-dropdown::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.country-dropdown::-webkit-scrollbar-thumb {
+  background-color: #4f46e5;
+  border-radius: 3px;
+}
+</style>
