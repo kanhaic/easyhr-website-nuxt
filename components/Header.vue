@@ -581,7 +581,7 @@ const resources = [
     name: "Blog",
     href: "/blog",
     description: "Read about the latest updates to our product. Be updated with the latest HR news.",
-    iconBgColor: "bg-blue-50",
+    iconBgColor: "bg-blue-100",
     iconColor: "text-blue-600",
     iconPath: "M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
   },
@@ -589,7 +589,7 @@ const resources = [
     name: "HR Emails",
     href: "/hr-emails",
     description: "Use HR Emails to communicate important information to your employees.",
-    iconBgColor: "bg-green-50",
+    iconBgColor: "bg-green-100",
     iconColor: "text-green-600",
     iconPath: "M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
   },
@@ -597,7 +597,7 @@ const resources = [
     name: "HR Checklist",
     href: "/hr-checklist",
     description: "Access HR Checklist to manage your HR tasks efficiently.",
-    iconBgColor: "bg-purple-50",
+    iconBgColor: "bg-purple-100",
     iconColor: "text-purple-600",
     iconPath: "M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
   },
@@ -605,7 +605,7 @@ const resources = [
     name: "Case Studies",
     href: "/case-studies",
     description: "Learn how our customers are using our products to achieve their goals",
-    iconBgColor: "bg-orange-50",
+    iconBgColor: "bg-orange-100",
     iconColor: "text-orange-600",
     iconPath: "M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75a2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"
   },
@@ -613,7 +613,7 @@ const resources = [
     name: "HR Glossary",
     href: "/hr-glossary",
     description: "Learn and stay updated with the latest HR terms and definitions.",
-    iconBgColor: "bg-yellow-50",
+    iconBgColor: "bg-yellow-100",
     iconColor: "text-yellow-600",
     iconPath: "M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
   },
@@ -621,7 +621,7 @@ const resources = [
     name: "OKRs",
     href: "/okrs",
     description: "Learn about Objectives and Key Results methodology",
-    iconBgColor: "bg-pink-50",
+    iconBgColor: "bg-pink-100",
     iconColor: "text-pink-600",
     iconPath: "M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605"
   },
@@ -629,7 +629,7 @@ const resources = [
     name: "Policy Templates",
     href: "/policy-templates",
     description: "Learn about HR policy templates. Access ready-to-use HR policy templates.",
-    iconBgColor: "bg-teal-50",
+    iconBgColor: "bg-teal-100",
     iconColor: "text-teal-600",
     iconPath: "M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
   },
@@ -637,7 +637,7 @@ const resources = [
     name: "Statutory Compliance",
     href: "/statutory-compliance",
     description: "Stay up-to-date with HR compliance requirements",
-    iconBgColor: "bg-orange-50",
+    iconBgColor: "bg-orange-100",
     iconColor: "text-orange-600",
     iconPath: "M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
   },
@@ -645,7 +645,7 @@ const resources = [
     name: "HR Letters",
     href: "/hr-letters",
     description: "Access templates for common HR letters and documents",
-    iconBgColor: "bg-red-50",
+    iconBgColor: "bg-red-100",
     iconColor: "text-red-600",
     iconPath: "M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z"
   },
@@ -653,7 +653,7 @@ const resources = [
     name: "Job Description",
     href: "/job-description",
     description: "Find templates and guidelines for creating job descriptions",
-    iconBgColor: "bg-indigo-50",
+    iconBgColor: "bg-indigo-100",
     iconColor: "text-indigo-600",
     iconPath: "M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"
   }
