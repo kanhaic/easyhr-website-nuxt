@@ -11,20 +11,21 @@
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.6.10",
+    "@headlessui/vue": "^1.7.23",
+    "@heroicons/vue": "^2.1.5",
     "@nuxt/fonts": "^0.10.0",
     "@nuxt/image": "^1.8.1",
     "@nuxtjs/sitemap": "^6.1.2",
-    "contentful": "^11.1.4",
-    "nuxt": "^3.13.0",
-    "vue": "latest",
-    "vue-router": "latest",
-    "@headlessui/vue": "^1.7.23",
-    "@heroicons/vue": "^2.1.5",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.20",
+    "contentful": "^11.1.4",
+    "nuxt": "^3.13.0",
+    "nuxt-gtag": "^3.0.1",
     "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^3.4.14",
+    "vue": "latest",
+    "vue-router": "latest"
   }
 }

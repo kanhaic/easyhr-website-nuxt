@@ -46,7 +46,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/main.css"],
-  modules: ["@nuxt/image", "@nuxt/fonts", "@nuxtjs/sitemap"],
+  modules: ["@nuxt/image", "@nuxt/fonts", "@nuxtjs/sitemap", "nuxt-gtag"],
   fonts: {
     preload: true,
     google: [
@@ -72,5 +72,9 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  gtag: {
+    enabled: false,
+    id: "G-RKFHSKFF92",
   },
 });
