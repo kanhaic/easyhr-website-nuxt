@@ -17,7 +17,7 @@
                 alt="EasyHR Logo"
               />
             </a>
-            <p class="mt-6 text-sm font-normal text-gray-400">
+            <p class="mt-6 text-sm font-normal text-gray-200">
               EasyHR is a user-friendly and intuitive HR software designed for
               SMEs and enterprises. It streamlines the management of HRIS
               records, leave and attendance, payroll, expenses, and travel,
@@ -30,7 +30,7 @@
             >
               Cities
             </h6>
-            <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-400">
+            <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-50">
               <li v-for="city in cities" :key="city">
                 <a :href="`/${city.fields.slug}`" class="hover:text-white">{{ city.fields.menuTitle }}</a>
               </li>
@@ -42,7 +42,7 @@
             >
               Countries
             </h6>
-            <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-400">
+            <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-50">
               <li v-for="country in countries" :key="country">
                 <a :href="`/${country.fields.slug}`" class="hover:text-white" >{{ country.fields.menuTitle }}</a>
               </li>
@@ -251,7 +251,7 @@
       <hr class="mt-12 border-gray-900 lg:mt-20 xl:mt-24 sm:mt-16" />
 
       <p class="mt-8 text-sm font-normal text-center text-gray-400">
-        © 2024, All Rights Reserved by CraftingHR Software Solutions LLP
+        © {{ new Date().getFullYear() }}, All Rights Reserved by <a href="https://craftinghr.com" class="hover:text-white">CraftingHR Software Solutions LLP</a>
       </p>
     </div>
   </footer>
