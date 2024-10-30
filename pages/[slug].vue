@@ -8,7 +8,7 @@
       :cta1Link="heroSection.cta1Link"
       :cta2Title="heroSection.cta2Title"
       :cta2Link="heroSection.cta2Link"
-      :heroImage="heroSection.heroImage?.fields?.file.url"
+      :heroImage="heroSection.heroImage"
       heroImageProvider="contentful"
     />
 
@@ -55,7 +55,7 @@
       :cta1Link="heroSection.cta1Link"
       :cta2Title="heroSection.cta2Title"
       :cta2Link="heroSection.cta2Link"
-      :heroImage="heroSection.heroImage?.fields?.file.url"
+      :heroImage="heroSection.heroImage"
       heroImageProvider="contentful"
     />
     <LogoSection :logos="logos" />
@@ -140,7 +140,7 @@
       :cta1Link="heroSection.cta1Link"
       :cta2Title="heroSection.cta2Title"
       :cta2Link="heroSection.cta2Link"
-      :heroImage="heroSection.heroImage?.fields?.file.url"
+      :heroImage="heroSection.heroImage"
       heroImageProvider="contentful"
     />
     <LogoSection :logos="logos" />
@@ -215,11 +215,11 @@ const heroSection = {
   topTag: landingPage.items[0]?.fields.topTag,
   title: landingPage.items[0]?.fields.title,
   subtitle: landingPage.items[0]?.fields.subtitle,
-  cta1Title: landingPage.items[0]?.fields.cta1Title,
-  cta1Link: landingPage.items[0]?.fields.cta1Link,
-  cta2Title: landingPage.items[0]?.fields.cta2Title,
-  cta2Link: landingPage.items[0]?.fields.cta2Link,
-  heroImage: landingPage.items[0]?.fields.heroImage,
+  cta1Title: landingPage.items[0]?.fields.cta1Label,
+  cta1Link: landingPage.items[0]?.fields.cta1Url,
+  cta2Title: landingPage.items[0]?.fields.cta2Label,
+  cta2Link: landingPage.items[0]?.fields.cta2Url,
+  heroImage: landingPage.items[0]?.fields.heroImage.fields.file.url,
 };
 
 const stats = {
