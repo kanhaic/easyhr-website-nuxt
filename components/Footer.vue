@@ -163,7 +163,7 @@
             <li>
               <a
                 href="/company/about"
-                title=""
+                title="About us"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 About us
@@ -173,7 +173,7 @@
             <li>
               <a
                 href="/pricing"
-                title=""
+                title="Pricing"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Pricing
@@ -183,7 +183,7 @@
             <li>
               <a
                 href="/features"
-                title=""
+                title="Features"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Features
@@ -193,7 +193,7 @@
             <li>
               <a
                 href="/industries"
-                title=""
+                title="Industries"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Industries
@@ -203,7 +203,7 @@
             <li>
               <a
                 href="/blog"
-                title=""
+                title="Blog"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Blog
@@ -213,7 +213,7 @@
             <li>
               <a
                 href="/resources"
-                title=""
+                title="Resources"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Resources
@@ -223,7 +223,7 @@
             <li>
               <a
                 href="/partners"
-                title=""
+                title="Partner with us"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Partner with us
@@ -243,7 +243,7 @@
             <li>
               <a
                 href="/support"
-                title=""
+                title="Support"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Support
@@ -262,8 +262,8 @@
           <ul class="mt-8 space-y-5">
             <li>
               <a
-                href="#"
-                title=""
+                href="/terms-of-service"
+                title="Terms of Service"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Terms of Service
@@ -272,8 +272,8 @@
 
             <li>
               <a
-                href="#"
-                title=""
+                href="/privacy-policy"
+                title="Privacy Policy"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Privacy Policy
