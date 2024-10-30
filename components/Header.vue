@@ -227,45 +227,43 @@
                 class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4"
               >
                 <div
-                  class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
+                  class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-4xl"
                 >
-                  <div class="p-6">
-                    <div class="grid grid-cols-2 gap-x-6 gap-y-1">
+                  <div class="grid grid-cols-2 gap-x-6 gap-y-1 p-4">
+                    <div
+                      v-for="item in resources"
+                      :key="item.name"
+                      class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+                    >
                       <div
-                        v-for="(item, index) in resources"
-                        :key="index"
-                        class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+                        class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
+                        :class="item.iconBgColor"
                       >
-                        <div
-                          class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
-                          :class="item.iconBgColor"
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                          :class="item.iconColor"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-6 h-6"
-                            :class="item.iconColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              :d="item.iconPath"
-                            />
-                          </svg>
-                        </div>
-                        <div>
-                          <a
-                            :href="item.href"
-                            class="font-semibold text-gray-900"
-                          >
-                            {{ item.name }}
-                            <span class="absolute inset-0" />
-                          </a>
-                          <p class="mt-1 text-gray-600">{{ item.description }}</p>
-                        </div>
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            :d="item.iconPath"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <a
+                          :href="item.href"
+                          class="font-semibold text-gray-900"
+                        >
+                          {{ item.name }}
+                          <span class="absolute inset-0" />
+                        </a>
+                        <p class="mt-1 text-gray-600">{{ item.description }}</p>
                       </div>
                     </div>
                   </div>
