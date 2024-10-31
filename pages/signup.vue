@@ -92,7 +92,8 @@
                     <!-- Country Code Button -->
                     <button 
                       type="button"
-                      @click="showCountryDropdown = !showCountryDropdown"
+                      ref="countryButton"
+                      @click="toggleDropdown"
                       class="flex items-center px-3 py-2 border-r border-gray-300 bg-gray-50 rounded-l-md"
                     >
                       <span class="mr-2">{{ selectedCountry.flag }}</span>
@@ -107,14 +108,18 @@
                       required
                       placeholder="98765 43210"
                       maxlength="11"
-                      class="flex-1 block w-full px-3 py-2 focus:outline-none bg-white text-gray-900 rounded-r-md"
+                      class="flex-1 block w-full px-3 py-2 border-none focus:outline-none bg-white text-gray-900 rounded-r-md"
                       :class="{ 'border-red-500': errors.phone }"
                       @input="$event.target.value = $event.target.value.replace(/[^\d\s]/g, '')"
                     />
                   </div>
 
                   <!-- Country Search Dropdown -->
-                  <div v-if="showCountryDropdown" class="absolute mt-1 w-72 bg-white rounded-md shadow-lg z-50">
+                  <div 
+                    v-if="showCountryDropdown" 
+                    ref="countryDropdown"
+                    class="absolute mt-1 w-72 bg-white rounded-md shadow-lg z-50 country-dropdown"
+                  >
                     <div class="p-2 border-b">
                       <div class="relative">
                         <input
@@ -445,7 +450,7 @@ const countries = ref([
   { code: '+221', country: 'Senegal', flag: '🇸🇳' },
   { code: '+233', country: 'Ghana', flag: '🇬🇭' },
   { code: '+237', country: 'Cameroon', flag: '🇨🇲' },
-  { code: '+244', country: 'Angola', flag: '🇦🇴' },
+  { code: '+244', country: 'Angola', flag: '🇴' },
   { code: '+250', country: 'Rwanda', flag: '🇷🇼' },
   { code: '+258', country: 'Mozambique', flag: '🇲🇿' },
   { code: '+260', country: 'Zambia', flag: '🇿🇲' },
@@ -511,18 +516,13 @@ const getUserCountry = async () => {
   }
 };
 
-onMounted(async () => {
-  // Add click outside handler
-  document.addEventListener('click', (e) => {
-    const dropdown = document.querySelector('.country-dropdown');
-    const button = e.target.closest('button');
-    if (!button && dropdown && !dropdown.contains(e.target)) {
-      showCountryDropdown.value = false;
-    }
-  });
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+  getUserCountry();
+});
 
-  // Get user's country
-  await getUserCountry();
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
 });
 
 // Phone validation utility function
@@ -775,6 +775,23 @@ watch(
     form.value.name = [first, last].filter(Boolean).join(' ');
   }
 );
+
+// Add refs for the dropdown and button
+const countryDropdown = ref(null);
+const countryButton = ref(null);
+
+// Update the click outside handler
+const handleClickOutside = (event) => {
+  if (!countryButton.value?.contains(event.target) && 
+      !countryDropdown.value?.contains(event.target)) {
+    showCountryDropdown.value = false;
+  }
+};
+
+// Add toggle function
+const toggleDropdown = () => {
+  showCountryDropdown.value = !showCountryDropdown.value;
+};
 </script>
 
 <style scoped>

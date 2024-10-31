@@ -133,7 +133,7 @@ const { data, error } = await useAsyncData("hr-letters", () =>
     content_type: "resources",
     "fields.type": "hr-letters",
     limit: pageSize,
-    order: "-sys.createdAt",
+    order: "fields.seq",
     skip: 0
   })
 );

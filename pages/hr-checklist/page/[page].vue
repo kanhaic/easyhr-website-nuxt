@@ -146,7 +146,7 @@ const { data, error } = await useAsyncData("hr-letters", () =>
     content_type: "resources",
     "fields.type": "hr-checklist",
     limit: pageSize,
-    order: "-sys.createdAt",
+    order: "fields.seq",
     skip: (currentPage.value - 1) * pageSize,
   })
 );
