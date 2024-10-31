@@ -19,6 +19,7 @@
       :image="featureSection.image"
     />
     <FeatureList
+      v-if="featureList.show"
       :title="featureList.title"
       :description="featureList.description"
       :features="featureList.featureListItems"
@@ -195,6 +196,7 @@ const featureSection = {
 };
 
 const featureList = {
+  show: landingPage.items[0].fields.showFeatureList ?? true,
   title: landingPage.items[0].fields.featureListTitle,
   description: landingPage.items[0].fields.featureListSubtitle,
   featureListItems:

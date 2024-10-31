@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   runtimeConfig: {
     public: {
+      siteUrl: process.env.SITE_URL || 'https://www.easyhrworld.com',
       contentful: {
         spaceId: "",
         accessToken: "",
