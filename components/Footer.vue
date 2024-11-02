@@ -38,7 +38,35 @@
 
       <!-- Main Footer Grid -->
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-4 xl:gap-x-16 gap-x-8">
-        <!-- HR & Payroll Administration (First Column) -->
+        <!-- Products (First Column) -->
+        <div>
+          <h6 class="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+            Products
+          </h6>
+          <ul class="mt-8 space-y-5">
+            <li v-for="menu in productMenus" :key="menu.sys.id">
+              <a :href="`/${menu.fields.slug}`" class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5">
+                {{ menu.fields.menuTitle }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Industries (Second Column) -->
+        <div>
+          <h6 class="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+            Industries
+          </h6>
+          <ul class="mt-8 space-y-5">
+            <li v-for="menu in industries" :key="menu.sys.id">
+              <a :href="`/${menu.fields.slug}`" class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5">
+                {{ menu.fields.menuTitle }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- HR & Payroll Administration -->
         <div class="col-span-2">
           <h6 class="text-xs font-semibold tracking-widest text-gray-400 uppercase">
             HR & Payroll Administration
@@ -50,40 +78,6 @@
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 {{ guide.fields.menuTitle }}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Products -->
-        <div>
-          <h6 class="text-xs font-semibold tracking-widest text-gray-400 uppercase">
-            Products
-          </h6>
-          <ul class="mt-8 space-y-5">
-            <li v-for="menu in productMenus" :key="menu.sys.id">
-              <a
-                :href="`/${menu.fields.slug}`"
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
-              >
-                {{ menu.fields.menuTitle }}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Industries -->
-        <div>
-          <h6 class="text-xs font-semibold tracking-widest text-gray-400 uppercase">
-            Industries
-          </h6>
-          <ul class="mt-8 space-y-5">
-            <li v-for="industry in industries" :key="industry">
-              <a
-                :href="`/${industry.fields.slug}`"
-                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
-              >
-                {{ industry.fields.menuTitle }}
               </a>
             </li>
           </ul>
@@ -408,19 +402,19 @@ const { data, error } = await useAsyncData(`product-menus`, () =>
 
 const productMenus = (
   data.value?.items.filter((item) => item.fields.type === "product") || []
-).slice(0, 10);
+).slice(0, 10).sort((a, b) => (a.fields.seq ?? 99) - (b.fields.seq ?? 99));
 const cities = (
   data.value?.items.filter((item) => item.fields.type === "city") || []
-).slice(0, 10);
+).slice(0, 10).sort((a, b) => (a.fields.seq ?? 99) - (b.fields.seq ?? 99));
 const countries = (
   data.value?.items.filter((item) => item.fields.type === "country") || []
-).slice(0, 10);
+).slice(0, 10).sort((a, b) => (a.fields.seq ?? 99) - (b.fields.seq ?? 99));
 const industries = (
   data.value?.items.filter((item) => item.fields.type === "industry") || []
-).slice(0, 10);
+).slice(0, 10).sort((a, b) => (a.fields.seq ?? 99) - (b.fields.seq ?? 99));
 const guides = (
   data.value?.items.filter((item) => item.fields.type === "guide") || []
-).slice(0, 10);
+).slice(0, 10).sort((a, b) => (a.fields.seq ?? 99) - (b.fields.seq ?? 99));
 
 // console.log(cities);
 </script>
