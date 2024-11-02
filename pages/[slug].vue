@@ -48,7 +48,7 @@
 
   <!-- guide -->
   <div v-if="pageType === 'guide'" class="bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
       <!-- Header -->
       <div class="text-center">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
