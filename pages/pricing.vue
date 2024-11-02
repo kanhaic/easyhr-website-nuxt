@@ -2,14 +2,14 @@
   <div class="bg-white py-6 sm:py-12">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-4xl text-center">
-        <h2 class="text-base font-semibold leading-7 text-indigo-600">
+        <h1 class="text-base font-semibold leading-7 text-indigo-600">
           {{ pricingPage.fields.topTag }}
-        </h2>
-        <p
+        </h1>
+        <h2
           class="mt-2 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl"
         >
           {{ pricingPage.fields.title }}
-        </p>
+        </h2>
       </div>
       <p
         class="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-gray-600 sm:text-xl/8"

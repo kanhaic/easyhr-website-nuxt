@@ -11,12 +11,7 @@ Code Style and Structure
 Naming Conventions
 - Use lowercase with dashes for directories (e.g., components/auth-wizard).
 - Use PascalCase for component names (e.g., AuthWizard.vue).
-- Use camelCase for composables (e.g., useAuthState.ts).
-
-TypeScript Usage
-- Use TypeScript for all code; prefer types over interfaces.
-- Avoid enums; use const objects instead.
-- Use Vue 3 with TypeScript, leveraging defineComponent and PropType.
+- Use camelCase for composables (e.g., useAuthState.js).
 
 Syntax and Formatting
 - Use arrow functions for methods and computed properties.

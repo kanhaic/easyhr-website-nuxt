@@ -66,10 +66,10 @@
           </ul>
         </div>
 
-        <!-- HR & Payroll Administration -->
+        <!-- Payroll & HR Administration Guides-->
         <div class="col-span-2">
           <h6 class="text-xs font-semibold tracking-widest text-gray-400 uppercase">
-            HR & Payroll Administration
+            Payroll & HR Administration Guides
           </h6>
           <ul class="mt-8 space-y-5">
             <li v-for="guide in guides" :key="guide.fields.slug">
