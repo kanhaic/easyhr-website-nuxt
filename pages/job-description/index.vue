@@ -134,7 +134,7 @@ const { data, error } = await useAsyncData("hr-letters", () =>
     content_type: "resources",
     "fields.type": "job-description",
     limit: pageSize,
-    order: "-sys.createdAt",
+    order: "fields.seq",
     skip: 0
   })
 );

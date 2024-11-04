@@ -131,7 +131,7 @@ const { data, error } = await useAsyncData("hr-emails", () =>
     content_type: "resources",
     "fields.type": "hr-email",
     limit: pageSize,
-    order: "-sys.createdAt",
+    order: "fields.seq",
     skip: 0
   })
 );

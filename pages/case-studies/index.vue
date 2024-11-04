@@ -81,7 +81,7 @@ const { data, error } = await useAsyncData("case-studies", () =>
   client.getEntries({
     content_type: "resources",
     "fields.type": "case-studies",
-    order: "-sys.createdAt",
+    order: "fields.seq",
   })
 );
 

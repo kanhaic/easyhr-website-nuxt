@@ -134,7 +134,7 @@ const { data, error } = await useAsyncData("okrs", () =>
     content_type: "resources",
     "fields.type": "statutory-compliance",
     limit: pageSize,
-    order: "-sys.createdAt",
+    order: "fields.seq",
     skip: (currentPage.value - 1) * pageSize,
   })
 );

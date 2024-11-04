@@ -135,7 +135,7 @@ const { data, error } = await useAsyncData("job-description", () =>
     content_type: "resources",
     "fields.type": "job-description",
     limit: pageSize,
-    order: "-sys.createdAt",
+    order: "fields.seq",
     skip: (currentPage.value - 1) * pageSize,
   })
 );
