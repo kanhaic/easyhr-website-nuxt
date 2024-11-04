@@ -17,8 +17,8 @@
         {{ pricingPage.fields.subtitle }}
       </p>
 
-      <!-- xs to md -->
-      <div class="mx-auto mt-12 max-w-md space-y-8 md:hidden">
+      <!-- xs to lg -->
+      <div class="mx-auto mt-12 max-w-md space-y-8 block lg:hidden">
         <section
           v-for="tier in tiers"
           :key="tier.id"
@@ -130,38 +130,20 @@
         </section>
       </div>
 
-      <!-- md+ -->
-      <div class="isolate mt-20 hidden md:block">
-        <div class="relative -mx-8">
-          <div
-            v-if="tiers.some((tier) => tier.mostPopular)"
-            class="absolute inset-x-4 inset-y-0 -z-10 flex"
-          >
-            <div
-              class="flex w-1/4 px-4"
-              aria-hidden="true"
-              :style="{
-                marginLeft: `${
-                  (tiers.findIndex((tier) => tier.mostPopular) + 1) * 25
-                }%`,
-              }"
-            >
-              <div
-                class="w-full rounded-t-xl border-x border-t border-gray-900/10 bg-gray-400/5"
-              />
-            </div>
-          </div>
+      <!-- lg+ -->
+      <div class="isolate mt-20 hidden lg:block">
+        <div class="relative mx-auto max-w-7xl">
           <table
-            class="w-full table-fixed border-separate border-spacing-0 text-left "
+            class="w-full table-fixed border-separate border-spacing-0 min-w-[900px]"
           >
             <caption class="sr-only">
               Pricing plan comparison
             </caption>
             <colgroup>
-              <col class="w-1/4" />
-              <col class="w-1/4" />
-              <col class="w-1/4" />
-              <col class="w-1/4" />
+              <col class="w-[240px]" />
+              <col class="w-[220px]" />
+              <col class="w-[220px]" />
+              <col class="w-[220px]" />
             </colgroup>
             <thead class="sticky top-0 z-10 bg-white ">
               <tr>
@@ -170,7 +152,7 @@
                   v-for="tier in tiers"
                   :key="tier.id"
                   scope="col"
-                  class="px-6 pt-6 xl:px-8 xl:pt-8"
+                  class="px-4 md:px-6 lg:px-8 pt-6 xl:px-10 xl:pt-8"
                 >
                   <div class="text-xl font-semibold leading-7 text-gray-900">
                     {{ tier.name }}
@@ -182,7 +164,7 @@
                 <td
                   v-for="tier in tiers"
                   :key="tier.id"
-                  class="px-6 pt-2 xl:px-8"
+                  class="px-4 md:px-6 lg:px-8 pt-2 xl:px-10"
                 >
                   <div class="flex items-baseline gap-x-1 text-gray-900">
                     <span v-if="isPriceLoading" class="inline-block w-32 h-10 bg-gray-200 animate-pulse rounded"></span>
