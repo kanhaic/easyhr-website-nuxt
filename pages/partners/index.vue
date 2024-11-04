@@ -312,6 +312,6 @@ useHead({
 });
 
 useSeoMeta({
-  articleModifiedTime: landingPage?.sys.updatedAt.split("T")[0],
+  articleModifiedTime: data.value?.items[0].sys.updatedAt.split("T")[0],
 });
 </script>
