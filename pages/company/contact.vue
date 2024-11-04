@@ -27,7 +27,7 @@
                 </div>
                 <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
-                  <dd><a href="tel:+918108062872" class="hover:underline">+91 81080 62872</a></dd>
+                  <dd><a href="tel:+918454926412" class="hover:underline">+91 84549 26412</a></dd>
                 </div>
               </dl>
             </div>
