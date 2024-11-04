@@ -37,9 +37,8 @@
               {{ tier.name }}
             </h3>
             <p class="mt-2 flex items-baseline gap-x-1 text-gray-900">
-              <span class="text-3xl font-semibold">{{
-                tier.priceMonthly
-              }}</span>
+              <span v-if="isPriceLoading" class="inline-block w-24 h-8 bg-gray-200 animate-pulse rounded"></span>
+              <span v-else class="text-3xl font-semibold">{{ tier.priceMonthly }}</span>
               <span class="text-sm font-semibold">/month</span>
             </p>
             <p class="mt-2 text-sm text-gray-500">{{ tier.description }}</p>
@@ -186,9 +185,8 @@
                   class="px-6 pt-2 xl:px-8"
                 >
                   <div class="flex items-baseline gap-x-1 text-gray-900">
-                    <span class="text-4xl font-semibold">{{
-                      tier.priceMonthly
-                    }}</span>
+                    <span v-if="isPriceLoading" class="inline-block w-32 h-10 bg-gray-200 animate-pulse rounded"></span>
+                    <span v-else class="text-4xl font-semibold">{{ tier.priceMonthly }}</span>
                     <span class="text-sm font-semibold leading-6">/month</span>
                   </div>
                   <div class="text-sm leading-6 text-gray-500">
@@ -366,6 +364,8 @@ const logos = pricingPage.fields.logos.map((logo) => ({
   provider: "contentful",
 }));
 
+const isPriceLoading = ref(true)
+
 const userCountry = ref('IN') // Default to India
 
 // Function to detect user's country
@@ -378,11 +378,14 @@ const detectCountry = async () => {
     console.error('Error detecting country:', error)
     userCountry.value = 'IN' // Fallback to India if detection fails
   }
+  finally {
+    isPriceLoading.value = false
+  } 
 }
 
 // Call the detection function
-onMounted(() => {
-  detectCountry()
+onMounted(async () => {
+  await detectCountry()
 })
 
 // Create pricing configurations for different regions
