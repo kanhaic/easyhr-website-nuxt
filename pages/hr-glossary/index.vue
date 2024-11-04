@@ -192,6 +192,10 @@ useHead({
     },
   ],
 });
+
+useSeoMeta({
+  articleModifiedTime: new Date().toISOString().split('T')[0],
+});
 </script>
 
 <style scoped>
