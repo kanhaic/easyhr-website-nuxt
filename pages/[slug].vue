@@ -1,4 +1,5 @@
 <template>
+
   <div v-if="pageType === 'city' || pageType === 'country'">
     <Hero1
       :topTag="heroSection.topTag"
@@ -13,6 +14,7 @@
     />
 
     <LogoSection :logos="logos" />
+
 
     <div class="py-12 sm:py-16 lg:py-20 xl:py-24">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -39,15 +41,18 @@
       </div>
     </div>
 
+    <FeatureList :features="featureList.featureListItems" :title="featureList.title" :description="featureList.description" />
+
     <Testimonial1
       :subtitle="testimonials.topTag"
       :title="testimonials.title"
       :testimonials="testimonials.items"
     />
+    
   </div>
 
   <!-- guide -->
-  <div v-if="pageType === 'guide'" class="bg-white">
+  <div v-else-if="pageType === 'guide'" class="bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
       <!-- Header -->
       <div class="text-center">
@@ -290,6 +295,7 @@
 import * as contentful from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
+import FeatureList from "~/components/FeatureList.vue";
 const route = useRoute();
 const config = useRuntimeConfig();
 const slug = route.params.slug;
