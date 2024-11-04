@@ -139,6 +139,14 @@
             </li>
             <li>
               <a
+                href="/guides"
+                class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
+              >
+                Guides
+              </a>
+            </li>
+            <li>
+              <a
                 href="/partners"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
