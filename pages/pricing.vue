@@ -366,35 +366,102 @@ const logos = pricingPage.fields.logos.map((logo) => ({
   provider: "contentful",
 }));
 
-const tiers = [
-  {
-    name: "Starter",
-    id: "tier-starter",
-    href: "/signup?plan=starter&utm_source=pricing",
-    priceMonthly: "₹ 2499",
-    description: "Upto 25 users.",
-    additionalUsersPrice: "Additional User @ ₹90 per user/month",
-    mostPopular: false,
-  },
-  {
-    name: "Growth",
-    id: "tier-growth",
-    href: "/signup?plan=growth&utm_source=pricing",
-    priceMonthly: "₹ 3125",
-    description: "Upto 25 users.",
-    additionalUsersPrice: "Additional User @ ₹115 per user/month",
-    mostPopular: true,
-  },
-  {
-    name: "Enterprise",
-    id: "tier-enterprise",
-    href: "/signup?plan=enterprise&utm_source=pricing",
-    priceMonthly: "₹ 3750",
-    description: "Upto 25 users.",
-    additionalUsersPrice: "Additional User @ ₹135 per user/month",
-    mostPopular: false,
-  },
-];
+const userCountry = ref('IN') // Default to India
+
+// Function to detect user's country
+const detectCountry = async () => {
+  try {
+    const response = await fetch('https://ipapi.co/json/')
+    const data = await response.json()
+    userCountry.value = data.country_code
+  } catch (error) {
+    console.error('Error detecting country:', error)
+    userCountry.value = 'IN' // Fallback to India if detection fails
+  }
+}
+
+// Call the detection function
+onMounted(() => {
+  detectCountry()
+})
+
+// Create pricing configurations for different regions
+const getPricing = computed(() => {
+  const isIndia = userCountry.value === 'IN'
+  
+  return [
+    {
+      name: "Starter",
+      id: "tier-starter",
+      href: "/signup?plan=starter&utm_source=pricing",
+      priceMonthly: isIndia ? "₹ 2499" : "$ 124",
+      description: "Upto 25 users.",
+      additionalUsersPrice: isIndia 
+        ? "Additional User @ ₹90 per user/month"
+        : "Additional User @ $3 per user/month",
+      mostPopular: false,
+    },
+    {
+      name: "Growth",
+      id: "tier-growth",
+      href: "/signup?plan=growth&utm_source=pricing",
+      priceMonthly: isIndia ? "₹ 3125" : "$ 149",
+      description: "Upto 25 users.",
+      additionalUsersPrice: isIndia 
+        ? "Additional User @ ₹115 per user/month"
+        : "Additional User @ $5 per user/month",
+      mostPopular: true,
+    },
+    {
+      name: "Enterprise",
+      id: "tier-enterprise",
+      href: "/signup?plan=enterprise&utm_source=pricing",
+      priceMonthly: isIndia ? "₹ 3750" : "$ 184",
+      description: "Upto 25 users.",
+      additionalUsersPrice: isIndia 
+        ? "Additional User @ ₹135 per user/month"
+        : "Additional User @ $8 per user/month",
+      mostPopular: false,
+    },
+  ]
+})
+
+// Update addons pricing
+const getAddons = computed(() => {
+  const isIndia = userCountry.value === 'IN'
+  
+  return [
+    {
+      name: "Performance Management System",
+      price: isIndia ? "Starts at ₹50/employee/month" : "Starts at $2/employee/month",
+      description: "360° Reportee-Manager Feedback and Reviews",
+      icon: "/images/performance-management-icon.webp",
+    },
+    {
+      name: "GeoTracking",
+      price: isIndia ? "Starts at ₹50/employee/month" : "Starts at $2/employee/month",
+      description: "Track employee location and movement.",
+      icon: "/images/location-icon.webp",
+    },
+    {
+      name: "GeoMark+",
+      price: isIndia ? "₹50/user/month" : "$2/user/month",
+      description: "Map-Based Attendance Marking with location Tagging",
+      icon: "/images/location-icon.webp",
+    },
+    {
+      name: "Selfie Attendance",
+      price: isIndia ? "₹20/user/month" : "$2/user/month",
+      description: "Selfie-based attendance marking",
+      icon: "/images/selfie-attendance-icon.webp",
+    },
+  ]
+})
+
+// Replace the static tiers and addons with computed properties
+const tiers = computed(() => getPricing.value)
+const addons = computed(() => getAddons.value)
+
 const sections = [
   {
     name: "Core HR",
@@ -685,33 +752,6 @@ const toggleDescription = (sectionName, featureName) => {
   const key = `${sectionName}-${featureName}`;
   openDescriptions.value[key] = !openDescriptions.value[key];
 };
-
-const addons = [
-  {
-    name: "Performance Management System",
-    price: "Starts at ₹50/employee/month",
-    description: "360° Reportee-Manager Feedback and Reviews",
-    icon: "/images/performance-management-icon.webp", // Replace with actual icon path
-  },
-  {
-    name: "GeoTracking",
-    price: "Starts at ₹50/employee/month",
-    description: "Track employee location and movement.",
-    icon: "/images/location-icon.webp", // Replace with actual icon path
-  },
-  {
-    name: "GeoMark+",
-    price: "₹50/user/month",
-    description: "Map-Based Attendance Marking with location Tagging",
-    icon: "/images/location-icon.webp", // Replace with actual icon path
-  },
-  {
-    name: "Selfie Attendance",
-    price: "₹20/user/month",
-    description: "Selfie-based attendance marking",
-    icon: "/images/selfie-attendance-icon.webp", // Replace with actual icon path
-  },
-];
 
 const testimonials = {
   topTag: pricingPage.fields.testimonialTagTop,
