@@ -310,4 +310,8 @@ useHead({
     },
   ],
 });
+
+useSeoMeta({
+  articleModifiedTime: landingPage?.sys.updatedAt.split("T")[0],
+});
 </script>

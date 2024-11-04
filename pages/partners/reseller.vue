@@ -194,4 +194,16 @@ const logos = [
   { src: "/images/logos/5.webp", alt: "Company 5" },
   { src: "/images/logos/6.webp", alt: "Company 6" },
 ];
+
+useSeoMeta({
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
+
+useHead({
+  title: "Reseller Program - EasyHR",
+  meta: [
+    { name: "description", content: "Partner with EasyHR to expand your portfolio and grow your business!" },
+    { name: "keywords", content: "reseller program, EasyHR, HRMS, HRMS solution, HRMS software, HRMS provider, HRMS partner, HRMS reseller, HRMS referral, HRMS commission, HRMS training, HRMS support" },
+  ],
+});
 </script>

@@ -200,4 +200,16 @@ const logos = [
   { src: "/images/logos/5.webp", alt: "Company 5" },
   { src: "/images/logos/6.webp", alt: "Company 6" },
 ];
+
+useSeoMeta({
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
+
+useHead({
+  title: "Referral Program - EasyHR",
+  meta: [
+    { name: "description", content: "Earn attractive commissions by referring EasyHR to your network." },
+    { name: "keywords", content: "referral program, EasyHR, HRMS, HRMS solution, HRMS software, HRMS provider, HRMS partner, HRMS reseller, HRMS referral, HRMS commission, HRMS training, HRMS support" },
+  ],
+});
 </script>

@@ -252,8 +252,16 @@ useHead({
     { name: "robots", content: "noindex" }, // Prevent indexing of thank you page
   ],
 });
+
+useSeoMeta({
+  articleModifiedTime: new Date().toISOString().split("T")[0],
+});
+
+useHead({
+  title: "Thank You - Partner Program - EasyHR",
+  meta: [
+    { name: "description", content: "Thank you for your interest in partnering with EasyHR. Our team will review your application and contact you shortly." },
+    { name: "keywords", content: "thank you, partner program, EasyHR, HRMS, HRMS solution, HRMS software, HRMS provider, HRMS partner, HRMS reseller, HRMS referral, HRMS commission, HRMS training, HRMS support" },
+  ],
+});
 </script>
-
-<style>
-
-</style>
