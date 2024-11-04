@@ -21,6 +21,7 @@
             :alt="guide.fields.menuTitle"
             class="object-cover w-full h-full"
             loading="lazy"
+            provider="contentful"
           />
           <div v-else class="w-full h-full bg-gray-200" />
         </div>
