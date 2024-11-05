@@ -4,7 +4,7 @@
       class="fixed inset-x-0 top-0 z-50 bg-white shadow-sm"
     >
       <nav
-        class="mx-auto flex max-w-7xl items-center justify-between p-4 lg:p-6"
+        class="mx-auto flex max-w-7xl items-center justify-between p-4"
         aria-label="Global"
       >
         <div class="flex lg:flex-1">
