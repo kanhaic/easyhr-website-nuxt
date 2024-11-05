@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white">
     <header
-      class="fixed inset-x-0 top-0 z-50 bg-white shadow-sm lg:static lg:shadow-none"
+      class="fixed inset-x-0 top-0 z-50 bg-white shadow-sm"
     >
       <nav
         class="mx-auto flex max-w-7xl items-center justify-between p-4 lg:p-6"
@@ -789,11 +789,14 @@ const mobileMenuOpen = ref(false);
 </script>
 
 <style scoped>
-@media (max-width: 1023px) {
-  header {
-    position: sticky;
-    top: 0;
-  }
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+:global(body) {
+  padding-top: 80px; /* Adjust this value based on your header height */
 }
 </style>
 
