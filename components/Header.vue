@@ -9,7 +9,7 @@
       >
         <div class="flex lg:flex-1">
           <a href="/" class="-m-1.5 p-1.5">
-            <span class="sr-only">EasyHR</span>
+            <span class="sr-only">EasyHR Logo</span>
             <NuxtImg
               src="/images/logo.webp"
               alt="EasyHR Logo"
