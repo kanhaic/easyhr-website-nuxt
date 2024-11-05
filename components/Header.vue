@@ -56,7 +56,7 @@
               leave-to-class="opacity-0 translate-y-1"
             >
               <PopoverPanel
-                class="absolute left-1/4 z-10 mt-5 flex w-screen max-w-max -translate-x-1/4 px-4"
+                class="absolute -left-8 z-10 mt-5 flex w-screen max-w-max px-4"
               >
                 <div
                   class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
@@ -229,9 +229,9 @@
                 class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4"
               >
                 <div
-                  class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-4xl"
+                  class="mx-auto w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
                 >
-                  <div class="grid grid-cols-2 gap-x-6 gap-y-1 p-4">
+                  <div class="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2">
                     <div
                       v-for="item in resources"
                       :key="item.name"
