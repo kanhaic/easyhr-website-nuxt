@@ -22,7 +22,7 @@
             class="flex flex-col group"
           >
             <div
-            :class="[
+              :class="[
                 'flex flex-col flex-1 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200',
                 cardColors[index % cardColors.length],
               ]"
@@ -36,7 +36,20 @@
               <div class="mt-6 lg:mt-8">
                 <a
                   :href="`/hr-emails/${resource.fields.slug}`"
-                  class="inline-flex items-center text-xs font-bold tracking-widest text-indigo-600 uppercase group"
+                  :class="[
+                    'inline-flex items-center text-xs font-bold tracking-widest uppercase group',
+                    {
+                      'text-blue-600': index % cardColors.length === 0,
+                      'text-green-600': index % cardColors.length === 1,
+                      'text-yellow-600': index % cardColors.length === 2,
+                      'text-pink-600': index % cardColors.length === 3,
+                      'text-purple-600': index % cardColors.length === 4,
+                      'text-indigo-600': index % cardColors.length === 5,
+                      'text-cyan-600': index % cardColors.length === 6,
+                      'text-red-600': index % cardColors.length === 7,
+                      'text-orange-600': index % cardColors.length === 8,
+                    }
+                  ]"
                 >
                   Continue Reading
                   <svg
@@ -162,6 +175,9 @@ const cardColors = [
   "bg-pink-50 hover:bg-pink-100",
   "bg-purple-50 hover:bg-purple-100",
   "bg-indigo-50 hover:bg-indigo-100",
+  "bg-cyan-50 hover:bg-cyan-100",
+  "bg-red-50 hover:bg-red-100",
+  "bg-orange-50 hover:bg-orange-100",
 ];
 
 useSeoMeta({

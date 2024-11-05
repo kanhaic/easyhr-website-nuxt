@@ -25,8 +25,8 @@
             class="flex flex-col group"
           >
             <div
-              :class="[
-                'flex flex-col flex-1 p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-200',
+            :class="[
+                'flex flex-col flex-1 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200',
                 cardColors[index % cardColors.length],
               ]"
             >
@@ -165,6 +165,9 @@ const cardColors = [
   "bg-pink-50 hover:bg-pink-100",
   "bg-purple-50 hover:bg-purple-100",
   "bg-indigo-50 hover:bg-indigo-100",
+  "bg-cyan-50 hover:bg-cyan-100",
+  "bg-red-50 hover:bg-red-100",
+  "bg-orange-50 hover:bg-orange-100",
 ];
 
 useSeoMeta({

@@ -164,6 +164,9 @@ const cardColors = [
   "bg-pink-50 hover:bg-pink-100",
   "bg-purple-50 hover:bg-purple-100",
   "bg-indigo-50 hover:bg-indigo-100",
+  "bg-cyan-50 hover:bg-cyan-100",
+  "bg-red-50 hover:bg-red-100",
+  "bg-orange-50 hover:bg-orange-100",
 ];
 
 useSeoMeta({

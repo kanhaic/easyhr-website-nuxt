@@ -36,7 +36,7 @@
             </aside>
 
             <article
-              class="mt-12 prose lg:mt-0 lg:prose-xl lg:col-span-8 prose-p:my-2"
+              class="mt-12 prose lg:mt-0 lg:prose-xl lg:col-span-8 prose-p:my-2 mt-2 prose lg:prose-xl prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-blue-500 prose-a:underline prose-a:font-medium"
               v-html="renderedBody"
             ></article>
           </div>
