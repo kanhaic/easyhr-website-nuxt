@@ -133,24 +133,122 @@
 </template>
 
 <script setup>
-
 const form = ref({
   name: "",
   company: "",
   email: "",
   phone: "",
   empcount: "",
+  ipAddress: "",
+  city: "",
+  state: "",
+  country: "",
+  timezone: "",
+  isp: "",
+  userAgent: "",
+  platform: "",
+  browser: "",
+  deviceType: "",
+  referrer: "",
+  utmSource: "",
+  utmMedium: "",
+  utmCampaign: "",
+  submittedAt: ""
 });
 
-const submitForm = async () => {
-  // Here you would typically send the form data to your backend
-  await $fetch("https://n8n.craftinghr.com/webhook/0ffe9532-7100-47b1-bdfd-3368c8899efb", {
-    method: "POST",
-    body: form.value,
-  });
-  // Reset the form after submission
-  form.value = { name: "", company: "", email: "", phone: "", empcount: "" };
+const getBrowserInfo = (userAgent) => {
+  const browsers = {
+    chrome: /chrome/i,
+    safari: /safari/i,
+    firefox: /firefox/i,
+    opera: /opera/i,
+    edge: /edge/i,
+    ie: /msie|trident/i
+  };
 
-  await navigateTo("/thank-you");
+  for (const [browser, regex] of Object.entries(browsers)) {
+    if (regex.test(userAgent)) {
+      return { browser };
+    }
+  }
+  return { browser: 'Unknown' };
 };
+
+const getDeviceType = () => {
+  const ua = navigator.userAgent;
+  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+    return 'Tablet';
+  }
+  if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
+    return 'Mobile';
+  }
+  return 'Desktop';
+};
+
+const getUtmParams = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return {
+    source: urlParams.get('utm_source') || '',
+    medium: urlParams.get('utm_medium') || '',
+    campaign: urlParams.get('utm_campaign') || ''
+  };
+};
+
+const getUserInfo = async () => {
+  try {
+    const response = await fetch('https://ipapi.co/json/');
+    const data = await response.json();
+
+    form.value.ipAddress = data.ip;
+    form.value.city = data.city;
+    form.value.state = data.region;
+    form.value.country = data.country_name;
+    form.value.timezone = data.timezone;
+    form.value.isp = data.org;
+
+    const userAgent = navigator.userAgent;
+    const platform = navigator.userAgentData?.platform || 'Unknown';
+    const browserInfo = getBrowserInfo(userAgent);
+
+    form.value.userAgent = userAgent;
+    form.value.platform = platform;
+    form.value.browser = browserInfo.browser;
+    form.value.deviceType = getDeviceType();
+    form.value.referrer = document.referrer || 'Direct';
+
+    const utmParams = getUtmParams();
+    form.value.utmSource = utmParams.source;
+    form.value.utmMedium = utmParams.medium;
+    form.value.utmCampaign = utmParams.campaign;
+    form.value.formType = "getting-started";
+
+  } catch (error) {
+    console.error('Error fetching user info:', error);
+  }
+};
+
+const submitForm = async () => {
+  form.value.submittedAt = new Date().toISOString();
+  
+  try {
+    await $fetch("https://n8n.craftinghr.com/webhook-test/0ffe9532-7100-47b1-bdfd-3368c8899efb", {
+      method: "POST",
+      body: form.value,
+    });
+    
+    form.value.name = "";
+    form.value.company = "";
+    form.value.email = "";
+    form.value.phone = "";
+    form.value.empcount = "";
+
+    await navigateTo("/thank-you");
+  } catch (error) {
+    console.error('Error submitting form:', error);
+  }
+};
+
+onMounted(async () => {
+  await getUserInfo();
+});
 </script>
