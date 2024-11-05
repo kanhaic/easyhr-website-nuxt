@@ -15,7 +15,7 @@
           provider="contentful"
           quality="75"
         />
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-25"></div>
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
       </div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
@@ -23,7 +23,7 @@
             {{ landingPage.title }}
           </h2>
           <p class="mt-4 text-xl text-gray-100">
-            {{ landingPage.description }}
+            {{ landingPage.subtitle }}
           </p>
         </div>
       </div>
