@@ -13,7 +13,9 @@
             <NuxtImg
               src="/images/logo.webp"
               alt="EasyHR Logo"
-              sizes="sm:158px 79px"
+              height="40"
+              width="79"
+              format="webp"
             />
           </a>
         </div>
