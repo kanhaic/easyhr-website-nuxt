@@ -90,5 +90,8 @@ export default defineNuxtConfig({
   gtag: {
     enabled: true,
     id: "G-RKFHSKFF92",
+    config: {
+      defer: true
+    },
   },
 });
