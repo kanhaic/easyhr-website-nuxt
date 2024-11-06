@@ -25,7 +25,16 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      link: [{ rel: "icon", type: "image/png", href: "/favicon.ico" }],
+      link: [
+        { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        { rel: "preconnect", href: "https://www.googletagmanager.com" },
+        { rel: "preconnect", href: "https://embed.small.chat" },
+        { rel: "preconnect", href: "https://n8n.craftinghr.com" },
+        { rel: "preconnect", href: "https://www.google-analytics.com" },
+        { rel: "dns-prefetch", href: "https://www.google-analytics.com" },
+        { rel: "dns-prefetch", href: "https://embed.small.chat" },
+        { rel: "dns-prefetch", href: "https://n8n.craftinghr.com" },
+      ],
       title: "EasyHR | HR Software for SMEs",
       htmlAttrs: {
         lang: "en",
@@ -90,8 +99,6 @@ export default defineNuxtConfig({
   gtag: {
     enabled: true,
     id: "G-RKFHSKFF92",
-    config: {
-      defer: true
-    },
+    loadingStrategy: "async"
   },
 });
