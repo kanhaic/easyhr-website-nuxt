@@ -19,12 +19,12 @@
       </div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
-          <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
             {{ landingPage.title }}
-          </h2>
-          <p class="mt-4 text-xl text-gray-100">
+          </h1>
+          <h2 class="mt-4 text-xl text-gray-100">
             {{ landingPage.subtitle }}
-          </p>
+          </h2>
         </div>
       </div>
     </div>

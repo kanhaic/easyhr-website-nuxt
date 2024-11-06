@@ -5,9 +5,9 @@
     >
       <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div class="max-w-2xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
+          <h1 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
             HR Emails
-          </h2>
+          </h1>
           <p class="mx-auto mt-5 text-base font-normal leading-7 text-gray-600">
             HR Emails is a collection of emails related to human resources.
           </p>

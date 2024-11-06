@@ -2,11 +2,11 @@
   <div class="bg-white">
     <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
-        <h2
+        <h1
           class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl"
         >
           Frequently asked questions
-        </h2>
+        </h1>
         <p class="mt-6 text-base leading-7 text-gray-600">
           Have a different question and can’t find the answer you’re looking
           for? Reach out to our support team by
