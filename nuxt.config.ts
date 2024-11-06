@@ -81,7 +81,7 @@ export default defineNuxtConfig({
     },
   },
   gtag: {
-    enabled: false,
+    enabled: true,
     id: "G-RKFHSKFF92",
   },
 });
