@@ -44,6 +44,14 @@ export default defineNuxtConfig({
         { name: "robots", content: "index, follow" },
         { name: "publisher", content: "EasyHR" },
       ],
+      script: [
+        {
+          src: 'https://embed.small.chat/T179A90J0GVC000RNZ.js',
+          async: true,
+          defer: true,
+          body: true
+        }
+      ]
     },
   },
   postcss: {
