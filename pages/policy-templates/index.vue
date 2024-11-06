@@ -37,7 +37,7 @@
               </p>
               <div class="mt-6 lg:mt-8">
                 <a
-                  :href="`/hr-checklist/${resource.fields.slug}`"
+                  :href="`/policy-templates/${resource.fields.slug}`"
                   :class="[
                     'inline-flex items-center text-xs font-bold tracking-widest uppercase group',
                     {
