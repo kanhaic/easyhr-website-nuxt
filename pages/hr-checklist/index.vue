@@ -181,12 +181,6 @@ const cardColors = [
   "bg-orange-50 hover:bg-orange-100",
 ];
 
-useSeoMeta({
-  // will be inferred as the lastmod value in the sitemap
-  // date in YYYY-MM-DD format
-  articleModifiedTime: new Date().toISOString(),
-});
-
 useHead({
   title: "HR Checklist | EasyHR",
   meta: [

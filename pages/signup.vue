@@ -359,9 +359,6 @@ useHead({
   ],
 });
 
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString(),
-});
 
 const form = ref({
   firstName: "",

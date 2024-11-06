@@ -526,12 +526,6 @@ useHead({
   ],
 });
 
-useSeoMeta({
-  // will be inferred as the lastmod value in the sitemap
-  // date in YYYY-MM-DD format
-  articleModifiedTime: new Date().toISOString(),
-});
-
 const shareUrls = computed(() => {
   const baseUrl = config.public.siteUrl || "https://www.easyhrworld.com";
   const currentUrl = `${baseUrl}${route.fullPath}`;

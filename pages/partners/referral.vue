@@ -201,10 +201,6 @@ const logos = [
   { src: "/images/logos/6.webp", alt: "Company 6" },
 ];
 
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString(),
-});
-
 useHead({
   title: "Referral Program - EasyHR",
   meta: [

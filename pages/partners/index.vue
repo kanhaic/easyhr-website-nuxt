@@ -311,7 +311,4 @@ useHead({
   ],
 });
 
-useSeoMeta({
-  articleModifiedTime: data.value?.items[0].sys.updatedAt.split("T")[0],
-});
 </script>

@@ -103,9 +103,6 @@ useHead({
   ],
 });
 
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString(),
-});
 useHead({
   title: resource.fields?.seoTitle,
   meta: [

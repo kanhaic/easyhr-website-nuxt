@@ -151,7 +151,5 @@ useHead({
   ],
 });
 
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString(),
-});
+
 </script>

@@ -22,6 +22,13 @@ export default defineNuxtConfig({
               making HR operations effortless.`,
     indexable: true,
   },
+  sitemap: {
+    defaults: {
+      lastmod: new Date().toISOString(),
+      priority: 0.5,
+      changefreq: 'weekly'
+    }
+  },
   devtools: { enabled: true },
   app: {
     head: {

@@ -218,9 +218,6 @@ const formatDate = (dateString) => {
     day: "numeric",
   });
 };
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString(),
-});
 
 // Add preload meta tags
 useHead({

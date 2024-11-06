@@ -81,10 +81,5 @@ import {
   EnvelopeIcon,
 } from "@heroicons/vue/24/outline";
 
-useSeoMeta({
-  // will be inferred as the lastmod value in the sitemap
-  // date in YYYY-MM-DD format
-  articleModifiedTime: new Date().toISOString(),
-});
 </script>
 

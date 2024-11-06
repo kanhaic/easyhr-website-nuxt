@@ -219,10 +219,6 @@ const formatDate = (dateString) => {
   });
 };
 
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString(),
-});
-
 // Add preload meta tags
 useHead({
   link: [

@@ -69,10 +69,6 @@ const { data } = await useAsyncData('guides', () =>
 
 const guides = computed(() => data.value?.items || []);
 
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString().split('T')[0],
-});
-
 useHead({
   title: 'HR & Payroll Guides',
   meta: [

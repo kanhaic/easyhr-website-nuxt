@@ -253,10 +253,6 @@ useHead({
   ],
 });
 
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString(),
-});
-
 useHead({
   title: "Thank You - Partner Program - EasyHR",
   meta: [

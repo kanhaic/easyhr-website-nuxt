@@ -120,10 +120,6 @@ const jobOpenings = data.value?.items.map((item) => ({
   location: item.fields.location,
 }));
 
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString(),
-});
-
 useHead({
   title: "Careers - EasyHR",
   meta: [

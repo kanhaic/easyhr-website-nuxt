@@ -77,10 +77,6 @@ const renderedBody = documentToHtmlString(
   customRenderer
 );
 
-useSeoMeta({
-  articleModifiedTime: new Date().toISOString(),
-});
-
 useHead({
   title: `${jobOpening.role} - Careers - EasyHR`,
   meta: [
