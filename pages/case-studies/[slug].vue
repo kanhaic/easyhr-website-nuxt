@@ -107,7 +107,7 @@ const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString("en-US", options);
 };
 useSeoMeta({
-  articleModifiedTime: new Date().toISOString().split("T")[0],
+  articleModifiedTime: new Date().toISOString(),
 });
 useHead({
   title: resource.fields?.seoTitle,

@@ -254,7 +254,7 @@ useHead({
 });
 
 useSeoMeta({
-  articleModifiedTime: new Date().toISOString().split("T")[0],
+  articleModifiedTime: new Date().toISOString(),
 });
 
 useHead({
