@@ -229,8 +229,10 @@ const getUserInfo = async () => {
 
 const submitForm = async () => {
   form.value.submittedAt = new Date().toISOString();
+
   
   try {
+    await getUserInfo();
     await $fetch("https://n8n.craftinghr.com/webhook-test/0ffe9532-7100-47b1-bdfd-3368c8899efb", {
       method: "POST",
       body: form.value,
@@ -248,7 +250,4 @@ const submitForm = async () => {
   }
 };
 
-onMounted(async () => {
-  await getUserInfo();
-});
 </script>

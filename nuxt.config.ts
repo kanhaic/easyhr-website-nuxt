@@ -60,6 +60,7 @@ export default defineNuxtConfig({
           defer: true,
           type: "text/javascript",
           tagPosition: "bodyClose",
+          tagPriority: "low"
         }
       ]
     },

@@ -28,7 +28,11 @@
               <!-- Name Fields -->
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label for="firstName" class="block text-sm font-medium text-gray-700">First Name *</label>
+                  <label
+                    for="firstName"
+                    class="block text-sm font-medium text-gray-700"
+                    >First Name *</label
+                  >
                   <input
                     type="text"
                     id="firstName"
@@ -38,7 +42,11 @@
                   />
                 </div>
                 <div>
-                  <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name *</label>
+                  <label
+                    for="lastName"
+                    class="block text-sm font-medium text-gray-700"
+                    >Last Name *</label
+                  >
                   <input
                     type="text"
                     id="lastName"
@@ -51,7 +59,11 @@
 
               <!-- Email Field -->
               <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Work Email *</label>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700"
+                  >Work Email *</label
+                >
                 <input
                   type="email"
                   id="email"
@@ -63,7 +75,11 @@
 
               <!-- Phone Field -->
               <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number *</label>
+                <label
+                  for="phone"
+                  class="block text-sm font-medium text-gray-700"
+                  >Phone Number *</label
+                >
                 <input
                   type="tel"
                   id="phone"
@@ -75,7 +91,11 @@
 
               <!-- Partnership Type -->
               <div>
-                <label for="partnerType" class="block text-sm font-medium text-gray-700">Partnership Type *</label>
+                <label
+                  for="partnerType"
+                  class="block text-sm font-medium text-gray-700"
+                  >Partnership Type *</label
+                >
                 <select
                   id="partnerType"
                   v-model="form.partnerType"
@@ -225,7 +245,7 @@ const form = ref({
   utmMedium: "",
   utmCampaign: "",
   submittedAt: "",
-  formType: "partner-signup"
+  formType: "partner-signup",
 });
 
 const getBrowserInfo = (userAgent) => {
@@ -235,7 +255,7 @@ const getBrowserInfo = (userAgent) => {
     firefox: /firefox/i,
     opera: /opera/i,
     edge: /edge/i,
-    ie: /msie|trident/i
+    ie: /msie|trident/i,
   };
 
   for (const [browser, regex] of Object.entries(browsers)) {
@@ -243,32 +263,36 @@ const getBrowserInfo = (userAgent) => {
       return { browser };
     }
   }
-  return { browser: 'Unknown' };
+  return { browser: "Unknown" };
 };
 
 const getDeviceType = () => {
   const ua = navigator.userAgent;
   if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-    return 'Tablet';
+    return "Tablet";
   }
-  if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
-    return 'Mobile';
+  if (
+    /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+      ua
+    )
+  ) {
+    return "Mobile";
   }
-  return 'Desktop';
+  return "Desktop";
 };
 
 const getUtmParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
   return {
-    source: urlParams.get('utm_source') || '',
-    medium: urlParams.get('utm_medium') || '',
-    campaign: urlParams.get('utm_campaign') || ''
+    source: urlParams.get("utm_source") || "",
+    medium: urlParams.get("utm_medium") || "",
+    campaign: urlParams.get("utm_campaign") || "",
   };
 };
 
 const getUserInfo = async () => {
   try {
-    const response = await fetch('https://ipapi.co/json/');
+    const response = await fetch("https://ipapi.co/json/");
     const data = await response.json();
 
     form.value.ipAddress = data.ip;
@@ -279,29 +303,29 @@ const getUserInfo = async () => {
     form.value.isp = data.org;
 
     const userAgent = navigator.userAgent;
-    const platform = navigator.userAgentData?.platform || 'Unknown';
+    const platform = navigator.userAgentData?.platform || "Unknown";
     const browserInfo = getBrowserInfo(userAgent);
 
     form.value.userAgent = userAgent;
     form.value.platform = platform;
     form.value.browser = browserInfo.browser;
     form.value.deviceType = getDeviceType();
-    form.value.referrer = document.referrer || 'Direct';
+    form.value.referrer = document.referrer || "Direct";
 
     const utmParams = getUtmParams();
     form.value.utmSource = utmParams.source;
     form.value.utmMedium = utmParams.medium;
     form.value.utmCampaign = utmParams.campaign;
-
   } catch (error) {
-    console.error('Error fetching user info:', error);
+    console.error("Error fetching user info:", error);
   }
 };
 
 const handleSubmit = async () => {
   form.value.submittedAt = new Date().toISOString();
-  
+
   try {
+    await getUserInfo();
     await $fetch(
       "https://n8n.craftinghr.com/webhook/78f6a43d-9711-4b06-9431-eac3c7921dcf",
       {
@@ -318,13 +342,9 @@ const handleSubmit = async () => {
 
     await navigateTo("/partners/thank-you");
   } catch (error) {
-    console.error('Submission error:', error);
+    console.error("Submission error:", error);
   }
 };
-
-onMounted(async () => {
-  await getUserInfo();
-});
 
 const logos = [
   { src: "/images/logos/9.webp", alt: "Company 9" },

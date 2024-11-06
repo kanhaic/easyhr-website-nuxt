@@ -181,8 +181,10 @@ const getUserInfo = async () => {
 
 const submitForm = async () => {
   form.value.submittedAt = new Date().toISOString();
+
   
   try {
+    await getUserInfo();
     await $fetch(
       "https://n8n.craftinghr.com/webhook/0ffe9532-7100-47b1-bdfd-3368c8899efb",
       {
@@ -202,8 +204,4 @@ const submitForm = async () => {
     console.error('Error submitting form:', error);
   }
 };
-
-onMounted(async () => {
-  await getUserInfo();
-});
 </script>
