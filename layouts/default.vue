@@ -1,9 +1,24 @@
 <template>
-  <div class="overflow-x-hidden">
-    <Header class="lg:static sticky top-0 z-50" />
+  <div>
+    <Header />
     <main>
       <slot />
     </main>
     <Footer />
   </div>
 </template>
+
+<script setup>
+useHead({
+  script: [
+    {
+      src: "https://embed.small.chat/T179A90J0GVC000RNZ.js",
+      async: true,
+      defer: true,
+      type: "text/javascript",
+      tagPosition: "bodyClose",
+      tagPriority: "low",
+    },
+  ],
+});
+</script>

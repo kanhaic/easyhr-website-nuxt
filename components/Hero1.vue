@@ -56,7 +56,7 @@
           <p class="mt-5 text-gray-600" v-if="showLogin">
             Already joined us?
             <a
-              href="#"
+              href="/login"
               title=""
               class="transition-all duration-200 hover:underline hover:text-gray-400 hover:font-semibold text-blue-600"
               >Log in</a
@@ -129,7 +129,7 @@ const props = defineProps({
   },
   showLogin: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
 

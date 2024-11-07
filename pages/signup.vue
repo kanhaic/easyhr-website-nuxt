@@ -239,7 +239,7 @@
                   <p class="text-sm text-gray-600">
                     Already have an account?
                     <a
-                      href="#"
+                      href="/login"
                       class="font-medium text-indigo-600 hover:text-indigo-500"
                     >
                       Login here

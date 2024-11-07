@@ -313,8 +313,8 @@
       :title="testimonials.title"
       :testimonials="testimonials.items"
     />
-    <Stats1 :title="stats.title" :stats="stats.stats" />
-    <RecentBlog :title="recentBlog.title" :posts="recentBlog.posts" />
+    <Stats1 :title="stats?.title" :stats="stats?.stats" />
+    <RecentBlog :title="recentBlog?.title" :posts="recentBlog?.posts" />
     <ContactForm />
   </div>
 
@@ -354,8 +354,8 @@
       :title="testimonials.title"
       :testimonials="testimonials.items"
     />
-    <Stats1 :title="stats.title" :stats="stats.stats" />
-    <RecentBlog :title="recentBlog.title" :posts="recentBlog.posts" />
+    <Stats1 :title="stats?.title" :stats="stats?.stats" />
+    <RecentBlog :title="recentBlog?.title" :posts="recentBlog?.posts" />
     <ContactForm />
   </div>
 </template>

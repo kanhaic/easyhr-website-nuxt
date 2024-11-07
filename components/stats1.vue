@@ -47,11 +47,12 @@ defineProps({
   title: {
     type: String,
     required: true,
+    default: "Transforming HR Management Through Innovative Solutions",
   },
   subtitle: {
     type: String,
     default:
-      "Explore the Numbers That Define Our Impact – From Satisfied Customers to Streamlined HR Processes, See How We Empower Businesses Globally to Achieve More with Less.",
+      "Explore the Numbers That Define Our Impact - From Satisfied Customers to Streamlined HR Processes, See How We Empower Businesses Globally to Achieve More with Less.",
   },
   stats: {
     type: Array,
