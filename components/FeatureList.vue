@@ -17,7 +17,7 @@
       <div
         class="grid grid-cols-1 gap-6 mt-12 lg:mt-16 sm:grid-cols-2 lg:grid-cols-3"
       >
-        <div v-for="(feature, index) in features" :key="index">
+        <div v-for="(feature, index) in features" :key="index" class="shadow-lg rounded border border-gray-200 p-8">
           <div class="inline-block items-start justify-start">
             <div class="relative flex items-center justify-center mx-auto mb-4">
               <svg
@@ -54,9 +54,12 @@
               {{ feature?.title }}
             </h3>
           </a>
-          <p class="mt-4 text-base text-gray-600">
+          <p class="mt-4 text-base text-gray-600 min-h-[80px]">
             {{ feature?.description }}
           </p>
+          <a :href="`/features/${feature?.slug}`" class="inline-block mt-4 text-sm font-medium text-blue-600 hover:text-blue-700">
+            Learn more →
+          </a>
         </div>
       </div>
     </div>
