@@ -1,10 +1,10 @@
 <template>
   <div class="bg-white">
     <header
-      class="fixed inset-x-0 top-0 z-50 bg-white shadow-sm"
+      class="fixed inset-x-0 top-0 z-50 bg-white shadow-sm shadow-gray-100 py-3"
     >
       <nav
-        class="mx-auto flex max-w-7xl items-center justify-between p-4"
+        class="mx-auto flex max-w-7xl items-center justify-between p-3"
         aria-label="Global"
       >
         <div class="flex lg:flex-1">

@@ -27,7 +27,7 @@
             </div>
           </div>
           <!-- Sidebar with demo request form (1/3 width) -->
-          <div class="lg:w-1/3 mt-12 lg:mt-12">
+          <div class="lg:w-1/3 mt-12">
             <div class="sticky top-20">
               <div class="bg-gray-100 rounded-lg p-6">
                 <h3 class="text-xl font-semibold mb-4">Request a Demo</h3>
@@ -412,8 +412,8 @@ const heroSection = {
 };
 
 const stats = {
-  title: landingPage.items[0]?.fields.statsTitle,
-  stats: landingPage.items[0]?.fields.stats.map((stat) => ({
+  title: landingPage.items[0]?.fields?.statsTitle,
+  stats: landingPage.items[0]?.fields?.stats.map((stat) => ({
     value: stat?.fields.value,
     label: stat?.fields.label,
   })),

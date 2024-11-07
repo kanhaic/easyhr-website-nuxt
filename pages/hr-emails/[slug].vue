@@ -13,7 +13,7 @@
             class="mt-12 sm:mt-16 lg:grid lg:grid-cols-12 lg:gap-x-16 xl:gap-x-24"
           >
             <aside
-              class="lg:col-span-4 lg:order-last lg:self-start lg:sticky lg:top-8"
+              class="lg:col-span-4 lg:order-last lg:self-start lg:sticky lg:top-20"
             >
               <div
                 class="overflow-hidden bg-gray-50 border border-gray-200 rounded-lg"
