@@ -11,7 +11,7 @@
         <h1
           class="mt-10 text-3xl font-bold text-center text-gray-900 lg:mt-20 xl:mt-32 sm:text-4xl xl:text-5xl font-pj lg:text-left"
         >
-          Welcome back to EasyHR
+          {{ loginPage.fields.title }}
         </h1>
 
         <form @submit.prevent="handleLogin" class="mt-10">
@@ -121,11 +121,11 @@
           class="mt-10 text-base font-normal text-center text-gray-900 lg:mt-20 xl:mt-32 font-pj lg:text-left"
         >
           Don't have an account?
-          <NuxtLink
-            to="/signup"
+          <a
+            href="/signup"
             title="Create a new account"
             class="font-bold rounded focus:outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2 hover:underline"
-            >Sign up now</NuxtLink
+            >Sign up now</a
           >
         </p>
       </div>
@@ -167,26 +167,25 @@
             <p
               class="text-2xl font-medium leading-relaxed text-white lg:text-3xl font-pj"
             >
-              "You made it so simple. My new site is so much faster and easier
-              to work with than my old site. I just choose the page, make the
-              change."
+              {{ testimonial?.fields?.testimonial }}
             </p>
           </blockquote>
 
           <div class="flex items-center mt-12">
-            <img
+            <NuxtImg
               class="flex-shrink-0 object-cover rounded-full w-14 h-14"
-              src="https://cdn.rareblocks.xyz/collection/clarity/images/sign-up/4/avatar-female.png"
-              alt="Leslie Alexander profile picture"
+              :src="testimonial?.fields?.profilePicture?.fields?.file?.url"
+              :alt="testimonial?.fields?.name"
+              provider="contentful"
               width="56"
               height="56"
             />
             <div class="ml-4">
               <p class="text-xl font-bold text-white font-pj">
-                Leslie Alexander
+                {{ testimonial?.fields?.name }}
               </p>
               <p class="mt-px text-lg font-normal text-gray-400 font-pj">
-                React Developer
+                {{ testimonial?.fields?.designation }}
               </p>
             </div>
           </div>
@@ -197,6 +196,25 @@
 </template>
 
 <script setup>
+import * as contentful from "contentful";
+const config = useRuntimeConfig();
+const client = contentful.createClient({
+  space: config.public.contentful.spaceId,
+  accessToken: config.public.contentful.accessToken,
+});
+
+const { data, error } = await useAsyncData("main-landing", () =>
+  client.getEntries({
+    content_type: "landingPage",
+    "fields.type": "main",
+    "fields.slug": "login",
+    limit: 1,
+  })
+);
+
+const loginPage = data.value?.items?.[0] || {};
+const testimonial = loginPage?.fields?.testimonials?.[0] || {};
+
 const account = ref("");
 const isLoading = ref(false);
 const accountInput = ref(null);
