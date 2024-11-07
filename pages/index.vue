@@ -71,6 +71,8 @@
       </div>
     </div>
 
+    <IndustryList :industries="industries" />
+
     <!-- Content -->
     <div class="py-12 sm:py-16 lg:py-20 xl:py-24" v-if="content">
       <div class="mx-auto max-w-4xl">
@@ -80,6 +82,7 @@
         ></div>
       </div>
     </div>
+
     <Testimonial1
       :subtitle="testimonials.topTag"
       :title="testimonials.title"
@@ -112,6 +115,17 @@ const { data, error } = await useAsyncData("main-landing", () =>
   })
 );
 
+const { data: industriesData, error: industriesError } = await useAsyncData(
+  "industries-list",
+  () =>
+    client.getEntries({
+      content_type: "landingPage",
+      "fields.type": "industry",
+      order: "fields.seq",
+      limit: 8,
+    })
+);
+
 const { data: blogData, error: blogError } = await useAsyncData("blog", () =>
   client.getEntries({
     content_type: "blog",
@@ -124,7 +138,11 @@ const blogPosts = blogData.value?.items || [];
 
 const landingPage = data.value || { items: [], includes: { Asset: [] } };
 
-// console.log(JSON.stringify(landingPage.items[0], null, 2));
+const industries = (industriesData.value?.items || []).map((industry) => ({
+  title: industry.fields.menuTitle,
+  description: industry.fields.menuDescription,
+  image: industry.fields.heroImage.fields.file.url,
+}));
 
 const heroSection = {
   topTag: landingPage.items[0].fields.topTag,
