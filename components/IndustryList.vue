@@ -18,15 +18,27 @@
         <div
           class="grid grid-cols-1 gap-6 mx-auto mt-12 md:grid-cols-2 lg:grid-cols-3 sm:mt-16 lg:gap-8 max-w-7xl"
         >
-          <div v-for="(industry, index) in industries" :key="index" class="bg-gray-100 rounded-2xl">
+          <div
+            v-for="(industry, index) in industries"
+            :key="index"
+            class="rounded-xl shadow border border-gray-200"
+          >
             <div class="px-6 py-6 sm:p-8">
               <div class="h-36">
                 <h4 class="text-xl font-semibold text-gray-900 mb-3">
                   {{ industry.title }}
                 </h4>
-                <h3 class="pt-4 text-lg text-gray-900">
+                <p class="pt-4 text-lg text-gray-900">
                   {{ industry.description }}
-                </h3>
+                </p>
+                <div class="mt-4">
+                  <a
+                    :href="`/${industry.slug}`"
+                    class="inline-block text-sm font-medium text-blue-600 hover:text-blue-700"
+                  >
+                    Learn more →
+                  </a>
+                </div>
               </div>
               <div class="h-72 w-full mt-8">
                 <img
@@ -47,32 +59,16 @@
 const props = defineProps({
   title: {
     type: String,
-    default: 'Industry-Specific HR Solutions'
+    default: "Industry-Specific HR Solutions",
   },
   subtitle: {
     type: String,
-    default: 'Streamline your HR processes with solutions tailored to your industry needs'
+    default:
+      "Streamline your HR processes with solutions tailored to your industry needs",
   },
   industries: {
     type: Array,
-    default: () => [
-      {
-        title: 'Technology & IT',
-        description: 'Take authentic feedbacks from customers of your app. Build a quick list.',
-        image: 'https://landingfoliocom.imgix.net/store/collection/saasui/images/features/6/image-1.png'
-      },
-      {
-        title: 'Healthcare & Medical',
-        description: 'Make quick fixes based on the feedbacks you\'ve received. With a happy smile.',
-        image: 'https://landingfoliocom.imgix.net/store/collection/saasui/images/features/6/image-2.png'
-      },
-      {
-        title: 'Manufacturing',
-        description: 'Enjoy more than 10x revenue with real-time conversions. Grow your business.',
-        image: 'https://landingfoliocom.imgix.net/store/collection/saasui/images/features/6/image-3.png'
-      }
-    ]
-  }
+  },
 });
 </script>
 

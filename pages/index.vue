@@ -142,6 +142,7 @@ const industries = (industriesData.value?.items || []).map((industry) => ({
   title: industry.fields.menuTitle,
   description: industry.fields.menuDescription,
   image: industry.fields.heroImage.fields.file.url,
+  slug: industry.fields.slug,
 }));
 
 const heroSection = {
