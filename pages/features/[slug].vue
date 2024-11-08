@@ -135,17 +135,13 @@ const feature = data.value?.items.find(
 // Compute feature sets
 const featureSets = computed(() => {
   const sets = [];
-  for (let i = 1; i <= 10; i++) {
-    const title = feature.fields?.[`title${i}`];
-    const description = documentToHtmlString(
-      feature.fields?.[`content${i}`]
-    );
-    const image = feature.fields?.[`image${i}`]?.fields?.file?.url;
-
-    if (title || description || image) {
-      sets.push({ title, description, image });
-    }
-  }
+  feature.fields?.featureContent?.forEach((set) => {
+    sets.push({
+      title: set?.fields?.title,
+      description: documentToHtmlString(set?.fields?.content),
+      image: set?.fields?.image?.fields?.file?.url,
+    });
+  });
   return sets;
 });
 
