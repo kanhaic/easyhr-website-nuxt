@@ -1,7 +1,7 @@
 <template>
   <header class="bg-white">
     <nav
-      class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8"
+      class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 px-6 py-4 lg:px-8"
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
@@ -40,11 +40,11 @@
       <PopoverGroup class="hidden lg:flex lg:gap-x-12">
         <Popover class="relative">
           <PopoverButton
-            class="flex items-center gap-x-1 text-base font-semibold leading-6 text-gray-900"
+            class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 lg:text-base"
           >
             Products
             <ChevronDownIcon
-              class="h-5 w-5 flex-none text-gray-400"
+              class="h-4 w-4 flex-none text-gray-400 lg:h-5 lg:w-5"
               aria-hidden="true"
             />
           </PopoverButton>
@@ -61,17 +61,17 @@
               class="absolute -left-8 z-10 mt-5 flex w-screen max-w-max px-4"
             >
               <div
-                class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
+                class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-2xl"
               >
                 <div class="p-4">
-                  <div class="grid grid-cols-2 gap-x-6 gap-y-1">
+                  <div class="grid grid-cols-2 gap-x-4 gap-y-1">
                     <div
                       v-for="item in products"
                       :key="item.name"
-                      class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+                      class="group relative flex gap-x-4 rounded-lg p-3 hover:bg-gray-50"
                     >
                       <div
-                        class="mt-1 flex h-12 w-12 flex-none items-center justify-center rounded-lg"
+                        class="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-lg"
                         :class="item.iconBgColor ?? 'bg-blue-50'"
                       >
                         <svg
@@ -81,7 +81,7 @@
                           stroke-width="1.5"
                           stroke="currentColor"
                           stroke-linejoin="round"
-                          class="w-6 h-6"
+                          class="w-5 h-5"
                           :class="item.iconColor ?? 'text-gray-600'"
                         >
                           <path
@@ -94,12 +94,12 @@
                       <div>
                         <a
                           :href="item.href"
-                          class="font-semibold text-gray-900"
+                          class="font-semibold text-gray-900 text-sm"
                         >
                           {{ item.name }}
                           <span class="absolute inset-0" />
                         </a>
-                        <p class="mt-1 text-gray-600">
+                        <p class="mt-1 text-gray-600 text-xs">
                           {{ item.description }}
                         </p>
                       </div>
@@ -143,11 +143,11 @@
 
         <Popover class="relative">
           <PopoverButton
-            class="flex items-center gap-x-1 text-base font-semibold leading-6 text-gray-900"
+            class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 lg:text-base"
           >
             Industries
             <ChevronDownIcon
-              class="h-5 w-5 flex-none text-gray-400"
+              class="h-4 w-4 flex-none text-gray-400 lg:h-5 lg:w-5"
               aria-hidden="true"
             />
           </PopoverButton>
@@ -164,18 +164,18 @@
               class="absolute left-1/4 z-10 mt-5 flex w-screen max-w-max -translate-x-1/4 px-4"
             >
               <div
-                class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
+                class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-2xl"
               >
                 <div
-                  class="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2"
+                  class="grid grid-cols-1 gap-x-4 gap-y-1 p-3 lg:grid-cols-2"
                 >
                   <div
                     v-for="item in industries"
                     :key="item.name"
-                    class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+                    class="group relative flex gap-x-4 rounded-lg p-3 hover:bg-gray-50"
                   >
                     <div
-                      class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
+                      class="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-lg"
                       :class="item.iconBgColor ?? 'bg-gray-50'"
                     >
                       <svg
@@ -185,7 +185,7 @@
                         stroke-width="1.5"
                         stroke="currentColor"
                         stroke-linejoin="round"
-                        class="w-6 h-6"
+                        class="w-5 h-5"
                         :class="item.iconColor ?? 'text-gray-600'"
                       >
                         <path
@@ -196,11 +196,11 @@
                       </svg>
                     </div>
                     <div>
-                      <a :href="item.href" class="font-semibold text-gray-900">
+                      <a :href="item.href" class="font-semibold text-gray-900 text-sm">
                         {{ item.name }}
                         <span class="absolute inset-0" />
                       </a>
-                      <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                      <p class="mt-1 text-gray-600 text-xs">{{ item.description }}</p>
                     </div>
                   </div>
                 </div>
@@ -211,11 +211,11 @@
 
         <Popover class="relative">
           <PopoverButton
-            class="flex items-center gap-x-1 text-base font-semibold leading-6 text-gray-900"
+            class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 lg:text-base"
           >
             Resources
             <ChevronDownIcon
-              class="h-5 w-5 flex-none text-gray-400"
+              class="h-4 w-4 flex-none text-gray-400 lg:h-5 lg:w-5"
               aria-hidden="true"
             />
           </PopoverButton>
@@ -232,18 +232,18 @@
               class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4"
             >
               <div
-                class="mx-auto w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
+                class="mx-auto w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-2xl"
               >
                 <div
-                  class="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2"
+                  class="grid grid-cols-1 gap-x-4 gap-y-1 p-3 lg:grid-cols-2"
                 >
                   <div
                     v-for="item in resources"
                     :key="item.name"
-                    class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+                    class="group relative flex gap-x-4 rounded-lg p-3 hover:bg-gray-50"
                   >
                     <div
-                      class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
+                      class="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-lg"
                       :class="item.iconBgColor"
                     >
                       <svg
@@ -252,7 +252,7 @@
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-6 h-6"
+                        class="w-5 h-5"
                         :class="item.iconColor"
                       >
                         <path
@@ -263,11 +263,13 @@
                       </svg>
                     </div>
                     <div>
-                      <a :href="item.href" class="font-semibold text-gray-900">
+                      <a :href="item.href" class="font-semibold text-gray-900 text-sm">
                         {{ item.name }}
                         <span class="absolute inset-0" />
                       </a>
-                      <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                      <p class="mt-1 text-gray-600 text-xs">
+                        {{ item.description }}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -278,16 +280,16 @@
 
         <a
           href="/pricing"
-          class="text-base font-semibold leading-6 text-gray-900"
+          class="text-sm font-semibold leading-6 text-gray-900 lg:text-base"
           >Pricing</a
         >
         <Popover class="relative">
           <PopoverButton
-            class="flex items-center gap-x-1 text-base font-semibold leading-6 text-gray-900"
+            class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 lg:text-base"
           >
             Company
             <ChevronDownIcon
-              class="h-5 w-5 flex-none text-gray-400"
+              class="h-4 w-4 flex-none text-gray-400 lg:h-5 lg:w-5"
               aria-hidden="true"
             />
           </PopoverButton>
@@ -301,16 +303,16 @@
             leave-to-class="opacity-0 translate-y-1"
           >
             <PopoverPanel
-              class="absolute right-0 sm:-right-8 top-full z-10 mt-3 w-[480px] rounded-3xl bg-white p-4 shadow-lg ring-1 ring-gray-900/5"
+              class="absolute right-0 sm:-right-8 top-full z-10 mt-3 w-[480px] rounded-3xl bg-white p-3 shadow-lg ring-1 ring-gray-900/5"
             >
               <div class="relative">
                 <div
                   v-for="item in company"
                   :key="item.name"
-                  class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+                  class="group relative flex gap-x-4 rounded-lg p-3 hover:bg-gray-50"
                 >
                   <div
-                    class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg"
+                    class="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-lg"
                     :class="item.iconBgColor"
                   >
                     <svg
@@ -319,7 +321,7 @@
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      class="w-6 h-6"
+                      class="w-5 h-5"
                       :class="item.iconColor"
                     >
                       <path
@@ -337,7 +339,7 @@
                       {{ item.name }}
                       <span class="absolute inset-0" />
                     </a>
-                    <p class="mt-1 text-sm leading-6 text-gray-600">
+                    <p class="mt-1 text-xs leading-6 text-gray-600">
                       {{ item.description }}
                     </p>
                   </div>
