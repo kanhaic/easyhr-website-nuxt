@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <Header />
-    <main>
+  <div class="min-h-screen flex flex-col">
+    <div class="sticky top-0 z-10 bg-white">
+      <Header />
+    </div>
+    <main class="flex-grow">
       <slot />
     </main>
     <Footer />
