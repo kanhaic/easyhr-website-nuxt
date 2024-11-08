@@ -10,7 +10,7 @@
           <NuxtImg
             src="/images/logo.webp"
             alt="EasyHR Logo"
-            height="79px"
+            class="h-10 w-auto"
             format="webp"
           />
         </a>
@@ -375,7 +375,7 @@
           <div class="flex items-center justify-between">
             <a href="/" class="-m-1.5 p-1.5">
               <span class="sr-only">EasyHR</span>
-              <NuxtImg height="79" src="/images/logo.webp" alt="Logo" />
+              <NuxtImg class="h-10 w-auto" src="/images/logo.webp" alt="Logo" />
             </a>
             <button
               type="button"
