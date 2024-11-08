@@ -1,8 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <div class="sticky top-0 z-10 bg-white">
-      <Header />
-    </div>
+    <Header class="sticky top-0 z-10 bg-white" />
     <main class="flex-grow">
       <slot />
     </main>
