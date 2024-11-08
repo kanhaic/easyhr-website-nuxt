@@ -29,7 +29,9 @@
               'border-l border-t border-gray-200': index === 3,
             }"
           >
-            <p class="text-5xl font-semibold tracking-tight text-gray-900">
+            <p
+              class="text-2xl lg:text-4xl font-semibold tracking-tight text-gray-900"
+            >
               {{ stat.value }}
             </p>
             <h3 class="mt-3 text-base font-semibold text-blue-600">
