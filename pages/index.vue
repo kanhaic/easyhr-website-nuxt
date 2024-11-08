@@ -246,17 +246,13 @@ const renderedBody = documentToHtmlString(content, customRenderer);
 
 const contentSets = computed(() => {
   const sets = [];
-  for (let i = 1; i <= 10; i++) {
-    const title = landingPage.items[0].fields?.[`title${i}`];
-    const description = documentToHtmlString(
-      landingPage.items[0].fields?.[`content${i}`]
-    );
-    const image = landingPage.items[0].fields?.[`image${i}`]?.fields?.file?.url;
-
-    if (title || description || image) {
-      sets.push({ title, description, image });
-    }
-  }
+  landingPage.items[0]?.fields?.featureContent?.forEach((set) => {
+    sets.push({
+      title: set?.fields?.title,
+      description: documentToHtmlString(set?.fields?.content),
+      image: set?.fields?.image?.fields?.file?.url,
+    });
+  });
   return sets;
 });
 
