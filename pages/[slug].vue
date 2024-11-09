@@ -342,6 +342,53 @@
         </article>
       </div>
 
+      <div class="mx-auto max-w-5xl">
+        <div class="px-4 sm:px-6 lg:px-8">
+          <section
+            v-for="(contentSet, index) in contentSets"
+            :key="index"
+            :id="`content-${index}`"
+            class="py-4 sm:py-6 lg:py-8"
+          >
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <div
+                class="grid grid-cols-1 md:items-center gap-y-8 md:grid-cols-2 md:gap-x-16"
+              >
+                <div
+                  class="text-center md:text-left prose"
+                  :class="{ 'md:order-2': index % 2 !== 0 }"
+                >
+                  <h2
+                    class="text-2xl font-bold text-gray-900 sm:text-3xl xl:text-4xl"
+                  >
+                    {{ contentSet.title }}
+                  </h2>
+                  <div
+                    v-html="contentSet.description"
+                    class="prose lg:prose-lg prose-ul:text-left prose-ul:list-disc"
+                  ></div>
+                </div>
+
+                <div
+                  :class="{ 'md:order-1': index % 2 !== 0 }"
+                  class="flex justify-center items-center"
+                >
+                  <NuxtImg
+                    v-if="contentSet.image"
+                    class="w-auto"
+                    :src="contentSet.image"
+                    :alt="contentSet.title"
+                    provider="contentful"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <LogoSection :logos="logos" />
+
       <ContactForm />
     </div>
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="relative overflow-hidden bg-cream py-8 sm:py-12">
+  <section class="relative overflow-hidden bg-cream py-8 sm:py-12 bg-blue-100">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
         <!-- Text Content -->
