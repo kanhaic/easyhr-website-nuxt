@@ -341,6 +341,8 @@
           ></div>
         </article>
       </div>
+
+      <ContactForm />
     </div>
 
     <!-- default -->
