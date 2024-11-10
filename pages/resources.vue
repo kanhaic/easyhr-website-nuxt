@@ -211,10 +211,6 @@ useHead({
       name: "description",
       content: resourcePage.seoDescription,
     },
-    {
-      name: "keywords",
-      content: resourcePage.seoKeywords,
-    },
   ],
 });
 

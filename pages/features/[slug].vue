@@ -152,10 +152,6 @@ useHead({
       name: "description",
       content: feature.fields?.seoDescription,
     },
-    {
-      name: "keywords",
-      content: feature.fields?.seoKeywords,
-    },
   ],
 });
 

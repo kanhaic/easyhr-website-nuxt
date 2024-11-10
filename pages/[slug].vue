@@ -606,7 +606,6 @@ useHead({
       name: "description",
       content: landingPage.items[0]?.fields?.seoDescription,
     },
-    { name: "keywords", content: landingPage.items[0]?.fields?.seoKeywords },
   ],
 });
 

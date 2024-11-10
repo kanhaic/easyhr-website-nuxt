@@ -227,10 +227,6 @@ useHead({
       name: "description",
       content: landingPage.seoDescription,
     },
-    {
-      name: "keywords",
-      content: landingPage.seoKeywords,
-    },
   ],
 });
 </script>

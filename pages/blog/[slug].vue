@@ -176,10 +176,6 @@ useHead({
       name: "description",
       content: blogPost.fields?.description,
     },
-    {
-      name: "keywords",
-      content: blogPost.fields?.keywords,
-    },
   ],
 });
 

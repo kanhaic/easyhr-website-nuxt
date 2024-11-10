@@ -189,11 +189,6 @@ useHead({
       content:
         "HR Checklist is a collection of tasks and procedures related to human resources.",
     },
-    {
-      name: "keywords",
-      content:
-        "EasyHR, HR checklist, HR software, HRIS, payroll, attendance, leave",
-    },
   ],
 });
 </script>

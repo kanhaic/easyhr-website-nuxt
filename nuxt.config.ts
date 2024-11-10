@@ -56,10 +56,6 @@ export default defineNuxtConfig({
           content:
             "EasyHR is a HR software that helps businesses manage their HR tasks, employee management, and payroll.",
         },
-        {
-          name: "keywords",
-          content: "HR software, employee management, payroll, EasyHR",
-        },
         { name: "author", content: "EasyHR" },
         { name: "robots", content: "index, follow" },
         { name: "publisher", content: "EasyHR" },

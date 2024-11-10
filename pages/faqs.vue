@@ -105,8 +105,7 @@ useHead({
     {
       name: "description",
       content: faqPage.seoDescription,
-    },
-    { name: "keywords", content: faqPage.seoKeywords },
+    }
   ],
 });
 </script>

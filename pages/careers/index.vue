@@ -124,7 +124,6 @@ useHead({
   title: "Careers - EasyHR",
   meta: [
     { name: "description", content: "We're always looking for awesome people to join us. If you are passionate about technology and want to be part of our journey, we would love to hear from you." },
-    { name: "keywords", content: "careers, EasyHR, HRMS, HRMS solution, HRMS software, HRMS provider, HRMS partner, HRMS reseller, HRMS referral, HRMS commission, HRMS training, HRMS support" },
   ],
 });
 </script>

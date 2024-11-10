@@ -199,7 +199,6 @@ useHead({
   title: "Reseller Program - EasyHR",
   meta: [
     { name: "description", content: "Partner with EasyHR to expand your portfolio and grow your business!" },
-    { name: "keywords", content: "reseller program, EasyHR, HRMS, HRMS solution, HRMS software, HRMS provider, HRMS partner, HRMS reseller, HRMS referral, HRMS commission, HRMS training, HRMS support" },
   ],
 });
 </script>

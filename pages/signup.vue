@@ -355,7 +355,6 @@ useHead({
       name: "description",
       content: "Sign up for EasyHR",
     },
-    { name: "keywords", content: "sign up, easyhr, hr software" },
   ],
 });
 

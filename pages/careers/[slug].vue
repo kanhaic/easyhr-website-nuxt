@@ -81,7 +81,6 @@ useHead({
   title: `${jobOpening.role} - Careers - EasyHR`,
   meta: [
     { name: "description", content: `${jobOpening.role} at EasyHR` },
-    { name: "keywords", content: `${jobOpening.role}, EasyHR, HRMS, HRMS solution, HRMS software, HRMS provider, HRMS partner, HRMS reseller, HRMS referral, HRMS commission, HRMS training, HRMS support` },
   ],
 });
 </script>

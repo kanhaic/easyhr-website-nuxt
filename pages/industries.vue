@@ -143,11 +143,7 @@ useHead({
     {
       name: "description",
       content: industriesPage.seoDescription,
-    },
-    {
-      name: "keywords",
-      content: industriesPage.seoKeywords,
-    },
+    }
   ],
 });
 

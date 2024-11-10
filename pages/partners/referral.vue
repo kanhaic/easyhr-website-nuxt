@@ -205,7 +205,6 @@ useHead({
   title: "Referral Program - EasyHR",
   meta: [
     { name: "description", content: "Earn attractive commissions by referring EasyHR to your network." },
-    { name: "keywords", content: "referral program, EasyHR, HRMS, HRMS solution, HRMS software, HRMS provider, HRMS partner, HRMS reseller, HRMS referral, HRMS commission, HRMS training, HRMS support" },
   ],
 });
 </script>

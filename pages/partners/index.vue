@@ -302,12 +302,6 @@ useHead({
         landingPage?.seoDescription ||
         "Join EasyHR's partner program to earn attractive commissions and grow your business.",
     },
-    {
-      name: "keywords",
-      content:
-        landingPage?.seoKeywords ||
-        "partner program, referral program, reseller program, EasyHR, HRMS, HRMS solution, HRMS software, HRMS provider, HRMS partner, HRMS reseller, HRMS referral, HRMS commission, HRMS training, HRMS support",
-    },
   ],
 });
 

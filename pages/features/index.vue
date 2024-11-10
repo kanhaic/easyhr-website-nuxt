@@ -155,11 +155,7 @@ useHead({
     {
       name: "description",
       content: "Feature List for EasyHR",
-    },
-    {
-      name: "keywords",
-      content: "EasyHR, features, HR software, HRIS, payroll, attendance, leave",
-    },
+    }
   ],
 });
 

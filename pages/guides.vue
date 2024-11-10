@@ -73,8 +73,6 @@ useHead({
   title: 'HR & Payroll Guides',
   meta: [
     { name: 'description', content: 'Comprehensive guides and resources for managing your HR and payroll operations' },
-    { name: 'keywords', content: 'HR, payroll, guides, resources, HR operations, payroll operations' },
-
   ],
 });
 </script>
