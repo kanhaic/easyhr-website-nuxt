@@ -33,7 +33,11 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [
-        { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+        { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+        { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+        { rel: "manifest", href: "/site.webmanifest" },
         { rel: "preconnect", href: "https://www.googletagmanager.com" },
         { rel: "preconnect", href: "https://embed.small.chat" },
         { rel: "preconnect", href: "https://n8n.craftinghr.com" },
@@ -59,6 +63,8 @@ export default defineNuxtConfig({
         { name: "author", content: "EasyHR" },
         { name: "robots", content: "index, follow" },
         { name: "publisher", content: "EasyHR" },
+        { name: "msapplication-TileColor", content: "#2d89ef" },
+        { name: "theme-color", content: "#ffffff" },
       ],
     },
   },
