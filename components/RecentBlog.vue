@@ -27,6 +27,7 @@
               :src="post.image"
               :alt="post.title"
               :title="post.title"
+              loading="lazy"
               width="200"
               height="100"
               provider="contentful"
