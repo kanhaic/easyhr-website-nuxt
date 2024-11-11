@@ -21,6 +21,7 @@
                 preload
                 provider="contentful"
                 class="rounded-lg"
+                loading="eager"
                 quality="90"
               />
               <h1 class="text-4xl font-bold">{{ blogPost.fields?.title }}</h1>
@@ -162,7 +163,7 @@ const customRenderer = {
       const { url, description } = node.data.target.fields.file;
       return `<NuxtImg format="webp" src="${url}" alt="${
         description || "image"
-      }" title="${description || "image"}" class="w-full h-auto my-4" provider="contentful" />`;
+      }" title="${description || "image"}" loading="lazy" class="w-full h-auto my-4" provider="contentful" />`;
     },
   },
 };
