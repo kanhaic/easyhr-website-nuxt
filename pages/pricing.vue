@@ -201,7 +201,7 @@
                     colspan="4"
                     :class="[
                       sectionIdx === 0 ? 'pt-8' : 'pt-16',
-                      'pb-4 text-sm font-semibold leading-6 text-gray-900',
+                      'pb-4 text-sm font-semibold leading-6 text-gray-900 text-left',
                     ]"
                   >
                     {{ section.name }}
