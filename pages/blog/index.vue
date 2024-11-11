@@ -10,6 +10,7 @@
           height="600"
           class="h-full w-full object-cover "
           alt="Blog Background"
+          title="Blog Background"
           format="webp"
           preload
           provider="contentful"
@@ -44,6 +45,7 @@
               <NuxtImg
                 :src="post.imageUrl"
                 :alt="post.title"
+                :title="post.title"
                 class="aspect-[16/9] w-full rounded-lg object-cover"
                 sizes="sm:100vw md:100vw lg:100vw"
                 width="1200"

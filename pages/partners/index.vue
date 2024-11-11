@@ -37,6 +37,7 @@
                 <NuxtImg
                   src="/images/referal-icon.png"
                   alt="Referral Partners"
+                  title="Referral Partners"
                   class="w-12 h-12"
                   width="48"
                   height="48"
@@ -83,6 +84,7 @@
                 <NuxtImg
                   src="/images/reseller-icon.png"
                   alt="Reseller Partners"
+                  title="Reseller Partners"
                   class="w-12 h-12"
                   width="48"
                   height="48"

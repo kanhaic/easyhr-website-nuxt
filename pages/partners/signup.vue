@@ -8,6 +8,7 @@
             class="h-10 w-auto"
             src="/images/logo.webp"
             alt="EasyHR Logo"
+            title="EasyHR Logo"
           />
         </a>
       </div>
@@ -207,6 +208,7 @@
                   <NuxtImg
                     :src="logo.src"
                     :alt="logo.alt"
+                    :title="logo.alt"
                     class="max-h-16 w-auto"
                   />
                 </div>

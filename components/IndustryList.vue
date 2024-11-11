@@ -45,6 +45,8 @@
                   class="object-cover w-full h-full rounded-xl"
                   :src="industry.image"
                   :alt="industry.title"
+                  :title="industry.title"
+                  loading="lazy"
                 />
               </div>
             </div>

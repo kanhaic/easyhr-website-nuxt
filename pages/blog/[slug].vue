@@ -14,6 +14,7 @@
                 format="webp"
                 :src="blogPost.fields?.featuredImage?.fields?.file?.url"
                 :alt="blogPost.fields?.title"
+                title="Featured image"
                 width="1200"
                 height="630"
                 sizes="sm:100vw md:100vw lg:100vw"
@@ -52,6 +53,7 @@
                     class="object-cover w-20 h-20 rounded-lg shrink-0"
                     :src="post.fields.featuredImage.fields.file.url"
                     :alt="post.fields.title"
+                    title="Featured image"
                     provider="contentful"
                     width="100"
                     height="100"
@@ -88,6 +90,7 @@
                     ?.url
                 "
                 :alt="blogPost.fields?.author?.fields?.name"
+                title="Profile picture"
                 class="w-16 h-16 rounded-full mr-4"
               />
               <div>
@@ -158,8 +161,8 @@ const customRenderer = {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const { url, description } = node.data.target.fields.file;
       return `<NuxtImg format="webp" src="${url}" alt="${
-        description || ""
-      }" class="w-full h-auto my-4" provider="contentful" />`;
+        description || "image"
+      }" title="${description || "image"}" class="w-full h-auto my-4" provider="contentful" />`;
     },
   },
 };

@@ -67,9 +67,10 @@
         <div class="flex justify-center items-center">
           <NuxtImg
             v-if="heroImageProvider"
-            class="w-3/4  h-auto lg:w-full rounded-lg"
+              class="w-3/4  h-auto lg:w-full rounded-lg"
             :src="heroImage"
             :alt="title"
+            :title="title"
             format="webp"
             preload
             width="640"
@@ -80,6 +81,7 @@
             v-else
             :src="heroImage"
             :alt="title"
+            :title="title"
             class="w-full rounded-lg"
             width="640"
             height="554"

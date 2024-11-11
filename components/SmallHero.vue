@@ -25,6 +25,7 @@
           <NuxtImg
             :src="image"
             :alt="title"
+            :title="title"
             class="w-full max-h-72 rounded-lg object-contain"
             provider="contentful"
             preload

@@ -13,6 +13,9 @@
             :src="logo.src"
             :alt="logo.alt"
             :provider="logo?.provider"
+            :title="logo.alt"
+            width="150"
+            height="100"
             class="w-32 lg:w-48 xl:w-auto h-auto"
           />
         </div>

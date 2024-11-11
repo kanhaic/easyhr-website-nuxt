@@ -24,7 +24,8 @@
                   >
                     <NuxtImg
                       src="/images/logo.webp"
-                      alt="Company Logo"
+                      alt="EasyHR Logo"
+                      title="EasyHR Logo"
                       class="w-24 h-auto mb-4"
                     />
                     Request Demo
@@ -77,8 +78,8 @@ const customRenderer = {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const { url, description } = node.data.target.fields.file;
       return `<NuxtImg format="webp" src="${url}" alt="${
-        description || ""
-      }" class="w-full h-auto my-4" provider="contentful" />`;
+        description || "image"
+      }" title="${description || "image"}" class="w-full h-auto my-4" provider="contentful" />`;
     },
   },
 };

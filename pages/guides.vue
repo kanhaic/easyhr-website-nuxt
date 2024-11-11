@@ -19,6 +19,7 @@
             v-if="guide.fields.heroImage?.fields?.file?.url"
             :src="`https:${guide.fields.heroImage.fields.file.url}`"
             :alt="guide.fields.menuTitle"
+            :title="guide.fields.menuTitle"
             class="object-cover w-full h-full"
             loading="lazy"
             provider="contentful"

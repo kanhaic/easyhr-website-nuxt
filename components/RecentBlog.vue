@@ -26,6 +26,7 @@
               class="object-cover w-full sm:w-56 transition-all duration-200 transform h-44 group-hover:scale-110 group-hover:rotate-3"
               :src="post.image"
               :alt="post.title"
+              :title="post.title"
               width="200"
               height="100"
               provider="contentful"

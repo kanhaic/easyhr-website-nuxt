@@ -25,6 +25,7 @@
                     <NuxtImg
                       src="/images/logo.webp"
                       alt="Company Logo"
+                      title="Company Logo"
                       class="w-24 h-auto mb-4"
                     />
                     Request Demo
@@ -44,7 +45,7 @@
               <div class="overflow-hidden bg-gray-50 border border-gray-200 rounded-lg">
                 <div class="px-4 py-5 sm:p-6">
                   <h4 class="font-bold tracking-widest text-gray-400 uppercase pb-4">
-                    <NuxtImg src="/images/logo.webp" alt="Company Logo" class="w-24 h-auto mb-4" />
+                    <NuxtImg src="/images/logo.webp" alt="Company Logo" class="w-24 h-auto mb-4" title="Company Logo" />
                     Request Demo
                   </h4>
                   <DemoRequest />
@@ -140,8 +141,8 @@ const customRenderer = {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const { url, description } = node.data.target.fields.file;
       return `<NuxtImg format="webp" src="${url}" alt="${
-        description || ""
-      }" class="w-full h-auto my-4" provider="contentful" />`;
+        description || "image"
+      }" title="${description || "image"}" class="w-full h-auto my-4" provider="contentful" />`;
     },
   },
 };

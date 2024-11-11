@@ -5,7 +5,7 @@
     >
       <div class="flex-1 px-2 max-w-md mx-auto lg:max-w-lg py-4 lg:py-12">
         <a href="/" class="flex justify-center lg:justify-start">
-          <img class="w-24" src="/images/logo.webp" alt="EasyHR Logo" />
+          <img class="w-24" src="/images/logo.webp" alt="EasyHR Logo" title="EasyHR Logo" />
         </a>
 
         <h1
@@ -138,6 +138,7 @@
             class="object-cover object-top w-full h-full scale-150 -rotate-90 opacity-10"
             src="/images/background-pattern.png"
             alt="Background pattern"
+            title="Background pattern"
             width="1920"
             height="1080"
           />
@@ -176,6 +177,7 @@
               class="flex-shrink-0 object-cover rounded-full w-14 h-14"
               :src="testimonial?.fields?.profilePicture?.fields?.file?.url"
               :alt="testimonial?.fields?.name"
+              title="Profile picture"
               provider="contentful"
               width="56"
               height="56"

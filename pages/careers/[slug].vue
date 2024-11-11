@@ -11,6 +11,7 @@
             class="absolute inset-0 h-full w-full bg-gray-50 object-cover"
             src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=2560&h=3413&&q=80"
             alt="Signup background"
+            title="Signup background"
           />
         </div>
       </div>
@@ -66,8 +67,8 @@ const customRenderer = {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const { url, description } = node.data.target.fields.file;
       return `<NuxtImg format="webp" src="${url}" alt="${
-        description || ""
-      }" class="w-full h-auto my-4" provider="contentful" />`;
+        description || "image"
+      }" title="${description || "image"}" class="w-full h-auto my-4" provider="contentful" />`;
     },
   },
 };

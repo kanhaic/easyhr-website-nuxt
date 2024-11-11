@@ -83,6 +83,7 @@
                     class="w-auto"
                     :src="contentSet.image"
                     :alt="contentSet.title"
+                    :title="contentSet.title"
                     provider="contentful"
                   />
                 </div>
@@ -222,6 +223,7 @@
           <NuxtImg
             :src="heroSection.heroImage"
             :alt="heroSection.title"
+            :title="heroSection.title"
             class="w-full h-auto rounded-md"
             provider="contentful"
             preload
@@ -297,7 +299,9 @@
                     class="w-auto"
                     :src="contentSet.image"
                     :alt="contentSet.title"
+                    :title="contentSet.title"
                     provider="contentful"
+
                   />
                 </div>
               </div>
@@ -582,7 +586,7 @@ const customRenderer = {
       }
       return `<img src="https:${url}" alt="${
         description || "image"
-      }" class="w-full h-auto lg:w-3/4" />`;
+      }" title="${description || "image"}" loading="lazy" class="w-full h-auto lg:w-3/4" />`;
     },
     [BLOCKS.TABLE]: (node, next) => {
       const tableContent = next(node.content);

@@ -60,8 +60,10 @@
                 <NuxtImg
                   v-if="contentSet.image"
                   class="w-auto"
+                  loading="lazy"
                   :src="contentSet.image"
                   :alt="contentSet.title"
+                  :title="contentSet.title"
                   provider="contentful"
                 />
               </div>
@@ -239,7 +241,7 @@ const customRenderer = {
       const { url, description } = node.data.target.fields.file;
       return `<NuxtImg format="webp" src="${url}" alt="${
         description || ""
-      }" class="w-full h-auto my-4" provider="contentful" />`;
+      }" title="${description || ""}" loading="lazy" class="w-full h-auto my-4" provider="contentful" />`;
     },
   },
 };

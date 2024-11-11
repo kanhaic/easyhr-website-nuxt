@@ -183,6 +183,7 @@
           <NuxtImg
             :src="logo.src"
             :alt="logo.alt"
+            :title="logo.alt"
             class="h-24 w-auto"
           />
         </div>

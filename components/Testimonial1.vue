@@ -20,6 +20,7 @@
             class="object-cover w-48 h-48 mx-auto sm:mx-0 lg:w-60 lg:h-60 shrink-0 rounded-2xl"
             :src="testimonial.image"
             :alt="testimonial.name"
+            :title="testimonial.name"
             loading="lazy"
             width="200"
             height="200"

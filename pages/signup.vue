@@ -8,6 +8,7 @@
             class="h-10 w-auto"
             src="/images/logo.webp"
             alt="EasyHR Logo"
+            title="EasyHR Logo"
           />
         </a>
       </div>
@@ -280,6 +281,7 @@
                   <NuxtImg
                     :src="testimonial.fields.profilePicture.fields.file.url"
                     :alt="testimonial.fields.name"
+                    title="Profile picture"
                     class="h-12 w-12 rounded-full"
                     provider="contentful"
                   />
@@ -313,6 +315,7 @@
                 <NuxtImg
                   :src="logo.src"
                   :alt="logo.alt"
+                  title="Logo"
                   class="max-h-16 w-auto"
                 />
               </div>

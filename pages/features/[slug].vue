@@ -81,6 +81,7 @@
                   class="h-64 w-auto"
                   :src="featureSet.image"
                   :alt="featureSet.title"
+                  :title="featureSet.title"
                   provider="contentful"
                 />
               </div>

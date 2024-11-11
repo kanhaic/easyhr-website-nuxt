@@ -10,6 +10,7 @@
           height="600"
           class="h-full w-full object-cover"
           alt="Blog Background"
+          title="Blog Background"
           format="webp"
           preload
           provider="contentful"
@@ -44,6 +45,7 @@
               <img
                 :src="`${post.imageUrl}?w=1200&h=675&fit=fill`"
                 :alt="post.title"
+                :title="post.title"
                 class="aspect-[16/9] w-full rounded-lg object-cover"
                 width="1200"
                 height="675"

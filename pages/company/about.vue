@@ -23,6 +23,7 @@
           class="w-full mt-6"
           src="/images/group-of-people.webp"
           alt="Group of people"
+          title="Group of people"
         />
       </div>
     </section>
@@ -51,6 +52,7 @@
                 class="mx-auto h-48 w-48 rounded-full border-2 border-gray-200 shadow-lg object-cover"
                 :src="person.fields.profilePicture?.fields.file.url"
                 :alt="`${person.fields.name} profile image`"
+                title="Profile picture"
                 provider="contentful"
               />
               <h3

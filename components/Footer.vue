@@ -6,8 +6,8 @@
         <div class="flex flex-col md:flex-row justify-between items-start">
           <!-- Logo and Description -->
           <div class="flex flex-col md:flex-row md:items-center md:space-x-8 max-w-3xl">
-            <a href="/" title="" class="flex-shrink-0">
-              <NuxtImg class="w-auto h-12" src="/images/logo.webp" alt="EasyHR Logo" />
+            <a href="/" title="EasyHR Logo" class="flex-shrink-0">
+              <NuxtImg class="w-auto h-12" src="/images/logo.webp" alt="EasyHR Logo" title="EasyHR Logo" loading="lazy" />
             </a>
             <p class="mt-4 md:mt-0 text-sm font-normal text-gray-200">
               EasyHR is a user-friendly and intuitive HR software designed for
@@ -325,6 +325,8 @@
                   src="/images/app-store-badge.png"
                   alt="Download on the App Store"
                   class="w-[140px] h-auto"
+                  title="Download on the App Store"
+                  loading="lazy"
                 />
               </a>
               <a
@@ -337,6 +339,8 @@
                   src="/images/google-play-badge.png"
                   alt="Get it on Google Play"
                   class="w-[140px] h-auto"
+                  title="Get it on Google Play"
+                  loading="lazy"
                 />
               </a>
             </div>
