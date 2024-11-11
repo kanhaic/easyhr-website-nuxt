@@ -10,9 +10,10 @@
           <img
             src="/images/logo.webp"
             alt="EasyHR Logo"
-            class="h-10 w-auto"
             format="webp"
             title="EasyHR Logo"
+            height="40"
+            width="100"
           />
         </a>
       </div>

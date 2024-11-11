@@ -67,7 +67,7 @@
         <div class="flex justify-center items-center">
           <NuxtImg
             v-if="heroImageProvider"
-              class="w-3/4  h-auto lg:w-full rounded-lg"
+              class="hidden rounded-lg lg:block"
             :src="heroImage"
             :alt="title"
             :title="title"
@@ -82,7 +82,7 @@
             :src="heroImage"
             :alt="title"
             :title="title"
-            class="w-full rounded-lg"
+            class="hidden rounded-lg lg:block"
             width="640"
             height="554"
           />
