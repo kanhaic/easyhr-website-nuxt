@@ -67,7 +67,7 @@
         <div class="flex justify-center items-center">
           <NuxtImg
             v-if="heroImageProvider"
-              class="hidden rounded-lg lg:block"
+            class="rounded-lg"
             :src="heroImage"
             :alt="title"
             :title="title"
@@ -82,7 +82,7 @@
             :src="heroImage"
             :alt="title"
             :title="title"
-            class="hidden rounded-lg lg:block"
+            class="rounded-lg"
             width="640"
             height="554"
           />
@@ -93,8 +93,6 @@
 </template>
 
 <script setup>
-
-
 const props = defineProps({
   topTag: {
     type: String,
@@ -134,5 +132,4 @@ const props = defineProps({
     default: true,
   },
 });
-
 </script>
