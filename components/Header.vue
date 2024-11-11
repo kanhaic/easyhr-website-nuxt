@@ -378,7 +378,7 @@
           <div class="flex items-center justify-between">
             <a href="/" class="-m-1.5 p-1.5">
               <span class="sr-only">EasyHR</span>
-              <img class="h-10 w-auto" src="/images/logo.webp" alt="Logo" title="EasyHR Logo" />
+              <img class="h-10 w-auto" src="/images/logo.webp" alt="Logo" title="EasyHR Logo" height="40" width="139" />
             </a>
             <button
               type="button"

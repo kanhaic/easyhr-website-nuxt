@@ -7,7 +7,7 @@
           <!-- Logo and Description -->
           <div class="flex flex-col md:flex-row md:items-center md:space-x-8 max-w-3xl">
             <a href="/" title="EasyHR Logo" class="flex-shrink-0">
-              <NuxtImg class="w-auto h-12" src="/images/logo.webp" alt="EasyHR Logo" title="EasyHR Logo" loading="lazy" />
+              <img src="/images/logo.webp" alt="EasyHR Logo" title="EasyHR Logo" loading="lazy" height="40" width="140" />
             </a>
             <p class="mt-4 md:mt-0 text-sm font-normal text-gray-200">
               EasyHR is a user-friendly and intuitive HR software designed for
