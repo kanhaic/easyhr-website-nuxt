@@ -238,7 +238,7 @@
                         v-show="
                           openDescriptions[`${section.name}-${feature.name}`]
                         "
-                        class="text-sm leading-6 text-gray-500 mt-1"
+                        class="text-sm leading-6 text-gray-500 mt-1 text-left"
                       >
                         {{ feature.description }}
                       </div>
