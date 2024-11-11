@@ -51,13 +51,14 @@
 
           <div class="lg:col-span-3">
             <NuxtImg
-              class="w-full rounded-lg border border-gray-100"
+              class="rounded-lg border border-gray-100"
               :src="image.src"
               :alt="image.alt"
               :title="image.alt"
               loading="lazy"
-              width="600"
-              height="400"
+              width="800"
+              height="600"
+              format="webp"
               provider="contentful"
             />
           </div>
