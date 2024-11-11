@@ -92,6 +92,8 @@
         </div>
       </div>
 
+      <FaqSection :faqs="faqSets" />
+
       <Testimonial1
         :subtitle="testimonials.topTag"
         :title="testimonials.title"
@@ -232,6 +234,8 @@
         <article class="mt-8 sm:mt-12 prose lg:prose-lg prose-indigo mx-auto">
           <div v-html="renderedBody"></div>
         </article>
+
+        <FaqSection :faqs="faqSets" />
       </div>
     </div>
 
@@ -311,6 +315,9 @@
           ></div>
         </div>
       </div>
+      
+      <FaqSection :faqs="faqSets" />
+      
       <Testimonial1
         :subtitle="testimonials.topTag"
         :title="testimonials.title"
@@ -387,8 +394,10 @@
         </div>
       </div>
 
+      <FaqSection :faqs="faqSets" />
+      
       <LogoSection :logos="logos" />
-
+      
       <ContactForm />
     </div>
 
@@ -423,6 +432,7 @@
       >
         <div v-html="renderedBody" class="prose lg:prose-xl"></div>
       </div>
+      <FaqSection :faqs="faqSets" />
       <Testimonial1
         :subtitle="testimonials.topTag"
         :title="testimonials.title"
@@ -594,6 +604,17 @@ const contentSets = computed(() => {
       title: set?.fields?.title,
       description: documentToHtmlString(set?.fields?.content),
       image: set?.fields?.image?.fields?.file?.url,
+    });
+  });
+  return sets;
+});
+
+const faqSets = computed(() => {
+  const sets = [];
+  landingPage.items[0]?.fields?.faqList?.forEach((set) => {
+    sets.push({
+      question: set?.fields?.question,
+      answer: set?.fields?.answer,
     });
   });
   return sets;

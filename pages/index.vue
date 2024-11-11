@@ -83,6 +83,8 @@
       </div>
     </div>
 
+    <FaqSection :faqs="faqSets" />
+
     <Testimonial1
       :subtitle="testimonials.topTag"
       :title="testimonials.title"
@@ -255,6 +257,18 @@ const contentSets = computed(() => {
   });
   return sets;
 });
+
+const faqSets = computed(() => {
+  const sets = [];
+  landingPage.items[0]?.fields?.faqList?.forEach((set) => {
+    sets.push({
+      question: set?.fields?.question,
+      answer: set?.fields?.answer,
+    });
+  });
+  return sets;
+});
+
 
 useHead({
   title: landingPage.items[0].fields?.seoTitle,
