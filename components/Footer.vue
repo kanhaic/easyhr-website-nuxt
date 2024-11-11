@@ -324,7 +324,8 @@
                 <NuxtImg
                   src="/images/app-store-badge.png"
                   alt="Download on the App Store"
-                  class="w-[140px] h-auto"
+                  width="140"
+                  height="40"
                   title="Download on the App Store"
                   loading="lazy"
                 />
@@ -338,7 +339,8 @@
                 <NuxtImg
                   src="/images/google-play-badge.png"
                   alt="Get it on Google Play"
-                  class="w-[140px] h-auto"
+                  width="140"
+                  height="40"
                   title="Get it on Google Play"
                   loading="lazy"
                 />
