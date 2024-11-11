@@ -15,12 +15,12 @@ export default defineNuxtConfig({
   },
   site: {
     url: "https://www.easyhrworld.com",
-    name: "EasyHR",
+    name: "EasyHR", 
     description: `EasyHR is a user-friendly and intuitive HR software designed for
               SMEs and enterprises. It streamlines the management of HRIS
               records, leave and attendance, payroll, expenses, and travel,
               making HR operations effortless.`,
-    indexable: true,
+    indexable: process.env.NODE_ENV === 'production'
   },
   sitemap: {
     defaults: {
@@ -30,6 +30,7 @@ export default defineNuxtConfig({
     }
   },
   devtools: { enabled: true },
+
   app: {
     head: {
       link: [
@@ -38,11 +39,13 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" },
         { rel: "icon", type: "image/png", sizes: "16x16", href: "/images/favicon-16x16.png" },
         { rel: "manifest", href: "/site.webmanifest" },
-        { rel: "preconnect", href: "https://www.googletagmanager.com" },
-        { rel: "preconnect", href: "https://embed.small.chat" },
+        { rel: "preconnect", href: "https://www.googletagmanager.com", crossorigin: "anonymous" },
+        { rel: "preconnect", href: "https://embed.small.chat", crossorigin: "anonymous" },
+        { rel: "preconnect", href: "https://static.small.chat", crossorigin: "anonymous" },
         { rel: "preconnect", href: "https://www.google-analytics.com" },
-        { rel: "dns-prefetch", href: "https://www.google-analytics.com" },
         { rel: "dns-prefetch", href: "https://embed.small.chat" },
+        { rel: "dns-prefetch", href: "https://static.small.chat" },
+        { rel: "dns-prefetch", href: "https://www.googletagmanager.com" },
         { rel: "preload", as: "image", href: "/images/logo.webp", type: "image/webp" },
       ],
       title: "EasyHR | HR Software for SMEs",
@@ -99,9 +102,39 @@ export default defineNuxtConfig({
   gtag: {
     enabled: true,
     id: "G-RKFHSKFF92",
-    loadingStrategy: "async"
+    loadingStrategy: "async",
+    config: {
+      // Optimize GTM loading
+      send_page_view: false,
+      transport_url: "https://www.googletagmanager.com",
+      defer: true,
+      loading: "lazy"
+    }
   },
   plugins: [
     '~/plugins/small-chat.client.ts'
-  ]
+  ],
+  routeRules: {
+    // Add caching for static assets
+    '/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable'
+      }
+    }
+  },
+  nitro: {
+    routeRules: {
+      // Cache third-party resources
+      '/static.small.chat/**': { 
+        cache: { 
+          maxAge: 60 * 60 * 24 * 7 // 1 week
+        }
+      },
+      '/embed.small.chat/**': {
+        cache: {
+          maxAge: 60 * 60 * 24 * 7
+        }
+      }
+    }
+  }
 });
