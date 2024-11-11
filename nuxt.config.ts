@@ -104,4 +104,7 @@ export default defineNuxtConfig({
     id: "G-RKFHSKFF92",
     loadingStrategy: "async"
   },
+  plugins: [
+    '~/plugins/small-chat.client.ts'
+  ]
 });
