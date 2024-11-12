@@ -1,0 +1,9 @@
+<template>
+  <div>
+    <Script
+      type="text/partytown"
+      src="https://embed.small.chat/T179A90J0GVC000RNZ.js"
+      async
+    />
+  </div>
+</template>
