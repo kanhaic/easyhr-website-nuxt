@@ -1,5 +1,5 @@
 <template>
-  <section v-once class="pt-6">
+  <section class="pt-6">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
       <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
         <div>
@@ -60,7 +60,8 @@
               href="/login"
               title="Log in"
               class="transition-all duration-200 hover:underline font-medium hover:text-blue-900 hover:font-semibold text-blue-800"
-            >Log in</a>
+              >Log in</a
+            >
           </p>
         </div>
 
@@ -76,8 +77,6 @@
             loading="eager"
             fetchpriority="high"
             preload
-            width="640"
-            height="554"
             :provider="heroImageProvider"
           />
           <img
