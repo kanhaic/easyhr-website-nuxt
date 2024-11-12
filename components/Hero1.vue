@@ -57,8 +57,8 @@
             Already joined us?
             <a
               href="/login"
-              title=""
-              class="transition-all duration-200 hover:underline hover:text-gray-400 hover:font-semibold text-blue-600"
+              title="Log in"
+              class="transition-all duration-200 hover:underline font-medium  hover:text-blue-900 hover:font-semibold text-blue-800"
               >Log in</a
             >
           </p>

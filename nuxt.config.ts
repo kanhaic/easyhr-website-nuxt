@@ -81,12 +81,6 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          src: "https://embed.small.chat/T179A90J0GVC000RNZ.js",
-          async: true,
-          type: "text/partytown",
-          tagPosition: "bodyClose",
-        },
-        {
           src: "https://www.googletagmanager.com/gtag/js?id=G-RKFHSKFF92",
           async: true,
           type: "text/partytown",
@@ -170,18 +164,9 @@ export default defineNuxtConfig({
     debug: false,
   },
   nitro: {
-    routeRules: {
-      // Cache third-party resources
-      "/static.small.chat/**": {
-        cache: {
-          maxAge: 60 * 60 * 24 * 7, // 1 week
-        },
-      },
-      "/embed.small.chat/**": {
-        cache: {
-          maxAge: 60 * 60 * 24 * 7,
-        },
-      },
+    prerender: {
+      crawlLinks: true,
+      routes: ["/sitemap.xml"],
     },
   },
 });

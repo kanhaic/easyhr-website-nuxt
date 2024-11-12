@@ -53,13 +53,14 @@
             <div class="mt-6 lg:mt-auto">
               <a
                 :href="post.authorHref"
-                title=""
+                :title="post.author.fields.name"
                 class="flex items-center text-base font-medium text-gray-600 hover:text-gray-900 truncate"
               >
                 <NuxtImg
                   class="object-cover mr-2.5 rounded-full w-7 h-7 shrink-0"
                   :src="post.authorImage"
-                  :alt="post.author.fields.name"
+                  :alt="post.author.fields.name + ' avatar'"
+                  :title="post.author.fields.name + ' avatar'"
                   loading="lazy"
                   width="28"
                   height="28"

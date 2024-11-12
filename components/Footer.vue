@@ -241,6 +241,7 @@
                 href="https://www.facebook.com/easyhrworld"
                 target="_blank"
                 rel="noopener"
+                title="Facebook"
                 class="text-gray-400 hover:text-white transition-colors"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -255,6 +256,7 @@
                 href="https://twitter.com/easyhrworld"
                 target="_blank"
                 rel="noopener"
+                title="Twitter"
                 class="text-gray-400 hover:text-white transition-colors"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -269,6 +271,7 @@
                 href="https://www.linkedin.com/company/easy-hr-world"
                 target="_blank"
                 rel="noopener"
+                title="LinkedIn"
                 class="text-gray-400 hover:text-white transition-colors"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -283,6 +286,7 @@
                 href="https://www.instagram.com/easyhr_world"
                 target="_blank"
                 rel="noopener"
+                title="Instagram"
                 class="text-gray-400 hover:text-white transition-colors"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -297,6 +301,7 @@
                 href="https://www.youtube.com/@easyhrworld"
                 target="_blank"
                 rel="noopener"
+                title="YouTube"
                 class="text-gray-400 hover:text-white transition-colors"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

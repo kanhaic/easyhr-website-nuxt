@@ -9,7 +9,7 @@
           <span class="sr-only">EasyHR Logo</span>
           <img
             src="/images/logo.webp"
-            alt="EasyHR Logo"
+            alt="EasyHR"
             format="webp"
             title="EasyHR Logo"
             height="40"
@@ -379,7 +379,7 @@
           <div class="flex items-center justify-between">
             <a href="/" class="-m-1.5 p-1.5">
               <span class="sr-only">EasyHR</span>
-              <img class="h-10 w-auto" src="/images/logo.webp" alt="Logo" title="EasyHR Logo" height="40" width="139" />
+              <img class="h-10 w-auto" src="/images/logo.webp" alt="EasyHR Logo" title="EasyHR" height="40" width="139" />
             </a>
             <button
               type="button"
