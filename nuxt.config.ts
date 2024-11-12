@@ -134,17 +134,30 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   image: {
-    format: ["webp"],
-    providers: {
-      contentful: {
-        accessToken: process.env.NUXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
-        spaceId: process.env.NUXT_PUBLIC_CONTENTFUL_SPACE_ID,
-        dangerouslyAllowSVG: true,
-        generate: {
-          fallback: true,
-        },
-      },
+    provider: 'contentful',
+    contentful: {
+      baseURL: 'https://images.ctfassets.net/',
     },
+    screens: {
+      'xs': 320,
+      'sm': 640,
+      'md': 768,
+      'lg': 1024,
+      'xl': 1280,
+      '2xl': 1536,
+    },
+    presets: {
+      hero: {
+        modifiers: {
+          format: 'webp',
+          quality: '80',
+          loading: 'eager',
+          fetchpriority: 'high'
+        }
+      }
+    },
+    domains: ['images.ctfassets.net'],
+    format: ['webp', 'avif', 'jpeg', 'jpg', 'png'],
   },
   // gtag: {
   //   enabled: true,

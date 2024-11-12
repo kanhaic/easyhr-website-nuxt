@@ -280,6 +280,14 @@ useHead({
       content: landingPage.items[0].fields?.seoDescription,
     }
   ],
+  link: [
+    {
+      rel: 'preload',
+      as: 'image',
+      href: heroSection.heroImage,
+      fetchpriority: 'high'
+    }
+  ]
 });
 
 

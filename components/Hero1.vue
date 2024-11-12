@@ -19,11 +19,11 @@
 
           <div class="flex flex-row gap-4 mt-8 lg:mt-16">
             <a
+              v-if="cta1Link"
               :href="cta1Link"
               :title="cta1Title"
               class="inline-flex items-center justify-center px-6 py-4 font-semibold text-black transition-all duration-200 bg-indigo-300 rounded-md hover:bg-indigo-400 focus:bg-indigo-400"
               role="button"
-              v-if="cta1Link"
             >
               {{ cta1Title }}
               <svg
@@ -32,6 +32,7 @@
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -53,25 +54,27 @@
             </a>
           </div>
 
-          <p class="mt-5 text-gray-600" v-if="showLogin">
+          <p v-if="showLogin" class="mt-5 text-gray-600">
             Already joined us?
             <a
               href="/login"
               title="Log in"
-              class="transition-all duration-200 hover:underline font-medium  hover:text-blue-900 hover:font-semibold text-blue-800"
-              >Log in</a
-            >
+              class="transition-all duration-200 hover:underline font-medium hover:text-blue-900 hover:font-semibold text-blue-800"
+            >Log in</a>
           </p>
         </div>
 
         <div class="flex justify-center items-center">
           <NuxtImg
             v-if="heroImageProvider"
-            class="rounded-lg"
+            class="rounded-lg w-full max-w-[640px]"
             :src="heroImage"
             :alt="title"
             :title="title"
             format="webp"
+            quality="80"
+            loading="eager"
+            fetchpriority="high"
             preload
             width="640"
             height="554"
@@ -82,9 +85,11 @@
             :src="heroImage"
             :alt="title"
             :title="title"
-            class="rounded-lg"
+            class="rounded-lg w-full max-w-[640px]"
             width="640"
             height="554"
+            loading="eager"
+            fetchpriority="high"
           />
         </div>
       </div>
