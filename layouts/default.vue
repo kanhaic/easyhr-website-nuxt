@@ -5,7 +5,6 @@
       <slot />
     </main>
     <Footer />
-    <SmallChat />
   </div>
 </template>
 

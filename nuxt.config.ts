@@ -79,6 +79,19 @@ export default defineNuxtConfig({
           type: "image/webp",
         },
       ],
+      script: [
+        {
+          src: "https://embed.small.chat/T179A90J0GVC000RNZ.js",
+          async: true,
+          type: "text/partytown",
+          tagPosition: "bodyClose",
+        },
+        {
+          src: "https://www.googletagmanager.com/gtag/js?id=G-RKFHSKFF92",
+          async: true,
+          type: "text/partytown",
+        },
+      ],
       title: "EasyHR | HR Software for SMEs",
       htmlAttrs: {
         lang: "en",
@@ -107,7 +120,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/fonts",
     "@nuxtjs/sitemap",
-    "nuxt-gtag",
+    // "nuxt-gtag",
     "nuxt-seo-utils",
     "@nuxtjs/robots",
     "nuxt-schema-org",
@@ -139,11 +152,11 @@ export default defineNuxtConfig({
       },
     },
   },
-  gtag: {
-    enabled: true,
-    id: "G-RKFHSKFF92",
-    loadingStrategy: "async",
-  },
+  // gtag: {
+  //   enabled: true,
+  //   id: "G-RKFHSKFF92",
+  //   loadingStrategy: "async",
+  // },
   routeRules: {
     // Add caching for static assets
     "/**": {
@@ -151,6 +164,10 @@ export default defineNuxtConfig({
         "Cache-Control": "public, max-age=31536000, immutable",
       },
     },
+  },
+  partytown: {
+    forward: ["dataLayer.push"],
+    debug: false,
   },
   nitro: {
     routeRules: {
