@@ -180,4 +180,13 @@ const cardColors = [
   "bg-orange-50 hover:bg-orange-100",
 ];
 
+useHead({
+  title: "HR Emails",
+  meta: [
+    {
+      name: "description",
+      content: "HR Emails are a collection of emails related to human resources.",
+    },
+  ],
+});
 </script>

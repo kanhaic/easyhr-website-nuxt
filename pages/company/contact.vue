@@ -80,5 +80,13 @@
 </style>
 
 <script setup>
-
+useHead({
+  title: "Contact Us",
+  meta: [
+    {
+      name: "description",
+      content: "Contact EasyHR for support or sales inquiries.",
+    },
+  ],
+});
 </script>

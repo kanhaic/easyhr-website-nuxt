@@ -18,9 +18,9 @@
         <div class="max-w-md mx-auto w-full lg:max-w-lg">
           <div class="bg-white shadow-lg overflow-hidden sm:rounded-sm">
             <div class="px-3 py-4 sm:px-8 sm:py-6">
-              <h2 class="text-lg font-medium text-gray-900 sm:text-2xl mb-8">
+              <h1 class="text-lg font-medium text-gray-900 sm:text-2xl mb-8">
                 Get a Free Trial
-              </h2>
+              </h1>
               <form
                 @submit.prevent="handleSubmit"
                 class="space-y-4 sm:space-y-6"

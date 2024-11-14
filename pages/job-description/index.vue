@@ -135,7 +135,7 @@ const { data, error } = await useAsyncData("hr-letters", () =>
     "fields.type": "job-description",
     limit: pageSize,
     order: "fields.seq",
-    skip: 0
+    skip: 0,
   })
 );
 
@@ -170,4 +170,14 @@ const cardColors = [
   "bg-orange-50 hover:bg-orange-100",
 ];
 
+useHead({
+  title: "Job Descriptions",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Job Descriptions Section is a collection of job descriptions for various roles in an organization.",
+    },
+  ],
+});
 </script>

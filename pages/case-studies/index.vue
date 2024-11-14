@@ -5,9 +5,9 @@
     >
       <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div class="max-w-2xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
+          <h1 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
             Case Studies
-          </h2>
+          </h1>
           <p class="mx-auto mt-5 text-base font-normal leading-7 text-gray-600">
             Case Studies is a collection of stories and examples of how EasyHR
             has been used to solve real-world HR problems.
@@ -96,4 +96,13 @@ const cardColors = [
   "bg-indigo-50 hover:bg-indigo-100",
 ];
 
+useHead({
+  title: "Case Studies",
+  meta: [
+    {
+      name: "description",
+      content: "Learn about our case studies and how we've helped our clients.",
+    },
+  ],
+});
 </script>

@@ -5,9 +5,9 @@
     >
       <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div class="max-w-2xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
+          <h1 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
             HR Letters
-          </h2>
+          </h1>
           <p class="mx-auto mt-5 text-base font-normal leading-7 text-gray-600">
             HR letters are a crucial part of any organization's communication
             strategy. They are used to communicate important information to
@@ -24,7 +24,7 @@
             class="flex flex-col group"
           >
             <div
-            :class="[
+              :class="[
                 'flex flex-col flex-1 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200',
                 cardColors[index % cardColors.length],
               ]"
@@ -134,7 +134,7 @@ const { data, error } = await useAsyncData("hr-letters", () =>
     "fields.type": "hr-letters",
     limit: pageSize,
     order: "fields.seq",
-    skip: 0
+    skip: 0,
   })
 );
 
@@ -169,4 +169,14 @@ const cardColors = [
   "bg-orange-50 hover:bg-orange-100",
 ];
 
+useHead({
+  title: "HR Letters",
+  meta: [
+    {
+      name: "description",
+      content:
+        "HR letters are a crucial part of any organization's communication strategy. They are used to communicate important information to employees, such as changes to policies, procedures, and benefits.",
+    },
+  ],
+});
 </script>

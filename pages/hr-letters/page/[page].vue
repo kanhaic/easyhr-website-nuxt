@@ -5,9 +5,9 @@
     >
       <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div class="max-w-2xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
+          <h1 class="text-3xl font-bold text-indigo-600 sm:text-4xl">
             HR Letters
-          </h2>
+          </h1>
           <p class="mx-auto mt-5 text-base font-normal leading-7 text-gray-600">
             HR letters are a crucial part of any organization's communication
             strategy. They are used to communicate important information to
