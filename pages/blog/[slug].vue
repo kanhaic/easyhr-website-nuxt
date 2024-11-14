@@ -174,11 +174,11 @@ const renderedBody = documentToHtmlString(
 );
 
 useHead({
-  title: blogPost.fields?.title,
+  title: blogPost.fields?.seoTitle,
   meta: [
     {
       name: "description",
-      content: blogPost.fields?.description,
+      content: blogPost.fields?.seoDescription,
     },
   ],
 });
