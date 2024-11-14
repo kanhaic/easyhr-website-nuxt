@@ -107,7 +107,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/fonts",
     "@nuxtjs/sitemap",
-    "nuxt-gtag",
+    // "nuxt-gtag",
     "nuxt-seo-utils",
     "@nuxtjs/robots",
     "nuxt-schema-org",
@@ -152,11 +152,11 @@ export default defineNuxtConfig({
     domains: ["images.ctfassets.net"],
     format: ["webp", "avif", "jpeg", "jpg", "png"],
   },
-  gtag: {
-    enabled: true,
-    id: "G-RKFHSKFF92",
-    loadingStrategy: "async",
-  },
+  // gtag: {
+  //   enabled: true,
+  //   id: "G-RKFHSKFF92",
+  //   loadingStrategy: "async",
+  // },
   routeRules: {
     // Add caching for static assets
     "/**": {
