@@ -79,13 +79,6 @@ export default defineNuxtConfig({
           type: "image/webp",
         },
       ],
-      script: [
-        {
-          src: "https://www.googletagmanager.com/gtag/js?id=G-RKFHSKFF92",
-          async: true,
-          type: "text/partytown",
-        },
-      ],
       title: "EasyHR | HR Software for SMEs",
       htmlAttrs: {
         lang: "en",
@@ -114,11 +107,11 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/fonts",
     "@nuxtjs/sitemap",
-    // "nuxt-gtag",
+    "nuxt-gtag",
     "nuxt-seo-utils",
     "@nuxtjs/robots",
     "nuxt-schema-org",
-    "@nuxtjs/partytown",
+    // "@nuxtjs/partytown",
   ],
   fonts: {
     preload: true,
@@ -134,36 +127,36 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   image: {
-    provider: 'contentful',
+    provider: "contentful",
     contentful: {
-      baseURL: 'https://images.ctfassets.net/',
+      baseURL: "https://images.ctfassets.net/",
     },
     screens: {
-      'xs': 320,
-      'sm': 640,
-      'md': 768,
-      'lg': 1024,
-      'xl': 1280,
-      '2xl': 1536,
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      "2xl": 1536,
     },
     presets: {
       hero: {
         modifiers: {
-          format: 'webp',
-          quality: '80',
-          loading: 'eager',
-          fetchpriority: 'high'
-        }
-      }
+          format: "webp",
+          quality: "80",
+          loading: "eager",
+          fetchpriority: "high",
+        },
+      },
     },
-    domains: ['images.ctfassets.net'],
-    format: ['webp', 'avif', 'jpeg', 'jpg', 'png'],
+    domains: ["images.ctfassets.net"],
+    format: ["webp", "avif", "jpeg", "jpg", "png"],
   },
-  // gtag: {
-  //   enabled: true,
-  //   id: "G-RKFHSKFF92",
-  //   loadingStrategy: "async",
-  // },
+  gtag: {
+    enabled: true,
+    id: "G-RKFHSKFF92",
+    loadingStrategy: "async",
+  },
   routeRules: {
     // Add caching for static assets
     "/**": {
@@ -172,10 +165,10 @@ export default defineNuxtConfig({
       },
     },
   },
-  partytown: {
-    forward: ["dataLayer.push"],
-    debug: false,
-  },
+  // partytown: {
+  //   forward: ["dataLayer.push"],
+  //   debug: false,
+  // },
   nitro: {
     prerender: {
       crawlLinks: true,
