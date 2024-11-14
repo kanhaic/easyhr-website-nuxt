@@ -301,7 +301,6 @@
                     :alt="contentSet.title"
                     :title="contentSet.title"
                     provider="contentful"
-
                   />
                 </div>
               </div>
@@ -319,9 +318,9 @@
           ></div>
         </div>
       </div>
-      
+
       <FaqSection :faqs="faqSets" />
-      
+
       <Testimonial1
         :subtitle="testimonials.topTag"
         :title="testimonials.title"
@@ -346,8 +345,8 @@
       <!-- Content -->
       <div class="max-w-5xl mx-auto">
         <article class="px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 pb-6">
-          <div 
-            v-html="renderedBody" 
+          <div
+            v-html="renderedBody"
             class="prose lg:prose-lg prose-indigo max-w-none prose-headings:font-medium prose-p:my-2 prose-li:my-1 prose-headings:text-gray-900 prose-p:text-gray-600 prose-img:mx-auto"
           ></div>
         </article>
@@ -399,9 +398,9 @@
       </div>
 
       <FaqSection :faqs="faqSets" />
-      
+
       <LogoSection :logos="logos" />
-      
+
       <ContactForm />
     </div>
 
@@ -584,9 +583,9 @@ const customRenderer = {
       if (!url) {
         return "";
       }
-      return `<img src="https:${url}" alt="${
+      return `<img src="https:${url}" alt="${description || "image"}" title="${
         description || "image"
-      }" title="${description || "image"}" loading="lazy" class="w-full h-auto lg:w-3/4" />`;
+      }" loading="lazy" class="w-full h-auto lg:w-3/4" />`;
     },
     [BLOCKS.TABLE]: (node, next) => {
       const tableContent = next(node.content);
@@ -595,7 +594,8 @@ const customRenderer = {
     [BLOCKS.TABLE_ROW]: (node, next) => `<tr>${next(node.content)}</tr>`,
     [BLOCKS.TABLE_HEADER_CELL]: (node, next) =>
       `<th class="border border-gray-200 p-2">${next(node.content)}</th>`,
-    [BLOCKS.TABLE_CELL]: (node, next) => `<td class="border border-gray-200 p-2">${next(node.content)}</td>`,
+    [BLOCKS.TABLE_CELL]: (node, next) =>
+      `<td class="border border-gray-200 p-2">${next(node.content)}</td>`,
   },
 };
 
@@ -630,6 +630,14 @@ useHead({
     {
       name: "description",
       content: landingPage.items[0]?.fields?.seoDescription,
+    },
+  ],
+  link: [
+    {
+      rel: "preload",
+      as: "image",
+      href: heroSection.heroImage,
+      fetchpriority: "high",
     },
   ],
 });
