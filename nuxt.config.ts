@@ -174,5 +174,6 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ["/sitemap.xml"],
     },
+    compressPublicAssets: true,
   },
 });

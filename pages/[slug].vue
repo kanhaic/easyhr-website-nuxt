@@ -179,6 +179,9 @@
             @click="copyLink"
             class="text-gray-400 hover:text-gray-500 relative"
             :class="{ 'text-green-500': isCopied }"
+            data-action="copy"
+            tabindex="0"
+            aria-label="Copy link"
           >
             <span class="sr-only">Copy link</span>
             <svg

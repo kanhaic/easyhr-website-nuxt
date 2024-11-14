@@ -68,27 +68,33 @@
         <div class="flex justify-center items-center">
           <NuxtImg
             v-if="heroImageProvider"
-            class="rounded-lg w-full max-w-[640px]"
             :src="heroImage"
             :alt="title"
-            :title="title"
             format="webp"
-            quality="80"
+            quality="75"
             loading="eager"
             fetchpriority="high"
-            preload
-            :provider="heroImageProvider"
+            :modifiers="{
+              width: 640,
+              height: 557,
+              format: 'webp',
+              quality: '75',
+            }"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 640px"
+            placeholder
+            class="rounded-lg w-full h-auto"
           />
           <img
             v-else
             :src="heroImage"
             :alt="title"
             :title="title"
-            class="rounded-lg w-full max-w-[640px]"
+            class="rounded-lg w-full h-auto"
             width="640"
-            height="554"
+            height="557"
             loading="eager"
             fetchpriority="high"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 640px"
           />
         </div>
       </div>
@@ -135,5 +141,11 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+});
+
+// Add image preloading
+onMounted(() => {
+  const imagePreloader = new Image();
+  imagePreloader.src = props.heroImage;
 });
 </script>
