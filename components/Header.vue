@@ -51,96 +51,87 @@
             />
           </PopoverButton>
 
-          <transition
-            enter-active-class="transition ease-out duration-200"
-            enter-from-class="opacity-0 translate-y-1"
-            enter-to-class="opacity-100 translate-y-0"
-            leave-active-class="transition ease-in duration-150"
-            leave-from-class="opacity-100 translate-y-0"
-            leave-to-class="opacity-0 translate-y-1"
+          <PopoverPanel
+            class="absolute -left-8 z-10 mt-5 flex w-screen max-w-max px-4"
           >
-            <PopoverPanel
-              class="absolute -left-8 z-10 mt-5 flex w-screen max-w-max px-4"
+            <div
+              class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-2xl"
             >
-              <div
-                class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-2xl"
-              >
-                <div class="p-4">
-                  <div class="grid grid-cols-2 gap-x-4 gap-y-1">
+              <div class="p-4">
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1">
+                  <div
+                    v-for="item in products"
+                    :key="item.name"
+                    class="group relative flex gap-x-4 rounded-lg p-3 hover:bg-gray-50"
+                  >
                     <div
-                      v-for="item in products"
-                      :key="item.name"
-                      class="group relative flex gap-x-4 rounded-lg p-3 hover:bg-gray-50"
+                      class="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-lg"
+                      :class="item.iconBgColor ?? 'bg-blue-50'"
                     >
-                      <div
-                        class="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-lg"
-                        :class="item.iconBgColor ?? 'bg-blue-50'"
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        stroke-linejoin="round"
+                        class="w-5 h-5"
+                        :class="item.iconColor ?? 'text-gray-600'"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
+                        <path
+                          stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="w-5 h-5"
-                          :class="item.iconColor ?? 'text-gray-600'"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            :d="item.menuIcon"
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <a
-                          :href="item.href"
-                          class="font-semibold text-gray-900 text-sm"
-                        >
-                          {{ item.name }}
-                          <span class="absolute inset-0" />
-                        </a>
-                        <p class="mt-1 text-gray-600 text-xs">
-                          {{ item.description }}
-                        </p>
-                      </div>
+                          :d="item.menuIcon"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <a
+                        :href="item.href"
+                        class="font-semibold text-gray-900 text-sm"
+                      >
+                        {{ item.name }}
+                        <span class="absolute inset-0" />
+                      </a>
+                      <p class="mt-1 text-gray-600 text-xs">
+                        {{ item.description }}
+                      </p>
                     </div>
                   </div>
                 </div>
-                <div
-                  class="px-4 py-4 flex justify-center border-t border-gray-100 bg-gray-100"
-                >
-                  <div class="flex-1 flex justify-center">
-                    <a
-                      :href="callsToAction[0].href"
-                      class="flex items-center text-sm font-semibold text-gray-900"
-                    >
-                      <component
-                        :is="callsToAction[0].icon"
-                        class="h-5 w-5 flex-none text-gray-400 mr-2"
-                        aria-hidden="true"
-                      />
-                      {{ callsToAction[0].name }}
-                    </a>
-                  </div>
-                  <div class="flex-1 flex justify-center bg-gray-100">
-                    <a
-                      :href="callsToAction[1].href"
-                      class="flex items-center text-sm font-semibold text-gray-900"
-                    >
-                      <component
-                        :is="callsToAction[1].icon"
-                        class="h-5 w-5 flex-none text-gray-400 mr-2"
-                        aria-hidden="true"
-                      />
-                      {{ callsToAction[1].name }}
-                    </a>
-                  </div>
+              </div>
+              <div
+                class="px-4 py-4 flex justify-center border-t border-gray-100 bg-gray-100"
+              >
+                <div class="flex-1 flex justify-center">
+                  <a
+                    :href="callsToAction[0].href"
+                    class="flex items-center text-sm font-semibold text-gray-900"
+                  >
+                    <component
+                      :is="callsToAction[0].icon"
+                      class="h-5 w-5 flex-none text-gray-400 mr-2"
+                      aria-hidden="true"
+                    />
+                    {{ callsToAction[0].name }}
+                  </a>
+                </div>
+                <div class="flex-1 flex justify-center bg-gray-100">
+                  <a
+                    :href="callsToAction[1].href"
+                    class="flex items-center text-sm font-semibold text-gray-900"
+                  >
+                    <component
+                      :is="callsToAction[1].icon"
+                      class="h-5 w-5 flex-none text-gray-400 mr-2"
+                      aria-hidden="true"
+                    />
+                    {{ callsToAction[1].name }}
+                  </a>
                 </div>
               </div>
-            </PopoverPanel>
-          </transition>
+            </div>
+          </PopoverPanel>
         </Popover>
 
         <Popover class="relative">
@@ -154,14 +145,7 @@
             />
           </PopoverButton>
 
-          <transition
-            enter-active-class="transition ease-out duration-200"
-            enter-from-class="opacity-0 translate-y-1"
-            enter-to-class="opacity-100 translate-y-0"
-            leave-active-class="transition ease-in duration-150"
-            leave-from-class="opacity-100 translate-y-0"
-            leave-to-class="opacity-0 translate-y-1"
-          >
+
             <PopoverPanel
               class="absolute left-1/4 z-10 mt-5 flex w-screen max-w-max -translate-x-1/4 px-4"
             >
@@ -198,17 +182,21 @@
                       </svg>
                     </div>
                     <div>
-                      <a :href="item.href" class="font-semibold text-gray-900 text-sm">
+                      <a
+                        :href="item.href"
+                        class="font-semibold text-gray-900 text-sm"
+                      >
                         {{ item.name }}
                         <span class="absolute inset-0" />
                       </a>
-                      <p class="mt-1 text-gray-600 text-xs">{{ item.description }}</p>
+                      <p class="mt-1 text-gray-600 text-xs">
+                        {{ item.description }}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </PopoverPanel>
-          </transition>
         </Popover>
 
         <Popover class="relative">
@@ -222,14 +210,7 @@
             />
           </PopoverButton>
 
-          <transition
-            enter-active-class="transition ease-out duration-200"
-            enter-from-class="opacity-0 translate-y-1"
-            enter-to-class="opacity-100 translate-y-0"
-            leave-active-class="transition ease-in duration-150"
-            leave-from-class="opacity-100 translate-y-0"
-            leave-to-class="opacity-0 translate-y-1"
-          >
+          
             <PopoverPanel
               class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4"
             >
@@ -265,7 +246,10 @@
                       </svg>
                     </div>
                     <div>
-                      <a :href="item.href" class="font-semibold text-gray-900 text-sm">
+                      <a
+                        :href="item.href"
+                        class="font-semibold text-gray-900 text-sm"
+                      >
                         {{ item.name }}
                         <span class="absolute inset-0" />
                       </a>
@@ -277,12 +261,9 @@
                 </div>
               </div>
             </PopoverPanel>
-          </transition>
         </Popover>
 
-        <a
-          href="/pricing"
-          class="text-sm font-semibold leading-6 text-gray-900"
+        <a href="/pricing" class="text-sm font-semibold leading-6 text-gray-900"
           >Pricing</a
         >
         <Popover class="relative">
@@ -296,14 +277,6 @@
             />
           </PopoverButton>
 
-          <transition
-            enter-active-class="transition ease-out duration-200"
-            enter-from-class="opacity-0 translate-y-1"
-            enter-to-class="opacity-100 translate-y-0"
-            leave-active-class="transition ease-in duration-150"
-            leave-from-class="opacity-100 translate-y-0"
-            leave-to-class="opacity-0 translate-y-1"
-          >
             <PopoverPanel
               class="absolute right-0 sm:-right-8 top-full z-10 mt-3 w-[480px] rounded-3xl bg-white p-3 shadow-lg ring-1 ring-gray-900/5"
             >
@@ -348,7 +321,6 @@
                 </div>
               </div>
             </PopoverPanel>
-          </transition>
         </Popover>
       </PopoverGroup>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-x-4">
@@ -379,7 +351,14 @@
           <div class="flex items-center justify-between">
             <a href="/" class="-m-1.5 p-1.5">
               <span class="sr-only">EasyHR</span>
-              <img class="h-10 w-auto" src="/images/logo.webp" alt="EasyHR Logo" title="EasyHR" height="40" width="139" />
+              <img
+                class="h-10 w-auto"
+                src="/images/logo.webp"
+                alt="EasyHR Logo"
+                title="EasyHR"
+                height="40"
+                width="139"
+              />
             </a>
             <button
               type="button"
@@ -404,14 +383,6 @@
                     />
                   </PopoverButton>
 
-                  <transition
-                    enter-active-class="transition ease-out duration-200"
-                    enter-from-class="opacity-0 translate-y-1"
-                    enter-to-class="opacity-100 translate-y-0"
-                    leave-active-class="transition ease-in duration-75"
-                    leave-from-class="opacity-100 translate-y-0"
-                    leave-to-class="opacity-0 translate-y-1"
-                  >
                     <PopoverPanel class="mt-2 space-y-2">
                       <div
                         v-for="item in products"
@@ -442,7 +413,6 @@
                         <a :href="item.href">{{ item.name }}</a>
                       </div>
                     </PopoverPanel>
-                  </transition>
                 </Popover>
 
                 <Popover class="relative">
@@ -456,14 +426,7 @@
                     />
                   </PopoverButton>
 
-                  <transition
-                    enter-active-class="transition ease-out duration-200"
-                    enter-from-class="opacity-0 translate-y-1"
-                    enter-to-class="opacity-100 translate-y-0"
-                    leave-active-class="transition ease-in duration-150"
-                    leave-from-class="opacity-100 translate-y-0"
-                    leave-to-class="opacity-0 translate-y-1"
-                  >
+
                     <PopoverPanel class="mt-2 space-y-2">
                       <div
                         v-for="item in industries"
@@ -493,7 +456,6 @@
                         <a :href="item.href">{{ item.name }}</a>
                       </div>
                     </PopoverPanel>
-                  </transition>
                 </Popover>
 
                 <Popover class="relative">
@@ -507,14 +469,6 @@
                     />
                   </PopoverButton>
 
-                  <transition
-                    enter-active-class="transition ease-out duration-200"
-                    enter-from-class="opacity-0 translate-y-1"
-                    enter-to-class="opacity-100 translate-y-0"
-                    leave-active-class="transition ease-in duration-150"
-                    leave-from-class="opacity-100 translate-y-0"
-                    leave-to-class="opacity-0 translate-y-1"
-                  >
                     <PopoverPanel class="mt-2 space-y-2">
                       <div
                         v-for="item in resources"
@@ -544,7 +498,6 @@
                         <a :href="item.href">{{ item.name }}</a>
                       </div>
                     </PopoverPanel>
-                  </transition>
                 </Popover>
 
                 <!-- Add Features Menu -->
@@ -571,14 +524,6 @@
                     />
                   </PopoverButton>
 
-                  <transition
-                    enter-active-class="transition ease-out duration-200"
-                    enter-from-class="opacity-0 translate-y-1"
-                    enter-to-class="opacity-100 translate-y-0"
-                    leave-active-class="transition ease-in duration-150"
-                    leave-from-class="opacity-100 translate-y-0"
-                    leave-to-class="opacity-0 translate-y-1"
-                  >
                     <PopoverPanel class="mt-2 space-y-2">
                       <div
                         v-for="item in company"
@@ -608,7 +553,6 @@
                         <a :href="item.href">{{ item.name }}</a>
                       </div>
                     </PopoverPanel>
-                  </transition>
                 </Popover>
               </div>
             </div>

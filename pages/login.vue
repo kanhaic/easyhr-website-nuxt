@@ -87,7 +87,7 @@
             <button
               type="submit"
               :disabled="isLoading"
-              class="relative flex items-center justify-center w-full px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-gray-900 border border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 font-pj hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="relative flex items-center justify-center w-full px-4 py-3 text-base font-bold text-white transition-all duration-200 bg-indigo-600 border border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span v-if="isLoading" class="mr-2">
                 <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
