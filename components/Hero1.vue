@@ -74,14 +74,7 @@
             quality="75"
             loading="eager"
             fetchpriority="high"
-            :modifiers="{
-              width: 640,
-              height: 557,
-              format: 'webp',
-              quality: '75',
-            }"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 640px"
-            placeholder
             class="rounded-lg w-full h-auto"
             :provider="heroImageProvider"
           />
@@ -91,8 +84,6 @@
             :alt="title"
             :title="title"
             class="rounded-lg w-full h-auto"
-            width="640"
-            height="557"
             loading="eager"
             fetchpriority="high"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 640px"

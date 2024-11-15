@@ -34,52 +34,49 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: "/favicon.ico",
+          fetchpriority: "high",
+        },
         {
           rel: "apple-touch-icon",
           sizes: "180x180",
           href: "/apple-touch-icon.png",
+          fetchpriority: "high",
         },
         {
           rel: "icon",
           type: "image/png",
           sizes: "32x32",
           href: "/favicon-32x32.png",
+          fetchpriority: "high",
         },
         {
           rel: "icon",
           type: "image/png",
           sizes: "16x16",
           href: "/favicon-16x16.png",
+          fetchpriority: "high",
         },
         { rel: "manifest", href: "/site.webmanifest" },
         {
           rel: "preconnect",
           href: "https://www.googletagmanager.com",
           crossorigin: "anonymous",
+          fetchpriority: "high",
         },
-        {
-          rel: "preconnect",
-          href: "https://embed.small.chat",
-          crossorigin: "anonymous",
-        },
-        {
-          rel: "preconnect",
-          href: "https://static.small.chat",
-          crossorigin: "anonymous",
-        },
-        { rel: "preconnect", href: "https://www.google-analytics.com" },
-        { rel: "dns-prefetch", href: "https://embed.small.chat" },
-        { rel: "dns-prefetch", href: "https://static.small.chat" },
-        { rel: "dns-prefetch", href: "https://www.googletagmanager.com" },
+        { rel: "preconnect", href: "https://www.google-analytics.com", fetchpriority: "high" },
         {
           rel: "preload",
           as: "image",
           href: "/images/logo.webp",
           type: "image/webp",
+          fetchpriority: "high",
         },
       ],
-      title: "EasyHR | HR Software for SMEs",
+      title: "EasyHR | HR Payroll Software for SMEs",
       htmlAttrs: {
         lang: "en",
       },

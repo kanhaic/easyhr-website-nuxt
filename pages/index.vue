@@ -241,7 +241,9 @@ const customRenderer = {
       const { url, description } = node.data.target.fields.file;
       return `<NuxtImg format="webp" src="${url}" alt="${
         description || ""
-      }" title="${description || ""}" loading="lazy" class="w-full h-auto my-4" provider="contentful" />`;
+      }" title="${
+        description || ""
+      }" loading="lazy" class="w-full h-auto my-4" provider="contentful" />`;
     },
   },
 };
@@ -271,24 +273,21 @@ const faqSets = computed(() => {
   return sets;
 });
 
-
 useHead({
   title: landingPage.items[0].fields?.seoTitle,
   meta: [
     {
       name: "description",
       content: landingPage.items[0].fields?.seoDescription,
-    }
+    },
   ],
   link: [
     {
-      rel: 'preload',
-      as: 'image',
+      rel: "preload",
+      as: "image",
       href: heroSection.heroImage,
-      fetchpriority: 'high'
-    }
-  ]
+      fetchpriority: "high",
+    },
+  ],
 });
-
-
 </script>
