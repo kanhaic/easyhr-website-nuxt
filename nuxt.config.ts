@@ -67,7 +67,11 @@ export default defineNuxtConfig({
           crossorigin: "anonymous",
           fetchpriority: "high",
         },
-        { rel: "preconnect", href: "https://www.google-analytics.com", fetchpriority: "high" },
+        {
+          rel: "preconnect",
+          href: "https://www.google-analytics.com",
+          fetchpriority: "high",
+        },
         {
           rel: "preload",
           as: "image",
@@ -149,19 +153,27 @@ export default defineNuxtConfig({
     domains: ["images.ctfassets.net"],
     format: ["webp", "avif", "jpeg", "jpg", "png"],
   },
+  routeRules: {
+    "/**": {
+      headers: {
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
+      experimentalNoScripts: true,
+    },
+  },
   // gtag: {
   //   enabled: true,
   //   id: "G-RKFHSKFF92",
   //   loadingStrategy: "async",
   // },
-  routeRules: {
-    // Add caching for static assets
-    "/**": {
-      headers: {
-        "Cache-Control": "public, max-age=31536000, immutable",
-      },
-    },
-  },
+  // routeRules: {
+  //   // Add caching for static assets
+  //   "/**": {
+  //     headers: {
+  //       "Cache-Control": "public, max-age=31536000, immutable",
+  //     },
+  //   },
+  // },
   // partytown: {
   //   forward: ["dataLayer.push"],
   //   debug: false,
@@ -169,8 +181,6 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/sitemap.xml"],
     },
-    compressPublicAssets: true,
   },
 });

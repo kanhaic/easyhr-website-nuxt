@@ -9,7 +9,8 @@
       >
         <div v-for="(logo, index) in logos" :key="index">
           <NuxtImg
-            loading="lazy"
+            :fetchpriority="fetchpriority"
+            :loading="fetchpriority === 'lazy' ? 'lazy' : 'eager'"
             :src="logo.src"
             :alt="logo.alt"
             :provider="logo?.provider"
@@ -40,6 +41,10 @@ defineProps({
   logos: {
     type: Array as () => Logo[],
     required: true,
+  },
+  fetchpriority: {
+    type: String,
+    default: "lazy",
   },
 });
 </script>

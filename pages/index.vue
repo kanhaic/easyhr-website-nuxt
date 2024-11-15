@@ -11,7 +11,7 @@
       :heroImage="heroSection.heroImage"
       heroImageProvider="contentful"
     />
-    <LazyLogoSection :logos="logos" />
+    <LazyLogoSection :logos="logos" fetchpriority="high" />
     <LazyFeature1
       :topTag="featureSection.topTag"
       :headerFeature="featureSection.headerFeature"
@@ -288,6 +288,12 @@ useHead({
       href: heroSection.heroImage,
       fetchpriority: "high",
     },
+    ...logos.map((logo) => ({
+      rel: "preload",
+      as: "image",
+      href: logo.src,
+      fetchpriority: "high",
+    })),
   ],
 });
 </script>
