@@ -11,14 +11,14 @@
       :heroImage="heroSection.heroImage"
       heroImageProvider="contentful"
     />
-    <LogoSection :logos="logos" />
-    <Feature1
+    <LazyLogoSection :logos="logos" />
+    <LazyFeature1
       :topTag="featureSection.topTag"
       :headerFeature="featureSection.headerFeature"
       :items="featureSection.items"
       :image="featureSection.image"
     />
-    <FeatureList
+    <LazyFeatureList
       v-if="featureList.show"
       :title="featureList.title"
       :description="featureList.description"
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <IndustryList :industries="industries" />
+    <LazyIndustryList :industries="industries" />
 
     <!-- Content -->
     <div class="py-12 sm:py-16 lg:py-20 xl:py-24" v-if="content">
@@ -85,16 +85,16 @@
       </div>
     </div>
 
-    <FaqSection :faqs="faqSets" />
+    <LazyFaqSection :faqs="faqSets" />
 
-    <Testimonial1
+    <LazyTestimonial1
       :subtitle="testimonials.topTag"
       :title="testimonials.title"
       :testimonials="testimonials.items"
     />
     <Stats1 :title="stats?.title" :stats="stats?.stats" />
-    <RecentBlog :title="recentBlog?.title" :posts="recentBlog?.posts" />
-    <ContactForm />
+    <LazyRecentBlog :title="recentBlog?.title" :posts="recentBlog?.posts" />
+    <LazyContactForm />
   </div>
 </template>
 

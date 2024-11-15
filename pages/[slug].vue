@@ -13,7 +13,7 @@
         heroImageProvider="contentful"
       />
 
-      <LogoSection :logos="logos" />
+      <LazyLogoSection :logos="logos" />
 
       <div class="py-6 sm:py-8 lg:py-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <FeatureList
+      <LazyFeatureList
         :features="featureList.featureListItems"
         :title="featureList.title"
         :description="featureList.description"
@@ -93,15 +93,15 @@
         </div>
       </div>
 
-      <FaqSection :faqs="faqSets" />
+      <LazyFaqSection :faqs="faqSets" />
 
-      <Testimonial1
+      <LazyTestimonial1
         :subtitle="testimonials.topTag"
         :title="testimonials.title"
         :testimonials="testimonials.items"
       />
 
-      <ContactForm />
+      <LazyContactForm />
     </div>
 
     <!-- guide -->
@@ -179,9 +179,6 @@
             @click="copyLink"
             class="text-gray-400 hover:text-gray-500 relative"
             :class="{ 'text-green-500': isCopied }"
-            data-action="copy"
-            tabindex="0"
-            aria-label="Copy link"
           >
             <span class="sr-only">Copy link</span>
             <svg
@@ -240,7 +237,7 @@
           <div v-html="renderedBody"></div>
         </article>
 
-        <FaqSection :faqs="faqSets" />
+        <LazyFaqSection :faqs="faqSets" />
       </div>
     </div>
 
@@ -257,8 +254,8 @@
         :heroImage="heroSection.heroImage"
         heroImageProvider="contentful"
       />
-      <LogoSection :logos="logos" />
-      <Feature1
+      <LazyLogoSection :logos="logos" />
+      <LazyFeature1
         :topTag="featureSection.topTag"
         :headerFeature="featureSection.headerFeature"
         :items="featureSection.items"
@@ -322,16 +319,16 @@
         </div>
       </div>
 
-      <FaqSection :faqs="faqSets" />
+      <LazyFaqSection :faqs="faqSets" />
 
-      <Testimonial1
+      <LazyTestimonial1
         :subtitle="testimonials.topTag"
         :title="testimonials.title"
         :testimonials="testimonials.items"
       />
-      <Stats1 :title="stats?.title" :stats="stats?.stats" />
-      <RecentBlog :title="recentBlog?.title" :posts="recentBlog?.posts" />
-      <ContactForm />
+      <LazyStats1 :title="stats?.title" :stats="stats?.stats" />
+      <LazyRecentBlog :title="recentBlog?.title" :posts="recentBlog?.posts" />
+      <LazyContactForm />
     </div>
 
     <!-- Article -->
@@ -400,11 +397,11 @@
         </div>
       </div>
 
-      <FaqSection :faqs="faqSets" />
+      <LazyFaqSection :faqs="faqSets" />
 
-      <LogoSection :logos="logos" />
+      <LazyLogoSection :logos="logos" />
 
-      <ContactForm />
+      <LazyContactForm />
     </div>
 
     <!-- default -->
@@ -420,14 +417,14 @@
         :heroImage="heroSection.heroImage"
         heroImageProvider="contentful"
       />
-      <LogoSection :logos="logos" />
-      <Feature1
+      <LazyLogoSection :logos="logos" />
+      <LazyFeature1
         :topTag="featureSection.topTag"
         :headerFeature="featureSection.headerFeature"
         :items="featureSection.items"
         :image="featureSection.image"
       />
-      <FeatureList
+      <LazyFeatureList
         :title="featureList.title"
         :description="featureList.description"
         :features="featureList.featureListItems"
@@ -438,15 +435,15 @@
       >
         <div v-html="renderedBody" class="prose lg:prose-xl"></div>
       </div>
-      <FaqSection :faqs="faqSets" />
-      <Testimonial1
+      <LazyFaqSection :faqs="faqSets" />
+      <LazyTestimonial1
         :subtitle="testimonials.topTag"
         :title="testimonials.title"
         :testimonials="testimonials.items"
       />
-      <Stats1 :title="stats?.title" :stats="stats?.stats" />
-      <RecentBlog :title="recentBlog?.title" :posts="recentBlog?.posts" />
-      <ContactForm />
+      <LazyStats1 :title="stats?.title" :stats="stats?.stats" />
+      <LazyRecentBlog :title="recentBlog?.title" :posts="recentBlog?.posts" />
+      <LazyContactForm />
     </div>
   </div>
 </template>
