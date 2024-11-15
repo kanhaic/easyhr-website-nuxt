@@ -75,7 +75,7 @@
             loading="eager"
             fetchpriority="high"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 640px"
-            class="rounded-lg w-full h-auto"
+            class="rounded-lg w-full h-auto aspect-[4/3]"
             :provider="heroImageProvider"
           />
           <img

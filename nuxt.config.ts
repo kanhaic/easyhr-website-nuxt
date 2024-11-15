@@ -128,7 +128,6 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   image: {
-    provider: "contentful",
     contentful: {
       baseURL: "https://images.ctfassets.net/",
     },
@@ -150,7 +149,7 @@ export default defineNuxtConfig({
         },
       },
     },
-    domains: ["images.ctfassets.net"],
+    domains: ["easyhrworld.com", "images.ctfassets.net"],
     format: ["webp", "avif", "jpeg", "jpg", "png"],
   },
   routeRules: {
@@ -160,23 +159,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  // gtag: {
-  //   enabled: true,
-  //   id: "G-RKFHSKFF92",
-  //   loadingStrategy: "async",
-  // },
-  // routeRules: {
-  //   // Add caching for static assets
-  //   "/**": {
-  //     headers: {
-  //       "Cache-Control": "public, max-age=31536000, immutable",
-  //     },
-  //   },
-  // },
-  // partytown: {
-  //   forward: ["dataLayer.push"],
-  //   debug: false,
-  // },
   nitro: {
     prerender: {
       crawlLinks: true,

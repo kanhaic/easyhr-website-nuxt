@@ -2,16 +2,16 @@
   <div>
     <!-- Hero section with background image -->
     <HeroWithForm
-      topTag="Get Started with EasyHR"
-      title="Simplify Your HR Management"
-      subtitle="Join thousands of companies using EasyHR to streamline their HR processes."
-      cta1Title="Learn More"
-      cta1Link="/signup?utm_source=features&utm_medium=learn-more"
-      cta2Title="Contact Sales"
-      cta2Link="/signup?utm_source=features&utm_medium=contact-sales"
+      :topTag="landingPage?.fields?.topTag"
+      :title="landingPage?.fields?.title"
+      :subtitle="landingPage?.fields?.subtitle"
+      :cta1Title="landingPage?.fields?.cta1Title"
+      :cta1Link="landingPage?.fields?.cta1Link"
+      :cta2Title="landingPage?.fields?.cta2Title"
+      :cta2Link="landingPage?.fields?.cta2Link"
     />
 
-    <LogoSection :logos="logos" />
+    <LogoSection :logos="logos" fetchpriority="high" />
 
     <!-- Features section -->
     <section class="py-12sm:py-16 lg:py-20">
@@ -30,7 +30,7 @@
           class="grid grid-cols-1 gap-4 px-6 mt-12 sm:mt-16 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 sm:px-0"
         >
           <div
-            v-for="feature in features"
+            v-for="feature in sortedFeatures"
             class="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 hover:shadow-md hover:-translate-y-1 rounded-lg shadow-md h-full px-3 py-4"
           >
             <div
@@ -64,7 +64,7 @@
                 />
               </svg>
             </div>
-            
+
             <div class="p-4 flex-grow">
               <p class="text-base font-bold text-gray-900">
                 <a
@@ -109,55 +109,46 @@ const client = contentful.createClient({
   accessToken: config.public.contentful.accessToken,
 });
 
-const { data, error } = await useAsyncData("main-landing", () =>
-  client.getEntries({
-    content_type: "feature",
-    limit: 100,
-  })
+const { data: features, error: featuresError } = await useAsyncData(
+  "features-list",
+  () =>
+    client.getEntries({
+      content_type: "feature",
+      limit: 100,
+    })
 );
 
-const features = (data.value?.items || []).sort((a, b) => {
+const { data, error } = await useAsyncData(
+  "features-landing",
+  () =>
+    client.getEntries({
+      content_type: "landingPage",
+      "fields.slug": "features",
+      limit: 1,
+    })
+);
+
+const sortedFeatures = (features.value?.items || []).sort((a, b) => {
   const seqA = a.fields.seq || 99;
   const seqB = b.fields.seq || 99;
   return seqA - seqB;
 });
 
-const logos = [
-  {
-    src: "/images/logos/1.webp",
-    alt: "Logo 1",
-  },
-  {
-    src: "/images/logos/2.webp",
-    alt: "Logo 2",
-  },
-  {
-    src: "/images/logos/3.webp",
-    alt: "Logo 3",
-  },
-  {
-    src: "/images/logos/4.webp",
-    alt: "Logo 4",
-  },
-  {
-    src: "/images/logos/5.webp",
-    alt: "Logo 5",
-  },
-  {
-    src: "/images/logos/6.webp",
-    alt: "Logo 6",
-  },
-];
+const landingPage = data.value?.items[0];
+
+const logos = landingPage?.fields?.logos?.map((logo) => ({
+  src: logo?.fields.file.url,
+  alt: logo?.fields.title,
+  provider: "contentful",
+}));
 
 useHead({
-  title: "Features | EasyHR",
+  title: landingPage?.fields?.seoTitle,
   meta: [
     {
       name: "description",
-      content: "Feature List for EasyHR",
-    }
+      content: landingPage?.fields?.seoDescription,
+    },
   ],
 });
-
-
 </script>
