@@ -58,15 +58,6 @@ export default defineNuxtConfig({
         },
         { rel: "manifest", href: "/site.webmanifest" },
         {
-          rel: "preconnect",
-          href: "https://www.googletagmanager.com",
-          crossorigin: "anonymous",
-        },
-        {
-          rel: "preconnect",
-          href: "https://www.google-analytics.com",
-        },
-        {
           rel: "preload",
           as: "image",
           href: "/images/logo.webp",
