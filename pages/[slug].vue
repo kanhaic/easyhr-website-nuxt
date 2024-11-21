@@ -48,12 +48,12 @@
 
       <!-- ContentSet Content -->
       <div class="mx-auto max-w-7xl">
-        <div class="px-4 sm:px-6 lg:px-8">
+        <div class="px-4 sm:px-8 lg:px-12">
           <section
             v-for="(contentSet, index) in contentSets"
             :key="index"
             :id="`content-${index}`"
-            class="py-4 sm:py-6 lg:py-8"
+            class="py-4 sm:py-8 lg:py-16"
           >
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div
@@ -85,6 +85,8 @@
                     :alt="contentSet.title"
                     :title="contentSet.title"
                     provider="contentful"
+                    width="720"
+                    height="405"
                   />
                 </div>
               </div>
@@ -269,7 +271,7 @@
             v-for="(contentSet, index) in contentSets"
             :key="index"
             :id="`content-${index}`"
-            class="py-4 sm:py-6 lg:py-8"
+            class="py-4 sm:py-8 lg:py-16"
           >
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div
@@ -301,6 +303,8 @@
                     :alt="contentSet.title"
                     :title="contentSet.title"
                     provider="contentful"
+                    width="720"
+                    height="405"
                   />
                 </div>
               </div>
@@ -358,7 +362,7 @@
             v-for="(contentSet, index) in contentSets"
             :key="index"
             :id="`content-${index}`"
-            class="py-4 sm:py-6 lg:py-8"
+            class="py-4 sm:py-8 lg:py-16"
           >
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div
@@ -389,6 +393,8 @@
                     :src="contentSet.image"
                     :alt="contentSet.title"
                     provider="contentful"
+                    width="720"
+                    height="405"
                   />
                 </div>
               </div>
@@ -440,12 +446,12 @@
 
       <!-- ContentSet Content -->
       <div class="mx-auto max-w-7xl">
-        <div class="px-4 sm:px-6 lg:px-8">
+        <div class="px-4 sm:px-6 lg:px-8 py-12">
           <section
             v-for="(contentSet, index) in contentSets"
             :key="index"
             :id="`content-${index}`"
-            class="py-4 sm:py-6 lg:py-8"
+            class="py-4 sm:py-8 lg:py-16"
           >
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div
@@ -477,6 +483,8 @@
                     :alt="contentSet.title"
                     :title="contentSet.title"
                     provider="contentful"
+                    width="720"
+                    height="405"
                   />
                 </div>
               </div>
