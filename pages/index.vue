@@ -32,7 +32,7 @@
           v-for="(contentSet, index) in contentSets"
           :key="index"
           :id="`content-${index}`"
-          class="py-4 sm:py-6 lg:py-8"
+          class="py-4 sm:py-12 lg:py-16"
         >
           <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div
@@ -65,6 +65,8 @@
                   :alt="contentSet.title"
                   :title="contentSet.title"
                   provider="contentful"
+                  width="720"
+                  height="405"
                 />
               </div>
             </div>

@@ -85,6 +85,7 @@
                     :alt="contentSet.title"
                     :title="contentSet.title"
                     provider="contentful"
+                    loading="lazy"
                     width="720"
                     height="405"
                   />
@@ -303,6 +304,7 @@
                     :alt="contentSet.title"
                     :title="contentSet.title"
                     provider="contentful"
+                    loading="lazy"
                     width="720"
                     height="405"
                   />
@@ -395,6 +397,7 @@
                     provider="contentful"
                     width="720"
                     height="405"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -485,6 +488,7 @@
                     provider="contentful"
                     width="720"
                     height="405"
+                    loading="lazy"
                   />
                 </div>
               </div>
