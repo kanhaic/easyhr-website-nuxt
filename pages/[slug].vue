@@ -13,7 +13,7 @@
         heroImageProvider="contentful"
       />
 
-      <LogoSection :logos="logos" fetchpriority="high" />
+      <LogoSection :logos="logos" />
 
       <div class="py-6 sm:py-8 lg:py-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -254,7 +254,7 @@
         :heroImage="heroSection.heroImage"
         heroImageProvider="contentful"
       />
-      <LogoSection :logos="logos" fetchpriority="high" />
+      <LogoSection :logos="logos" />
       <LazyFeature1
         :topTag="featureSection.topTag"
         :headerFeature="featureSection.headerFeature"
@@ -417,7 +417,7 @@
         :heroImage="heroSection.heroImage"
         heroImageProvider="contentful"
       />
-      <LogoSection :logos="logos" fetchpriority="high" />
+      <LogoSection :logos="logos" />
       <LazyFeature1
         :topTag="featureSection.topTag"
         :headerFeature="featureSection.headerFeature"
@@ -680,20 +680,18 @@ useHead({
       content: landingPage.items[0]?.fields?.seoDescription,
     },
   ],
-  link: [
-    {
-      rel: "preload",
-      as: "image",
-      href: heroSection.heroImage,
-      fetchpriority: "high",
-    },
-    ...logos.map((logo) => ({
-      rel: "preload",
-      as: "image",
-      href: logo.src,
-      fetchpriority: "high",
-    })),
-  ],
+  // link: [
+  //   {
+  //     rel: "preload",
+  //     as: "image",
+  //     href: heroSection.heroImage,
+  //   },
+  //   ...logos.map((logo) => ({
+  //     rel: "preload",
+  //     as: "image",
+  //     href: logo.src,
+  //   })),
+  // ],
 });
 
 const shareUrls = computed(() => {

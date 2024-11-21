@@ -11,7 +11,7 @@
       :heroImage="heroSection.heroImage"
       heroImageProvider="contentful"
     />
-    <LazyLogoSection :logos="logos" fetchpriority="high" />
+    <LazyLogoSection :logos="logos" />
     <LazyFeature1
       :topTag="featureSection.topTag"
       :headerFeature="featureSection.headerFeature"
@@ -281,19 +281,17 @@ useHead({
       content: landingPage.items[0].fields?.seoDescription,
     },
   ],
-  link: [
-    {
-      rel: "preload",
-      as: "image",
-      href: heroSection.heroImage,
-      fetchpriority: "high",
-    },
-    ...logos.map((logo) => ({
-      rel: "preload",
-      as: "image",
-      href: logo.src,
-      fetchpriority: "high",
-    })),
-  ],
+  // link: [
+  //   {
+  //     rel: "preload",
+  //     as: "image",
+  //     href: heroSection.heroImage,
+  //   },
+  //   ...logos.map((logo) => ({
+  //     rel: "preload",
+  //     as: "image",
+  //     href: logo.src,
+  //   })),
+  // ],
 });
 </script>

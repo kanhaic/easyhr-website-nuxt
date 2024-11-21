@@ -11,7 +11,7 @@
       :cta2Link="landingPage?.fields?.cta2Link"
     />
 
-    <LogoSection :logos="logos" fetchpriority="high" />
+    <LogoSection :logos="logos" />
 
     <!-- Features section -->
     <section class="py-12sm:py-16 lg:py-20">
