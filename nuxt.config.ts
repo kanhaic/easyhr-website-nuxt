@@ -92,12 +92,11 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/image",
     "@nuxt/fonts",
-    "@nuxtjs/sitemap",
-    // "nuxt-gtag",
+    "@nuxtjs/sitemap", // "nuxt-gtag",
     "nuxt-seo-utils",
-    "@nuxtjs/robots",
+    "@nuxtjs/robots", // "@nuxtjs/partytown",
     "nuxt-schema-org",
-    // "@nuxtjs/partytown",
+    "nuxt-delay-hydration",
   ],
   fonts: {
     preload: true,
@@ -142,6 +141,9 @@ export default defineNuxtConfig({
         "Cache-Control": "public, max-age=31536000, immutable",
       },
     },
+  },
+  delayHydration: {
+    debug: process.env.NODE_ENV === "development",
   },
   nitro: {
     prerender: {

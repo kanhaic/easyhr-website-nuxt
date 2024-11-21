@@ -696,18 +696,18 @@ useHead({
       content: landingPage.items[0]?.fields?.seoDescription,
     },
   ],
-  // link: [
-  //   {
-  //     rel: "preload",
-  //     as: "image",
-  //     href: heroSection.heroImage,
-  //   },
+  link: [
+    {
+      rel: "preload",
+      as: "image",
+      href: heroSection.heroImage,
+    },
   //   ...logos.map((logo) => ({
   //     rel: "preload",
   //     as: "image",
   //     href: logo.src,
   //   })),
-  // ],
+  ],
 });
 
 const shareUrls = computed(() => {
