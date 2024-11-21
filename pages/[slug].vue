@@ -654,7 +654,7 @@ const contentSets = computed(() => {
   landingPage.items[0]?.fields?.featureContent?.forEach((set) => {
     sets.push({
       title: set?.fields?.title,
-      description: documentToHtmlString(set?.fields?.content),
+      description: documentToHtmlString(set?.fields?.content, customRenderer),
       image: set?.fields?.image?.fields?.file?.url,
     });
   });
