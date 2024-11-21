@@ -88,6 +88,7 @@
                     loading="lazy"
                     width="720"
                     height="405"
+                    sizes="sm:480px md:720px"
                   />
                 </div>
               </div>
@@ -307,6 +308,7 @@
                     loading="lazy"
                     width="720"
                     height="405"
+                    sizes="sm:480px md:720px"
                   />
                 </div>
               </div>
@@ -398,6 +400,7 @@
                     width="720"
                     height="405"
                     loading="lazy"
+                    sizes="sm:480px md:720px"
                   />
                 </div>
               </div>
@@ -489,6 +492,7 @@
                     width="720"
                     height="405"
                     loading="lazy"
+                    sizes="sm:480px md:720px"
                   />
                 </div>
               </div>

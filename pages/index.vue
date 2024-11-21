@@ -67,6 +67,7 @@
                   provider="contentful"
                   width="720"
                   height="405"
+                  sizes="sm:320px md:480px lg:720px"
                 />
               </div>
             </div>
