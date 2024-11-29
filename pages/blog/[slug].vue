@@ -174,7 +174,7 @@ const renderedBody = documentToHtmlString(
 );
 
 useHead({
-  title: blogPost.fields?.seoTitle,
+  title: blogPost.fields?.title,
   meta: [
     {
       name: "description",

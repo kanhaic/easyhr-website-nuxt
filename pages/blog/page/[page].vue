@@ -223,6 +223,13 @@ const formatDate = (dateString) => {
 
 // Add preload meta tags
 useHead({
+  title: landingPage.seoTitle,
+  meta: [
+    {
+      name: "description",
+      content: landingPage.seoDescription,
+    },
+  ],
   link: [
     {
       rel: 'preload',
