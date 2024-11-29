@@ -5,11 +5,11 @@
         class="mx-auto flex max-w-2xl flex-col items-start justify-between gap-16 lg:mx-0 lg:max-w-none lg:flex-row"
       >
         <div class="w-full lg:max-w-lg lg:flex-auto">
-          <h2
+          <h1
             class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >
             We're always looking for awesome people to join us
-          </h2>
+          </h1>
           <p class="mt-6 text-xl leading-8 text-gray-600">
             We are always looking for talented individuals to join our team. If
             you are passionate about technology and want to be part of our
