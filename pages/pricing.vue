@@ -29,7 +29,9 @@
             'p-6 shadow-sm border border-gray-200 rounded-lg opacity-100',
           ]"
         >
-          <div class="flex flex-col gap-y-4 sticky top-[72px] z-10 opacity-100 bg-white ">
+          <div
+            class="flex flex-col gap-y-4 sticky top-[72px] z-10 opacity-100 bg-white"
+          >
             <h3
               :id="tier.id"
               class="text-lg font-semibold leading-6 text-gray-900"
@@ -37,8 +39,13 @@
               {{ tier.name }}
             </h3>
             <p class="mt-2 flex items-baseline gap-x-1 text-gray-900">
-              <span v-if="isPriceLoading" class="inline-block w-24 h-8 bg-gray-200 animate-pulse rounded"></span>
-              <span v-else class="text-3xl font-semibold">{{ tier.priceMonthly }}</span>
+              <span
+                v-if="isPriceLoading"
+                class="inline-block w-24 h-8 bg-gray-200 animate-pulse rounded"
+              ></span>
+              <span v-else class="text-3xl font-semibold">{{
+                tier.priceMonthly
+              }}</span>
               <span class="text-sm font-semibold">/month</span>
             </p>
             <p class="mt-2 text-sm text-gray-500">{{ tier.description }}</p>
@@ -145,7 +152,7 @@
               <col class="w-[220px]" />
               <col class="w-[220px]" />
             </colgroup>
-            <thead class="sticky top-0 z-10 bg-white ">
+            <thead class="sticky top-0 z-10 bg-white">
               <tr>
                 <td />
                 <th
@@ -167,8 +174,13 @@
                   class="px-4 md:px-6 lg:px-8 pt-2 xl:px-10"
                 >
                   <div class="flex items-baseline gap-x-1 text-gray-900">
-                    <span v-if="isPriceLoading" class="inline-block w-32 h-10 bg-gray-200 animate-pulse rounded"></span>
-                    <span v-else class="text-4xl font-semibold">{{ tier.priceMonthly }}</span>
+                    <span
+                      v-if="isPriceLoading"
+                      class="inline-block w-32 h-10 bg-gray-200 animate-pulse rounded"
+                    ></span>
+                    <span v-else class="text-4xl font-semibold">{{
+                      tier.priceMonthly
+                    }}</span>
                     <span class="text-sm font-semibold leading-6">/month</span>
                   </div>
                   <div class="text-sm leading-6 text-gray-500">
@@ -346,34 +358,33 @@ const logos = pricingPage.fields.logos.map((logo) => ({
   provider: "contentful",
 }));
 
-const isPriceLoading = ref(true)
+const isPriceLoading = ref(true);
 
-const userCountry = ref('IN') // Default to India
+const userCountry = ref("IN"); // Default to India
 
 // Function to detect user's country
 const detectCountry = async () => {
   try {
-    const response = await fetch('https://ipapi.co/json/')
-    const data = await response.json()
-    userCountry.value = data.country_code
+    const response = await fetch("https://ipapi.co/json/");
+    const data = await response.json();
+    userCountry.value = data.country_code;
   } catch (error) {
-    console.error('Error detecting country:', error)
-    userCountry.value = 'IN' // Fallback to India if detection fails
+    console.error("Error detecting country:", error);
+    userCountry.value = "IN"; // Fallback to India if detection fails
+  } finally {
+    isPriceLoading.value = false;
   }
-  finally {
-    isPriceLoading.value = false
-  } 
-}
+};
 
 // Call the detection function
 onMounted(async () => {
-  await detectCountry()
-})
+  await detectCountry();
+});
 
 // Create pricing configurations for different regions
 const getPricing = computed(() => {
-  const isIndia = userCountry.value === 'IN'
-  
+  const isIndia = userCountry.value === "IN";
+
   return [
     {
       name: "Starter",
@@ -381,7 +392,7 @@ const getPricing = computed(() => {
       href: "/signup?plan=starter&utm_source=pricing",
       priceMonthly: isIndia ? "₹ 2499" : "$ 124",
       description: "Upto 25 users.",
-      additionalUsersPrice: isIndia 
+      additionalUsersPrice: isIndia
         ? "Additional User @ ₹90 per user/month"
         : "Additional User @ $3 per user/month",
       mostPopular: false,
@@ -392,7 +403,7 @@ const getPricing = computed(() => {
       href: "/signup?plan=growth&utm_source=pricing",
       priceMonthly: isIndia ? "₹ 3125" : "$ 149",
       description: "Upto 25 users.",
-      additionalUsersPrice: isIndia 
+      additionalUsersPrice: isIndia
         ? "Additional User @ ₹115 per user/month"
         : "Additional User @ $5 per user/month",
       mostPopular: true,
@@ -403,28 +414,32 @@ const getPricing = computed(() => {
       href: "/signup?plan=enterprise&utm_source=pricing",
       priceMonthly: isIndia ? "₹ 3750" : "$ 184",
       description: "Upto 25 users.",
-      additionalUsersPrice: isIndia 
+      additionalUsersPrice: isIndia
         ? "Additional User @ ₹135 per user/month"
         : "Additional User @ $8 per user/month",
       mostPopular: false,
     },
-  ]
-})
+  ];
+});
 
 // Update addons pricing
 const getAddons = computed(() => {
-  const isIndia = userCountry.value === 'IN'
-  
+  const isIndia = userCountry.value === "IN";
+
   return [
     {
       name: "Performance Management System",
-      price: isIndia ? "Starts at ₹50/employee/month" : "Starts at $2/employee/month",
+      price: isIndia
+        ? "Starts at ₹50/employee/month"
+        : "Starts at $2/employee/month",
       description: "360° Reportee-Manager Feedback and Reviews",
       icon: "/images/performance-management-icon.webp",
     },
     {
       name: "GeoTracking",
-      price: isIndia ? "Starts at ₹50/employee/month" : "Starts at $2/employee/month",
+      price: isIndia
+        ? "Starts at ₹50/employee/month"
+        : "Starts at $2/employee/month",
       description: "Track employee location and movement.",
       icon: "/images/location-icon.webp",
     },
@@ -440,12 +455,12 @@ const getAddons = computed(() => {
       description: "Selfie-based attendance marking",
       icon: "/images/selfie-attendance-icon.webp",
     },
-  ]
-})
+  ];
+});
 
 // Replace the static tiers and addons with computed properties
-const tiers = computed(() => getPricing.value)
-const addons = computed(() => getAddons.value)
+const tiers = computed(() => getPricing.value);
+const addons = computed(() => getAddons.value);
 
 const sections = [
   {
@@ -749,6 +764,14 @@ const testimonials = {
   })),
 };
 
+useHead({
+  title: pricingPage.fields?.seoTitle,
+  meta: [
+    {
+      hid: "description",
+      name: "description",
+      content: pricingPage.fields?.seoDescription,
+    },
+  ],
+});
 </script>
-
-

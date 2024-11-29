@@ -182,4 +182,16 @@ const cardColors = [
   "bg-orange-50 hover:bg-orange-100",
 ];
 
+useHead({
+  title: "Policy Templates",
+  meta: [
+    {
+      hid: "description",
+      name: "description",
+      content:
+        "Policy Templates are a crucial part of any organization's documentation. They are used to communicate important information to employees, such as policies, procedures, and expectations.",
+    },
+  ],
+})
+
 </script>

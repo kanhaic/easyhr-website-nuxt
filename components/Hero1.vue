@@ -71,15 +71,13 @@
             :src="heroImage"
             :alt="title"
             format="webp"
-            quality="75"
-            preload
-            priority
+            quality="80"
             loading="eager"
             fetchpriority="high"
-            sizes="(max-width: 640px) 320px, (max-width: 768px) 480px, 720px"
+            sizes="sm:320px md:480px lg:720px"
             width="720"
             height="480"
-            class="rounded-lg w-full h-auto"
+            class="rounded-lg"
             :provider="heroImageProvider"
           />
           <img

@@ -182,4 +182,15 @@ const cardColors = [
   "bg-orange-50 hover:bg-orange-100",
 ];
 
+useHead({
+  title: "OKRs",
+  meta: [
+    {
+      name: "description",
+      content:
+        "OKRs are a crucial part of any organization's documentation. They are used to communicate important information to employees, such as goals, objectives, and key results.",
+    },
+  ],
+})
+
 </script>
