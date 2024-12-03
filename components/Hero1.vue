@@ -73,10 +73,8 @@
             format="webp"
             quality="80"
             loading="eager"
+            preload="true"
             fetchpriority="high"
-            sizes="sm:320px md:480px lg:720px"
-            width="720"
-            height="480"
             class="rounded-lg"
             :provider="heroImageProvider"
           />
