@@ -10,6 +10,8 @@
         :cta2Title="heroSection.cta2Title"
         :cta2Link="heroSection.cta2Link"
         :heroImage="heroSection.heroImage"
+        :width="heroSection.width"
+        :height="heroSection.height"
         heroImageProvider="contentful"
       />
 
@@ -257,6 +259,8 @@
         :cta2Link="heroSection.cta2Link"
         :heroImage="heroSection.heroImage"
         heroImageProvider="contentful"
+        :width="heroSection.width"
+        :height="heroSection.height"
       />
       <LogoSection :logos="logos" />
       <LazyFeature1
@@ -428,6 +432,8 @@
         :cta2Link="heroSection.cta2Link"
         :heroImage="heroSection.heroImage"
         heroImageProvider="contentful"
+        :width="heroSection.width"
+        :height="heroSection.height"
       />
       <LogoSection :logos="logos" />
       <LazyFeature1
@@ -561,6 +567,8 @@ const heroSection = {
   cta2Title: landingPage.items[0]?.fields.cta2Label,
   cta2Link: landingPage.items[0]?.fields.cta2Url,
   heroImage: landingPage.items[0]?.fields.heroImage.fields.file.url,
+  width: landingPage.items[0]?.fields.heroImage.fields.file.details.image.width,
+  height: landingPage.items[0]?.fields.heroImage.fields.file.details.image.height,
 };
 
 const stats = {

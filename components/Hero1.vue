@@ -70,11 +70,13 @@
             v-if="heroImageProvider"
             :src="heroImage"
             :alt="title"
-            format="webp"
-            quality="80"
+            :width="width"
+            :height="height"
+            sizes="100vw sm:50vw md:400px"
             loading="eager"
-            preload="true"
             fetchpriority="high"
+            preload
+            densities="1x 100vw, 2x 200vw, 3x 300vw"
             class="rounded-lg"
             :provider="heroImageProvider"
           />
@@ -83,10 +85,13 @@
             :src="heroImage"
             :alt="title"
             :title="title"
+            :width="width"
+            :height="height"
+            sizes="100vw sm:50vw md:400px"
+            densities="1x 100vw, 2x 200vw, 3x 300vw"
             class="rounded-lg w-full h-auto"
             loading="eager"
             fetchpriority="high"
-            sizes="sm:320px md:480px lg:720px"
           />
         </div>
       </div>
@@ -132,6 +137,12 @@ const props = defineProps({
   showLogin: {
     type: Boolean,
     default: true,
+  },
+  width: {
+    type: Number,
+  },
+  height: {
+    type: Number,
   },
 });
 
