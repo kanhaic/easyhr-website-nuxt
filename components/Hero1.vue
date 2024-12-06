@@ -72,11 +72,11 @@
             :alt="title"
             :width="width"
             :height="height"
-            sizes="300vw sm:358vw md:456px"
+            sizes="100vw sm:358vw md:456px"
             loading="eager"
             fetchpriority="high"
             preload
-            densities="1x 300vw, 2x 600vw, 3x 900vw"
+            densities="1x 100vw, 2x 200vw"
             class="rounded-lg"
             :provider="heroImageProvider"
           />
