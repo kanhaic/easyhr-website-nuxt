@@ -82,7 +82,8 @@
             class="rounded-lg"
             :provider="heroImageProvider"
           />
-          <!-- <img
+          <img
+            v-else
             :src="heroImage"
             :alt="title"
             :title="title"
@@ -93,7 +94,7 @@
             class="rounded-lg w-full h-auto"
             loading="eager"
             fetchpriority="high"
-          /> -->
+          />
         </div>
       </div>
     </div>
@@ -134,7 +135,6 @@ const props = defineProps({
   },
   heroImageProvider: {
     type: String,
-    default: "ipx",
   },
   showLogin: {
     type: Boolean,
