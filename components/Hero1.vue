@@ -74,7 +74,7 @@
             :height="height"
             sizes="100vw sm:358vw md:456px"
             loading="eager"
-            preload="high"
+            preload
             densities="1x 100vw, 2x 200vw"
             class="rounded-lg"
             :provider="heroImageProvider"
