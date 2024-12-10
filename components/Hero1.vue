@@ -66,7 +66,7 @@
         </div>
 
         <div class="flex justify-center items-center order-1 lg:order-2">
-          <NuxtImg
+          <!-- <NuxtImg
             v-if="heroImageProvider"
             :src="heroImage"
             :alt="title"
@@ -78,9 +78,8 @@
             densities="1x 100vw, 2x 200vw"
             class="rounded-lg"
             :provider="heroImageProvider"
-          />
+          /> -->
           <img
-            v-else
             :src="heroImage"
             :alt="title"
             :title="title"
