@@ -1,7 +1,9 @@
 <template>
   <section class="pt-6">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2 min-h-[calc(100vh-128px)] lg:min-h-0">
+      <div
+        class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2 min-h-[calc(100vh-128px)] lg:min-h-0"
+      >
         <div class="order-2 lg:order-1">
           <p
             class="text-base font-semibold tracking-wider text-blue-600 uppercase"
@@ -66,7 +68,7 @@
         </div>
 
         <div class="flex justify-center items-center order-1 lg:order-2">
-          <!-- <NuxtImg
+          <NuxtImg
             v-if="heroImageProvider"
             :src="heroImage"
             :alt="title"
@@ -74,12 +76,13 @@
             :height="height"
             sizes="100vw sm:358vw md:456px"
             loading="eager"
+            fetchpriority="high"
             preload
             densities="1x 100vw, 2x 200vw"
             class="rounded-lg"
             :provider="heroImageProvider"
-          /> -->
-          <img
+          />
+          <!-- <img
             :src="heroImage"
             :alt="title"
             :title="title"
@@ -90,7 +93,7 @@
             class="rounded-lg w-full h-auto"
             loading="eager"
             fetchpriority="high"
-          />
+          /> -->
         </div>
       </div>
     </div>
@@ -131,6 +134,7 @@ const props = defineProps({
   },
   heroImageProvider: {
     type: String,
+    default: "ipx",
   },
   showLogin: {
     type: Boolean,
