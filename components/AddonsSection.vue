@@ -31,7 +31,6 @@
             :title="addon.name"
             class="w-24 h-24 object-contain"
             format="webp"
-            provider="contentful"
           />
         </div>
       </div>
