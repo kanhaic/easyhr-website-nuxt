@@ -182,11 +182,11 @@
                       tier.priceMonthly
                     }}</span>
                     <span class="text-sm font-semibold leading-6">/month</span>
-                  </div> -->
-                  <!-- <div class="text-sm leading-6 text-gray-500">
-                    {{ tier.description }}
                   </div>
                   <div class="text-sm leading-6 text-gray-500">
+                    {{ tier.description }}
+                  </div>
+                  <div class="text-sm leading-6 text-gray-500"> 
                     {{ tier.additionalUsersPrice }}
                   </div> -->
                   <a

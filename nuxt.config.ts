@@ -80,6 +80,12 @@ export default defineNuxtConfig({
         { name: "msapplication-TileColor", content: "#2d89ef" },
         { name: "theme-color", content: "#ffffff" },
       ],
+      script: [
+        {
+          src: "https://www.googletagmanager.com/gtag/js?id=G-RKFHSKFF92",
+          async: true,
+        }
+      ],
     },
   },
   postcss: {
