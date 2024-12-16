@@ -508,9 +508,9 @@
       </div>
       <LazyFaqSection :faqs="faqSets" />
       <LazyTestimonial1
-        :subtitle="testimonials.topTag"
-        :title="testimonials.title"
-        :testimonials="testimonials.items"
+        :subtitle="testimonials?.topTag"
+        :title="testimonials?.title"
+        :testimonials="testimonials?.items"
       />
       <LazyStats1 :title="stats?.title" :stats="stats?.stats" />
       <LazyRecentBlog :title="recentBlog?.title" :posts="recentBlog?.posts" />
@@ -559,28 +559,28 @@ const blogPosts = blogData.value?.items || [];
 const pageType = landingPage.items[0]?.fields.type;
 
 const heroSection = {
-  topTag: landingPage.items[0]?.fields.topTag,
-  title: landingPage.items[0]?.fields.title,
-  subtitle: landingPage.items[0]?.fields.subtitle,
-  cta1Title: landingPage.items[0]?.fields.cta1Label,
-  cta1Link: landingPage.items[0]?.fields.cta1Url,
+  topTag: landingPage.items[0]?.fields?.topTag,
+  title: landingPage.items[0]?.fields?.title,
+  subtitle: landingPage.items[0]?.fields?.subtitle,
+  cta1Title: landingPage.items[0]?.fields?.cta1Label,
+  cta1Link: landingPage.items[0]?.fields?.cta1Url,
   cta2Title: landingPage.items[0]?.fields.cta2Label,
-  cta2Link: landingPage.items[0]?.fields.cta2Url,
-  heroImage: landingPage.items[0]?.fields.heroImage.fields.file.url,
-  width: landingPage.items[0]?.fields.heroImage.fields.file.details.image.width,
-  height: landingPage.items[0]?.fields.heroImage.fields.file.details.image.height,
+  cta2Link: landingPage.items[0]?.fields?.cta2Url,
+  heroImage: landingPage.items[0]?.fields?.heroImage?.fields?.file?.url,
+  width: landingPage.items[0]?.fields?.heroImage?.fields?.file?.details?.image?.width,
+  height: landingPage.items[0]?.fields?.heroImage?.fields?.file?.details?.image?.height,
 };
 
 const stats = {
   title: landingPage.items[0]?.fields?.statsTitle,
   stats: landingPage.items[0]?.fields?.stats?.map((stat) => ({
-    value: stat?.fields.value,
-    label: stat?.fields.label,
+    value: stat?.fields?.value,
+    label: stat?.fields?.label,
   })),
 };
 
 const recentBlog = {
-  title: landingPage.items[0]?.fields.recentBlogTitle,
+  title: landingPage.items[0]?.fields?.recentBlogTitle,
   posts: blogPosts?.map((post) => ({
     id: post.sys.id,
     href: `/blog/${post?.fields.slug}`,

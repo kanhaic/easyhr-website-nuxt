@@ -80,12 +80,6 @@ export default defineNuxtConfig({
         { name: "msapplication-TileColor", content: "#2d89ef" },
         { name: "theme-color", content: "#ffffff" },
       ],
-      script: [
-        {
-          src: "https://www.googletagmanager.com/gtag/js?id=G-RKFHSKFF92",
-          async: true,
-        }
-      ],
     },
   },
   postcss: {
@@ -95,15 +89,9 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/main.css"],
-  modules: [
-    "@nuxt/image",
-    "@nuxt/fonts",
-    "@nuxtjs/sitemap", // "nuxt-gtag",
-    "nuxt-seo-utils",
-    "@nuxtjs/robots", // "@nuxtjs/partytown",
-    "nuxt-schema-org",
-    "nuxt-delay-hydration",
-  ],
+  modules: ["@nuxt/image", "@nuxt/fonts", // "nuxt-gtag",
+  "@nuxtjs/sitemap", "nuxt-seo-utils", // "@nuxtjs/partytown",
+  "@nuxtjs/robots", "nuxt-schema-org", "nuxt-delay-hydration", "nuxt-gtag"],
   fonts: {
     preload: true,
     google: [
@@ -156,4 +144,7 @@ export default defineNuxtConfig({
       crawlLinks: true,
     },
   },
+  gtag: {
+    id: 'G-RKFHSKFF92'
+  }
 });

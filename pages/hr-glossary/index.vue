@@ -14,12 +14,12 @@
       <!-- Glossary List -->
       <div class="space-y-8">
         <div v-for="(terms, letter) in groupedTerms" :key="letter" 
-             :class="getCardBgColor(letter)"
-             class="rounded-lg shadow-sm p-6">
+            :class="getCardBgColor(letter)"
+            class="rounded-lg shadow-sm p-6">
           <!-- Letter Header -->
           <div class="flex items-center mb-6">
             <div :class="getLetterColor(letter)" 
-                 class="h-14 w-14 rounded-lg flex items-center justify-center">
+                class="h-14 w-14 rounded-lg flex items-center justify-center">
               <span class="text-2xl font-bold text-white">{{ letter }}</span>
             </div>
           </div>
@@ -69,7 +69,7 @@ const groupedTerms = computed(() => {
   if (!data.value?.items) return {};
 
   return data.value.items.reduce((acc, term) => {
-    const firstLetter = term.fields.title.charAt(0).toUpperCase();
+    const firstLetter = term.fields.title.trim().charAt(0).toUpperCase();
     if (!acc[firstLetter]) {
       acc[firstLetter] = [];
     }
