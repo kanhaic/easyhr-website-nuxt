@@ -19,3 +19,7 @@
 /payroll-software-india                                  /payroll-software                                           301
 /features/payroll-software-india                         /features/payroll-software                                  301
 /employee-self-service                                   /employee-self-service-software                             301
+/features/centalised-employee-directory/                 /features/employee-management                               301
+/features/hr-mobile-app/                                 /features/mobile-application                                301
+/features/employee-self-service/                         /employee-self-service-software                             301
+/features/performance/                                   /features/performance-management                            301
