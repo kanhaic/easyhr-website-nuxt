@@ -109,6 +109,7 @@ const { data, error } = await useAsyncData("job-openings-list", () =>
   client.getEntries({
     content_type: "jobOpening",
     order: "-sys.updatedAt",
+    limit: 1000,
   })
 );
 

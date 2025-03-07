@@ -75,6 +75,7 @@ const { data: pageData, error: pageError } = await useAsyncData(
 const { data: faqData, error: faqError } = await useAsyncData("faqs", () =>
   client.getEntries({
     content_type: "faqs",
+    limit: 1000,
   })
 );
 

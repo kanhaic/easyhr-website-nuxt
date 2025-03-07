@@ -85,6 +85,7 @@ const { data, error } = await useAsyncData("main-landing", () =>
   client.getEntries({
     content_type: "teamMember",
     order: "sys.createdAt",
+    limit: 1000,
   })
 );
 const teamMembers = data.value?.items || [];

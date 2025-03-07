@@ -123,7 +123,7 @@ const { data: industriesData } = await useAsyncData("industries", () =>
     content_type: "landingPage",
     "fields.type": "industry",
     order: "fields.seq",
-    limit: 100,
+    limit: 1000,
   })
 );
 

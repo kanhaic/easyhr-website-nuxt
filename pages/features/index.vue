@@ -114,7 +114,7 @@ const { data: features, error: featuresError } = await useAsyncData(
   () =>
     client.getEntries({
       content_type: "feature",
-      limit: 100,
+      limit: 1000,
     })
 );
 

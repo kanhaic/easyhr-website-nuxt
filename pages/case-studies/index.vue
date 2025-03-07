@@ -82,6 +82,7 @@ const { data, error } = await useAsyncData("case-studies", () =>
     content_type: "resources",
     "fields.type": "case-studies",
     order: "fields.seq",
+    limit: 1000,
   })
 );
 

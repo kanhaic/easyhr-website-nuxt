@@ -64,7 +64,8 @@ const { data } = await useAsyncData('guides', () =>
   client.getEntries({
     content_type: 'landingPage',
     'fields.type': 'guide',
-    order: 'fields.seq'
+    order: 'fields.seq',
+    limit: 1000,
   })
 );
 

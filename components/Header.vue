@@ -590,6 +590,7 @@ const { data, error } = await useAsyncData(`product-menus`, () =>
   client.getEntries({
     content_type: "landingPage",
     order: "sys.createdAt",
+    limit: 1000,
   })
 );
 

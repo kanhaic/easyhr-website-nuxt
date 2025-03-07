@@ -344,7 +344,7 @@ const { data: faqData, error: faqError } = await useAsyncData("faqs", () =>
   client.getEntries({
     content_type: "faqs",
     "fields.showInPricing": true,
-    limit: 100,
+    limit: 1000,
   })
 );
 

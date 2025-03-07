@@ -424,8 +424,12 @@ const client = contentful.createClient({
 const { data, error } = await useAsyncData(`product-menus`, () =>
   client.getEntries({
     content_type: "landingPage",
+    limit: 1000,
   })
 );
+
+console.log("data", data.value);
+
 
 const productMenus = (
   data.value?.items.filter((item) => item.fields.type === "product") || []
@@ -443,5 +447,4 @@ const guides = (
   data.value?.items.filter((item) => item.fields.type === "guide") || []
 ).slice(0, 10).sort((a, b) => (a.fields.seq ?? 99) - (b.fields.seq ?? 99));
 
-// console.log(cities);
 </script>

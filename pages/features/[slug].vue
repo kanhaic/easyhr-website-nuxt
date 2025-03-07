@@ -110,7 +110,7 @@ const client = contentful.createClient({
 const { data, error } = await useAsyncData(`feature-${slug}`, () =>
   client.getEntries({
     content_type: "feature",
-    limit: 100,
+    limit: 1000,
   })
 );
 
