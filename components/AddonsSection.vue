@@ -20,9 +20,6 @@
             <h3 class="text-xl font-semibold text-indigo-600">
               {{ addon.name }}
             </h3>
-            <p class="mt-2 text-lg font-medium text-gray-900">
-              {{ addon.price }}
-            </p>
             <p class="mt-2 text-sm text-gray-600">{{ addon.description }}</p>
           </div>
           <NuxtImg

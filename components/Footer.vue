@@ -428,7 +428,7 @@ const { data, error } = await useAsyncData(`product-menus`, () =>
   })
 );
 
-console.log("data", data.value);
+// console.log("data", data.value);
 
 
 const productMenus = (
