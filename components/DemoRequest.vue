@@ -186,7 +186,7 @@ const submitForm = async () => {
   try {
     await getUserInfo();
     await $fetch(
-      "https://n8n.craftinghr.com/webhook/0ffe9532-7100-47b1-bdfd-3368c8899efb",
+      "https://n8n.craftinghr.com/webhook/0b8e46e4-851b-4ec0-889f-071d411fd8c1",
       {
         method: "POST",
         body: form.value,
