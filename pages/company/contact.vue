@@ -19,15 +19,7 @@
                 </div>
                 <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
-                  <dd><a href="tel:+918454936856" class="hover:underline">+91 84549 36856</a></dd>
-                </div>
-                <div class="mt-1">
-                  <dt class="sr-only">Phone number</dt>
-                  <dd><a href="tel:+918433545579" class="hover:underline">+91 84335 45579</a></dd>
-                </div>
-                <div class="mt-1">
-                  <dt class="sr-only">Phone number</dt>
-                  <dd><a href="tel:+918454926412" class="hover:underline">+91 84549 26412</a></dd>
+                  <dd><a href="tel:+918645627175" class="hover:underline">+91 86456 27175</a></dd>
                 </div>
               </dl>
             </div>
