@@ -385,6 +385,9 @@ const form = ref({
 
 const errors = ref({});
 
+// Use email validation composable
+const { validateBusinessEmail } = useEmailValidation();
+
 const countries = ref([
   // Most Common First
   { code: "+91", country: "India", flag: "🇮🇳" },
@@ -618,9 +621,12 @@ const validateForm = () => {
   if (!form.value.email.trim()) {
     errors.value.email = "Email is required";
     isValid = false;
-  } else if (!/^\S+@\S+\.\S+$/.test(form.value.email)) {
-    errors.email = "Invalid email format";
-    isValid = false;
+  } else {
+    const emailValidation = validateBusinessEmail(form.value.email);
+    if (!emailValidation.isValid) {
+      errors.value.email = emailValidation.error;
+      isValid = false;
+    }
   }
 
   if (!form.value.countryCode) {

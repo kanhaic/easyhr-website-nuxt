@@ -70,8 +70,12 @@
                   id="email"
                   v-model="form.email"
                   required
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  :class="[
+                    'mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
+                    emailError ? 'border-red-500' : 'border-gray-300'
+                  ]"
                 />
+                <p v-if="emailError" class="mt-1 text-sm text-red-600">{{ emailError }}</p>
               </div>
 
               <!-- Phone Field -->
@@ -222,6 +226,7 @@
 </template>
 
 <script setup>
+
 definePageMeta({
   layout: false,
 });
@@ -249,6 +254,10 @@ const form = ref({
   submittedAt: "",
   formType: "partner-signup",
 });
+
+// Use email validation composable
+const { validateBusinessEmail } = useEmailValidation();
+const emailError = ref("");
 
 const getBrowserInfo = (userAgent) => {
   const browsers = {
@@ -324,6 +333,16 @@ const getUserInfo = async () => {
 };
 
 const handleSubmit = async () => {
+  // Validate business email before submission
+  const emailValidation = validateBusinessEmail(form.value.email);
+  if (!emailValidation.isValid) {
+    emailError.value = emailValidation.error;
+    return;
+  }
+  
+  // Clear email error if validation passes
+  emailError.value = "";
+
   form.value.submittedAt = new Date().toISOString();
 
   try {
@@ -347,6 +366,13 @@ const handleSubmit = async () => {
     console.error("Submission error:", error);
   }
 };
+
+// Clear email error when user starts typing
+watch(() => form.value.email, () => {
+  if (emailError.value) {
+    emailError.value = "";
+  }
+});
 
 const logos = [
   { src: "/images/logos/9.webp", alt: "Company 9" },

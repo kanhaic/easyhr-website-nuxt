@@ -130,8 +130,12 @@
                 autocomplete="email"
                 placeholder="example@workemail.com"
                 required
-                class="bg-gray-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                :class="[
+                  'bg-gray-50 mt-1 block w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50',
+                  emailError ? 'border-red-500' : 'border-gray-300'
+                ]"
               />
+              <p v-if="emailError" class="mt-1 text-sm text-red-600">{{ emailError }}</p>
             </div>
             <div>
               <label
@@ -169,6 +173,7 @@
 </template>
 
 <script setup>
+
 defineProps({
   topTag: {
     type: String,
@@ -208,7 +213,21 @@ const form = ref({
   empcount: "",
 });
 
+// Use email validation composable
+const { validateBusinessEmail } = useEmailValidation();
+const emailError = ref("");
+
 const submitForm = async () => {
+  // Validate business email before submission
+  const emailValidation = validateBusinessEmail(form.value.email);
+  if (!emailValidation.isValid) {
+    emailError.value = emailValidation.error;
+    return;
+  }
+  
+  // Clear email error if validation passes
+  emailError.value = "";
+
   // Handle form submission here
   await $fetch(
     "https://n8n.craftinghr.com/webhook/0b8e46e4-851b-4ec0-889f-071d411fd8c1",
@@ -222,4 +241,11 @@ const submitForm = async () => {
 
   await navigateTo("/thank-you");
 };
+
+// Clear email error when user starts typing
+watch(() => form.value.email, () => {
+  if (emailError.value) {
+    emailError.value = "";
+  }
+});
 </script>

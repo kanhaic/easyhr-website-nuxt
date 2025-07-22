@@ -68,9 +68,13 @@
                   v-model="form.email"
                   required
                   placeholder="Your email :"
-                  class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  :class="[
+                    'block w-full pl-10 pr-3 py-2 border rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm',
+                    emailError ? 'border-red-500' : 'border-gray-300'
+                  ]"
                 />
               </div>
+              <p v-if="emailError" class="mt-1 text-sm text-red-600">{{ emailError }}</p>
             </div>
           </div>
           <div class="sm:col-span-1 md:col-span-1">
@@ -133,6 +137,7 @@
 </template>
 
 <script setup>
+
 const form = ref({
   name: "",
   company: "",
@@ -155,6 +160,10 @@ const form = ref({
   utmCampaign: "",
   submittedAt: ""
 });
+
+// Use email validation composable
+const { validateBusinessEmail } = useEmailValidation();
+const emailError = ref("");
 
 const getBrowserInfo = (userAgent) => {
   const browsers = {
@@ -228,6 +237,16 @@ const getUserInfo = async () => {
 };
 
 const submitForm = async () => {
+  // Validate business email before submission
+  const emailValidation = validateBusinessEmail(form.value.email);
+  if (!emailValidation.isValid) {
+    emailError.value = emailValidation.error;
+    return;
+  }
+  
+  // Clear email error if validation passes
+  emailError.value = "";
+
   form.value.submittedAt = new Date().toISOString();
 
   
@@ -249,5 +268,12 @@ const submitForm = async () => {
     console.error('Error submitting form:', error);
   }
 };
+
+// Clear email error when user starts typing
+watch(() => form.value.email, () => {
+  if (emailError.value) {
+    emailError.value = "";
+  }
+});
 
 </script>
