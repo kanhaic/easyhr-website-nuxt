@@ -19,7 +19,7 @@
                 </div>
                 <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
-                  <dd><a href="tel:+918645627175" class="hover:underline">+91 86456 27175</a></dd>
+                  <dd><a href="tel:+918645627391" class="hover:underline">+91-8645627391</a></dd>
                 </div>
               </dl>
             </div>
@@ -29,6 +29,10 @@
                 <div>
                   <dt class="sr-only">Email</dt>
                   <dd><a class="font-semibold text-indigo-600" href="mailto:sales@easyhrworld.com">sales@easyhrworld.com</a></dd>
+                </div>
+                <div class="mt-1">
+                  <dt class="sr-only">Phone number</dt>
+                  <dd><a href="tel:+918645627175" class="hover:underline">+91 86456 27175</a></dd>
                 </div>
                 <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
