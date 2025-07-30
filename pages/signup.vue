@@ -206,7 +206,7 @@
                   <label
                     for="empcount"
                     class="block text-sm font-medium text-gray-700"
-                    >Number of empcount</label
+                    >Number of Employees</label
                   >
                   <select
                     id="empcount"
@@ -226,6 +226,35 @@
                   </select>
                   <p v-if="errors.empcount" class="mt-1 text-sm text-red-600">
                     {{ errors.empcount }}
+                  </p>
+                </div>
+                <div>
+                  <label
+                    for="whereheard"
+                    class="block text-sm font-medium text-gray-700"
+                    >Where did you hear about us?</label
+                  >
+                  <select
+                    id="whereheard"
+                    v-model="form.whereheard"
+                    required
+                    :class="{ 'border-red-500': errors.whereheard }"
+                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <option value="" disabled selected>Select</option>
+                    <option value="Referral">Referral</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Google">Google</option>
+                    <option value="Email">Email</option>
+                    <option value="Website">Website</option>
+                    <option value="Event">Event</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <p v-if="errors.whereheard" class="mt-1 text-sm text-red-600">
+                    {{ errors.whereheard }}
                   </p>
                 </div>
                 <div>
@@ -360,7 +389,6 @@ useHead({
     },
   ],
 });
-
 
 const form = ref({
   firstName: "",
