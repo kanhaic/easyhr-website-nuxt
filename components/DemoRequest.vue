@@ -34,8 +34,12 @@
           id="email"
           v-model="form.email"
           required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          :class="[
+            'mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm',
+            emailError ? 'border-red-500' : 'border-gray-300'
+          ]"
         />
+        <p v-if="emailError" class="mt-1 text-sm text-red-600">{{ emailError }}</p>
       </div>
       <div>
         <label for="phone" class="block text-sm font-medium text-gray-700"
@@ -85,6 +89,10 @@
 </template>
 
 <script setup>
+// Use email validation composable
+const { validateBusinessEmail } = useEmailValidation();
+const emailError = ref("");
+
 const form = ref({
   name: "",
   company: "",
@@ -180,6 +188,16 @@ const getUserInfo = async () => {
 };
 
 const submitForm = async () => {
+  // Validate business email before submission
+  const emailValidation = validateBusinessEmail(form.value.email);
+  if (!emailValidation.isValid) {
+    emailError.value = emailValidation.error;
+    return;
+  }
+  
+  // Clear email error if validation passes
+  emailError.value = "";
+
   form.value.submittedAt = new Date().toISOString();
 
   
@@ -204,4 +222,11 @@ const submitForm = async () => {
     console.error('Error submitting form:', error);
   }
 };
+
+// Clear email error when user starts typing
+watch(() => form.value.email, () => {
+  if (emailError.value) {
+    emailError.value = "";
+  }
+});
 </script>
