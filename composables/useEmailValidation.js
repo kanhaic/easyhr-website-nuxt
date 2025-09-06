@@ -123,6 +123,8 @@ export const useEmailValidation = () => {
       };
     }
 
+    
+
     // Extract domain from email
     const domain = email.toLowerCase().split('@')[1];
     
@@ -132,6 +134,11 @@ export const useEmailValidation = () => {
         error: 'Please enter a valid email address'
       };
     }
+
+    return {
+      isValid: true,
+      error: null
+    };
 
     // Check if domain is in the free email list
     if (FREE_EMAIL_DOMAINS.includes(domain)) {
