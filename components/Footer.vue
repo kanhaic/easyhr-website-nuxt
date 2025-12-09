@@ -171,7 +171,7 @@
             </li>
             <li>
               <a
-                href="https://status.easyhrworld.com"
+                href="https://easyhr.statuspage.io/"
                 class="flex text-sm font-normal transition-all transform text-gray-50 hover:text-white duration hover:translate-x-0.5"
               >
                 Status Page
