@@ -114,20 +114,15 @@
                       v-model="form.phone"
                       required
                       placeholder="917 123 4567"
-                      maxlength="11"
+                      maxlength="13"
                       class="flex-1 block w-full px-3 py-2 border-none focus:outline-none bg-white text-gray-900 rounded-r-md"
                       :class="{ 'border-red-500': errors.phone }"
-                      @input="
-                        $event.target.value = $event.target.value.replace(
-                          /[^\d\s]/g,
-                          ''
-                        )
-                      "
+                      @input="handlePhoneInput"
                     />
                   </div>
 
                   <p class="mt-1 text-sm text-gray-500">
-                    Format: e.g., 917 123 4567
+                    Format: 10 digits, e.g., 917 123 4567
                   </p>
                   <p v-if="errors.phone" class="mt-1 text-sm text-red-600">
                     {{ errors.phone }}
@@ -405,7 +400,7 @@ const isValidPhoneNumber = (phone) => {
   const hasValidStart = cleanPhone.startsWith("9"); // Mobile numbers start with 9
 
   if (!isValidLength) {
-    return { isValid: false, error: "Phone number must be 10 digits" };
+    return { isValid: false, error: "Phone number must be 10 digits (e.g., 9171234567)" };
   }
   if (!hasValidStart) {
     return {
@@ -595,32 +590,6 @@ const getUtmParams = () => {
   };
 };
 
-// Watch for phone changes
-watch(
-  () => form.value.phone,
-  (newVal) => {
-    if (newVal) {
-      // Remove any non-digit characters
-      let cleaned = newVal.replace(/\D/g, "");
-
-      // Limit to 10 digits
-      cleaned = cleaned.slice(0, 10);
-
-      // Format as: 917 123 4567
-      if (cleaned.length > 3) {
-        cleaned = cleaned.slice(0, 3) + " " + cleaned.slice(3);
-      }
-      if (cleaned.length > 7) {
-        cleaned = cleaned.slice(0, 7) + " " + cleaned.slice(7);
-      }
-
-      // Update the form value if it's different
-      if (cleaned !== newVal) {
-        form.value.phone = cleaned;
-      }
-    }
-  }
-);
 
 watch(
   [() => form.value.firstName, () => form.value.lastName],
@@ -633,6 +602,23 @@ watch(
     form.value.name = [first, last].filter(Boolean).join(" ");
   }
 );
+
+// Handle phone input formatting
+const handlePhoneInput = (event) => {
+  let value = event.target.value.replace(/[^\d]/g, ''); // Only allow digits
+  value = value.slice(0, 10); // Limit to 10 digits
+
+  // Format as: 917 123 4567
+  if (value.length > 3) {
+    value = value.slice(0, 3) + ' ' + value.slice(3);
+  }
+  if (value.length > 7) {
+    value = value.slice(0, 7) + ' ' + value.slice(7);
+  }
+
+  event.target.value = value;
+  form.value.phone = value;
+};
 
 </script>
 
