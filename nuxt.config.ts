@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   runtimeConfig: {
     public: {
-      siteUrl: process.env.SITE_URL || "https://www.easyhrworld.com",
+      siteUrl: process.env.SITE_URL || "https://www.easyhr.app",
+      domain: process.env.DOMAIN || "easyhr.app",
       contentful: {
         spaceId: "",
         accessToken: "",
@@ -14,7 +15,7 @@ export default defineNuxtConfig({
     automaticDefaults: true,
   },
   site: {
-    url: "https://www.easyhrworld.com",
+    url: process.env.SITE_URL || "https://www.easyhr.app",
     name: "EasyHR",
     description: `EasyHR is a user-friendly and intuitive HR software designed for
               SMEs and enterprises. It streamlines the management of HRIS
@@ -126,7 +127,7 @@ export default defineNuxtConfig({
         },
       },
     },
-    domains: ["easyhrworld.com", "images.ctfassets.net"],
+    domains: ["easyhr.app", "images.ctfassets.net"],
     format: ["webp", "avif", "jpeg", "jpg", "png"],
   },
   routeRules: {

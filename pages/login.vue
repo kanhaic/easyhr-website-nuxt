@@ -55,13 +55,13 @@
                   <span
                     class="hidden sm:inline-flex items-center px-3 text-gray-500 border-y border-r border-gray-200 rounded-r-xl bg-gray-50"
                   >
-                    .easyhrworld.com
+                    .{{ config.public.domain }}
                   </span>
                 </div>
                 <p class="lg:hidden mt-3 text-xs text-gray-600 px-1 leading-relaxed
                   sm:mt-2 sm:text-gray-500">
                   <span class="font-medium text-gray-700 sm:font-normal sm:text-gray-500">Ex:</span> 
-                  If your URL is <span class="font-medium text-gray-700">https://<span class="underline">acme</span>.easyhrworld.com</span>, enter "<span class="font-medium text-gray-700">acme</span>"
+                  If your URL is <span class="font-medium text-gray-700">https://<span class="underline">acme</span>.{{ config.public.domain }}</span>, enter "<span class="font-medium text-gray-700">acme</span>"
                 </p>
               </div>
             </div>
@@ -237,7 +237,7 @@ const handleLogin = async () => {
     isLoading.value = true;
     // Add your login logic here
     await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
-    navigateTo(`https://${account.value}.easyhrworld.com`, { external: true });
+    navigateTo(`https://${account.value}.${config.public.domain}`, { external: true });
   } catch (error) {
     console.error('Login error:', error);
   } finally {

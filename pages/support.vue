@@ -34,9 +34,9 @@
             </h2>
             <p class="mb-4">Get in touch with our support team via email.</p>
             <a
-              href="mailto:support@easyhrworld.com"
+              :href="`mailto:support@${config.public.domain}`"
               class="text-blue-600 hover:underline"
-              >support@easyhrworld.com</a
+              >support@{{ config.public.domain }}</a
             >
           </div>
         </div>
@@ -82,5 +82,6 @@ import {
   EnvelopeIcon,
 } from "@heroicons/vue/24/outline";
 
+const config = useRuntimeConfig();
 </script>
 

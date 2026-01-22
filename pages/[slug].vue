@@ -719,7 +719,7 @@ useHead({
 });
 
 const shareUrls = computed(() => {
-  const baseUrl = config.public.siteUrl || "https://www.easyhrworld.com";
+  const baseUrl = config.public.siteUrl;
   const currentUrl = `${baseUrl}${route.fullPath}`;
   const title = heroSection.title;
 

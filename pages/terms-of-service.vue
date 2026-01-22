@@ -45,7 +45,7 @@
             <div>
               <h2 class="text-xl font-semibold text-gray-900">4. Personal Information and Privacy</h2>
               <p class="mt-4 text-base text-gray-700">
-                Your use of the Services is governed by our Privacy Policy. By using EasyHR, you agree to the terms outlined in that document. You are responsible for maintaining the confidentiality of your login credentials and for all activities under your account. If you detect unauthorized access, notify us at support@easyhrworld.com immediately.
+                Your use of the Services is governed by our Privacy Policy. By using EasyHR, you agree to the terms outlined in that document. You are responsible for maintaining the confidentiality of your login credentials and for all activities under your account. If you detect unauthorized access, notify us at support@{{ config.public.domain }} immediately.
               </p>
             </div>
 
@@ -76,7 +76,7 @@
             <div>
               <h2 class="text-xl font-semibold text-gray-900">7. Termination of Service</h2>
               <p class="mt-4 text-base text-gray-700">
-                Your account will remain active until the end date of the current subscription period. If you wish to terminate your account, contact us at support@easyhrworld.com. CraftingHR reserves the right to suspend or terminate access if there is any unauthorized use or violation of the Terms.
+                Your account will remain active until the end date of the current subscription period. If you wish to terminate your account, contact us at support@{{ config.public.domain }}. CraftingHR reserves the right to suspend or terminate access if there is any unauthorized use or violation of the Terms.
               </p>
             </div>
 
@@ -146,7 +146,7 @@
             <div>
               <h2 class="text-xl font-semibold text-gray-900">15. Suspension and Termination</h2>
               <p class="mt-4 text-base text-gray-700">
-                CraftingHR may suspend your account for illegal activities or violations of the Terms. If not resolved within 30 days, your account will be terminated. In the case of voluntary termination, notify support@easyhrworld.com.
+                CraftingHR may suspend your account for illegal activities or violations of the Terms. If not resolved within 30 days, your account will be terminated. In the case of voluntary termination, notify support@{{ config.public.domain }}.
               </p>
             </div>
 
@@ -171,7 +171,7 @@
               <h2 class="text-xl font-semibold text-gray-900">18. Contact Information</h2>
               <p class="mt-4 text-base text-gray-700">
                 For questions or concerns about these Terms, contact us at:<br>
-                <a href="mailto:support@easyhrworld.com" class="text-indigo-600 hover:text-indigo-700">support@easyhrworld.com</a>
+                <a :href="`mailto:support@${config.public.domain}`" class="text-indigo-600 hover:text-indigo-700">support@{{ config.public.domain }}</a>
               </p>
             </div>
 
@@ -183,6 +183,8 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig();
+
 useHead({
   title: 'Terms of Service | EasyHR',
   meta: [
@@ -192,7 +194,6 @@ useHead({
     }
   ]
 });
-
 </script>
 
 <style></style>

@@ -15,7 +15,7 @@
               <dl class="mt-3 space-y-1 text-sm leading-6 text-gray-900">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd><a class="font-semibold text-indigo-600" href="mailto:support@easyhrworld.com">support@easyhrworld.com</a></dd>
+                  <dd><a class="font-semibold text-indigo-600" :href="`mailto:support@${config.public.domain}`">support@{{ config.public.domain }}</a></dd>
                 </div>
                 <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
@@ -28,7 +28,7 @@
               <dl class="mt-3 space-y-1 text-sm leading-6 text-gray-900">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd><a class="font-semibold text-indigo-600" href="mailto:sales@easyhrworld.com">sales@easyhrworld.com</a></dd>
+                  <dd><a class="font-semibold text-indigo-600" :href="`mailto:sales@${config.public.domain}`">sales@{{ config.public.domain }}</a></dd>
                 </div>
                 <div class="mt-1">
                   <dt class="sr-only">Phone number</dt>
@@ -76,6 +76,8 @@
 </style>
 
 <script setup>
+const config = useRuntimeConfig();
+
 useHead({
   title: "Contact Us",
   meta: [

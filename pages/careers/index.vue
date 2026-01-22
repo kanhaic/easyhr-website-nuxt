@@ -37,7 +37,7 @@
               your resume for future opportunities.
             </p>
             <a
-              href="mailto:careers@easyhrworld.com"
+              :href="`mailto:careers@${config.public.domain}`"
               class="mt-4 inline-block text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Submit your resume <span aria-hidden="true">&rarr;</span>

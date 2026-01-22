@@ -14,13 +14,13 @@
             <div>
               <h2 class="text-xl font-semibold text-gray-900">1. General</h2>
               <p class="mt-4 text-base text-gray-700">
-                At Crafting HR Software Solutions LLP (referred to as "CraftingHR," "we," "us," or "our"), we value your privacy and handle your personal information responsibly. By using EasyHR services, you agree to this Privacy Policy, which may be updated periodically. Any material changes will be notified via email or a notice on our website. This policy applies exclusively to www.easyhrworld.com.
+                At Crafting HR Software Solutions LLP (referred to as "CraftingHR," "we," "us," or "our"), we value your privacy and handle your personal information responsibly. By using EasyHR services, you agree to this Privacy Policy, which may be updated periodically. Any material changes will be notified via email or a notice on our website. This policy applies exclusively to www.{{ config.public.domain }}.
               </p>
               <div class="mt-4 bg-gray-50 p-4 rounded-lg">
                 <p class="text-base text-gray-700">
                   <strong>Mailing Address:</strong><br>
                   C-319, Kailash Esplanade, LBS Marg, Ghatkopar (West), Mumbai – 400086, Maharashtra, India<br>
-                  <strong>Email:</strong> <a href="mailto:support@easyhrworld.com" class="text-indigo-600 hover:text-indigo-700">support@easyhrworld.com</a><br>
+                  <strong>Email:</strong> <a :href="`mailto:support@${config.public.domain}`" class="text-indigo-600 hover:text-indigo-700">support@{{ config.public.domain }}</a><br>
                   <strong>Phone:</strong> +91 22 6738 2000
                 </p>
               </div>
@@ -142,7 +142,7 @@
             <div>
               <h2 class="text-xl font-semibold text-gray-900">11. Accessing, Updating, and Deleting Personal Information</h2>
               <p class="mt-4 text-base text-gray-700">
-                You can access and update your personal information through your account settings. If you wish to delete your data, contact <a href="mailto:support@easyhrworld.com" class="text-indigo-600 hover:text-indigo-700">support@easyhrworld.com</a>. Data deletion requests are processed within 48 hours.
+                You can access and update your personal information through your account settings. If you wish to delete your data, contact <a :href="`mailto:support@${config.public.domain}`" class="text-indigo-600 hover:text-indigo-700">support@{{ config.public.domain }}</a>. Data deletion requests are processed within 48 hours.
               </p>
             </div>
 
@@ -192,7 +192,7 @@
               <h2 class="text-xl font-semibold text-gray-900">17. Contact Us</h2>
               <p class="mt-4 text-base text-gray-700">
                 For questions or concerns about this Privacy Policy, contact us at:<br>
-                <strong>Email:</strong> <a href="mailto:support@easyhrworld.com" class="text-indigo-600 hover:text-indigo-700">support@easyhrworld.com</a><br>
+                <strong>Email:</strong> <a :href="`mailto:support@${config.public.domain}`" class="text-indigo-600 hover:text-indigo-700">support@{{ config.public.domain }}</a><br>
                 <strong>Phone:</strong> +91 22 6738 2000
               </p>
             </div>
@@ -205,8 +205,10 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig();
+
 useHead({
-  title: 'Privacy Policy | EasyHR',
+  title: 'Privacy Policy - EasyHR',
   meta: [
     {
       name: 'description',
