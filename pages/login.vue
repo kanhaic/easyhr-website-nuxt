@@ -49,20 +49,33 @@
                       caret-gray-900 
                       bg-gray-50 
                       focus:outline-none focus:bg-white focus:border-gray-300 focus:ring-1 focus:ring-gray-300
-                      ${!account ? 'rounded-xl sm:rounded-none' : 'rounded-xl sm:rounded-none'}
+                      ${!account ? 'rounded-xl sm:rounded-lxl sm:rounded-r-none' : 'rounded-xl sm:rounded-lxl sm:rounded-r-none'}
                     `"
                   />
-                  <span
-                    class="hidden sm:inline-flex items-center px-3 text-gray-500 border-y border-r border-gray-200 rounded-r-xl bg-gray-50"
+                  <select
+                    v-model="selectedDomain"
+                    class="hidden sm:inline-flex items-center px-3 text-gray-500 border-y border-r border-gray-200 rounded-r-xl bg-gray-50 focus:outline-none focus:bg-white focus:border-gray-300 focus:ring-1 focus:ring-gray-300"
                   >
-                    .{{ config.public.domain }}
-                  </span>
+                    <option value="easyhr.app">easyhr.app</option>
+                    <option value="easyhrworld.com">easyhrworld.com</option>
+                  </select>
                 </div>
-                <p class="lg:hidden mt-3 text-xs text-gray-600 px-1 leading-relaxed
-                  sm:mt-2 sm:text-gray-500">
-                  <span class="font-medium text-gray-700 sm:font-normal sm:text-gray-500">Ex:</span> 
-                  If your URL is <span class="font-medium text-gray-700">https://<span class="underline">acme</span>.{{ config.public.domain }}</span>, enter "<span class="font-medium text-gray-700">acme</span>"
-                </p>
+                <div class="lg:hidden mt-3 space-y-2">
+                  <p class="text-xs text-gray-600 px-1 leading-relaxed sm:text-gray-500">
+                    <span class="font-medium text-gray-700 sm:font-normal sm:text-gray-500">Ex:</span> 
+                    If your URL is <span class="font-medium text-gray-700">https://<span class="underline">acme</span>.{{ selectedDomain }}</span>, enter "<span class="font-medium text-gray-700">acme</span>"
+                  </p>
+                  <div class="px-1">
+                    <label class="text-xs text-gray-600 sm:text-gray-500">Select domain:</label>
+                    <select
+                      v-model="selectedDomain"
+                      class="mt-1 w-full px-2 py-1 text-sm border border-gray-200 rounded bg-gray-50 focus:outline-none focus:bg-white focus:border-gray-300"
+                    >
+                      <option value="easyhr.app">easyhr.app</option>
+                      <option value="easyhrworld.com">easyhrworld.com</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -218,6 +231,7 @@ const loginPage = data.value?.items?.[0] || {};
 const testimonial = loginPage?.fields?.testimonials?.[0] || {};
 
 const account = ref("");
+const selectedDomain = ref("easyhr.app");
 const isLoading = ref(false);
 const accountInput = ref(null);
 
@@ -237,7 +251,7 @@ const handleLogin = async () => {
     isLoading.value = true;
     // Add your login logic here
     await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
-    navigateTo(`https://${account.value}.${config.public.domain}`, { external: true });
+    navigateTo(`https://${account.value}.${selectedDomain.value}`, { external: true });
   } catch (error) {
     console.error('Login error:', error);
   } finally {
